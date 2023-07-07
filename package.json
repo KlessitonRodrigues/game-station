@@ -1,0 +1,13 @@
+{
+  "name": "game-station",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:KlessitonRodrigues/game-station.git",
+  "author": "klessiton <klessitom@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "game-station-db",
+    "game-station-desktop"
+  ]
+}
