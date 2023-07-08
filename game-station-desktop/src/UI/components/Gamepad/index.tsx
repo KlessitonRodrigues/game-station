@@ -1,16 +1,24 @@
 import { onConnected, onDisconnected } from "./services/gamepad";
 import { Container } from "./styled";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const GamepadPanel = () => {
+  const [pressed, setPressed] = useState<GamepadButtons[]>([]);
+
   useEffect(() => {
-    window.addEventListener("gamepadconnected", onConnected);
+    window.addEventListener("gamepadconnected", (ev) =>
+      onConnected(ev, setPressed)
+    );
     window.addEventListener("gamepaddisconnected", onDisconnected);
   }, []);
 
   return (
     <Container>
-      <div>GAMEPAD</div>
+      <div>
+        {pressed.map((btn) => (
+          <div>{btn}</div>
+        ))}
+      </div>
     </Container>
   );
 };
