@@ -42,3 +42,14 @@ type LangState = {
 };
 
 type LangContext = [LangState, React.Dispatch<React.SetStateAction<LangState>>];
+
+// useNavigationContext
+type NavigationState = {
+  path: string[];
+  buttonMap: Partial<Record<GamepadButtons, () => void>>;
+};
+
+type NavigationContext = [
+  NavigationState,
+  React.Dispatch<React.SetStateAction<NavigationState>>
+];

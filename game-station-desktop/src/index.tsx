@@ -1,5 +1,6 @@
 import HomePage from "./UI/pages/Home";
 import { LanguageProvider } from "./hooks/useLangContext";
+import { NavigationProvider } from "./hooks/useNavigationContext";
 import { ThemeTypeProvider } from "./hooks/useThemeTypeContext";
 import reactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
@@ -10,9 +11,11 @@ const App = () => {
     <GlobalProvider>
       <LanguageProvider>
         <ThemeTypeProvider>
-          <BrowserRouter>
-            <HomePage />
-          </BrowserRouter>
+          <NavigationProvider>
+            <BrowserRouter>
+              <HomePage />
+            </BrowserRouter>
+          </NavigationProvider>
         </ThemeTypeProvider>
       </LanguageProvider>
     </GlobalProvider>

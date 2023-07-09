@@ -28,3 +28,7 @@ type GamepadButtons =
 type GamepadMap = Record<string, GamepadButtons>;
 
 type OnButtomPressed = (buttons: GamepadButtons[]) => void;
+
+type GamepadConnected = {};
+
+type GamepadDisconnected = {};

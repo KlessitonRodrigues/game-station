@@ -7,7 +7,7 @@ const createWindow = () => {
   });
 
   win.loadFile("dist/index.html");
-  // win.setFullScreen(true);
+  win.setFullScreen(true);
 };
 
 app.whenReady().then(() => {

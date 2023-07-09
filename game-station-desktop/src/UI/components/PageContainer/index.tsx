@@ -1,3 +1,4 @@
+import DynamicBg from "../DynamicBg";
 import GamepadPanel from "../Gamepad";
 import { Container, Content } from "./styled";
 import { PropsWithChildren } from "react";
@@ -15,6 +16,7 @@ const PageContainer = (props: PropsWithChildren) => {
       <GlobalCSS />
       <Container>
         <Content>{props.children}</Content>
+        <DynamicBg />
       </Container>
       <GamepadPanel />
     </ThemeProvider>

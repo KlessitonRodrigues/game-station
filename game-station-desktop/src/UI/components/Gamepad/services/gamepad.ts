@@ -13,7 +13,7 @@ const getButtonPressedLabel = (axis: number, i: number) => {
 };
 
 const buttonLoop = (gamepadIndex: number, onPress: OnButtomPressed) => {
-  const lastUpdate = { time: 0 };
+  const lastUpdate = { time: 0, buttons: [""] };
   return setInterval(() => {
     const { timestamp, axes, buttons } = navigator.getGamepads()[gamepadIndex];
     const pressedButtons: GamepadButtons[] = [];
@@ -31,7 +31,11 @@ const buttonLoop = (gamepadIndex: number, onPress: OnButtomPressed) => {
       if (label) pressedButtons.push(label);
     });
 
-    onPress && onPress(pressedButtons);
+    if (lastUpdate.buttons.toString() !== pressedButtons.toString()) {
+      onPress && onPress(pressedButtons);
+      console.log(pressedButtons);
+    }
+    lastUpdate.buttons = pressedButtons;
   }, 33);
 };
 

@@ -56,3 +56,7 @@ type IconsProps = {
     | "moon-fill"
     | "gh-logo";
 };
+
+type MappedGamepadProps = {
+  pressed: GamepadButtons[];
+};
