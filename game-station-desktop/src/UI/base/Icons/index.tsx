@@ -20,8 +20,8 @@ const Icons = (props: IconsProps) => {
     style: {
       display: "block",
       cursor: "pointer",
-      fontSize: theme.size(size || 6),
-      margin: `0 ${theme.size(2)}`,
+      fontSize: theme.size(size || 8),
+      color: "inherit",
       ...style,
     },
   };

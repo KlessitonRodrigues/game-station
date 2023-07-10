@@ -3,6 +3,7 @@ import styled, { css } from "styled-components";
 
 export const Container = styled.div(
   ({ theme }) => css`
+    z-index: -1;
     position: absolute;
     top: 0;
     left: 0;

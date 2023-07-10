@@ -1,7 +1,7 @@
 import { Container } from "./styled";
 
 const DynamicBg = () => {
-  return <Container>BG</Container>;
+  return <Container></Container>;
 };
 
 export default DynamicBg;

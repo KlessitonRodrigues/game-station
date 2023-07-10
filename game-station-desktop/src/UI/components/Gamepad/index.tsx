@@ -8,6 +8,7 @@ const GamepadPanel = () => {
   const [nav, setNav] = useNavigationContext();
   const [visible, setVisible] = useState(false);
   const [pressed, setPressed] = useState<GamepadButtons[]>([]);
+  console.log(pressed);
 
   useEffect(() => {
     window.addEventListener("gamepadconnected", (ev) => {
@@ -24,11 +25,12 @@ const GamepadPanel = () => {
       setNav({
         path: ["gamepad"],
         buttonMap: {
+          ...nav.buttonMap,
           ButtonB: () => setVisible(false),
           ArrowUp: () => setVisible(true),
         },
       });
-    } //else setNav({ path: ["home"], buttonMap: {} });
+    }
   }, [visible]);
 
   useEffect(() => {
