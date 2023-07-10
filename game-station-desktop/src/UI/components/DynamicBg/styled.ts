@@ -13,7 +13,7 @@ export const Container = styled.div(
     background: linear-gradient(
       150deg,
       ${theme.colors.main},
-      ${materialColors.purple["900"]} 60%
+      ${materialColors.deepOrange["700"]}
     );
 
     background-size: 400% 400%;

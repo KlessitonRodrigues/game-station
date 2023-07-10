@@ -30,28 +30,28 @@ const TabHeader = () => {
       <LeftButtons>Left</LeftButtons>
       <MiddleTabs>
         <TabsItem selected={selected === 0}>
-          <Icons type="sun" />
-          <TabsItemLabel>Sun</TabsItemLabel>
+          <Icons type="games" size={10} />
+          <TabsItemLabel>Games</TabsItemLabel>
         </TabsItem>
         <TabsItem selected={selected === 1}>
-          <Icons type="moon" />
-          <TabsItemLabel>Sun</TabsItemLabel>
+          <Icons type="apps" size={10} />
+          <TabsItemLabel>Apps</TabsItemLabel>
         </TabsItem>
         <TabsItem selected={selected === 2}>
-          <Icons type="copy" />
-          <TabsItemLabel>Sun</TabsItemLabel>
+          <Icons type="music" size={10} />
+          <TabsItemLabel>Music</TabsItemLabel>
         </TabsItem>
         <TabsItem selected={selected === 3}>
-          <Icons type="lock" />
-          <TabsItemLabel>Sun</TabsItemLabel>
+          <Icons type="news" size={10} />
+          <TabsItemLabel>News</TabsItemLabel>
         </TabsItem>
         <TabsItem selected={selected === 4}>
-          <Icons type="lock-open" />
-          <TabsItemLabel>Sun</TabsItemLabel>
+          <Icons type="theme" size={10} />
+          <TabsItemLabel>Theme</TabsItemLabel>
         </TabsItem>
         <TabsItem selected={selected === 5}>
-          <Icons type="settings" />
-          <TabsItemLabel>Sun</TabsItemLabel>
+          <Icons type="settings" size={10} />
+          <TabsItemLabel>Settings</TabsItemLabel>
         </TabsItem>
       </MiddleTabs>
       <RightButtons>Right</RightButtons>

@@ -8,7 +8,6 @@ const GamepadPanel = () => {
   const [nav, setNav] = useNavigationContext();
   const [visible, setVisible] = useState(false);
   const [pressed, setPressed] = useState<GamepadButtons[]>([]);
-  console.log(pressed);
 
   useEffect(() => {
     window.addEventListener("gamepadconnected", (ev) => {

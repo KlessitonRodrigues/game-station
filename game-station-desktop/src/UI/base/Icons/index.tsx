@@ -1,14 +1,11 @@
+import { IoGameControllerSharp } from "react-icons/io5";
 import {
-  IoCopyOutline,
-  IoLockClosed,
-  IoLockClosedOutline,
-  IoLogoGithub,
-  IoMoon,
-  IoMoonOutline,
-  IoOpenOutline,
-  IoSettingsOutline,
-  IoSunnyOutline,
-} from "react-icons/io5";
+  RiSettings4Fill,
+  RiApps2Fill,
+  RiMusic2Fill,
+  RiNewspaperFill,
+  RiPaintBrushFill,
+} from "react-icons/ri";
 import { useTheme } from "styled-components";
 
 const Icons = (props: IconsProps) => {
@@ -20,31 +17,25 @@ const Icons = (props: IconsProps) => {
     style: {
       display: "block",
       cursor: "pointer",
-      fontSize: theme.size(size || 8),
+      fontSize: theme.size(size || 7),
       color: "inherit",
       ...style,
     },
   };
 
   switch (type) {
-    case "lock":
-      return <IoLockClosedOutline {...iconProps} />;
-    case "lock-fill":
-      return <IoLockClosed {...iconProps} />;
-    case "lock-open":
-      return <IoOpenOutline {...iconProps} />;
-    case "copy":
-      return <IoCopyOutline {...iconProps} />;
+    case "games":
+      return <IoGameControllerSharp {...iconProps} />;
+    case "apps":
+      return <RiApps2Fill {...iconProps} />;
+    case "music":
+      return <RiMusic2Fill {...iconProps} />;
+    case "news":
+      return <RiNewspaperFill {...iconProps} />;
+    case "theme":
+      return <RiPaintBrushFill {...iconProps} />;
     case "settings":
-      return <IoSettingsOutline {...iconProps} />;
-    case "sun":
-      return <IoSunnyOutline {...iconProps} />;
-    case "moon":
-      return <IoMoonOutline {...iconProps} />;
-    case "moon-fill":
-      return <IoMoon {...iconProps} />;
-    case "gh-logo":
-      return <IoLogoGithub {...iconProps} />;
+      return <RiSettings4Fill {...iconProps} />;
   }
 };
 

@@ -45,16 +45,7 @@ type IconsProps = {
   size?: number;
   style?: React.CSSProperties;
   onPress?: () => void;
-  type:
-    | "lock"
-    | "lock-fill"
-    | "lock-open"
-    | "copy"
-    | "settings"
-    | "sun"
-    | "moon"
-    | "moon-fill"
-    | "gh-logo";
+  type: "games" | "apps" | "music" | "news" | "theme" | "settings";
 };
 
 type MappedGamepadProps = {
