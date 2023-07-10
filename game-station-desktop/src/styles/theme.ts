@@ -4,12 +4,12 @@ import screenSizes from "./lib/screenSizes";
 export const defaultTheme: Theme = {
   size: (n: number) => `${n * 0.2}rem`,
   colors: {
-    main: materialColors.lightBlue["600"],
+    main: materialColors.lightBlue["700"],
     mainBg: atlassianColors.blue["700"],
-    bg1: materialColors.grey["400"] + "77",
-    bg2: materialColors.grey["400"] + "66",
-    bg3: materialColors.grey["400"] + "55",
-    bg4: materialColors.grey["400"] + "44",
+    bg1: materialColors.grey["400"] + "55",
+    bg2: materialColors.grey["400"] + "44",
+    bg3: materialColors.grey["400"] + "33",
+    bg4: materialColors.grey["400"] + "22",
     text1: materialColors.grey["200"],
     text2: materialColors.grey["300"],
     text3: materialColors.grey["400"],

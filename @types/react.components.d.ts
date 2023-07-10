@@ -45,7 +45,17 @@ type IconsProps = {
   size?: number;
   style?: React.CSSProperties;
   onPress?: () => void;
-  type: "games" | "apps" | "music" | "news" | "theme" | "settings";
+  type:
+    | "games"
+    | "apps"
+    | "music"
+    | "midia"
+    | "web"
+    | "news"
+    | "theme"
+    | "settings"
+    | "user"
+    | "battery";
 };
 
 type MappedGamepadProps = {

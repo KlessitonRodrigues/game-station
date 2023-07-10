@@ -5,6 +5,10 @@ import {
   RiMusic2Fill,
   RiNewspaperFill,
   RiPaintBrushFill,
+  RiMovieFill,
+  RiEarthFill,
+  RiBatteryFill,
+  RiUser2Fill,
 } from "react-icons/ri";
 import { useTheme } from "styled-components";
 
@@ -30,12 +34,20 @@ const Icons = (props: IconsProps) => {
       return <RiApps2Fill {...iconProps} />;
     case "music":
       return <RiMusic2Fill {...iconProps} />;
+    case "midia":
+      return <RiMovieFill {...iconProps} />;
+    case "web":
+      return <RiEarthFill {...iconProps} />;
     case "news":
       return <RiNewspaperFill {...iconProps} />;
     case "theme":
       return <RiPaintBrushFill {...iconProps} />;
     case "settings":
       return <RiSettings4Fill {...iconProps} />;
+    case "user":
+      return <RiUser2Fill {...iconProps} />;
+    case "battery":
+      return <RiBatteryFill {...iconProps} />;
   }
 };
 

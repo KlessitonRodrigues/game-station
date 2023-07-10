@@ -12,7 +12,6 @@ const GamepadPanel = () => {
   useEffect(() => {
     window.addEventListener("gamepadconnected", (ev) => {
       onConnected(ev, setPressed);
-      setVisible(true);
     });
     window.addEventListener("gamepaddisconnected", (ev) => {
       onDisconnected(ev);
@@ -22,7 +21,7 @@ const GamepadPanel = () => {
   useEffect(() => {
     if (visible) {
       setNav({
-        path: ["gamepad"],
+        ...nav,
         buttonMap: {
           ...nav.buttonMap,
           ButtonB: () => setVisible(false),

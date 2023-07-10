@@ -6,6 +6,6 @@ export const SlideUpAnimation = styled.div(() => {
     to {opacity: 1}
   `;
   return css`
-    animation: ${slideUp} 0.75s ease-out;
+    animation: ${slideUp} 0.5s ease-out;
   `;
 });

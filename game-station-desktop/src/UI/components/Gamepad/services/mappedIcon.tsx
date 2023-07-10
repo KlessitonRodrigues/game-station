@@ -6,7 +6,7 @@ export const MappedGamepad = (props: MappedGamepadProps) => {
   const { pressed } = props;
   const theme = useTheme();
   const colors = {
-    bg: theme.colors.bg4,
+    bg: theme.colors.bg3,
     button: theme.colors.gray,
     pressed: theme.colors.main,
   };

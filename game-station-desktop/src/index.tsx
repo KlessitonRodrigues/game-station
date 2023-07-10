@@ -1,22 +1,19 @@
-import HomePage from "./UI/pages/Home";
-import { LanguageProvider } from "./hooks/useLangContext";
-import { NavigationProvider } from "./hooks/useNavigationContext";
-import { ThemeTypeProvider } from "./hooks/useThemeTypeContext";
 import reactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
+import Router from "src/UI/routes";
 import { GlobalProvider } from "src/hooks/useGlobalContext";
+import { LanguageProvider } from "src/hooks/useLangContext";
+import { NavigationProvider } from "src/hooks/useNavigationContext";
 
 const App = () => {
   return (
     <GlobalProvider>
       <LanguageProvider>
-        <ThemeTypeProvider>
-          <NavigationProvider>
-            <BrowserRouter>
-              <HomePage />
-            </BrowserRouter>
-          </NavigationProvider>
-        </ThemeTypeProvider>
+        <NavigationProvider>
+          <BrowserRouter>
+            <Router />
+          </BrowserRouter>
+        </NavigationProvider>
       </LanguageProvider>
     </GlobalProvider>
   );
