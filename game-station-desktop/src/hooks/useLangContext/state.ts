@@ -1,6 +1,6 @@
-import { enLang } from "src/UI/assets/lang/en";
+import { enLang } from 'src/UI/assets/lang/en';
 
 export const initialLangState: LangState = {
-  type: "en",
+  type: 'en',
   text: enLang,
 };

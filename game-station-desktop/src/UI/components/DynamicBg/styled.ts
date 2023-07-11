@@ -1,5 +1,5 @@
-import { materialColors } from "src/styles/lib/palettes";
-import styled, { css } from "styled-components";
+import { materialColors } from 'src/styles/lib/palettes';
+import styled, { css } from 'styled-components';
 
 export const Container = styled.div(
   ({ theme }) => css`
@@ -13,7 +13,7 @@ export const Container = styled.div(
     background: linear-gradient(
       150deg,
       ${theme.colors.main},
-      ${materialColors.purple["600"]} 90%
+      ${materialColors.lightBlue['800']} 90%
     );
 
     background-size: 400% 400%;

@@ -1,8 +1,9 @@
-import { onConnected, onDisconnected } from "./services/gamepad";
-import { MappedGamepad } from "./services/mappedIcon";
-import { Container } from "./styled";
-import { useEffect, useState } from "react";
-import useNavigationContext from "src/hooks/useNavigationContext";
+import { useEffect, useState } from 'react';
+import useNavigationContext, { updateButtons } from 'src/hooks/useNavigationContext';
+
+import { onConnected, onDisconnected } from './services/gamepad';
+import { MappedGamepad } from './services/mappedIcon';
+import { Container } from './styled';
 
 const GamepadPanel = () => {
   const [nav, setNav] = useNavigationContext();
@@ -10,40 +11,33 @@ const GamepadPanel = () => {
   const [pressed, setPressed] = useState<GamepadButtons[]>([]);
 
   useEffect(() => {
-    window.addEventListener("gamepadconnected", (ev) => {
+    window.addEventListener('gamepadconnected', ev => {
       onConnected(ev, setPressed);
     });
-    window.addEventListener("gamepaddisconnected", (ev) => {
+    window.addEventListener('gamepaddisconnected', ev => {
       onDisconnected(ev);
     });
   }, []);
 
   useEffect(() => {
-    if (visible) {
-      setNav({
-        ...nav,
-        buttonMap: {
-          ...nav.buttonMap,
-          ButtonB: () => setVisible(false),
-          ArrowUp: () => setVisible(true),
-        },
-      });
-    }
+    if (!visible) return undefined;
+    setNav(
+      updateButtons(nav, {
+        ButtonB: () => setVisible(false),
+        ArrowUp: () => setVisible(true),
+      })
+    );
   }, [visible]);
 
   useEffect(() => {
     if (!pressed.length) return undefined;
-    pressed.forEach((btn) => {
+    pressed.forEach(btn => {
       const run = nav.buttonMap[btn];
       run && run();
     });
   }, [pressed]);
 
-  return (
-    <Container show={visible}>
-      {visible && <MappedGamepad pressed={pressed} />}
-    </Container>
-  );
+  return <Container show={visible}>{visible && <MappedGamepad pressed={pressed} />}</Container>;
 };
 
 export default GamepadPanel;

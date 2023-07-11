@@ -1,4 +1,4 @@
-import { Container } from "./styled";
+import { Container } from './styled';
 
 const DynamicBg = () => {
   return <Container></Container>;

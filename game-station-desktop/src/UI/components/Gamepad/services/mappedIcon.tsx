@@ -1,6 +1,6 @@
 // @ts-nocheck
-import SlideUp from "src/UI/base/Animations/SlideUp";
-import { useTheme } from "styled-components";
+import SlideUp from 'src/UI/base/Animations/SlideUp';
+import { useTheme } from 'styled-components';
 
 export const MappedGamepad = (props: MappedGamepadProps) => {
   const { pressed } = props;
@@ -28,7 +28,7 @@ export const MappedGamepad = (props: MappedGamepadProps) => {
       >
         <path
           d="M 142.139 183.985 C 127.182 183.985 115.015 196.152 115.015 211.109 C 115.015 226.066 127.182 238.239 142.139 238.239 C 157.097 238.239 169.263 226.072 169.263 211.109 C 169.263 196.151 157.096 183.985 142.139 183.985 Z"
-          style={{ fill: getButtonColor("LeftStick") }}
+          style={{ fill: getButtonColor('LeftStick') }}
         />
         <path
           d="M 142.139 168.153 C 118.449 168.153 99.177 187.419 99.177 211.109 C 99.177 234.799 118.449 254.071 142.139 254.071 C 165.824 254.071 185.096 234.799 185.096 211.109 C 185.096 187.419 165.829 168.153 142.139 168.153 Z M 142.139 244.353 C 123.81 244.353 108.895 229.433 108.895 211.103 C 108.895 192.773 123.81 177.859 142.139 177.859 C 160.469 177.859 175.383 192.774 175.383 211.103 C 175.383 229.432 160.474 244.353 142.139 244.353 Z"
@@ -44,117 +44,97 @@ export const MappedGamepad = (props: MappedGamepadProps) => {
         />
         <path
           d="M 365.299 273.545 C 350.341 273.545 338.175 285.712 338.175 300.669 C 338.175 315.626 350.341 327.799 365.299 327.799 C 380.256 327.799 392.422 315.632 392.422 300.669 C 392.416 285.711 380.256 273.545 365.299 273.545 Z"
-          style={{ fill: getButtonColor("RightStick") }}
+          style={{ fill: getButtonColor('RightStick') }}
         />
         <path
           d="M 224.771 293.343 L 224.771 270.889 L 206.656 270.889 L 206.656 293.343 C 206.656 295.032 205.285 296.404 203.596 296.404 L 181.148 296.404 L 181.148 314.518 L 203.596 314.518 C 205.285 314.518 206.656 315.889 206.656 317.579 L 206.656 340.033 L 224.771 340.033 L 224.771 317.579 C 224.771 315.89 226.142 314.518 227.831 314.518 L 250.279 314.518 L 250.279 296.404 L 227.831 296.404 C 226.142 296.403 224.771 295.032 224.771 293.343 Z"
           style={{ fill: colors.button }}
         />
-        <circle
-          cx="399.932"
-          cy="212.094"
-          r="18.77"
-          style={{ fill: getButtonColor("ButtonX") }}
-        />
-        <circle
-          cx="438.047"
-          cy="252.192"
-          r="18.77"
-          style={{ fill: getButtonColor("ButtonA") }}
-        />
-        <circle
-          cx="479.1"
-          cy="212.094"
-          r="18.77"
-          style={{ fill: getButtonColor("ButtonB") }}
-        />
+        <circle cx="399.932" cy="212.094" r="18.77" style={{ fill: getButtonColor('ButtonX') }} />
+        <circle cx="438.047" cy="252.192" r="18.77" style={{ fill: getButtonColor('ButtonA') }} />
+        <circle cx="479.1" cy="212.094" r="18.77" style={{ fill: getButtonColor('ButtonB') }} />
         <circle
           cx="332.146"
           cy="212.094"
           r="9.804"
-          style={{ fill: getButtonColor("ButtonStart") }}
+          style={{ fill: getButtonColor('ButtonStart') }}
         />
-        <circle
-          cx="438.047"
-          cy="173.997"
-          r="18.77"
-          style={{ fill: getButtonColor("ButtonY") }}
-        />
+        <circle cx="438.047" cy="173.997" r="18.77" style={{ fill: getButtonColor('ButtonY') }} />
         <circle
           cx="249.019"
           cy="212.094"
           r="9.804"
-          style={{ fill: getButtonColor("ButtonSelect") }}
+          style={{ fill: getButtonColor('ButtonSelect') }}
         />
         <path
           d="M 292.53 365.852 L 299.53 381.424 L 285.53 381.424 L 292.53 365.852 Z"
-          style={{ fill: getButtonColor("LeftStickRight") }}
+          style={{ fill: getButtonColor('LeftStickRight') }}
           transform="matrix(-0.030679, 0.999529, -0.999538, -0.030396, 543.138855, -69.871048)"
           bx:shape="triangle 285.53 365.852 14 15.572 0.5 0 1@c7a91f75"
         />
         <path
           d="M 292.53 365.854 L 299.53 381.427 L 285.53 381.427 L 292.53 365.854 Z"
-          style={{ fill: getButtonColor("LeftStickLeft") }}
+          style={{ fill: getButtonColor('LeftStickLeft') }}
           transform="matrix(0.033624, -0.999435, 0.999445, 0.033314, -259.879181, 490.297333)"
           bx:shape="triangle 285.53 365.854 14 15.573 0.5 0 1@6c272cd2"
         />
         <path
           d="M 292.518 362.468 L 299.518 377.896 L 285.518 377.896 L 292.518 362.468 Z"
-          style={{ fill: getButtonColor("LeftStickDown") }}
+          style={{ fill: getButtonColor('LeftStickDown') }}
           transform="matrix(-0.999915, -0.013037, 0.013159, -0.999913, 430.036865, 603.7099)"
           bx:shape="triangle 285.518 362.468 14 15.428 0.5 0 1@9efae9a9"
         />
         <path
           d="M 292.519 362.469 L 299.519 377.897 L 285.519 377.897 L 292.519 362.469 Z"
-          style={{ fill: getButtonColor("LeftStickUp") }}
+          style={{ fill: getButtonColor('LeftStickUp') }}
           transform="matrix(0.999951, -0.009913, 0.010005, 0.99995, -153.815155, -175.04776)"
           bx:shape="triangle 285.519 362.469 14 15.428 0.5 0 1@c112aa85"
         />
         <path
           d="M 292.53 365.852 L 299.53 381.424 L 285.53 381.424 L 292.53 365.852 Z"
-          style={{ fill: getButtonColor("ArrowRight") }}
+          style={{ fill: getButtonColor('ArrowRight') }}
           transform="matrix(-0.030679, 0.999529, -0.999538, -0.030396, 616.500061, 24.831322)"
           bx:shape="triangle 285.53 365.852 14 15.572 0.5 0 1@c7a91f75"
         />
         <path
           d="M 292.53 365.854 L 299.53 381.427 L 285.53 381.427 L 292.53 365.854 Z"
-          style={{ fill: getButtonColor("ArrowLeft") }}
+          style={{ fill: getButtonColor('ArrowLeft') }}
           transform="matrix(0.033624, -0.999435, 0.999445, 0.033314, -186.51799, 584.999695)"
           bx:shape="triangle 285.53 365.854 14 15.573 0.5 0 1@6c272cd2"
         />
         <path
           d="M 292.518 362.468 L 299.518 377.896 L 285.518 377.896 L 292.518 362.468 Z"
-          style={{ fill: getButtonColor("ArrowDown") }}
+          style={{ fill: getButtonColor('ArrowDown') }}
           transform="matrix(-0.999915, -0.013037, 0.013159, -0.999913, 503.398041, 698.412231)"
           bx:shape="triangle 285.518 362.468 14 15.428 0.5 0 1@9efae9a9"
         />
         <path
           d="M 292.519 362.469 L 299.519 377.897 L 285.519 377.897 L 292.519 362.469 Z"
-          style={{ fill: getButtonColor("ArrowUp") }}
+          style={{ fill: getButtonColor('ArrowUp') }}
           transform="matrix(0.999951, -0.009913, 0.010005, 0.99995, -80.453964, -80.345383)"
           bx:shape="triangle 285.519 362.469 14 15.428 0.5 0 1@c112aa85"
         />
         <path
           d="M 292.53 365.852 L 299.53 381.424 L 285.53 381.424 L 292.53 365.852 Z"
-          style={{ fill: getButtonColor("RightStickRight") }}
+          style={{ fill: getButtonColor('RightStickRight') }}
           transform="matrix(-0.030679, 0.999529, -0.999538, -0.030396, 766.380798, 20.104425)"
           bx:shape="triangle 285.53 365.852 14 15.572 0.5 0 1@c7a91f75"
         />
         <path
           d="M 292.53 365.854 L 299.53 381.427 L 285.53 381.427 L 292.53 365.854 Z"
-          style={{ fill: getButtonColor("RightStickLeft") }}
+          style={{ fill: getButtonColor('RightStickLeft') }}
           transform="matrix(0.033624, -0.999435, 0.999445, 0.033314, -36.637249, 580.272766)"
           bx:shape="triangle 285.53 365.854 14 15.573 0.5 0 1@6c272cd2"
         />
         <path
           d="M 292.518 362.468 L 299.518 377.896 L 285.518 377.896 L 292.518 362.468 Z"
-          style={{ fill: getButtonColor("RightStickDown") }}
+          style={{ fill: getButtonColor('RightStickDown') }}
           transform="matrix(-0.999915, -0.013037, 0.013159, -0.999913, 653.278809, 693.685303)"
           bx:shape="triangle 285.518 362.468 14 15.428 0.5 0 1@9efae9a9"
         />
         <path
           d="M 292.519 362.469 L 299.519 377.897 L 285.519 377.897 L 292.519 362.469 Z"
-          style={{ fill: getButtonColor("RightStickUp") }}
+          style={{ fill: getButtonColor('RightStickUp') }}
           transform="matrix(0.999951, -0.009913, 0.010005, 0.99995, 69.426781, -85.072281)"
           bx:shape="triangle 285.519 362.469 14 15.428 0.5 0 1@c112aa85"
         />
@@ -164,7 +144,7 @@ export const MappedGamepad = (props: MappedGamepadProps) => {
           stroke-width="16"
           stroke-linecap="round"
           stroke-linejoin="round"
-          style={{ fill: getButtonColor("TriggerLeft") }}
+          style={{ fill: getButtonColor('TriggerLeft') }}
           transform="matrix(0.000847, 1, -1, 0.000847, 206.905589, -65.823524)"
         />
         <path
@@ -173,7 +153,7 @@ export const MappedGamepad = (props: MappedGamepadProps) => {
           stroke-width="16"
           stroke-linecap="round"
           stroke-linejoin="round"
-          style={{ fill: getButtonColor("ButtonLeft") }}
+          style={{ fill: getButtonColor('ButtonLeft') }}
           transform="matrix(-0.957869, 0.287206, -0.287206, -0.957869, 310.930865, 176.492159)"
         />
         <path
@@ -182,7 +162,7 @@ export const MappedGamepad = (props: MappedGamepadProps) => {
           stroke-width="16"
           stroke-linecap="round"
           stroke-linejoin="round"
-          style={{ fill: getButtonColor("ButtonRight") }}
+          style={{ fill: getButtonColor('ButtonRight') }}
           transform="matrix(-0.96119, -0.275886, 0.275886, -0.96119, 826.903672, 337.303501)"
         />
         <path
@@ -191,7 +171,7 @@ export const MappedGamepad = (props: MappedGamepadProps) => {
           stroke-width="16"
           stroke-linecap="round"
           stroke-linejoin="round"
-          style={{ fill: getButtonColor("TriggerRight") }}
+          style={{ fill: getButtonColor('TriggerRight') }}
           transform="matrix(0.014164, -0.9999, 0.9999, 0.014164, 369.857459, 515.553142)"
         />
       </svg>

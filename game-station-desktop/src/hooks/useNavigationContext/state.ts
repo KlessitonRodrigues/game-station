@@ -1,4 +1,4 @@
 export const initialNavState: NavigationState = {
-  path: ["home", "gamelist"],
+  path: ['home', 'gamelist'],
   buttonMap: {},
 };

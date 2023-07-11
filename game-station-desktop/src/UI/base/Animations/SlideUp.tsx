@@ -1,5 +1,6 @@
-import { SlideUpAnimation } from "./styled";
-import { PropsWithChildren } from "react";
+import { PropsWithChildren } from 'react';
+
+import { SlideUpAnimation } from './styled';
 
 const SlideUp = (props: PropsWithChildren) => {
   return <SlideUpAnimation>{props.children}</SlideUpAnimation>;

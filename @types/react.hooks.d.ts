@@ -8,10 +8,7 @@ type PathContext = [PathState, React.Dispatch<React.SetStateAction<PathState>>];
 // useGlobalContext
 type GlobalState = {};
 
-type GlobalContext = [
-  GlobalState,
-  React.Dispatch<React.SetStateAction<GlobalState>>
-];
+type GlobalContext = [GlobalState, React.Dispatch<React.SetStateAction<GlobalState>>];
 
 // useThemeTypeContext
 type ThemeTypeState = {
@@ -19,25 +16,19 @@ type ThemeTypeState = {
   mainColor?: string;
 };
 
-type ThemeTypeContext = [
-  ThemeTypeState,
-  React.Dispatch<React.SetStateAction<ThemeTypeState>>
-];
+type ThemeTypeContext = [ThemeTypeState, React.Dispatch<React.SetStateAction<ThemeTypeState>>];
 
 // useSendDataContext
 type SendDataState = {
-  to: "TESTING";
+  to: 'TESTING';
   data: { something: string };
 };
 
-type SendDataContext = [
-  SendDataState,
-  React.Dispatch<React.SetStateAction<SendDataState>>
-];
+type SendDataContext = [SendDataState, React.Dispatch<React.SetStateAction<SendDataState>>];
 
 // useLangContext
 type LangState = {
-  type: "en" | "pt";
+  type: 'en' | 'pt';
   text: LangContent;
 };
 
@@ -49,7 +40,4 @@ type NavigationState = {
   buttonMap: Partial<Record<GamepadButtons, () => void>>;
 };
 
-type NavigationContext = [
-  NavigationState,
-  React.Dispatch<React.SetStateAction<NavigationState>>
-];
+type NavigationContext = [NavigationState, React.Dispatch<React.SetStateAction<NavigationState>>];

@@ -1,8 +1,8 @@
-import styled, { css } from "styled-components";
+import styled, { css } from 'styled-components';
 
 export const Container = styled.div<{ show: boolean }>(
   ({ theme, show }) => css`
-    display: ${show ? "block" : "none"};
+    display: ${show ? 'block' : 'none'};
     position: absolute;
     top: 50%;
     left: 50%;

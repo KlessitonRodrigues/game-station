@@ -1,16 +1,16 @@
-import { IoGameControllerSharp } from "react-icons/io5";
+import { IoGameControllerSharp } from 'react-icons/io5';
 import {
-  RiSettings4Fill,
   RiApps2Fill,
+  RiBatteryFill,
+  RiEarthFill,
+  RiMovieFill,
   RiMusic2Fill,
   RiNewspaperFill,
   RiPaintBrushFill,
-  RiMovieFill,
-  RiEarthFill,
-  RiBatteryFill,
+  RiSettings4Fill,
   RiUser2Fill,
-} from "react-icons/ri";
-import { useTheme } from "styled-components";
+} from 'react-icons/ri';
+import { useTheme } from 'styled-components';
 
 const Icons = (props: IconsProps) => {
   const { type, size, style, onPress } = props;
@@ -19,34 +19,34 @@ const Icons = (props: IconsProps) => {
   const iconProps = {
     onClick: onPress,
     style: {
-      display: "block",
-      cursor: "pointer",
+      display: 'block',
+      cursor: 'pointer',
       fontSize: theme.size(size || 7),
-      color: "inherit",
+      color: 'inherit',
       ...style,
     },
   };
 
   switch (type) {
-    case "games":
+    case 'games':
       return <IoGameControllerSharp {...iconProps} />;
-    case "apps":
+    case 'apps':
       return <RiApps2Fill {...iconProps} />;
-    case "music":
+    case 'music':
       return <RiMusic2Fill {...iconProps} />;
-    case "midia":
+    case 'midia':
       return <RiMovieFill {...iconProps} />;
-    case "web":
+    case 'web':
       return <RiEarthFill {...iconProps} />;
-    case "news":
+    case 'news':
       return <RiNewspaperFill {...iconProps} />;
-    case "theme":
+    case 'theme':
       return <RiPaintBrushFill {...iconProps} />;
-    case "settings":
+    case 'settings':
       return <RiSettings4Fill {...iconProps} />;
-    case "user":
+    case 'user':
       return <RiUser2Fill {...iconProps} />;
-    case "battery":
+    case 'battery':
       return <RiBatteryFill {...iconProps} />;
   }
 };

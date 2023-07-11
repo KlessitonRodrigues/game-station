@@ -1,32 +1,18 @@
-import {
-  Container,
-  LeftIcons,
-  MiddleTabs,
-  RightIcons,
-  TabsItem,
-  TabsItemLabel,
-} from "./styled";
-import { useEffect, useState } from "react";
-import Icons from "src/UI/base/Icons";
-import useNavigationContext from "src/hooks/useNavigationContext";
+import { useEffect, useState } from 'react';
+import Icons from 'src/UI/base/Icons';
+import useNavigationContext from 'src/hooks/useNavigationContext';
 
-const tabPath = [
-  "gamelist",
-  "apps",
-  "music",
-  "midia",
-  "web",
-  "theme",
-  "settings",
-];
+import { Container, LeftIcons, MiddleTabs, RightIcons, TabsItem, TabsItemLabel } from './styled';
+
+const tabPath = ['gamelist', 'apps', 'music', 'midia', 'web', 'theme', 'settings'];
 
 const TabHeader = () => {
   const [nav, setNav] = useNavigationContext();
-  const [selected, setSelected] = useState(0);
+  const [selected, setSelected] = useState(5);
 
   useEffect(() => {
     setNav({
-      path: ["home", tabPath[selected]],
+      path: ['home', tabPath[selected]],
       buttonMap: {
         ...nav.buttonMap,
         ButtonLeft: () => selected > 0 && setSelected(selected - 1),

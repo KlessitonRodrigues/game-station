@@ -1,10 +1,8 @@
-import { initialThemeState } from "./state";
-import { PropsWithChildren, createContext, useContext, useState } from "react";
+import { PropsWithChildren, createContext, useContext, useState } from 'react';
 
-const globalContext = createContext<ThemeTypeContext>([
-  initialThemeState,
-  () => {},
-]);
+import { initialThemeState } from './state';
+
+const globalContext = createContext<ThemeTypeContext>([initialThemeState, () => {}]);
 
 export const ThemeTypeProvider = (props: PropsWithChildren) => (
   <globalContext.Provider value={useState(initialThemeState)}>

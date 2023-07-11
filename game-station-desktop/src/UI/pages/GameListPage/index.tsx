@@ -1,4 +1,4 @@
-import PageContainer from "src/UI/components/PageContainer";
+import PageContainer from 'src/UI/components/PageContainer';
 
 const GameListPage = () => {
   return (

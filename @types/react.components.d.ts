@@ -16,15 +16,15 @@ type ButtonProps = {
   label?: string;
   iconLeft?: React.ReactElement;
   iconRight?: React.ReactElement;
-  variant?: "base" | "outline" | "solid";
-  color?: "main" | "red" | "blue" | "green" | "yellow" | "transparent";
+  variant?: 'base' | 'outline' | 'solid';
+  color?: 'main' | 'red' | 'blue' | 'green' | 'yellow' | 'transparent';
   onChange?: () => void;
   disabled?: boolean;
 };
 
 type InputProps = {
   label?: string;
-  type?: "time" | "date" | "textArea";
+  type?: 'time' | 'date' | 'textArea';
   value?: string;
   placeHolder?: string;
   required?: boolean;
@@ -46,18 +46,22 @@ type IconsProps = {
   style?: React.CSSProperties;
   onPress?: () => void;
   type:
-    | "games"
-    | "apps"
-    | "music"
-    | "midia"
-    | "web"
-    | "news"
-    | "theme"
-    | "settings"
-    | "user"
-    | "battery";
+    | 'games'
+    | 'apps'
+    | 'music'
+    | 'midia'
+    | 'web'
+    | 'news'
+    | 'theme'
+    | 'settings'
+    | 'user'
+    | 'battery';
 };
 
 type MappedGamepadProps = {
   pressed: GamepadButtons[];
+};
+
+type ColorPickerProps = {
+  focus?: boolean;
 };

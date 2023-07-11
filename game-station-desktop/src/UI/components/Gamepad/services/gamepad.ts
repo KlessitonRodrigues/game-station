@@ -1,7 +1,7 @@
-import { xboxMap } from "./map";
+import { xboxButtonsId } from './buttonIds';
 
 const buttonLoop = (gamepadIndex: number, onPress: OnButtomPressed) => {
-  const lastUpdate = { time: 0, buttons: [""] };
+  const lastUpdate = { time: 0, buttons: [''] };
   return setInterval(() => {
     const { timestamp, axes, buttons } = navigator.getGamepads()[gamepadIndex];
     const pressedButtons: GamepadButtons[] = [];
@@ -11,14 +11,14 @@ const buttonLoop = (gamepadIndex: number, onPress: OnButtomPressed) => {
 
     axes.forEach((axis, i) => {
       if (!(axis === 1 || axis === -1)) return false;
-      const axisId = `axis${i}${axis > 0 ? "Pos" : "Neg"}`;
-      if (xboxMap[axisId]) pressedButtons.push(xboxMap[axisId]);
+      const axisId = `axis${i}${axis > 0 ? 'Pos' : 'Neg'}`;
+      if (xboxButtonsId[axisId]) pressedButtons.push(xboxButtonsId[axisId]);
     });
 
     buttons.forEach((Button, i) => {
       if (Button.value === 0) return false;
       const buttonId = `button${i}`;
-      if (xboxMap[buttonId]) pressedButtons.push(xboxMap[buttonId]);
+      if (xboxButtonsId[buttonId]) pressedButtons.push(xboxButtonsId[buttonId]);
     });
 
     if (lastUpdate.buttons.toString() !== pressedButtons.toString()) {
@@ -31,11 +31,11 @@ const buttonLoop = (gamepadIndex: number, onPress: OnButtomPressed) => {
 const buttonLoopInterval: NodeJS.Timer[] = [];
 
 export const onConnected = (ev: GamepadEvent, onPress: OnButtomPressed) => {
-  console.log("Connected", ev.gamepad.id);
+  console.log('Connected', ev.gamepad.id);
   buttonLoopInterval.push(buttonLoop(ev.gamepad.index, onPress));
 };
 
 export const onDisconnected = (ev: GamepadEvent) => {
-  console.log("Disconnected", ev.gamepad.id);
-  buttonLoopInterval.forEach((int) => clearInterval(int));
+  console.log('Disconnected', ev.gamepad.id);
+  buttonLoopInterval.forEach(int => clearInterval(int));
 };

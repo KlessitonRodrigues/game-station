@@ -1,7 +1,8 @@
-import DynamicBg from "../DynamicBg";
-import { Container, Content } from "./styled";
-import { PropsWithChildren } from "react";
-import SlideUp from "src/UI/base/Animations/SlideUp";
+import { PropsWithChildren } from 'react';
+import SlideUp from 'src/UI/base/Animations/SlideUp';
+
+import DynamicBg from '../DynamicBg';
+import { Container, Content } from './styled';
 
 const PageContainer = (props: PropsWithChildren) => {
   return (

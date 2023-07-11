@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled, { css } from 'styled-components';
 
 export const Container = styled.div(
   ({ theme }) => css`
@@ -45,12 +45,12 @@ export const TabsItem = styled.label<{ selected?: boolean }>(
     display: flex;
     position: relative;
     align-items: center;
-    color: ${theme.colors.bg1};
+    color: ${theme.colors.bg2};
     transition: 0.75s ease-out;
 
     ${selected &&
     css`
-      color: ${theme.colors.text1};
+      color: ${theme.colors.white};
       margin-left: ${theme.size(15)};
       margin-right: ${theme.size(15)};
     `}
