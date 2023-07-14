@@ -1,8 +1,7 @@
 import styled, { css } from 'styled-components';
 
-export const Container = styled.div<{ show: boolean }>(
-  ({ theme, show }) => css`
-    display: ${show ? 'block' : 'none'};
+export const Container = styled.div(
+  ({ theme }) => css`
     position: absolute;
     top: 50%;
     left: 50%;
@@ -10,7 +9,6 @@ export const Container = styled.div<{ show: boolean }>(
     width: ${theme.size(150)};
     height: ${theme.size(150)};
     padding: ${theme.size(4)};
-    background-color: transparent;
     color: ${theme.colors.text1};
     border-radius: ${theme.radius.medium};
   `

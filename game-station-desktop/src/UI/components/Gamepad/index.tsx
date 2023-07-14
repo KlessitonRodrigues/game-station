@@ -18,7 +18,17 @@ const GamepadPanel = () => {
     });
   }, []);
 
-  return <Container show={visible}>{visible && <MappedGamepad pressed={pressed} />}</Container>;
+  useEffect(() => {
+    if (pressed.includes('ButtonSelect')) setVisible(!visible);
+  }, [pressed]);
+
+  if (!visible) return null;
+
+  return (
+    <Container>
+      <MappedGamepad pressed={pressed} />
+    </Container>
+  );
 };
 
 export default GamepadPanel;

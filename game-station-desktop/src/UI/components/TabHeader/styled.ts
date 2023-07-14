@@ -2,10 +2,12 @@ import styled, { css } from 'styled-components';
 
 export const Container = styled.div(
   ({ theme }) => css`
+    width: 100%;
+    max-width: ${theme.size(500)};
     display: flex;
     align-items: center;
     padding: ${theme.size(4)};
-    margin: ${theme.size(2)};
+    margin: ${theme.size(2)} auto;
     margin-bottom: ${theme.size(8)};
   `
 );

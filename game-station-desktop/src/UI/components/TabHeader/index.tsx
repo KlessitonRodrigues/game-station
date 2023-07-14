@@ -10,7 +10,7 @@ const tabPath = ['gamelist', 'apps', 'music', 'midia', 'web', 'theme', 'settings
 const TabHeader = () => {
   const [pressed] = useGamepad();
   const [path, setPath] = usePath();
-  const [selected, setSelected] = useState(5);
+  const [selected, setSelected] = useState(0);
 
   useEffect(() => {
     if (pressed.includes('ButtonLeft') && selected > 0) setSelected(selected - 1);

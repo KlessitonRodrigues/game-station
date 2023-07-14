@@ -1,5 +1,5 @@
 import { PropsWithChildren } from 'react';
-import SlideUp from 'src/UI/base/Animations/SlideUp';
+import FadeIn from 'src/UI/base/Animations/FadeIn';
 
 import DynamicBg from '../DynamicBg';
 import { Container, Content } from './styled';
@@ -7,9 +7,9 @@ import { Container, Content } from './styled';
 const PageContainer = (props: PropsWithChildren) => {
   return (
     <Container>
-      <SlideUp>
+      <FadeIn>
         <Content>{props.children}</Content>
-      </SlideUp>
+      </FadeIn>
       <DynamicBg />
     </Container>
   );
