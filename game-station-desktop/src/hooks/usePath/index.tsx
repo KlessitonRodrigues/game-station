@@ -1,9 +1,9 @@
 import { PropsWithChildren, createContext, useContext, useState } from 'react';
 
-const initialPath: SendDataState = null;
-const pathContext = createContext<SendDataContext>([initialPath, () => {}]);
+const initialPath: PathState = { path: ['home', 'gamelist'] };
+const pathContext = createContext<PathContext>([initialPath, () => {}]);
 
-export const RouteProvider = (props: PropsWithChildren) => (
+export const PathProvider = (props: PropsWithChildren) => (
   <pathContext.Provider value={useState(initialPath)}>{props.children}</pathContext.Provider>
 );
 

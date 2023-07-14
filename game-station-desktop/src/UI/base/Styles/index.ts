@@ -12,22 +12,24 @@ export const Row = styled.div<{ centered?: boolean }>(
   `
 );
 
-export const Panel = styled.div<{ focus?: boolean }>(
-  ({ theme, focus }) => css`
+export const Panel = styled.div<{ active?: boolean }>(
+  ({ theme, active }) => css`
     width: 100%;
-    height: 100%;
     padding: ${theme.size(4)};
     margin-bottom: ${theme.size(4)};
-    background-color: ${theme.colors.bg4};
-    color: ${theme.colors.text1};
-    border-radius: ${theme.radius.medium};
-    ${focus && `background-color: ${theme.colors.bg2};`}
+    color: ${theme.colors.text2};
+    border-radius: ${theme.radius.large};
+    border: 1px solid transparent;
+    transition: background-color 0.1s;
+    ${active && `background-color: ${theme.colors.bg2};`}
   `
 );
 
 export const PanelTitle = styled.div(
   ({ theme }) => css`
-    font-size: ${theme.fontSize.h3};
+    width: 100%;
     padding: ${theme.size(2)} 0;
+    font-size: ${theme.fontSize.h5};
+    text-align: center;
   `
 );

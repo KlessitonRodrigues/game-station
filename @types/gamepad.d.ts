@@ -32,3 +32,5 @@ type OnButtomPressed = (buttons: GamepadButtons[]) => void;
 type GamepadConnected = {};
 
 type GamepadDisconnected = {};
+
+type ButtonMap = Partial<Record<GamepadButtons, () => void>>;

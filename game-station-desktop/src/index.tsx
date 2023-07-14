@@ -1,20 +1,21 @@
 import reactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import Router from 'src/UI/routes';
+import { GamepadProvider } from 'src/hooks/useGamepad';
 import { GlobalProvider } from 'src/hooks/useGlobalContext';
-import { LanguageProvider } from 'src/hooks/useLangContext';
-import { NavigationProvider } from 'src/hooks/useNavigationContext';
+
+import { PathProvider } from './hooks/usePath';
 
 const App = () => {
   return (
     <GlobalProvider>
-      <LanguageProvider>
-        <NavigationProvider>
+      <PathProvider>
+        <GamepadProvider>
           <BrowserRouter>
             <Router />
           </BrowserRouter>
-        </NavigationProvider>
-      </LanguageProvider>
+        </GamepadProvider>
+      </PathProvider>
     </GlobalProvider>
   );
 };

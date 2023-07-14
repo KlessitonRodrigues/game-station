@@ -1,12 +1,14 @@
 // usePathContext
 type PathState = {
-  address: string;
+  path: string[];
 };
 
 type PathContext = [PathState, React.Dispatch<React.SetStateAction<PathState>>];
 
 // useGlobalContext
-type GlobalState = {};
+type GlobalState = {
+  gradientBg: string;
+};
 
 type GlobalContext = [GlobalState, React.Dispatch<React.SetStateAction<GlobalState>>];
 
@@ -34,10 +36,5 @@ type LangState = {
 
 type LangContext = [LangState, React.Dispatch<React.SetStateAction<LangState>>];
 
-// useNavigationContext
-type NavigationState = {
-  path: string[];
-  buttonMap: Partial<Record<GamepadButtons, () => void>>;
-};
-
-type NavigationContext = [NavigationState, React.Dispatch<React.SetStateAction<NavigationState>>];
+// useGamepadContext
+type GamepadContext = [GamepadButtons[], React.Dispatch<React.SetStateAction<GamepadButtons[]>>];

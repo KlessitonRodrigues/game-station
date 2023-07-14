@@ -1,4 +1,4 @@
-import { xboxButtonsId } from './buttonIds';
+import { xboxButtonsId } from './map';
 
 const buttonLoop = (gamepadIndex: number, onPress: OnButtomPressed) => {
   const lastUpdate = { time: 0, buttons: [''] };
@@ -25,7 +25,7 @@ const buttonLoop = (gamepadIndex: number, onPress: OnButtomPressed) => {
       lastUpdate.buttons = pressedButtons;
       onPress && onPress(pressedButtons);
     }
-  }, 100); // 10 FPS
+  }, 66.66); // 15 FPS
 };
 
 const buttonLoopInterval: NodeJS.Timer[] = [];

@@ -55,7 +55,9 @@ type IconsProps = {
     | 'theme'
     | 'settings'
     | 'user'
-    | 'battery';
+    | 'battery'
+    | 'arrow-left'
+    | 'arrow-right';
 };
 
 type MappedGamepadProps = {
@@ -63,5 +65,7 @@ type MappedGamepadProps = {
 };
 
 type ColorPickerProps = {
-  focus?: boolean;
+  active?: boolean;
+  value?: string;
+  onChange?: (color: string) => void;
 };

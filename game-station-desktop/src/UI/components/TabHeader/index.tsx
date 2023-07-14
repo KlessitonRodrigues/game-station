@@ -1,24 +1,24 @@
 import { useEffect, useState } from 'react';
 import Icons from 'src/UI/base/Icons';
-import useNavigationContext from 'src/hooks/useNavigationContext';
+import useGamepad from 'src/hooks/useGamepad';
+import usePath from 'src/hooks/usePath';
 
 import { Container, LeftIcons, MiddleTabs, RightIcons, TabsItem, TabsItemLabel } from './styled';
 
 const tabPath = ['gamelist', 'apps', 'music', 'midia', 'web', 'theme', 'settings'];
 
 const TabHeader = () => {
-  const [nav, setNav] = useNavigationContext();
+  const [pressed] = useGamepad();
+  const [path, setPath] = usePath();
   const [selected, setSelected] = useState(5);
 
   useEffect(() => {
-    setNav({
-      path: ['home', tabPath[selected]],
-      buttonMap: {
-        ...nav.buttonMap,
-        ButtonLeft: () => selected > 0 && setSelected(selected - 1),
-        ButtonRight: () => selected < 6 && setSelected(selected + 1),
-      },
-    });
+    if (pressed.includes('ButtonLeft') && selected > 0) setSelected(selected - 1);
+    if (pressed.includes('ButtonRight') && selected < 6) setSelected(selected + 1);
+  }, [pressed]);
+
+  useEffect(() => {
+    setPath({ path: ['home', tabPath[selected]] });
   }, [selected]);
 
   return (
@@ -32,6 +32,7 @@ const TabHeader = () => {
           <Icons type="games" size={12} />
           <TabsItemLabel>Games</TabsItemLabel>
         </TabsItem>
+
         <TabsItem selected={selected === 1}>
           <Icons type="apps" size={12} />
           <TabsItemLabel>Apps</TabsItemLabel>

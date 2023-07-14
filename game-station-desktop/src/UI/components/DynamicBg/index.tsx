@@ -1,7 +1,10 @@
+import useGlobalContext from 'src/hooks/useGlobalContext';
+
 import { Container } from './styled';
 
 const DynamicBg = () => {
-  return <Container></Container>;
+  const [global] = useGlobalContext();
+  return <Container bg={global.gradientBg}></Container>;
 };
 
 export default DynamicBg;

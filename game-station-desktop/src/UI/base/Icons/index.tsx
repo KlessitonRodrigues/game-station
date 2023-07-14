@@ -1,6 +1,8 @@
 import { IoGameControllerSharp } from 'react-icons/io5';
 import {
   RiApps2Fill,
+  RiArrowLeftFill,
+  RiArrowRightFill,
   RiBatteryFill,
   RiEarthFill,
   RiMovieFill,
@@ -48,6 +50,10 @@ const Icons = (props: IconsProps) => {
       return <RiUser2Fill {...iconProps} />;
     case 'battery':
       return <RiBatteryFill {...iconProps} />;
+    case 'arrow-left':
+      return <RiArrowLeftFill {...iconProps} />;
+    case 'arrow-right':
+      return <RiArrowRightFill {...iconProps} />;
   }
 };
 
