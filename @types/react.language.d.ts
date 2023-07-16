@@ -1,4 +1,4 @@
-type LanguageOptions = "en" | "pt";
+type LanguageOptions = 'en' | 'pt';
 
 type LangContent = {
   page: {

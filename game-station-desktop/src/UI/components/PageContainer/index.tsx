@@ -1,23 +1,15 @@
-import GamepadPanel from "../Gamepad";
-import { Container, Content } from "./styled";
-import { PropsWithChildren } from "react";
-import useThemeTypeContext from "src/hooks/useThemeTypeContext";
-import GlobalCSS from "src/styles/globalCSS";
-import { defaultTheme, defaultThemeDark } from "src/styles/theme";
-import { ThemeProvider } from "styled-components";
+import { PropsWithChildren } from 'react';
+import FadeIn from 'src/UI/base/Animations/FadeIn';
+
+import { Container, Content } from './styled';
 
 const PageContainer = (props: PropsWithChildren) => {
-  const [themeType] = useThemeTypeContext();
-  const theme = themeType.darkTheme ? defaultThemeDark : defaultTheme;
-
   return (
-    <ThemeProvider theme={theme}>
-      <GlobalCSS />
-      <Container>
+    <Container>
+      <FadeIn>
         <Content>{props.children}</Content>
-      </Container>
-      <GamepadPanel />
-    </ThemeProvider>
+      </FadeIn>
+    </Container>
   );
 };
 

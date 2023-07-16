@@ -16,15 +16,15 @@ type ButtonProps = {
   label?: string;
   iconLeft?: React.ReactElement;
   iconRight?: React.ReactElement;
-  variant?: "base" | "outline" | "solid";
-  color?: "main" | "red" | "blue" | "green" | "yellow" | "transparent";
+  variant?: 'base' | 'outline' | 'solid';
+  color?: 'main' | 'red' | 'blue' | 'green' | 'yellow' | 'transparent';
   onChange?: () => void;
   disabled?: boolean;
 };
 
 type InputProps = {
   label?: string;
-  type?: "time" | "date" | "textArea";
+  type?: 'time' | 'date' | 'textArea';
   value?: string;
   placeHolder?: string;
   required?: boolean;
@@ -46,13 +46,33 @@ type IconsProps = {
   style?: React.CSSProperties;
   onPress?: () => void;
   type:
-    | "lock"
-    | "lock-fill"
-    | "lock-open"
-    | "copy"
-    | "settings"
-    | "sun"
-    | "moon"
-    | "moon-fill"
-    | "gh-logo";
+    | 'games'
+    | 'apps'
+    | 'music'
+    | 'midia'
+    | 'web'
+    | 'news'
+    | 'theme'
+    | 'settings'
+    | 'user'
+    | 'battery'
+    | 'arrow-left'
+    | 'arrow-right'
+    | 'gamepad';
+};
+
+type MappedGamepadProps = {
+  pressed: GamepadButtons[];
+};
+
+type ColorPickerProps = {
+  active?: boolean;
+  value?: string;
+  onChange?: (color: string) => void;
+};
+
+type DynamicBgProps = {
+  img?: string;
+  gradient?: string;
+  zIndex?: number;
 };

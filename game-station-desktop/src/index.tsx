@@ -1,22 +1,23 @@
-import HomePage from "./UI/pages/Home";
-import { LanguageProvider } from "./hooks/useLangContext";
-import { ThemeTypeProvider } from "./hooks/useThemeTypeContext";
-import reactDOM from "react-dom";
-import { BrowserRouter } from "react-router-dom";
-import { GlobalProvider } from "src/hooks/useGlobalContext";
+import reactDOM from 'react-dom';
+import { BrowserRouter } from 'react-router-dom';
+import Router from 'src/UI/routes';
+import { GamepadProvider } from 'src/hooks/useGamepad';
+import { GlobalProvider } from 'src/hooks/useGlobalContext';
+
+import { PathProvider } from './hooks/usePath';
 
 const App = () => {
   return (
     <GlobalProvider>
-      <LanguageProvider>
-        <ThemeTypeProvider>
+      <PathProvider>
+        <GamepadProvider>
           <BrowserRouter>
-            <HomePage />
+            <Router />
           </BrowserRouter>
-        </ThemeTypeProvider>
-      </LanguageProvider>
+        </GamepadProvider>
+      </PathProvider>
     </GlobalProvider>
   );
 };
 
-reactDOM.render(<App />, document.getElementById("root"));
+reactDOM.render(<App />, document.getElementById('root'));

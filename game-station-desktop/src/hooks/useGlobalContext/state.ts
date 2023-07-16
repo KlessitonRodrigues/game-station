@@ -1,3 +1,5 @@
+import { linearGradient } from 'src/styles/lib/gradient';
+
 export const initialGlobalState: GlobalState = {
-  darkTheme: false,
+  gradientBg: linearGradient.blueAndPink,
 };

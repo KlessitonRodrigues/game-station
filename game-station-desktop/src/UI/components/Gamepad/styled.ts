@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled, { css } from 'styled-components';
 
 export const Container = styled.div(
   ({ theme }) => css`
@@ -9,7 +9,6 @@ export const Container = styled.div(
     width: ${theme.size(150)};
     height: ${theme.size(150)};
     padding: ${theme.size(4)};
-    background-color: ${theme.colors.bg1};
     color: ${theme.colors.text1};
     border-radius: ${theme.radius.medium};
   `

@@ -1,0 +1,14 @@
+import { materialColors as mc } from './palettes';
+
+export const linearGradient = {
+  indigo: `linear-gradient(150deg, ${mc.blue['a700']}, ${mc.black} 80%)`,
+  blue: `linear-gradient(150deg, ${mc.lightBlue['a700']}, ${mc.black} 80%)`,
+  green: `linear-gradient(150deg, ${mc.lightGreen['a700']}, ${mc.black} 80%)`,
+  deepPurple: `linear-gradient(150deg, ${mc.deepPurple['a700']}, ${mc.black} 80%)`,
+  purple: `linear-gradient(150deg, ${mc.purple['a700']}, ${mc.black} 80%)`,
+  pink: `linear-gradient(150deg, ${mc.pink['a700']}, ${mc.black} 80%)`,
+  blueAndPurple: `linear-gradient(150deg, ${mc.cyan['a700']}, ${mc.purple['600']} 70%)`,
+  blueAndPink: `linear-gradient(150deg, ${mc.cyan['a700']}, ${mc.pink['a700']} 80%)`,
+  greenAndPink: `linear-gradient(150deg, ${mc.lightGreen['a700']}, ${mc.pink['900']} 80%)`,
+  purpleAndGreen: `linear-gradient(150deg, ${mc.deepPurple['a700']}, ${mc.lightGreen['600']} 80%)`,
+};
