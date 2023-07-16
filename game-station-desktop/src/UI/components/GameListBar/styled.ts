@@ -20,32 +20,33 @@ export const GameList = styled.div(
   `
 );
 
-export const Cover = styled.div<{ src: string }>(
-  ({ theme, src }) => css`
+export const Cover = styled.div<{ img: string }>(
+  ({ theme, img }) => css`
     height: 100%;
     width: ${theme.size(90)};
     min-width: ${theme.size(90)};
+    max-width: ${theme.size(90)};
     background-color: ${theme.colors.bg1};
     border-radius: ${theme.radius.medium};
-    background-image: url(${src});
+    background-image: url(${img});
     background-repeat: no-repeat;
     background-size: 100% 100%;
-    ${src && 'color: transparent;'}
-    transition: 0.5s;
+    ${img && 'color: transparent;'}
+    transition: 0.3s;
 
     font-size: ${theme.size(20)};
   `
 );
 
 export const Column = styled.div(
-  ({ theme }) => css`
+  () => css`
     display: flex;
     flex-direction: column;
   `
 );
 
 export const Description = styled.div(
-  ({ theme }) => css`
+  () => css`
     width: 100%;
     height: 100%;
   `
@@ -60,7 +61,7 @@ export const GameTitle = styled.div(
 export const GameInfo = styled.div(({ theme }) => css``);
 
 export const CoverList = styled.div(
-  ({ theme }) => css`
+  () => css`
     width: 100%;
     height: 100%;
     display: flex;
@@ -68,23 +69,28 @@ export const CoverList = styled.div(
   `
 );
 
-export const CoverListItem = styled.div<{ selected: number }>(
-  ({ theme, selected }) => css`
+export const CoverListItem = styled.div<{ selected: number; img: string }>(
+  ({ theme, selected, img }) => css`
     height: 100%;
     width: ${theme.size(50)};
+    max-width: ${theme.size(50)};
     background-color: ${theme.colors.bg2};
     border-radius: ${theme.radius.medium};
     margin-right: ${theme.size(4)};
-    transition: 0.5s;
+    background-image: url(${img});
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    ${img && 'color: transparent;'}
+    transition: 0.3s;
 
     font-size: ${theme.size(10)};
 
-    :nth-child(-n + ${selected - 1}) {
+    :nth-child(-n + ${selected + 1}) {
       width: 0;
       margin: 0;
       overflow: hidden;
     }
-    :nth-child(-n + ${selected - 1}) {
+    :nth-child(-n + ${selected + 1}) {
       opacity: 0;
     }
   `

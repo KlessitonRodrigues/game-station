@@ -54,6 +54,8 @@ const Icons = (props: IconsProps) => {
       return <RiArrowLeftFill {...iconProps} />;
     case 'arrow-right':
       return <RiArrowRightFill {...iconProps} />;
+    case 'gamepad':
+      return <IoGameControllerSharp {...iconProps} />;
   }
 };
 

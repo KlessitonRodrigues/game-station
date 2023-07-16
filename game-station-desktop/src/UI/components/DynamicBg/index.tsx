@@ -1,12 +1,8 @@
-import useGlobalContext from 'src/hooks/useGlobalContext';
-
 import { Container } from './styled';
 
 const DynamicBg = (props: DynamicBgProps) => {
-  const { img } = props;
-  const [global] = useGlobalContext();
-
-  return <Container img={img} bg={global.gradientBg} />;
+  const { img, gradient, zIndex } = props;
+  return <Container img={img} bg={gradient} zIndex={zIndex} />;
 };
 
 export default DynamicBg;

@@ -5,7 +5,7 @@ import usePath from 'src/hooks/usePath';
 
 import { Container, LeftIcons, MiddleTabs, RightIcons, TabsItem, TabsItemLabel } from './styled';
 
-const tabPath = ['gamelist', 'apps', 'music', 'midia', 'web', 'theme', 'settings'];
+const tabPath = ['gamelist', 'apps', 'music', 'midia', 'web', 'settings'];
 
 const TabHeader = () => {
   const [pressed] = useGamepad();
@@ -13,8 +13,12 @@ const TabHeader = () => {
   const [selected, setSelected] = useState(0);
 
   useEffect(() => {
-    if (pressed.includes('ButtonLeft') && selected > 0) setSelected(selected - 1);
-    if (pressed.includes('ButtonRight') && selected < 6) setSelected(selected + 1);
+    if (pressed.length === 1) {
+      if (pressed.includes('ButtonLeft') && selected > 0) setSelected(selected - 1);
+      if (pressed.includes('ButtonRight') && selected < tabPath.length - 1) {
+        setSelected(selected + 1);
+      }
+    }
   }, [pressed]);
 
   useEffect(() => {
@@ -50,18 +54,13 @@ const TabHeader = () => {
           <TabsItemLabel>Web</TabsItemLabel>
         </TabsItem>
         <TabsItem selected={selected === 5}>
-          <Icons type="theme" size={12} />
-          <TabsItemLabel>Theme</TabsItemLabel>
-        </TabsItem>
-        <TabsItem selected={selected === 6}>
           <Icons type="settings" size={12} />
           <TabsItemLabel>Settings</TabsItemLabel>
         </TabsItem>
       </MiddleTabs>
 
       <RightIcons>
-        <Icons type="games" size={7} color="red" />
-        <Icons type="battery" size={7} />
+        <Icons type="gamepad" size={7} />
       </RightIcons>
     </Container>
   );

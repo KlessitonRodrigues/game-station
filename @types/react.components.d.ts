@@ -57,7 +57,8 @@ type IconsProps = {
     | 'user'
     | 'battery'
     | 'arrow-left'
-    | 'arrow-right';
+    | 'arrow-right'
+    | 'gamepad';
 };
 
 type MappedGamepadProps = {
@@ -72,4 +73,6 @@ type ColorPickerProps = {
 
 type DynamicBgProps = {
   img?: string;
+  gradient?: string;
+  zIndex?: number;
 };

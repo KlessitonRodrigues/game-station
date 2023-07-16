@@ -48,8 +48,8 @@ export const TabsItem = styled.label<{ selected?: boolean }>(
     display: flex;
     position: relative;
     align-items: center;
-    color: ${theme.colors.bg2};
-    transition: 0.75s ease-out;
+    color: ${theme.colors.bg1};
+    transition: 0.5s ease-out;
 
     ${selected &&
     css`
