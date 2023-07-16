@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 
-export const Container = styled.div<{ bg: string }>(
-  ({ theme, bg }) => css`
+export const Container = styled.div<{ bg: string; img?: string }>(
+  ({ theme, bg, img }) => css`
     z-index: -1;
     position: absolute;
     top: 0;
@@ -12,5 +12,10 @@ export const Container = styled.div<{ bg: string }>(
     background: ${bg};
     background-size: 400% 400%;
     background-position: 50% 50%;
+    background-image: url(${img});
+    background-repeat: no-repeat;
+    background-size: cover;
+    filter: brightness(0.3);
+    transition: 0.5s;
   `
 );

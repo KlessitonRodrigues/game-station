@@ -60,6 +60,7 @@ const TabHeader = () => {
       </MiddleTabs>
 
       <RightIcons>
+        <Icons type="games" size={7} color="red" />
         <Icons type="battery" size={7} />
       </RightIcons>
     </Container>

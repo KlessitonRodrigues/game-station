@@ -20,9 +20,10 @@ export const LeftIcons = styled.div(
 );
 
 export const RightIcons = styled.div(
-  () => css`
+  ({ theme }) => css`
     display: flex;
     align-items: center;
+    gap: ${theme.size(4)};
   `
 );
 

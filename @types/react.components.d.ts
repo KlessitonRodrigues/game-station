@@ -69,3 +69,7 @@ type ColorPickerProps = {
   value?: string;
   onChange?: (color: string) => void;
 };
+
+type DynamicBgProps = {
+  img?: string;
+};

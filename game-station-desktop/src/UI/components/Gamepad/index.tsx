@@ -20,6 +20,8 @@ const GamepadPanel = () => {
 
   useEffect(() => {
     if (pressed.includes('ButtonSelect')) setVisible(!visible);
+    // document.documentElement.requestFullscreen();
+    // document.exitFullscreen();
   }, [pressed]);
 
   if (!visible) return null;
