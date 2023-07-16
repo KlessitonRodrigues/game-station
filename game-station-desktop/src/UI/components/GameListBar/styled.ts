@@ -24,7 +24,7 @@ export const Cover = styled.div<{ src: string }>(
   ({ theme, src }) => css`
     height: 100%;
     width: ${theme.size(90)};
-    min-width: ${theme.size(75)};
+    min-width: ${theme.size(90)};
     background-color: ${theme.colors.bg1};
     border-radius: ${theme.radius.medium};
     background-image: url(${src});
