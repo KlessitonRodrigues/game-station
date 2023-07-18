@@ -5,10 +5,12 @@ import {
   RiArrowRightFill,
   RiBatteryFill,
   RiEarthFill,
+  RiFolderFill,
   RiMovieFill,
   RiMusic2Fill,
   RiNewspaperFill,
   RiPaintBrushFill,
+  RiSearchFill,
   RiSettings4Fill,
   RiUser2Fill,
 } from 'react-icons/ri';
@@ -56,6 +58,10 @@ const Icons = (props: IconsProps) => {
       return <RiArrowRightFill {...iconProps} />;
     case 'gamepad':
       return <IoGameControllerSharp {...iconProps} />;
+    case 'search':
+      return <RiSearchFill {...iconProps} />;
+    case 'folder':
+      return <RiFolderFill {...iconProps} />;
   }
 };
 

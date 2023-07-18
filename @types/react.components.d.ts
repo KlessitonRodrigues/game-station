@@ -58,7 +58,9 @@ type IconsProps = {
     | 'battery'
     | 'arrow-left'
     | 'arrow-right'
-    | 'gamepad';
+    | 'gamepad'
+    | 'search'
+    | 'folder';
 };
 
 type MappedGamepadProps = {
