@@ -60,7 +60,8 @@ type IconsProps = {
     | 'arrow-right'
     | 'gamepad'
     | 'search'
-    | 'folder';
+    | 'folder'
+    | 'image';
 };
 
 type MappedGamepadProps = {

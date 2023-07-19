@@ -6,8 +6,8 @@ export const Row = styled.div<{ centered?: boolean }>(
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    gap: ${theme.size(4)};
-    padding: ${theme.size(2)} 0;
+    gap: ${theme.size(2)};
+    margin-bottom: ${theme.size(4)};
     ${centered && 'justify-content: center;'}
   `
 );

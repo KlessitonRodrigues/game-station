@@ -11,8 +11,12 @@ type DBControllers = {
     dalete: (args: DeleteGameInfo) => DBData;
   };
   settings: {
-    //read: () => DBData;
-    //update: () => DBData;
+    read: () => SettingsInfo;
+    update: (args: UpdateSettings) => DBData;
+  };
+  data: {
+    initialData: () => void;
+    testData: () => void;
   };
 };
 
@@ -49,8 +53,10 @@ type UpdateGameInfo = {
   gameInfo: Partial<GameInfo>;
 };
 
-type ReadGameInfo = {};
-
 type DeleteGameInfo = {
   name: string;
+};
+
+type UpdateSettings = {
+  settings: Partial<SettingsInfo>;
 };

@@ -6,7 +6,7 @@ export const Browser = styled.div(
   ({ theme }) => css`
     display: flex;
     flex-direction: column;
-    padding: ${theme.size(10)};
+    padding: ${theme.size(8)} ${theme.size(4)};
     background-color: ${theme.colors.bg2};
     border-radius: ${theme.radius.medium};
   `
@@ -15,29 +15,30 @@ export const Browser = styled.div(
 export const BrowseItems = styled.div(
   ({ theme }) => css`
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
+    height: ${theme.size(200)};
     gap: ${theme.size(4)};
   `
 );
 
-export const BrowseImage = styled.img<{ selected: boolean }>(
-  ({ theme, selected }) => css`
-    width: 100%;
-    max-width: ${theme.size(250)};
-    border: 3px solid transparent;
+export const BrowseImage = styled.img(
+  ({ theme }) => css`
+    max-height: 100%;
+    max-width: 100%;
     border-radius: ${theme.radius.large};
-    ${selected && `border-color: ${theme.colors.gray}`}
+    box-shadow: ${theme.shadow.high};
   `
 );
 
-export const BrowseFolder = styled.div<{ selected: boolean }>(({ theme }) => css``);
+export const BrowseFolder = styled.div(({ theme }) => css``);
 
 export const QueryBar = styled.label(
   ({ theme }) => css`
     display: flex;
+    flex-direction: column;
     align-items: center;
+    justify-content: center;
     gap: ${theme.size(4)};
   `
 );

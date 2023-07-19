@@ -1,5 +1,5 @@
-import { linearGradient } from 'src/styles/lib/gradient';
+import { dbClient } from 'src/config/db';
 
 export const initialGlobalState: GlobalState = {
-  gradientBg: linearGradient.blueAndPink,
+  gradientBg: dbClient.settings.read().bgOption,
 };

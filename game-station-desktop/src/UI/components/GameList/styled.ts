@@ -93,10 +93,8 @@ export const CoverListItem = styled.div<{ selected: number; img: string }>(
     :nth-child(-n + ${selected + 1}) {
       width: 0;
       margin: 0;
-      overflow: hidden;
-    }
-    :nth-child(-n + ${selected + 1}) {
       opacity: 0;
+      overflow: hidden;
     }
   `
 );
