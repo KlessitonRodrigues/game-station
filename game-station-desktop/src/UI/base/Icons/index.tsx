@@ -5,6 +5,7 @@ import {
   RiArrowRightFill,
   RiBatteryFill,
   RiEarthFill,
+  RiFile2Line,
   RiFolderFill,
   RiImage2Fill,
   RiMovieFill,
@@ -63,6 +64,8 @@ const Icons = (props: IconsProps) => {
       return <RiSearchFill {...iconProps} />;
     case 'folder':
       return <RiFolderFill {...iconProps} />;
+    case 'file':
+      return <RiFile2Line {...iconProps} />;
     case 'image':
       return <RiImage2Fill {...iconProps} />;
   }

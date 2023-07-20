@@ -61,6 +61,7 @@ type IconsProps = {
     | 'gamepad'
     | 'search'
     | 'folder'
+    | 'file'
     | 'image';
 };
 
@@ -78,4 +79,9 @@ type DynamicBgProps = {
   img?: string;
   gradient?: string;
   zIndex?: number;
+};
+
+type BrowserResourcesProps = {
+  query: string;
+  type: 'folder' | 'background' | 'cover';
 };

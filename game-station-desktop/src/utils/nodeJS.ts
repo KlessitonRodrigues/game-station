@@ -1,33 +1,52 @@
-const fs = window.require('fs');
-const process = window.require('child_process');
-const http = window.require('http');
+const NodeJS = () => {
+  const require = window.require;
+  window.require = null; // prevent accessing nodejs from page context
 
-export const listFolders = (path: string) => {
-  return fs.readdirSync(path);
-};
+  return {
+    isActive: !!require,
 
-export const execCommand = (command: string) => {
-  try {
-    return process.execSync(command).toString();
-  } catch (e) {
-    console.log(e);
-  }
-};
+    resolvePath: (dirPath: string) => {
+      const Path = require('path');
+      return Path.resolve(dirPath);
+    },
 
-export const getPageContent = (url: string) => {
-  return new Promise<string>((resolve, reject) => {
-    try {
-      http.get(url, (res: any) => {
-        let rawHtml = '';
-        res.on('data', (chunk: any) => {
-          rawHtml += chunk;
-        });
-        res.on('end', () => {
-          resolve(rawHtml);
-        });
+    fetchHTML: (url: string) => {
+      return new Promise<string>((resolve, reject) => {
+        try {
+          const Http = require('http');
+          Http.get(url, (res: any) => {
+            let rawHtml = '';
+            res.on('data', (chunk: any) => (rawHtml += chunk));
+            res.on('end', () => resolve(rawHtml));
+          });
+        } catch (e) {
+          reject(e);
+        }
       });
-    } catch (e) {
-      reject(e);
-    }
-  });
+    },
+
+    exec: (command: string) => {
+      try {
+        const Process = require('child_process');
+        return Process.execSync(command).toString();
+      } catch (e) {
+        console.log(e);
+        return '';
+      }
+    },
+
+    listDir: (dir: string): string[] => {
+      try {
+        const Fs = require('fs');
+        const Path = require('path');
+        const files = Fs.readdirSync(Path.resolve(dir));
+        return files.filter((file: string) => !file.startsWith('.'));
+      } catch (e) {
+        console.error(e);
+        return [''];
+      }
+    },
+  };
 };
+
+export const nodeJS = NodeJS();
