@@ -10,11 +10,11 @@ const App = () => {
   return (
     <GlobalProvider>
       <PathProvider>
-        <GamepadProvider>
-          <BrowserRouter>
+        <BrowserRouter>
+          <GamepadProvider>
             <Router />
-          </BrowserRouter>
-        </GamepadProvider>
+          </GamepadProvider>
+        </BrowserRouter>
       </PathProvider>
     </GlobalProvider>
   );

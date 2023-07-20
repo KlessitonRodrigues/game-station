@@ -6,21 +6,19 @@ import { defaultTheme } from 'src/styles/theme';
 import { ThemeProvider } from 'styled-components';
 
 import DynamicBg from '../components/DynamicBg';
-import GamepadPanel from '../components/Gamepad';
 import TabHeader from '../components/TabHeader';
 import GameListPage from '../pages/GameListPage';
+import SettingsPage from '../pages/SettingsPage';
 import ThemePage from '../pages/ThemePage';
 
 const Router = () => {
   const [path] = usePath();
   const [global] = useGlobalContext();
-
   const pathname = `/${path.path.join('/')}`;
 
   return (
     <ThemeProvider theme={defaultTheme}>
       <GlobalCSS />
-      <GamepadPanel />
       <TabHeader />
       <Routes location={{ pathname, hash: '', search: '' }}>
         <Route path="home/gamelist" element={<GameListPage />} />
@@ -28,7 +26,8 @@ const Router = () => {
         <Route path="home/music" element={<GameListPage />} />
         <Route path="home/midia" element={<GameListPage />} />
         <Route path="home/web" element={<GameListPage />} />
-        <Route path="home/settings" element={<ThemePage />} />
+        <Route path="home/theme" element={<ThemePage />} />
+        <Route path="home/settings" element={<SettingsPage />} />
       </Routes>
       <DynamicBg gradient={global.gradientBg} zIndex={-2} />
     </ThemeProvider>

@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import SlideUp from 'src/UI/base/Animations/SlideUp';
 import ColorPicker from 'src/UI/base/ColorPicker';
 import { Panel, PanelTitle } from 'src/UI/base/Styles';
 import PageContainer from 'src/UI/components/PageContainer';
@@ -17,14 +18,16 @@ const ThemePage = () => {
 
   return (
     <PageContainer>
-      <Panel active={active === 0}>
-        <PanelTitle>Background</PanelTitle>
-        <ColorPicker
-          active={active === 0}
-          value={global.gradientBg}
-          onChange={bg => setGlobal({ ...global, gradientBg: bg })}
-        />
-      </Panel>
+      <SlideUp>
+        <Panel active={active === 0}>
+          <PanelTitle>Background</PanelTitle>
+          <ColorPicker
+            active={active === 0}
+            value={global.gradientBg}
+            onChange={bg => setGlobal({ ...global, gradientBg: bg })}
+          />
+        </Panel>
+      </SlideUp>
     </PageContainer>
   );
 };

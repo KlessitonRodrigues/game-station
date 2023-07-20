@@ -28,10 +28,11 @@ export const Cover = styled.div<{ img: string }>(
     max-width: ${theme.size(90)};
     background-color: ${theme.colors.bg1};
     border-radius: ${theme.radius.medium};
+    box-shadow: ${theme.shadow.high};
     background-image: url(${img});
     background-repeat: no-repeat;
     background-size: 100% 100%;
-    transition: 0.3s;
+    transition: 0.5s;
     font-size: ${theme.size(20)};
 
     ${img && 'color: transparent;'}
@@ -82,12 +83,13 @@ export const CoverListItem = styled.div<{ selected: number; img: string }>(
     max-width: ${theme.size(50)};
     background-color: ${theme.colors.bg2};
     border-radius: ${theme.radius.medium};
+    box-shadow: ${theme.shadow.high};
     margin-right: ${theme.size(4)};
     background-image: url(${img});
     background-repeat: no-repeat;
     background-size: 100% 100%;
     font-size: ${theme.size(10)};
-    transition: 0.3s;
+    transition: 0.5s;
     ${img && 'color: transparent;'}
 
     :nth-child(-n + ${selected + 1}) {

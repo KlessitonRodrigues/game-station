@@ -53,7 +53,7 @@ export const TabsItem = styled.label<{ selected?: boolean }>(
 
     ${selected &&
     css`
-      color: ${theme.colors.white};
+      color: ${theme.colors.text1};
       margin-left: ${theme.size(15)};
       margin-right: ${theme.size(15)};
     `}
@@ -61,7 +61,7 @@ export const TabsItem = styled.label<{ selected?: boolean }>(
     ${TabsItemLabel} {
       width: 0;
       ${!selected && `opacity: 0;`}
-      ${selected && `width: ${theme.size(25)}`}
+      ${selected && `width: ${theme.size(25)};`}
     }
   `
 );

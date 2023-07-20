@@ -6,7 +6,7 @@ export const Container = styled.div(
     max-width: ${theme.size(500)};
     height: 100%;
     margin: 0 auto;
-    overflow-y: auto;
+    overflow: hidden;
   `
 );
 

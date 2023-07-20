@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
+import SlideUp from 'src/UI/base/Animations/SlideUp';
 import { dbClient } from 'src/config/db';
 import useGamepad from 'src/hooks/useGamepad';
 
@@ -15,11 +16,10 @@ import {
   GameTitle,
 } from './styled';
 
-const games = dbClient.games.read();
-
 const GameList = () => {
   const [pressed] = useGamepad();
   const [selected, setSelected] = useState(0);
+  const games = useMemo(() => dbClient.games.read(), []);
   const currentGame = games[selected];
 
   useEffect(() => {
@@ -29,22 +29,25 @@ const GameList = () => {
 
   return (
     <Container>
-      <GameListBar>
-        <Cover img={currentGame.cover}>{currentGame.name}</Cover>
-        <Column>
-          <Description>
-            <GameTitle>{currentGame.name}</GameTitle>
-            <GameInfo>{currentGame.publisher}</GameInfo>
-          </Description>
-          <CoverList>
-            {games.map(game => (
-              <CoverListItem img={game.cover} key={game.name} selected={selected}>
-                {game.name}
-              </CoverListItem>
-            ))}
-          </CoverList>
-        </Column>
-      </GameListBar>
+      <SlideUp>
+        <GameListBar>
+          <Cover img={currentGame.cover}>{currentGame.name}</Cover>
+          <Column>
+            <Description>
+              <GameTitle>{currentGame.name}</GameTitle>
+              <GameInfo>{currentGame.publisher}</GameInfo>
+            </Description>
+            <CoverList>
+              {games.map(game => (
+                <CoverListItem img={game.cover} key={game.name} selected={selected}>
+                  {game.name}
+                </CoverListItem>
+              ))}
+            </CoverList>
+          </Column>
+        </GameListBar>
+      </SlideUp>
+
       <DynamicBg img={currentGame.background} zIndex={-1} />
     </Container>
   );

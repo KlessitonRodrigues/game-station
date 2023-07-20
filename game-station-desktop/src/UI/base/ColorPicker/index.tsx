@@ -3,8 +3,7 @@ import useGamepad from 'src/hooks/useGamepad';
 import { linearGradient } from 'src/styles/lib/gradient';
 
 import Icons from '../Icons';
-import { Row } from '../Styles';
-import { ColorItem } from './styled';
+import { ColorItem, Row } from './styled';
 
 const colors = Object.values(linearGradient);
 
@@ -21,7 +20,7 @@ const ColorPicker = (props: ColorPickerProps) => {
   }, [pressed]);
 
   return (
-    <Row centered>
+    <Row>
       {active && <Icons type="arrow-left" />}
       {colors.map((color, i) => {
         return <ColorItem key={color} selected={selected === i} bg={color} />;
