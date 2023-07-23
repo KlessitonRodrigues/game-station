@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import SlideUp from 'src/UI/base/Animations/SlideUp';
 import ColorPicker from 'src/UI/base/ColorPicker';
+import PageContainer from 'src/UI/base/PageContainer';
 import { Panel, PanelTitle } from 'src/UI/base/Styles';
-import PageContainer from 'src/UI/components/PageContainer';
 import useGamepad from 'src/hooks/useGamepad';
 import useGlobalContext from 'src/hooks/useGlobalContext';
 
@@ -21,6 +21,14 @@ const ThemePage = () => {
       <SlideUp>
         <Panel active={active === 0}>
           <PanelTitle>Background</PanelTitle>
+          <ColorPicker
+            active={active === 0}
+            value={global.gradientBg}
+            onChange={bg => setGlobal({ ...global, gradientBg: bg })}
+          />
+        </Panel>
+        <Panel>
+          <PanelTitle>Gradient</PanelTitle>
           <ColorPicker
             active={active === 0}
             value={global.gradientBg}

@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import SlideUp from 'src/UI/base/Animations/SlideUp';
 import GamepadIcon from 'src/UI/base/Gamepad';
+import PageContainer from 'src/UI/base/PageContainer';
 import { Panel, PanelTitle } from 'src/UI/base/Styles';
-import PageContainer from 'src/UI/components/PageContainer';
 import useGamepad from 'src/hooks/useGamepad';
 import useGlobalContext from 'src/hooks/useGlobalContext';
 

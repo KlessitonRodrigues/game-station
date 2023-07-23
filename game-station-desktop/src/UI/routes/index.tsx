@@ -5,7 +5,7 @@ import GlobalCSS from 'src/styles/globalCSS';
 import { defaultTheme } from 'src/styles/theme';
 import { ThemeProvider } from 'styled-components';
 
-import DynamicBg from '../components/DynamicBg';
+import DynamicBg from '../base/DynamicBg';
 import TabHeader from '../components/TabHeader';
 import GameListPage from '../pages/GameListPage';
 import SettingsPage from '../pages/SettingsPage';

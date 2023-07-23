@@ -8,7 +8,6 @@ export const Container = styled.div(
     align-items: center;
     padding: ${theme.size(4)};
     margin: ${theme.size(2)} auto;
-    margin-bottom: ${theme.size(8)};
   `
 );
 
@@ -49,7 +48,7 @@ export const TabsItem = styled.label<{ selected?: boolean }>(
     position: relative;
     align-items: center;
     color: ${theme.colors.bg1};
-    transition: 0.5s ease-out;
+    transition: 0.3s ease-out;
 
     ${selected &&
     css`

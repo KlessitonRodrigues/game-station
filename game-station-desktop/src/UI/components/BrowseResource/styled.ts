@@ -6,8 +6,7 @@ export const Container = styled.div(
     flex-direction: column;
     align-items: center;
     gap: ${theme.size(4)};
-    padding: ${theme.size(8)};
-    background-color: ${theme.colors.bg2};
+    padding: ${theme.size(4)} 0;
     border-radius: ${theme.radius.medium};
   `
 );
@@ -17,7 +16,6 @@ export const BrowseItems = styled.div(
     display: flex;
     justify-content: center;
     align-items: center;
-    height: ${theme.size(150)};
     gap: ${theme.size(4)};
     transition: 1s;
   `
@@ -29,12 +27,6 @@ export const BrowseImage = styled.img(
     max-width: 100%;
     border-radius: ${theme.radius.large};
     box-shadow: ${theme.shadow.high};
-  `
-);
-
-export const BrowseLink = styled.a(
-  ({ theme }) => css`
-    font-size: ${theme.fontSize.verySmall};
   `
 );
 
@@ -70,8 +62,7 @@ export const Row = styled.div(
 
 export const BrowserTitle = styled.div(
   ({ theme }) => css`
-    font-family: monospace;
     text-align: center;
-    font-size: ${theme.fontSize.h4};
+    font-size: ${theme.fontSize.h3};
   `
 );

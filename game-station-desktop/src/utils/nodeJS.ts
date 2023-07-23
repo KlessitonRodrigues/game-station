@@ -6,8 +6,13 @@ const NodeJS = () => {
     isActive: !!require,
 
     resolvePath: (dirPath: string) => {
-      const Path = require('path');
-      return Path.resolve(dirPath);
+      try {
+        const Path = require('path');
+        return Path.resolve(dirPath) as string;
+      } catch (e) {
+        console.error(e);
+        return '';
+      }
     },
 
     fetchHTML: (url: string) => {
@@ -21,6 +26,7 @@ const NodeJS = () => {
           });
         } catch (e) {
           reject(e);
+          return '';
         }
       });
     },
@@ -43,7 +49,7 @@ const NodeJS = () => {
         return files.filter((file: string) => !file.startsWith('.'));
       } catch (e) {
         console.error(e);
-        return [''];
+        return [];
       }
     },
   };

@@ -12,7 +12,7 @@ import {
   RiMusic2Fill,
   RiNewspaperFill,
   RiPaintBrushFill,
-  RiSearchFill,
+  RiSearchLine,
   RiSettings4Fill,
   RiUser2Fill,
 } from 'react-icons/ri';
@@ -61,7 +61,7 @@ const Icons = (props: IconsProps) => {
     case 'gamepad':
       return <IoGameControllerSharp {...iconProps} />;
     case 'search':
-      return <RiSearchFill {...iconProps} />;
+      return <RiSearchLine {...iconProps} />;
     case 'folder':
       return <RiFolderFill {...iconProps} />;
     case 'file':
