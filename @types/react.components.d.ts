@@ -81,7 +81,20 @@ type DynamicBgProps = {
   zIndex?: number;
 };
 
-type BrowserResourcesProps = {
+type BrowseImagesProps = {
+  active: boolean;
   query: string;
-  type: 'folder' | 'background' | 'cover';
+  sufix: string;
+};
+
+type BrowseFoldersProps = {
+  active: boolean;
+  path: string;
+};
+
+type PanelProps = {
+  active: boolean;
+  title: string;
+  value: string;
+  children?: React.ReactElement;
 };

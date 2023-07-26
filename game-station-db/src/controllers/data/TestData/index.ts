@@ -34,11 +34,10 @@ const testingGames: GameInfo[] = [
     year: '',
   },
   {
-    name: 'Follout New Vagas',
-    publisher: 'Bathesda',
-    background: 'https://images5.alphacoders.com/421/thumb-1920-421263.jpg',
-    cover:
-      'https://cdn1.epicgames.com/offer/3428aaab2c674c98b3acb789dcfaa548/EGS_FalloutNewVegas_ObsidianEntertainment_S2_1200x1600-866fe8b8f56e2e7bb862c49bf0627b9a',
+    name: 'Terraria',
+    publisher: 'Re-Logic',
+    background: 'https://vistapointe.net/images/terraria-6.jpg',
+    cover: 'https://monkeycheap.com/wp-content/uploads/2021/04/terraria-cover-600x834.jpg',
     addedAt: '',
     description: '',
     hidden: false,

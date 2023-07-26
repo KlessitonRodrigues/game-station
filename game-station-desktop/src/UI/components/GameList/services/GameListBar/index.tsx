@@ -13,6 +13,7 @@ import {
   Description,
   GameInfo,
   GameTitle,
+  Games,
 } from './styled';
 
 export const GameListBar = () => {
@@ -30,20 +31,22 @@ export const GameListBar = () => {
     <>
       <SlideUp>
         <Container>
-          <Cover img={currentGame.cover}>{currentGame.name}</Cover>
-          <Column>
-            <Description>
-              <GameTitle>{currentGame.name}</GameTitle>
-              <GameInfo>{currentGame.publisher}</GameInfo>
-            </Description>
-            <CoverList>
-              {games.map(game => (
-                <CoverListItem img={game.cover} key={game.name} selected={selected}>
-                  {game.name}
-                </CoverListItem>
-              ))}
-            </CoverList>
-          </Column>
+          <Games>
+            <Cover img={currentGame.cover}>{currentGame.name}</Cover>
+            <Column>
+              <Description>
+                <GameTitle>{currentGame.name}</GameTitle>
+                <GameInfo>{currentGame.publisher}</GameInfo>
+              </Description>
+              <CoverList>
+                {games.map(game => (
+                  <CoverListItem img={game.cover} key={game.name} selected={selected}>
+                    {game.name}
+                  </CoverListItem>
+                ))}
+              </CoverList>
+            </Column>
+          </Games>
         </Container>
       </SlideUp>
       <DynamicBg img={currentGame.background} zIndex={-1} />

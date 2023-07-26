@@ -2,14 +2,15 @@ import { useEffect, useState } from 'react';
 import SlideUp from 'src/UI/base/Animations/SlideUp';
 import ColorPicker from 'src/UI/base/ColorPicker';
 import PageContainer from 'src/UI/base/PageContainer';
-import { Panel, PanelTitle } from 'src/UI/base/Styles';
+import { Panel } from 'src/UI/base/Panel';
 import useGamepad from 'src/hooks/useGamepad';
 import useGlobalContext from 'src/hooks/useGlobalContext';
 
 const ThemePage = () => {
-  const [pressed] = useGamepad();
   const [global, setGlobal] = useGlobalContext();
+  const [pressed] = useGamepad();
   const [active, setActive] = useState(0);
+  const isActive = (n: number) => n === active;
 
   useEffect(() => {
     if (pressed.includes('ArrowUp')) active > 0 && setActive(active - 1);
@@ -19,18 +20,16 @@ const ThemePage = () => {
   return (
     <PageContainer>
       <SlideUp>
-        <Panel active={active === 0}>
-          <PanelTitle>Background</PanelTitle>
+        <Panel active={isActive(0)} title="Background Color" value={global.gradientBg}>
           <ColorPicker
-            active={active === 0}
+            active={isActive(0)}
             value={global.gradientBg}
             onChange={bg => setGlobal({ ...global, gradientBg: bg })}
           />
         </Panel>
-        <Panel>
-          <PanelTitle>Gradient</PanelTitle>
+        <Panel active={isActive(0)} title="Background Gradient" value={global.gradientBg}>
           <ColorPicker
-            active={active === 0}
+            active={isActive(0)}
             value={global.gradientBg}
             onChange={bg => setGlobal({ ...global, gradientBg: bg })}
           />

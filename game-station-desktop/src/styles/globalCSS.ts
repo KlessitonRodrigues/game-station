@@ -2,6 +2,10 @@ import { createGlobalStyle, css } from 'styled-components';
 
 export default createGlobalStyle(
   ({ theme }) => css`
+    @font-face {
+      font-family: Roboto;
+      src: url('../UI/assets/fonts/Roboto-Regular.ttf');
+    }
     * {
       margin: 0;
       padding: 0;
@@ -21,7 +25,7 @@ export default createGlobalStyle(
     }
     html,
     body {
-      font-family: 'Roboto', sans-serif;
+      font-family: Roboto;
       background-color: transparent;
       color: ${theme.colors.text3};
     }

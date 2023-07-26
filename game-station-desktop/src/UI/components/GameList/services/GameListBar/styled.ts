@@ -1,12 +1,21 @@
 import styled, { css } from 'styled-components';
 
 export const Container = styled.div(
+  () => css`
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
+  `
+);
+
+export const Games = styled.div(
   ({ theme }) => css`
     width: 100%;
     display: flex;
-    height: ${theme.size(120)};
     gap: ${theme.size(8)};
-    margin-bottom: ${theme.size(12)};
+    height: ${theme.size(120)};
+    margin-bottom: ${theme.size(20)};
   `
 );
 

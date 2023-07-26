@@ -7,6 +7,7 @@ export const SlideUpAnimation = styled.div(() => {
   `;
   return css`
     width: 100%;
+    height: 100%;
     animation: ${slideUp} 0.3s ease-out;
   `;
 });

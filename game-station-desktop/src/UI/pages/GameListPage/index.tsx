@@ -1,4 +1,5 @@
 import PageContainer from 'src/UI/base/PageContainer';
+import AddGameForm from 'src/UI/components/Forms/AddGame';
 import GameListBar from 'src/UI/components/GameList';
 
 const GameListPage = () => {
