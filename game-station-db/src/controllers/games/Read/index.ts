@@ -1,3 +1,3 @@
 export const readGameInfo = (config: DBConfig) => () => {
-  return config.readDB().games;
+  return config.readDB().games || [];
 };

@@ -5,8 +5,7 @@ const dbName = 'game-station';
 
 const dbConfig: DBConfig = {
   readDB: (): DBData => {
-    const data = JSON.parse(window.localStorage.getItem(dbName) || '{}') as DBData;
-    return data;
+    return JSON.parse(window.localStorage.getItem(dbName) || '{}') as DBData;
   },
   saveDB: (data: DBData) => {
     data.updatedAt = new Date().toISOString();
@@ -16,5 +15,3 @@ const dbConfig: DBConfig = {
 };
 
 export const dbClient: DBControllers = initDB(dbConfig);
-
-dbClient.data.testData();

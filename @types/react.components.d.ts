@@ -85,6 +85,7 @@ type BrowseImagesProps = {
   active: boolean;
   query: string;
   sufix: string;
+  onChange?: (url: string) => void;
 };
 
 type BrowseFoldersProps = {

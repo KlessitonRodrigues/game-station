@@ -1,17 +1,6 @@
 import styled, { css } from 'styled-components';
 
 export const Container = styled.div<{ active?: boolean }>(({ theme, active }) => {
-  const onActive = css`
-    background-color: ${theme.colors.bg2};
-    color: ${theme.colors.text1};
-    ${Content} {
-      height: ${theme.size(150)};
-    }
-    ${Value} {
-      opacity: 0;
-    }
-  `;
-
   return css`
     width: 75%;
     margin: 0 auto;
@@ -20,9 +9,19 @@ export const Container = styled.div<{ active?: boolean }>(({ theme, active }) =>
     color: ${theme.colors.text3};
     background-color: ${theme.colors.bg4};
     border-radius: ${theme.radius.medium};
-    transition: 0.1s;
+    transition: 0.5s;
 
-    ${active && onActive}
+    ${active &&
+    css`
+      background-color: ${theme.colors.bg2};
+      color: ${theme.colors.text1};
+      ${Content} {
+        max-height: ${theme.size(100)};
+      }
+      ${Value} {
+        opacity: 0;
+      }
+    `}
   `;
 });
 
@@ -36,8 +35,8 @@ export const Header = styled.div(({ theme }) => {
 
 export const Title = styled.div(({ theme }) => {
   return css`
-    font-size: ${theme.fontSize.h5};
-    text-transform: capitalize;
+    font-size: ${theme.fontSize.label};
+    font-weight: bold;
   `;
 });
 
@@ -50,8 +49,8 @@ export const Value = styled.div(() => {
 export const Content = styled.div(() => {
   return css`
     width: 100%;
-    height: 0;
+    max-height: 0;
     overflow: hidden;
-    transition: 0.3s;
+    transition: max-height 0.5s;
   `;
 });

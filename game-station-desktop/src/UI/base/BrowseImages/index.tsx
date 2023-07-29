@@ -5,7 +5,7 @@ import { fetchImages } from './services/fetchImages';
 import { Browse, Image } from './styled';
 
 export const BrowseImages = (props: BrowseImagesProps) => {
-  const { query, active, sufix } = props;
+  const { query, active, sufix, onChange } = props;
   const [pressed] = useGamepad();
   const [items, setItems] = useState(['']);
   const [selected, setSelected] = useState(0);
@@ -18,10 +18,14 @@ export const BrowseImages = (props: BrowseImagesProps) => {
   }, [pressed]);
 
   useEffect(() => {
-    if (query.length < 3) return undefined;
-    const gerItems = async () => fetchImages(`${query.toLocaleLowerCase()} ${sufix}`);
-    gerItems().then(setItems).catch(console.error);
-  }, [query]);
+    if (!active || query.length < 3) return undefined;
+    const searchQuery = `${query.toLowerCase()} ${sufix}`;
+    fetchImages(searchQuery).then(setItems).catch(console.error);
+  }, [active, query]);
+
+  useEffect(() => {
+    onChange && onChange(items[selected]);
+  }, [selected, items.length]);
 
   return (
     <Browse>

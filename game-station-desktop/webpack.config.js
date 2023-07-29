@@ -44,7 +44,7 @@ const config = {
   },
   optimization: {
     splitChunks: {
-      // chunks: 'all',
+      chunks: 'all',
     },
   },
   resolve: {

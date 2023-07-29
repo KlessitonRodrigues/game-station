@@ -27,13 +27,6 @@ const ThemePage = () => {
             onChange={bg => setGlobal({ ...global, gradientBg: bg })}
           />
         </Panel>
-        <Panel active={isActive(0)} title="Background Gradient" value={global.gradientBg}>
-          <ColorPicker
-            active={isActive(0)}
-            value={global.gradientBg}
-            onChange={bg => setGlobal({ ...global, gradientBg: bg })}
-          />
-        </Panel>
       </SlideUp>
     </PageContainer>
   );

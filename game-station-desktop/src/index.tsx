@@ -1,4 +1,4 @@
-import reactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import Router from 'src/UI/routes';
 import { GamepadProvider } from 'src/hooks/useGamepad';
@@ -20,4 +20,5 @@ const App = () => {
   );
 };
 
-reactDOM.render(<App />, document.getElementById('root'));
+const root = createRoot(document.getElementById('root'));
+root.render(<App />);

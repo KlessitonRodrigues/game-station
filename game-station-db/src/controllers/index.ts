@@ -1,4 +1,5 @@
-import { testData } from './data/TestData';
+import { initialData } from './data/initialData';
+import { testData } from './data/testData';
 import { createGameInfo } from './games/Create';
 import { deleteGameInfo } from './games/Delete';
 import { readGameInfo } from './games/Read';
@@ -18,7 +19,7 @@ export const controllers = (config: DBConfig): DBControllers => ({
     update: updateSettings(config),
   },
   data: {
+    initialData: initialData(config),
     testData: testData(config),
-    initialData: testData(config),
   },
 });

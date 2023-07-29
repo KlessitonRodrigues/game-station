@@ -53,5 +53,6 @@ export const InputField = styled.input(
     color: ${theme.colors.text1};
     font-size: ${theme.fontSize.h3};
     border-bottom: 2px solid ${theme.colors.gray};
+    text-transform: capitalize;
   `
 );

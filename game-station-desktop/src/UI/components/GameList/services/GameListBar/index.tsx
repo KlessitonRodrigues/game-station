@@ -32,15 +32,15 @@ export const GameListBar = () => {
       <SlideUp>
         <Container>
           <Games>
-            <Cover img={currentGame.cover}>{currentGame.name}</Cover>
+            <Cover img={currentGame?.cover}>{currentGame?.name}</Cover>
             <Column>
               <Description>
-                <GameTitle>{currentGame.name}</GameTitle>
-                <GameInfo>{currentGame.publisher}</GameInfo>
+                <GameTitle>{currentGame?.name}</GameTitle>
+                <GameInfo>{currentGame?.publisher}</GameInfo>
               </Description>
               <CoverList>
                 {games.map(game => (
-                  <CoverListItem img={game.cover} key={game.name} selected={selected}>
+                  <CoverListItem key={game.name} img={game.cover} selected={selected}>
                     {game.name}
                   </CoverListItem>
                 ))}
@@ -49,7 +49,7 @@ export const GameListBar = () => {
           </Games>
         </Container>
       </SlideUp>
-      <DynamicBg img={currentGame.background} zIndex={-1} />
+      <DynamicBg img={currentGame?.background} zIndex={-1} />
     </>
   );
 };

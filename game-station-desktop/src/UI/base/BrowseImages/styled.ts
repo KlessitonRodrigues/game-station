@@ -13,7 +13,7 @@ export const Browse = styled.div(
 
 export const Image = styled.img(
   ({ theme }) => css`
-    max-height: 100%;
+    max-height: ${theme.size(120)};
     max-width: 100%;
     border-radius: ${theme.radius.large};
     box-shadow: ${theme.shadow.high};

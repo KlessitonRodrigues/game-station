@@ -7,7 +7,7 @@ export const Panel = (props: PanelProps) => {
     <Container active={active}>
       <Header>
         <Title>{title}</Title>
-        <Value>{value}</Value>
+        <Value>{value?.substring(0, 40)}</Value>
       </Header>
       <Content>{children}</Content>
     </Container>

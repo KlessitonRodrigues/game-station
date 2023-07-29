@@ -22,18 +22,17 @@ export const Games = styled.div(
 export const Cover = styled.div<{ img: string }>(
   ({ theme, img }) => css`
     height: 100%;
-    width: ${theme.size(90)};
-    min-width: ${theme.size(90)};
-    max-width: ${theme.size(90)};
+    width: ${theme.size(95)};
+    min-width: ${theme.size(95)};
+    max-width: ${theme.size(95)};
     background-color: ${theme.colors.bg1};
-    border-radius: ${theme.radius.medium};
+    border-radius: ${theme.radius.large};
     box-shadow: ${theme.shadow.high};
     background-image: url(${img});
     background-repeat: no-repeat;
     background-size: 100% 100%;
     transition: 0.3s;
     font-size: ${theme.size(20)};
-
     ${img && 'color: transparent;'}
   `
 );
@@ -88,7 +87,7 @@ export const CoverListItem = styled.div<{ selected: number; img: string }>(
     background-repeat: no-repeat;
     background-size: 100% 100%;
     font-size: ${theme.size(10)};
-    transition: 0.3s;
+    transition: 0.2s;
     ${img && 'color: transparent;'}
 
     :nth-child(-n + ${selected + 1}) {

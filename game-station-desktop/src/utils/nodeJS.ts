@@ -26,7 +26,6 @@ const NodeJS = () => {
           });
         } catch (e) {
           reject(e);
-          return '';
         }
       });
     },
@@ -46,7 +45,11 @@ const NodeJS = () => {
         const Fs = require('fs');
         const Path = require('path');
         const files = Fs.readdirSync(Path.resolve(dir));
-        return files.filter((file: string) => !file.startsWith('.'));
+        return files.filter((file: string) => {
+          if (file.startsWith('.')) return false;
+          if (file.includes('.') && !file.includes('.exe')) return false;
+          return true;
+        });
       } catch (e) {
         console.error(e);
         return [];

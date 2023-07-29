@@ -33,7 +33,7 @@ export const File = styled.div<{ active: boolean }>(
 
 export const BrowserTitle = styled.div(
   ({ theme }) => css`
-    text-align: center;
+    width: 100%;
     font-size: ${theme.fontSize.h3};
   `
 );

@@ -1,6 +1,6 @@
 import { PropsWithChildren, createContext, useContext, useState } from 'react';
 
-const initialPath: PathState = { path: ['home', 'gamelist'] };
+const initialPath: PathState = { path: ['home', 'games'] };
 const pathContext = createContext<PathContext>([initialPath, () => {}]);
 
 export const PathProvider = (props: PropsWithChildren) => (

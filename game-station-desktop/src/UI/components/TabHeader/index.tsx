@@ -5,7 +5,7 @@ import usePath from 'src/hooks/usePath';
 
 import { Container, LeftIcons, MiddleTabs, RightIcons, TabsItem, TabsItemLabel } from './styled';
 
-const tabPath = ['gamelist', 'apps', 'music', 'midia', 'web', 'theme', 'settings'];
+const tabPath = ['games', 'apps', 'music', 'midia', 'web', 'theme', 'settings'];
 
 const TabHeader = () => {
   const [pressed] = useGamepad();
