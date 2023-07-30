@@ -19,7 +19,7 @@ export const Container = styled.div<{ bg: string; img?: string; zIndex: number }
     css`
       background-image: url(${img});
       background-size: cover;
-      filter: brightness(0.6);
+      filter: brightness(0.4);
     `}
   `
 );

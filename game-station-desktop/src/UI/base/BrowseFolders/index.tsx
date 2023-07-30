@@ -13,17 +13,17 @@ export const BrowseFolders = (props: BrowseFoldersProps) => {
 
   useEffect(() => {
     const { path, selected } = dir;
-    if (pressed.includes('ArrowUp') && selected > 0) {
+    if (pressed.includes('ArrowRight') && selected > 0) {
       setDir({ ...dir, selected: selected - 1 });
     }
-    if (pressed.includes('ArrowDown') && selected < files.length - 1) {
+    if (pressed.includes('RightStickDown') && selected < files.length - 1) {
       setDir({ ...dir, selected: selected + 1 });
     }
-    if (pressed.includes('ArrowLeft')) {
+    if (pressed.includes('RightStickLeft')) {
       const newPath = path + '/../';
       setDir({ selected: 0, path: nodeJS.resolvePath(newPath) });
     }
-    if (pressed.includes('ArrowRight')) {
+    if (pressed.includes('RightStickRight')) {
       const newPath = path + `/${files[selected]}/`;
       setDir({ selected: 0, path: nodeJS.resolvePath(newPath) });
     }
