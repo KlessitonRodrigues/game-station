@@ -16,7 +16,7 @@ export const Container = styled.div<{ active?: boolean }>(({ theme, active }) =>
       background-color: ${theme.colors.bg2};
       color: ${theme.colors.text1};
       ${Content} {
-        max-height: ${theme.size(100)};
+        max-height: ${theme.size(120)};
       }
       ${Value} {
         opacity: 0;

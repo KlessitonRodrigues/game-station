@@ -1,5 +1,5 @@
 export const initialState: GameInfo = {
-  name: '',
+  name: 'Imortal Fenix Rising',
   description: '',
   cover: '',
   background: '',

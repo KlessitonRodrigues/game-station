@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
 import useGamepad from 'src/hooks/useGamepad';
 
+import Icons from '../Icons';
 import { fetchImages } from './services/fetchImages';
-import { Browse, Image } from './styled';
+import { Container, Image, ImageBox, SlideBox } from './styled';
 
 export const BrowseImages = (props: BrowseImagesProps) => {
   const { query, active, sufix, onChange } = props;
@@ -18,9 +19,7 @@ export const BrowseImages = (props: BrowseImagesProps) => {
   }, [pressed]);
 
   useEffect(() => {
-    if (!active || query.length < 3) return undefined;
-    const searchQuery = `${query.toLowerCase()} ${sufix}`;
-    fetchImages(searchQuery).then(setItems).catch(console.error);
+    if (active && query.length >= 3) fetchImages(query, sufix).then(setItems).catch(console.error);
   }, [active, query]);
 
   useEffect(() => {
@@ -28,9 +27,15 @@ export const BrowseImages = (props: BrowseImagesProps) => {
   }, [selected, items.length]);
 
   return (
-    <Browse>
-      <Image src={items[selected]} />
-    </Browse>
+    <Container>
+      <SlideBox>
+        <Icons type="arrow-left" size={12} />
+        <ImageBox>
+          <Image src={items[selected]} />
+        </ImageBox>
+        <Icons type="arrow-right" size={12} />
+      </SlideBox>
+    </Container>
   );
 };
 

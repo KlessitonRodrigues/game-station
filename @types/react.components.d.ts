@@ -91,6 +91,7 @@ type BrowseImagesProps = {
 type BrowseFoldersProps = {
   active: boolean;
   path: string;
+  onChange?: (path: string) => void;
 };
 
 type PanelProps = {
