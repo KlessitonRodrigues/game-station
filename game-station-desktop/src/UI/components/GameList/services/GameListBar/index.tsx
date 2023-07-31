@@ -3,6 +3,7 @@ import SlideUp from 'src/UI/base/Animations/SlideUp';
 import DynamicBg from 'src/UI/base/DynamicBg';
 import { dbClient } from 'src/config/db';
 import useGamepad from 'src/hooks/useGamepad';
+import { nodeJS } from 'src/utils/nodeJS';
 
 import {
   Column,
@@ -25,6 +26,8 @@ export const GameListBar = () => {
   useEffect(() => {
     if (pressed.includes('ArrowLeft')) selected > 0 && setSelected(selected - 1);
     if (pressed.includes('ArrowRight')) selected < games.length - 1 && setSelected(selected + 1);
+    if (pressed.includes('ButtonStart'))
+      nodeJS.exec(`cd ${currentGame.folder} && ./${currentGame.execultableName}`);
   }, [pressed]);
 
   return (

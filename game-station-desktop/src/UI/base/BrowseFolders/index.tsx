@@ -6,14 +6,14 @@ import { nodeJS } from 'src/utils/nodeJS';
 import { BrowserTitle, Container, File, Files } from './styled';
 
 export const BrowseFolders = (props: BrowseFoldersProps) => {
-  const { path } = props;
+  const { path, active, onChange } = props;
   const [pressed] = useGamepad();
   const [dir, setDir] = useState({ path, selected: 0 });
-  const files = useMemo(() => nodeJS.listDir(dir.path), [dir.path]);
+  const files = useMemo(() => (active ? nodeJS.listDir(dir.path) : []), [dir.path, active]);
 
   useEffect(() => {
     const { path, selected } = dir;
-    if (pressed.includes('ArrowRight') && selected > 0) {
+    if (pressed.includes('RightStickUp') && selected > 0) {
       setDir({ ...dir, selected: selected - 1 });
     }
     if (pressed.includes('RightStickDown') && selected < files.length - 1) {
@@ -27,6 +27,9 @@ export const BrowseFolders = (props: BrowseFoldersProps) => {
       const newPath = path + `/${files[selected]}/`;
       setDir({ selected: 0, path: nodeJS.resolvePath(newPath) });
     }
+    if (pressed.includes('ButtonA')) {
+      onChange && onChange(dir.path, files[selected]);
+    }
   }, [pressed]);
 
   return (
@@ -36,7 +39,7 @@ export const BrowseFolders = (props: BrowseFoldersProps) => {
         {files.map(file => {
           const isDir = !file.includes('.');
           return (
-            <File active={file === files[dir.selected]}>
+            <File key={file} active={file === files[dir.selected]}>
               <Icons type={isDir ? 'folder' : 'file'} />
               {file}
             </File>

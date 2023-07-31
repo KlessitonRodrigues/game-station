@@ -47,7 +47,6 @@ const NodeJS = () => {
         const files = Fs.readdirSync(Path.resolve(dir));
         return files.filter((file: string) => {
           if (file.startsWith('.')) return false;
-          if (file.includes('.') && !file.includes('.exe')) return false;
           return true;
         });
       } catch (e) {

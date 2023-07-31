@@ -37,7 +37,7 @@ const AddGameForm = () => {
             onChange={el => setForm({ ...form, publisher: el.target.value })}
           />
         </Panel>
-        <Panel active={isActive(2)} title="Cover Image" value={form.cover}>
+        <Panel active={isActive(2)} title="Cover" value={form.cover}>
           <BrowseImages
             active={isActive(2)}
             query={form.name}
@@ -45,7 +45,7 @@ const AddGameForm = () => {
             onChange={cover => setForm({ ...form, cover })}
           />
         </Panel>
-        <Panel active={isActive(3)} title="Background Image" value={form.background}>
+        <Panel active={isActive(3)} title="Background" value={form.background}>
           <BrowseImages
             active={isActive(3)}
             query={form.name}
@@ -54,7 +54,11 @@ const AddGameForm = () => {
           />
         </Panel>
         <Panel active={isActive(4)} title="Location" value="">
-          <BrowseFolders active={isActive(4)} path="./" />
+          <BrowseFolders
+            active={isActive(4)}
+            path="./"
+            onChange={(folder, execultableName) => setForm({ ...form, folder, execultableName })}
+          />
         </Panel>
       </Container>
     </SlideUp>

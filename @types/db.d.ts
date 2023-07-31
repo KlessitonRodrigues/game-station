@@ -34,6 +34,7 @@ type SettingsInfo = {
 
 type GameInfo = {
   name: string;
+  description: string;
   publisher: string;
   cover: string;
   background: string;
@@ -41,7 +42,8 @@ type GameInfo = {
   hidden: boolean;
   year: string;
   rate: string;
-  description: string;
+  folder: string;
+  execultableName: string;
 };
 
 // CONTROLLERS
