@@ -62,7 +62,8 @@ type IconsProps = {
     | 'search'
     | 'folder'
     | 'file'
-    | 'image';
+    | 'image'
+    | 'controls';
 };
 
 type MappedGamepadProps = {
