@@ -7,19 +7,20 @@ import {
   RiEarthFill,
   RiFile2Line,
   RiFolderFill,
+  RiGameFill,
   RiImage2Fill,
   RiMovieFill,
   RiMusic2Fill,
   RiNewspaperFill,
   RiPaintBrushFill,
-  RiRemoteControl2Fill,
   RiSearchLine,
   RiSettings4Fill,
+  RiUsbFill,
   RiUser2Fill,
 } from 'react-icons/ri';
 
 export const iconMap: Record<IconsProps['type'], React.ReactElement> = {
-  games: <IoGameControllerSharp />,
+  games: <RiGameFill />,
   apps: <RiApps2Fill />,
   music: <RiMusic2Fill />,
   midia: <RiMovieFill />,
@@ -34,7 +35,8 @@ export const iconMap: Record<IconsProps['type'], React.ReactElement> = {
   folder: <RiFolderFill />,
   file: <RiFile2Line />,
   image: <RiImage2Fill />,
-  controls: <RiRemoteControl2Fill />,
   'arrow-left': <RiArrowLeftSLine />,
   'arrow-right': <RiArrowRightSLine />,
+  usb: <RiUsbFill />,
+  controls: <IoGameControllerSharp />,
 };

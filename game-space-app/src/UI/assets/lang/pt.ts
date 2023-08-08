@@ -1,20 +1,15 @@
-export const ptLang: LangContent = {
-  page: {
-    home: {
-      textInput: 'Texto',
-      passwordInput: 'Senha',
-      encryptType: 'Tipo de criptografia',
-      encryptTypeCheckbox1: 'Forte',
-      encryptTypeCheckbox1Items: ['Usa algoritmo de criptografia EAS'],
-      encryptTypeCheckbox2: 'Muito Forte',
-      encryptTypeCheckbox2Items: [
-        'Usa algoritmo de criptografia EAS',
-        'Somente pode ser desencriptado com Easy Encrypt',
-      ],
-      encryptButton: 'Encriptar',
-      decryptButton: 'Desencriptar',
-      resultInput: 'Resultado',
-      copyButton: 'Copiar',
-    },
-  },
+export const ptLang: Language.Content = {
+  app_startGameBtn: 'Iniciar',
+  app_gameDetailsBtn: 'Detalhes',
+  tab_games: 'Jogos',
+  tab_apps: 'Aplicativos',
+  tab_web: 'Navegador',
+  tab_theme: 'Tema',
+  tab_settings: 'Configurações',
+  tab_controller: 'Controles',
+  addGame_nameInput: 'Nome',
+  addGame_publishInput: 'Publicadora',
+  addGame_coverImage: 'Imagen de capa',
+  addGame_bgImage: 'Imagen de fundo',
+  addGame_addGameBtn: 'Salvar',
 };

@@ -21,7 +21,7 @@ const config = {
     new HtmlWebpackPlugin({
       inject: 'body',
       scriptLoading: 'defer',
-      template: 'index.html',
+      template: './src/index.html',
     }),
     // Add your plugins here
     // Learn more about plugins from https://webpack.js.org/configuration/plugins/

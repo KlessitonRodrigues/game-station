@@ -49,7 +49,7 @@ const NewGameForm = () => {
           <BrowseImages
             active={isActive(3)}
             query={form.name}
-            sufix=" game background hd"
+            sufix="game background hd"
             onChange={background => setForm({ ...form, background })}
           />
         </Panel>

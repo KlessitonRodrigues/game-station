@@ -41,9 +41,7 @@ type IfProps = {
 };
 
 type IconsProps = {
-  color?: string;
   size?: number;
-  style?: React.CSSProperties;
   onPress?: () => void;
   type:
     | 'games'
@@ -63,6 +61,7 @@ type IconsProps = {
     | 'folder'
     | 'file'
     | 'image'
+    | 'usb'
     | 'controls';
 };
 

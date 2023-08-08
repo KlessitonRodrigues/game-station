@@ -1,5 +1,5 @@
 const { app, BrowserWindow } = require('electron');
-require('electron-reload')(__dirname);
+require('electron-reload')('./dist');
 
 const createWindow = () => {
   const win = new BrowserWindow({
@@ -11,7 +11,7 @@ const createWindow = () => {
     },
   });
 
-  win.loadFile('dist/index.html');
+  win.loadFile('../dist/index.html');
   win.setFullScreen(true);
   win.webContents.openDevTools();
 };

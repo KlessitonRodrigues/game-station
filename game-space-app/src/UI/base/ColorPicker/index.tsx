@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
 import useGamepad from 'src/hooks/useGamepad';
-import { linearGradient } from 'src/styles/lib/gradient';
 
 import Icons from '../Icons';
+import { sigleColor } from './services/gradient';
 import { ColorItem, Row } from './styled';
 
-const colors = Object.values(linearGradient);
+const colors = Object.values(sigleColor);
 
 const ColorPicker = (props: ColorPickerProps) => {
   const { active, value, onChange } = props;
@@ -21,11 +21,11 @@ const ColorPicker = (props: ColorPickerProps) => {
 
   return (
     <Row>
-      {active && <Icons type="arrow-left" />}
+      {active && <Icons type="arrow-left" size={12} />}
       {colors.map((color, i) => {
         return <ColorItem key={color} selected={selected === i} bg={color} />;
       })}
-      {active && <Icons type="arrow-right" />}
+      {active && <Icons type="arrow-right" size={12} />}
     </Row>
   );
 };

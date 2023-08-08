@@ -1,4 +1,4 @@
-export const createGameInfo = (config: DBConfig) => (args: CreateGameInfo) => {
+export const createGameInfo = (config: LocalDB.Config) => (args: LocalDB.CreateGame) => {
   const { gameInfo } = args;
   const db = config.readDB();
   if (!gameInfo?.name) throw new Error(`InvalidGameInfoArgument`);

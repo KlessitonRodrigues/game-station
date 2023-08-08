@@ -5,7 +5,7 @@ import usePath from 'src/hooks/usePath';
 
 import { Container, LeftIcons, MiddleTabs, RightIcons, TabsItem, TabsItemLabel } from './styled';
 
-const tabPath = ['games', 'apps', 'music', 'midia', 'web', 'theme', 'settings', 'controls'];
+const tabPath = ['games', 'apps', 'music', 'midia', 'web', 'theme', 'controls', 'settings'];
 
 const TabHeader = () => {
   const [pressed] = useGamepad();
@@ -36,7 +36,7 @@ const TabHeader = () => {
       <MiddleTabs>
         {tabPath.map((tab, i) => (
           <TabsItem selected={selected === i}>
-            <Icons type={tab as IconsProps['type']} size={12} />
+            <Icons type={tab as IconsProps['type']} size={13} />
             <TabsItemLabel>{tab}</TabsItemLabel>
           </TabsItem>
         ))}

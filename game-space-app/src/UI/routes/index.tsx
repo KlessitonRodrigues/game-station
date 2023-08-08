@@ -7,6 +7,7 @@ import { ThemeProvider } from 'styled-components';
 
 import DynamicBg from '../base/DynamicBg';
 import TabHeader from '../components/TabHeader';
+import ControlsPage from '../pages/ControlsPage';
 import GamesPage from '../pages/GamesPage';
 import SettingsPage from '../pages/SettingsPage';
 import ThemePage from '../pages/ThemePage';
@@ -27,6 +28,7 @@ const Router = () => {
         <Route path="home/midia" element={<GamesPage />} />
         <Route path="home/web" element={<GamesPage />} />
         <Route path="home/theme" element={<ThemePage />} />
+        <Route path="home/controls" element={<ControlsPage />} />
         <Route path="home/settings" element={<SettingsPage />} />
       </Routes>
       <DynamicBg gradient={global.gradientBg} zIndex={-2} />

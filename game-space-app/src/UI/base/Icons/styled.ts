@@ -1,8 +1,8 @@
 import styled, { css } from 'styled-components';
 
-export const Container = styled.div<{ size: number }>(({ theme, size }) => {
+export const Container = styled.span<{ size: number }>(({ theme, size }) => {
   return css`
-    display: block;
+    display: inline-flex;
     font-size: ${theme.size(size || 8)};
   `;
 });

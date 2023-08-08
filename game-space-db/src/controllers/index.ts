@@ -7,7 +7,7 @@ import { updateGameInfo } from './games/Update';
 import { readSettings } from './settings/Read';
 import { updateSettings } from './settings/Update';
 
-export const controllers = (config: DBConfig): DBControllers => ({
+export const controllers = (config: LocalDB.Config): LocalDB.Methods => ({
   games: {
     create: createGameInfo(config),
     read: readGameInfo(config),

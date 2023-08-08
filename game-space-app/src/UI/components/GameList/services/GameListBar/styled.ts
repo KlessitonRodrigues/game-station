@@ -32,7 +32,7 @@ export const Cover = styled.div<{ img: string }>(({ theme, img }) => {
     background-image: url(${img});
     background-repeat: no-repeat;
     background-size: 100% 100%;
-    transition: 0.2s;
+    transition: 0.3s;
     font-size: ${theme.size(20)};
     ${img && 'color: transparent;'}
   `;
@@ -90,7 +90,7 @@ export const CoverListItem = styled.div<{ selected: number; img: string }>(
       background-repeat: no-repeat;
       background-size: 100% 100%;
       font-size: ${theme.size(10)};
-      transition: 0.3s;
+      transition: 0.2s;
       ${img && 'color: transparent;'}
 
       :nth-child(-n + ${selected + 1}) {
