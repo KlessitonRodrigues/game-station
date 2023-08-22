@@ -4,14 +4,14 @@ export const testEnviroment = () => {
 };
 */
 
-const TestData = (): DBData => ({
+const TestData = (): LocalDB.Data => ({
   updatedAt: '',
   games: [],
   settings: { bgOption: '', fullscreen: false },
 });
 
-export const testConfig = (): DBConfig => {
-  let virtualStorage: DBData = TestData();
+export const testConfig = (): LocalDB.Config => {
+  let virtualStorage: LocalDB.Data = TestData();
   return {
     readDB: () => virtualStorage,
     saveDB: data => {

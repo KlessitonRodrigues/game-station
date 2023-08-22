@@ -12,7 +12,7 @@ import { Container } from './styled';
 
 const NewGameForm = () => {
   const [pressed] = useGamepad();
-  const [form, setForm] = useState<GameInfo>(initialState);
+  const [form, setForm] = useState<Models.GameInfo>(initialState);
   const [active, setActive] = useState(0);
   const isActive = (n: number) => n === active;
 

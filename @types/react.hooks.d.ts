@@ -31,7 +31,7 @@ type SendDataContext = [SendDataState, React.Dispatch<React.SetStateAction<SendD
 // useLangContext
 type LangState = {
   type: 'en' | 'pt';
-  text: LangContent;
+  text: Language.Content;
 };
 
 type LangContext = [LangState, React.Dispatch<React.SetStateAction<LangState>>];

@@ -6,63 +6,31 @@ declare namespace LocalDB {
 
   type Data = {
     updatedAt: string;
-    settings: SettingsInfo;
-    games: GameInfo[];
+    settings: Models.SettingsInfo;
+    games: Models.GameInfo[];
   };
 
-  type Methods = {
-    games: {
-      read: () => Data['games'];
-      create: (args: CreateGame) => Data;
-      update: (args: UpdateGame) => Data;
-      dalete: (args: DeleteGame) => Data;
-    };
-    settings: {
-      read: () => SettingsInfo;
-      update: (args: UpdateSettings) => Data;
-    };
-    data: {
-      initialData: () => void;
-      testData: () => void;
-    };
+  type API = {
+    games: GameAPI;
+    settings: SettingsAPI;
+    data: DataAPI;
   };
 
-  // Data Types
-
-  type SettingsInfo = {
-    fullscreen: boolean;
-    bgOption: string;
+  // API Methods
+  type GameAPI = {
+    read: () => Data['games'];
+    create: (args: { gameInfo: Models.GameInfo }) => Data;
+    update: (args: { gameInfo: Partial<Models.GameInfo> }) => Data;
+    remove: (args: { name: string }) => Data;
   };
 
-  type GameInfo = {
-    name: string;
-    description: string;
-    publisher: string;
-    cover: string;
-    background: string;
-    addedAt: string;
-    hidden: boolean;
-    year: string;
-    rate: string;
-    folder: string;
-    execultableName: string;
+  type SettingsAPI = {
+    read: () => Models.SettingsInfo;
+    update: (args: { settings: Partial<Models.SettingsInfo> }) => Data;
   };
 
-  // Method Args Types
-
-  type CreateGame = {
-    gameInfo: GameInfo;
-  };
-
-  type UpdateGame = {
-    gameInfo: Partial<GameInfo>;
-  };
-
-  type DeleteGame = {
-    name: string;
-  };
-
-  type UpdateSettings = {
-    settings: Partial<SettingsInfo>;
+  type DataAPI = {
+    initialData: () => void;
+    testData: () => void;
   };
 }

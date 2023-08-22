@@ -1,4 +1,4 @@
-const testingGames: GameInfo[] = [
+export const testingGames: Models.GameInfo[] = [
   {
     name: 'Forza Horizon 4',
     publisher: 'Playground Games',
@@ -46,14 +46,7 @@ const testingGames: GameInfo[] = [
   },
 ];
 
-const testingSettings: SettingsInfo = {
+export const testingSettings: Models.SettingsInfo = {
   bgOption: 'linear-gradient(150deg,#00b8d4,#c51162 80%);',
   fullscreen: false,
-};
-
-export const testData = (config: DBConfig) => () => {
-  const db = config.readDB();
-  db.games = testingGames;
-  db.settings = testingSettings;
-  return config.saveDB(db);
 };

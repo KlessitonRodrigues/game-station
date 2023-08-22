@@ -1,4 +1,4 @@
-export const initialState: GameInfo = {
+export const initialState: Models.GameInfo = {
   name: '',
   description: '',
   cover: '',

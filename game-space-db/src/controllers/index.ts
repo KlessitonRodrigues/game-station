@@ -1,25 +1,9 @@
-import { initialData } from './data/initialData';
-import { testData } from './data/testData';
-import { createGameInfo } from './games/Create';
-import { deleteGameInfo } from './games/Delete';
-import { readGameInfo } from './games/Read';
-import { updateGameInfo } from './games/Update';
-import { readSettings } from './settings/Read';
-import { updateSettings } from './settings/Update';
+import { GamesAPI } from './gamesAPI';
+import { SettingsAPI } from './settingsAPI';
+import { DataAPI } from './dataAPI';
 
-export const controllers = (config: LocalDB.Config): LocalDB.Methods => ({
-  games: {
-    create: createGameInfo(config),
-    read: readGameInfo(config),
-    dalete: deleteGameInfo(config),
-    update: updateGameInfo(config),
-  },
-  settings: {
-    read: readSettings(config),
-    update: updateSettings(config),
-  },
-  data: {
-    initialData: initialData(config),
-    testData: testData(config),
-  },
+export const controllers = (config: LocalDB.Config): LocalDB.API => ({
+  games: GamesAPI(config),
+  settings: SettingsAPI(config),
+  data: DataAPI(config),
 });
