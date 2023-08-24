@@ -1,17 +1,16 @@
 // @ts-ignore
-import initDB from 'game-station-db';
+import localDB from 'app-db';
 
-const dbName = 'game-station';
+const dbName = 'console_ui_db';
 
-const dbConfig: LocalDB.Config = {
+export const dbClient: LocalDB.API = localDB({
   readDB: (): LocalDB.Data => {
     return JSON.parse(window.localStorage.getItem(dbName) || '{}') as LocalDB.Data;
   },
+
   saveDB: (data: LocalDB.Data) => {
     data.updatedAt = new Date().toISOString();
     window.localStorage.setItem(dbName, JSON.stringify(data));
     return data;
   },
-};
-
-export const dbClient: LocalDB.Methods = initDB(dbConfig);
+});
