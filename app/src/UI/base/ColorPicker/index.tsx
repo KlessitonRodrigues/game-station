@@ -7,7 +7,7 @@ import { ColorItem, Row } from './styled';
 
 const colors = Object.values(bgGradientList);
 
-const ColorPicker = (props: Props.ColorPicker) => {
+const ColorPicker = (props: App.Props.ColorPicker) => {
   const { active, value, onChange } = props;
   const [pressed] = useGamepad();
   const [selected, setSelected] = useState(0);

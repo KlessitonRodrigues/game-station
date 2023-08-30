@@ -1,3 +1,3 @@
-const If = (props: Props.If) => (props.check ? props.true || props.children : props.false);
+const If = (props: App.Props.If) => (props.check ? props.true || props.children : props.false);
 
 export default If;

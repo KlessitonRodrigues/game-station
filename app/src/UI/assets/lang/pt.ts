@@ -1,4 +1,4 @@
-export const ptLang: Language.Content = {
+export const ptLang: App.Language.Content = {
   app_startGameBtn: 'Iniciar',
   app_gameDetailsBtn: 'Detalhes',
   tab_games: 'Jogos',

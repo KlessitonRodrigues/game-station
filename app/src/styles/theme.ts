@@ -1,7 +1,7 @@
 import { atlassianColors, materialColors } from './lib/palettes';
 import screenSizes from './lib/screenSizes';
 
-export const defaultTheme: Theme = {
+export const defaultTheme: App.Theme = {
   size: (n: number) => `${n * 0.2}rem`,
   colors: {
     main: materialColors.lightBlue['600'],

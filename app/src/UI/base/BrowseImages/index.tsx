@@ -5,7 +5,7 @@ import Icons from '../Icons';
 import { fetchImages } from './services/fetchImages';
 import { Container, Image, ImageBox, SlideBox } from './styled';
 
-export const BrowseImages = (props: Props.BrowseImages) => {
+export const BrowseImages = (props: App.Props.BrowseImages) => {
   const { query, active, sufix, onChange } = props;
   const [pressed] = useGamepad();
   const [imageLinks, setImageLinks] = useState({ lastQuery: '', urls: [''] });

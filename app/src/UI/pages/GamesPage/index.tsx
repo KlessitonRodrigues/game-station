@@ -7,7 +7,7 @@ import useGamepad from 'src/hooks/useGamepad';
 
 const GamesPage = () => {
   const [pressed] = useGamepad();
-  const [screen, setScreen] = useState<'list' | 'grid' | 'add'>('add');
+  const [screen, setScreen] = useState('list');
 
   useEffect(() => {
     if (pressed.includes('ButtonY')) screen === 'list' ? setScreen('add') : setScreen('list');

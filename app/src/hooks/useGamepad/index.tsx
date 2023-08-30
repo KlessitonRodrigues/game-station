@@ -2,7 +2,7 @@ import { PropsWithChildren, createContext, useContext, useEffect, useState } fro
 
 import { onConnected, onDisconnected } from './services/gamepad';
 
-const globalContext = createContext<GamepadContext>([[], () => {}]);
+const globalContext = createContext<App.Hooks.GamepadContext>([[], () => {}]);
 
 export const GamepadProvider = (props: PropsWithChildren) => {
   const state = useState([]);

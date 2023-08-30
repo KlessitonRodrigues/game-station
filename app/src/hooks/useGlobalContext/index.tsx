@@ -2,7 +2,7 @@ import { PropsWithChildren, createContext, useContext, useState } from 'react';
 
 import { initialGlobalState } from './state';
 
-const globalContext = createContext<GlobalContext>([initialGlobalState, () => {}]);
+const globalContext = createContext<App.Hooks.GlobalContext>([initialGlobalState, () => {}]);
 
 export const GlobalProvider = (props: PropsWithChildren) => (
   <globalContext.Provider value={useState(initialGlobalState)}>

@@ -36,7 +36,7 @@ const TabHeader = () => {
       <MiddleTabs>
         {tabPath.map((tab, i) => (
           <TabsItem selected={selected === i}>
-            <Icons type={tab as Props.Icons['type']} size={13} />
+            <Icons type={tab as App.Props.Icons['type']} size={13} />
             <TabsItemLabel>{tab}</TabsItemLabel>
           </TabsItem>
         ))}

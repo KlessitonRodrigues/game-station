@@ -1,10 +1,10 @@
 import { xboxButtonsId } from './gamepadButtons';
 
-const buttonLoop = (gamepadIndex: number, onPress: GamepadTypes.OnButtomPressed) => {
+const buttonLoop = (gamepadIndex: number, onPress: App.Gamepad.OnButtomPressed) => {
   const lastUpdate = { time: 0, buttons: [''] };
   return setInterval(() => {
     const { timestamp, axes, buttons } = navigator.getGamepads()[gamepadIndex];
-    const pressedButtons: GamepadTypes.Buttons[] = [];
+    const pressedButtons: App.Gamepad.Buttons[] = [];
 
     if (timestamp === lastUpdate.time) return (lastUpdate.time = timestamp);
     else lastUpdate.time = timestamp;
@@ -33,7 +33,7 @@ const buttonLoop = (gamepadIndex: number, onPress: GamepadTypes.OnButtomPressed)
 
 const buttonLoopInterval: NodeJS.Timer[] = [];
 
-export const onConnected = (ev: GamepadEvent, onPress: GamepadTypes.OnButtomPressed) => {
+export const onConnected = (ev: GamepadEvent, onPress: App.Gamepad.OnButtomPressed) => {
   console.log('Connected', ev.gamepad.id);
   buttonLoopInterval.push(buttonLoop(ev.gamepad.index, onPress));
 };

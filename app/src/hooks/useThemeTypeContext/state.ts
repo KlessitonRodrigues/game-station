@@ -1,4 +1,4 @@
-export const initialThemeState: ThemeTypeState = {
+export const initialThemeState: App.Hooks.ThemeTypeState = {
   mainColor: null,
   darkTheme: false,
 };

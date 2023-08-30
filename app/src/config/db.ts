@@ -3,12 +3,12 @@ import localDB from 'app-db';
 
 const dbName = 'console_ui_db';
 
-export const dbClient: LocalDB.API = localDB({
-  readDB: (): LocalDB.Data => {
-    return JSON.parse(window.localStorage.getItem(dbName) || '{}') as LocalDB.Data;
+export const dbClient: AppDB.API.Methods = localDB({
+  readDB: (): AppDB.API.Data => {
+    return JSON.parse(window.localStorage.getItem(dbName) || '{}') as AppDB.API.Data;
   },
 
-  saveDB: (data: LocalDB.Data) => {
+  saveDB: (data: AppDB.API.Data) => {
     data.updatedAt = new Date().toISOString();
     window.localStorage.setItem(dbName, JSON.stringify(data));
     return data;
