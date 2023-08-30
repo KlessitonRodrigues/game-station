@@ -5,7 +5,7 @@ import { bgGradientList } from '../../../utils/gradient';
 import Icons from '../Icons';
 import { ColorItem, Row } from './styled';
 
-const colors = Object.values(bgGradientList);
+const colors = Object.values<string>(bgGradientList) as App.Utils.GradientBgOptions[];
 
 const ColorPicker = (props: App.Props.ColorPicker) => {
   const { active, value, onChange } = props;

@@ -68,13 +68,13 @@ declare namespace App {
     };
 
     type MappedGamepad = {
-      pressed: App.Gamepad.ButtonMap[];
+      pressed: App.Gamepad.Buttons[];
     };
 
     type ColorPicker = {
       active?: boolean;
       value?: string;
-      onChange?: (color: string) => void;
+      onChange?: (color: Utils.GradientBgOptions) => void;
     };
 
     type DynamicBg = {

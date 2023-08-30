@@ -2,7 +2,7 @@ declare namespace AppDB {
   namespace Models {
     type SettingsInfo = {
       fullscreen: boolean;
-      bgOption: string;
+      bgOption: App.Utils.GradientBgOptions;
     };
 
     type GameInfo = {
