@@ -1,0 +1,15 @@
+export const ptLang: App.Language.Content = {
+  app_startGameBtn: 'Iniciar',
+  app_gameDetailsBtn: 'Detalhes',
+  tab_games: 'Jogos',
+  tab_apps: 'Aplicativos',
+  tab_web: 'Navegador',
+  tab_theme: 'Tema',
+  tab_settings: 'Configurações',
+  tab_controller: 'Controles',
+  addGame_nameInput: 'Nome',
+  addGame_publishInput: 'Publicadora',
+  addGame_coverImage: 'Imagen de capa',
+  addGame_bgImage: 'Imagen de fundo',
+  addGame_addGameBtn: 'Salvar',
+};
