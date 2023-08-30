@@ -1,36 +1,34 @@
-type GamepadButtons =
-  | 'LeftStick'
-  | 'LeftStickUp'
-  | 'LeftStickDown'
-  | 'LeftStickLeft'
-  | 'LeftStickRight'
-  | 'RightStick'
-  | 'RightStickUp'
-  | 'RightStickDown'
-  | 'RightStickLeft'
-  | 'RightStickRight'
-  | 'TriggerLeft'
-  | 'TriggerRight'
-  | 'ButtonLeft'
-  | 'ButtonRight'
-  | 'ButtonA'
-  | 'ButtonB'
-  | 'ButtonX'
-  | 'ButtonY'
-  | 'ArrowUp'
-  | 'ArrowDown'
-  | 'ArrowLeft'
-  | 'ArrowRight'
-  | 'ButtonStart'
-  | 'ButtonSelect'
-  | 'ButtonHome';
+declare namespace GamepadTypes {
+  type Buttons =
+    | 'LeftStick'
+    | 'LeftStickUp'
+    | 'LeftStickDown'
+    | 'LeftStickLeft'
+    | 'LeftStickRight'
+    | 'RightStick'
+    | 'RightStickUp'
+    | 'RightStickDown'
+    | 'RightStickLeft'
+    | 'RightStickRight'
+    | 'TriggerLeft'
+    | 'TriggerRight'
+    | 'ButtonLeft'
+    | 'ButtonRight'
+    | 'ButtonA'
+    | 'ButtonB'
+    | 'ButtonX'
+    | 'ButtonY'
+    | 'ArrowUp'
+    | 'ArrowDown'
+    | 'ArrowLeft'
+    | 'ArrowRight'
+    | 'ButtonStart'
+    | 'ButtonSelect'
+    | 'ButtonHome';
 
-type GamepadMap = Record<string, GamepadButtons>;
+  type GamepadMap = Record<string, Buttons>;
 
-type OnButtomPressed = (buttons: GamepadButtons[]) => void;
+  type OnButtomPressed = (buttons: Buttons[]) => void;
 
-type GamepadConnected = {};
-
-type GamepadDisconnected = {};
-
-type ButtonMap = Partial<Record<GamepadButtons, () => void>>;
+  type ButtonMap = Partial<Record<Buttons, () => void>>;
+}

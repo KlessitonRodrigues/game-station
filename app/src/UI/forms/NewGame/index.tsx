@@ -53,11 +53,11 @@ const NewGameForm = () => {
             onChange={background => setForm({ ...form, background })}
           />
         </Panel>
-        <Panel active={isActive(4)} title="Location" value={form.folder + form.execultableName}>
+        <Panel active={isActive(4)} title="Location" value={form.gamePath + form.gameFile}>
           <BrowseFolders
             active={isActive(4)}
             path="/"
-            onChange={(folder, execultableName) => setForm({ ...form, folder, execultableName })}
+            onChange={(gamePath, gameFile) => setForm({ ...form, gamePath, gameFile })}
           />
         </Panel>
       </Container>

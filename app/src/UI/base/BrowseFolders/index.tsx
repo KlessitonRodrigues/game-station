@@ -5,7 +5,7 @@ import { nodeJS } from 'src/utils/nodeJS';
 
 import { BrowserTitle, Container, File, FileName, Files } from './styled';
 
-export const BrowseFolders = (props: BrowseFoldersProps) => {
+export const BrowseFolders = (props: Props.BrowseFolders) => {
   const { path, active, onChange } = props;
   const [pressed] = useGamepad();
   const [dir, setDir] = useState({ path, selected: 0 });

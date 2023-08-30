@@ -14,7 +14,7 @@ declare namespace Models {
     hidden: boolean;
     year: string;
     rate: string;
-    folder: string;
-    execultableName: string;
+    gamePath: string;
+    gameFile: string;
   };
 }

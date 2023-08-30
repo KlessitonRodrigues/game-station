@@ -27,7 +27,7 @@ export const GameListBar = () => {
     if (pressed.includes('ArrowLeft')) selected > 0 && setSelected(selected - 1);
     if (pressed.includes('ArrowRight')) selected < games.length - 1 && setSelected(selected + 1);
     if (pressed.includes('ButtonStart'))
-      nodeJS.exec(`cd ${currentGame.folder} && ./${currentGame.execultableName}`);
+      nodeJS.exec(`cd ${currentGame.gamePath} && ./${currentGame.gameFile}`);
   }, [pressed]);
 
   return (

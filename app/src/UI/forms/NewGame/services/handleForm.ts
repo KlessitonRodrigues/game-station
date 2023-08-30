@@ -8,6 +8,6 @@ export const initialState: Models.GameInfo = {
   addedAt: '',
   year: '2023',
   hidden: false,
-  execultableName: '',
-  folder: '',
+  gamePath: '',
+  gameFile: '',
 };

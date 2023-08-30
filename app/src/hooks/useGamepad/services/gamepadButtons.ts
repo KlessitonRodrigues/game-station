@@ -1,4 +1,4 @@
-export const xboxButtonsId: GamepadMap = {
+export const xboxButtonsId: GamepadTypes.GamepadMap = {
   axis0Pos: 'LeftStickRight',
   axis0Neg: 'LeftStickLeft',
   axis1Pos: 'LeftStickDown',

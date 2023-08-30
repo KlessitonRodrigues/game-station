@@ -7,7 +7,7 @@ type PathContext = [PathState, React.Dispatch<React.SetStateAction<PathState>>];
 
 // useGlobalContext
 type GlobalState = {
-  gradientBg: string;
+  gradientBg: GradientBgOptions;
 };
 
 type GlobalContext = [GlobalState, React.Dispatch<React.SetStateAction<GlobalState>>];
@@ -37,4 +37,7 @@ type LangState = {
 type LangContext = [LangState, React.Dispatch<React.SetStateAction<LangState>>];
 
 // useGamepadContext
-type GamepadContext = [GamepadButtons[], React.Dispatch<React.SetStateAction<GamepadButtons[]>>];
+type GamepadContext = [
+  GamepadTypes.Buttons[],
+  React.Dispatch<React.SetStateAction<GamepadTypes.Buttons[]>>
+];

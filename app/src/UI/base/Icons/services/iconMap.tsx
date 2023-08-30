@@ -19,7 +19,7 @@ import {
   RiUser2Fill,
 } from 'react-icons/ri';
 
-export const iconMap: Record<IconsProps['type'], React.ReactElement> = {
+export const iconMap: Record<Props.Icons['type'], React.ReactElement> = {
   games: <RiGameFill />,
   apps: <RiApps2Fill />,
   music: <RiMusic2Fill />,

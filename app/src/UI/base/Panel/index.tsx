@@ -1,6 +1,6 @@
 import { Container, Content, Header, Title, Value } from './styled';
 
-const Panel = (props: PanelProps) => {
+const Panel = (props: Props.Panel) => {
   const { active, title, value, children } = props;
 
   return (

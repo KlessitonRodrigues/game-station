@@ -59,3 +59,17 @@ type Theme = {
     desktopL: string;
   };
 };
+
+type GradientBgOptions =
+  | 'indigo'
+  | 'blue'
+  | 'green'
+  | 'deepPurple'
+  | 'purple'
+  | 'pink'
+  | 'red'
+  | 'blueAndPurple'
+  | 'blueAndPink'
+  | 'greenAndPink'
+  | 'blueAndBrown'
+  | 'purpleAndGreen';

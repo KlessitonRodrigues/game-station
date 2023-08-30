@@ -1,17 +1,17 @@
-import { testingGames, testingSettings } from './services/demoData';
+import { testingGames, settingsData } from './services/demoData';
 
 export const DataAPI = (config: LocalDB.Config): LocalDB.DataAPI => {
   const initialData: LocalDB.DataAPI['initialData'] = () => {
     const db = config.readDB();
     db.games = [];
-    db.settings = testingSettings;
+    db.settings = settingsData;
     return config.saveDB(db);
   };
 
   const testData: LocalDB.DataAPI['testData'] = () => {
     const db = config.readDB();
-    db.games = testingGames;
-    db.settings = testingSettings;
+    if (!db.games?.length) db.games = testingGames;
+    db.settings = settingsData;
     return config.saveDB(db);
   };
 

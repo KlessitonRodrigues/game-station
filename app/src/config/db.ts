@@ -14,3 +14,5 @@ export const dbClient: LocalDB.API = localDB({
     return data;
   },
 });
+
+dbClient.data.testData();

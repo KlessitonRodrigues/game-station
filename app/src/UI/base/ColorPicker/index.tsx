@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react';
 import useGamepad from 'src/hooks/useGamepad';
 
+import { bgGradientList } from '../../../utils/gradient';
 import Icons from '../Icons';
-import { sigleColor } from './services/gradient';
 import { ColorItem, Row } from './styled';
 
-const colors = Object.values(sigleColor);
+const colors = Object.values(bgGradientList);
 
-const ColorPicker = (props: ColorPickerProps) => {
+const ColorPicker = (props: Props.ColorPicker) => {
   const { active, value, onChange } = props;
   const [pressed] = useGamepad();
   const [selected, setSelected] = useState(0);

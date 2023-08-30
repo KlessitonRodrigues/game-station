@@ -8,8 +8,8 @@ export const gameInfoObj = (): Models.GameInfo => ({
   addedAt: 'added-at-timer',
   rate: 'game-rate',
   hidden: false,
-  execultableName: '',
-  folder: '',
+  gameFile: '',
+  gamePath: '',
 });
 
 export const settingsInfoObj = (): Models.SettingsInfo => ({

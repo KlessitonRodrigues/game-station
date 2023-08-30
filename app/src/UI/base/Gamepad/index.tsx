@@ -3,7 +3,7 @@ import { useTheme } from 'styled-components';
 
 import { Container } from './styled';
 
-const GamepadIcon = (props: MappedGamepadProps) => {
+const GamepadIcon = (props: Props.MappedGamepad) => {
   const { pressed } = props;
   const theme = useTheme();
   const colors = {
@@ -12,7 +12,7 @@ const GamepadIcon = (props: MappedGamepadProps) => {
     pressed: theme.colors.main,
   };
 
-  const getButtonColor = (btn: GamepadButtons) => {
+  const getButtonColor = (btn: GamepadTypes.GamepadButtons) => {
     return pressed.includes(btn) ? colors.pressed : colors.button;
   };
 

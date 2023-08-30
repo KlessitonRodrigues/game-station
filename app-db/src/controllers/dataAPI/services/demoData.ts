@@ -9,6 +9,8 @@ export const testingGames: Models.GameInfo[] = [
     hidden: false,
     rate: '',
     year: '',
+    gameFile: '',
+    gamePath: '',
   },
   {
     name: 'The elder scrolls V: Skyrim',
@@ -21,6 +23,8 @@ export const testingGames: Models.GameInfo[] = [
     hidden: false,
     rate: '',
     year: '',
+    gameFile: '',
+    gamePath: '',
   },
   {
     name: 'Follout 4',
@@ -32,6 +36,8 @@ export const testingGames: Models.GameInfo[] = [
     hidden: false,
     rate: '',
     year: '',
+    gameFile: '',
+    gamePath: '',
   },
   {
     name: 'Terraria',
@@ -43,10 +49,12 @@ export const testingGames: Models.GameInfo[] = [
     hidden: false,
     rate: '',
     year: '',
+    gameFile: '',
+    gamePath: '',
   },
 ];
 
-export const testingSettings: Models.SettingsInfo = {
-  bgOption: 'linear-gradient(150deg,#00b8d4,#c51162 80%);',
+export const settingsData: Models.SettingsInfo = {
+  bgOption: 'red',
   fullscreen: false,
 };
