@@ -1,6 +1,6 @@
 import { controllers } from './controllers';
 
-const clientInit = (config: LocalDB.Config) => {
+const clientInit = (config: AppDB.API.Config) => {
   return controllers(config);
 };
 

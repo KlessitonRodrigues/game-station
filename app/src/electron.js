@@ -1,7 +1,7 @@
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, globalShortcut } = require('electron');
 require('electron-reload')('./dist');
 
-const createWindow = () => {
+app.whenReady().then(() => {
   const win = new BrowserWindow({
     width: 800,
     height: 600,
@@ -14,8 +14,12 @@ const createWindow = () => {
   win.loadFile('../dist/index.html');
   win.setFullScreen(true);
   win.webContents.openDevTools();
-};
 
-app.whenReady().then(() => {
-  createWindow();
+  const ret = globalShortcut.register('Control+f6', () => {
+    console.log('CommandOrControl+f6 is pressed');
+  });
+
+  if (!ret) {
+    console.log('registration failed');
+  }
 });

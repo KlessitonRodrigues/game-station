@@ -1,28 +1,28 @@
 import { useEffect, useState } from 'react';
 import useGamepad from 'src/hooks/useGamepad';
 
-import { bgGradientList } from '../../../utils/gradient';
+import { bgGradientList } from '../../../utils/constants/gradient';
 import Icons from '../Icons';
 import { ColorItem, Row } from './styled';
 
-const colors = Object.values<string>(bgGradientList) as App.Utils.GradientBgOptions[];
+const colors = Object.keys(bgGradientList) as App.Utils.GradientBgOptions[];
 
 const ColorPicker = (props: App.Props.ColorPicker) => {
   const { active, value, onChange } = props;
-  const [pressed] = useGamepad();
+  const onPressed = useGamepad();
   const [selected, setSelected] = useState(0);
 
   useEffect(() => {
     if (!active) return undefined;
-    if (pressed.includes('ArrowLeft')) selected > 0 && setSelected(selected - 1);
-    if (pressed.includes('ArrowRight')) selected < 9 && setSelected(selected + 1);
-    if (pressed.includes('ButtonA')) onChange(colors[selected]);
-  }, [pressed]);
+    onPressed('ArrowLeft', () => selected > 0 && setSelected(selected - 1));
+    onPressed('ArrowRight', () => selected < 11 && setSelected(selected + 1));
+    onPressed('ButtonA', () => onChange(colors[selected]));
+  }, [onPressed]);
 
   return (
     <Row>
       {active && <Icons type="arrow-left" size={12} />}
-      {colors.map((color, i) => {
+      {Object.values(bgGradientList).map((color, i) => {
         return <ColorItem key={color} selected={selected === i} bg={color} />;
       })}
       {active && <Icons type="arrow-right" size={12} />}

@@ -38,9 +38,14 @@ declare namespace App {
     type LangContext = [LangState, React.Dispatch<React.SetStateAction<LangState>>];
 
     // useGamepadContext
-    type GamepadContext = [
-      App.Gamepad.Buttons[],
-      React.Dispatch<React.SetStateAction<App.Gamepad.Buttons[]>>
-    ];
+    type GamepadContext = Gamepad.OnPressed;
+
+    // useUIState
+    type UseUIState = {
+      active: boolean;
+      focus: number;
+      option: number;
+      setUI: (key: 'active' | 'focus' | 'option', value: boolean | number) => void;
+    };
   }
 }

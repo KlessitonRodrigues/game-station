@@ -2,26 +2,29 @@ import { useEffect, useState } from 'react';
 import useGamepad from 'src/hooks/useGamepad';
 
 import Icons from '../Icons';
-import { fetchImages } from './services/fetchImages';
+import { fetchImages } from '../InputModal/services/ImageInput/services/fetchImages';
 import { Container, Image, ImageBox, SlideBox } from './styled';
 
 export const BrowseImages = (props: App.Props.BrowseImages) => {
   const { query, active, sufix, onChange } = props;
-  const [pressed] = useGamepad();
+  const onPressed = useGamepad();
   const [imageLinks, setImageLinks] = useState({ lastQuery: '', urls: [''] });
   const [selected, setSelected] = useState(0);
 
   useEffect(() => {
     if (active) {
-      if (pressed.includes('ArrowLeft') && selected > 0) setSelected(selected - 1);
-      if (pressed.includes('ArrowRight') && selected < imageLinks.urls.length)
-        setSelected(selected + 1);
+      onPressed('ArrowLeft', () => {
+        selected > 0 && setSelected(selected - 1);
+      });
+      onPressed('ButtonLeft', () => {
+        selected < imageLinks.urls.length && setSelected(selected + 1);
+      });
     }
-  }, [pressed]);
+  }, [onPressed]);
 
   useEffect(() => {
     if (active && query.length >= 3 && query !== imageLinks.lastQuery)
-      fetchImages(query, sufix)
+      fetchImages(query)
         .then(urls => setImageLinks({ lastQuery: query, urls }))
         .catch(console.error);
   }, [active, query]);

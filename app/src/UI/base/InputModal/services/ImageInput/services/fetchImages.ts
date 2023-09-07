@@ -1,7 +1,7 @@
-import { nodeJS } from 'src/utils/nodeJS';
+import { nodeJS } from 'src/utils/electron/nodeJS';
 
-export const fetchImages = async (search: string, sufix: string) => {
-  const searchQuery = `${search.toLowerCase()} ${sufix}`;
+export const fetchImages = async (search: string) => {
+  const searchQuery = `${search.toLowerCase()}`;
   return await fetchUrls(searchQuery);
 };
 

@@ -64,7 +64,9 @@ declare namespace App {
         | 'file'
         | 'image'
         | 'usb'
-        | 'controls';
+        | 'controls'
+        | 'edit';
+      style?: React.CSSProperties;
     };
 
     type MappedGamepad = {
@@ -101,6 +103,14 @@ declare namespace App {
       title: string;
       value: string;
       children?: React.ReactElement;
+    };
+
+    type InputModal = {
+      type: 'text' | 'img' | 'file' | 'color';
+      active: boolean;
+      title: string;
+      value: string;
+      onChange: (value: string) => void;
     };
   }
 }

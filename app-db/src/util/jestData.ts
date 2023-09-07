@@ -1,4 +1,4 @@
-export const gameInfoObj = (): Models.GameInfo => ({
+export const gameInfoObj = (): AppDB.Models.GameInfo => ({
   name: 'game-name',
   publisher: 'publisher-name',
   year: 'game-year',
@@ -12,7 +12,7 @@ export const gameInfoObj = (): Models.GameInfo => ({
   gamePath: '',
 });
 
-export const settingsInfoObj = (): Models.SettingsInfo => ({
-  bgOption: '',
+export const settingsInfoObj = (): AppDB.Models.SettingsInfo => ({
+  bgOption: 'red',
   fullscreen: false,
 });

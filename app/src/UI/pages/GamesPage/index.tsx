@@ -6,12 +6,12 @@ import NewGameForm from 'src/UI/forms/NewGame';
 import useGamepad from 'src/hooks/useGamepad';
 
 const GamesPage = () => {
-  const [pressed] = useGamepad();
-  const [screen, setScreen] = useState('list');
+  const onPressed = useGamepad();
+  const [screen, setScreen] = useState<App.Utils.GamePageScreens>('add');
 
   useEffect(() => {
-    if (pressed.includes('ButtonY')) screen === 'list' ? setScreen('add') : setScreen('list');
-  }, [pressed]);
+    onPressed('ButtonY', () => (screen === 'list' ? setScreen('add') : setScreen('list')));
+  }, [onPressed]);
 
   return (
     <PageContainer>

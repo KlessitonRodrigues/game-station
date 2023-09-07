@@ -3,7 +3,7 @@ import useGlobalContext from 'src/hooks/useGlobalContext';
 import usePath from 'src/hooks/usePath';
 import GlobalCSS from 'src/styles/globalCSS';
 import { defaultTheme } from 'src/styles/theme';
-import { bgGradientList } from 'src/utils/gradient';
+import { bgGradientList } from 'src/utils/constants/gradient';
 import { ThemeProvider } from 'styled-components';
 
 import DynamicBg from '../base/DynamicBg';

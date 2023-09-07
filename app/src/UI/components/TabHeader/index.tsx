@@ -8,24 +8,16 @@ import { Container, LeftIcons, MiddleTabs, RightIcons, TabsItem, TabsItemLabel }
 const tabPath = ['games', 'apps', 'music', 'midia', 'web', 'theme', 'controls', 'settings'];
 
 const TabHeader = () => {
-  const [pressed] = useGamepad();
+  const onPressed = useGamepad();
   const [path, setPath] = usePath();
-  const [selected, setSelected] = useState(0);
+  const [active, setActive] = useState(0);
 
   useEffect(() => {
-    if (pressed.length === 1) {
-      if (pressed.includes('ButtonLeft') && selected > 0) {
-        setSelected(selected - 1);
-      }
-      if (pressed.includes('ButtonRight') && selected < tabPath.length - 1) {
-        setSelected(selected + 1);
-      }
-    }
-  }, [pressed]);
+    onPressed('ButtonLeft', () => active > 0 && setActive(active - 1));
+    onPressed('ButtonRight', () => active < tabPath.length - 1 && setActive(active + 1));
+  }, [onPressed]);
 
-  useEffect(() => {
-    setPath({ path: ['home', tabPath[selected]] });
-  }, [selected]);
+  useEffect(() => setPath({ path: ['home', tabPath[active]] }), [active]);
 
   return (
     <Container>
@@ -35,7 +27,7 @@ const TabHeader = () => {
 
       <MiddleTabs>
         {tabPath.map((tab, i) => (
-          <TabsItem selected={selected === i}>
+          <TabsItem selected={active === i}>
             <Icons type={tab as App.Props.Icons['type']} size={13} />
             <TabsItemLabel>{tab}</TabsItemLabel>
           </TabsItem>
