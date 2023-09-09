@@ -1,8 +1,11 @@
-import { Container } from './styled';
+import { Container, Effects } from './styled';
 
 const DynamicBg = (props: App.Props.DynamicBg) => {
-  const { img, gradient, zIndex } = props;
-  return <Container img={img} bg={gradient} zIndex={zIndex} />;
+  return (
+    <Container {...props}>
+      <Effects {...props} />
+    </Container>
+  );
 };
 
 export default DynamicBg;

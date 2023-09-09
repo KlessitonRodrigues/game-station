@@ -1,23 +1,27 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import If from 'src/UI/base/If';
 import PageContainer from 'src/UI/base/PageContainer';
 import GameListBar from 'src/UI/components/GameList';
-import NewGameForm from 'src/UI/forms/NewGame';
+import AddGameForm from 'src/UI/forms/AddGame';
 import useGamepad from 'src/hooks/useGamepad';
+import usePath from 'src/hooks/usePath';
 
 const GamesPage = () => {
+  const [path, setPath] = usePath();
   const onPressed = useGamepad();
-  const [screen, setScreen] = useState<App.Utils.GamePageScreens>('add');
 
   useEffect(() => {
-    onPressed('ButtonY', () => (screen === 'list' ? setScreen('add') : setScreen('list')));
+    onPressed('ButtonY', () => {
+      if (path === 'games/add') return setPath('games/list/bar');
+      setPath('games/add');
+    });
   }, [onPressed]);
 
   return (
     <PageContainer>
-      <If check={screen === 'list'} true={<GameListBar />} />
-      <If check={screen === 'grid'} true={<GameListBar />} />
-      <If check={screen === 'add'} true={<NewGameForm />} />
+      <If check={path === 'games/list/bar'} true={<GameListBar />} />
+      <If check={path === 'games/list/grid'} true={<GameListBar />} />
+      <If check={path === 'games/add'} true={<AddGameForm />} />
     </PageContainer>
   );
 };

@@ -5,8 +5,6 @@ import {
   RiArrowRightSLine,
   RiBatteryFill,
   RiEarthFill,
-  RiEdit2Line,
-  RiEditLine,
   RiFile2Line,
   RiFolderFill,
   RiGameFill,
@@ -15,6 +13,7 @@ import {
   RiMusic2Fill,
   RiNewspaperFill,
   RiPaintBrushFill,
+  RiPencilLine,
   RiSearchLine,
   RiSettings4Fill,
   RiUsbFill,
@@ -41,5 +40,5 @@ export const iconMap: Record<App.Props.Icons['type'], React.ReactElement> = {
   'arrow-right': <RiArrowRightSLine />,
   usb: <RiUsbFill />,
   controls: <IoGameControllerSharp />,
-  edit: <RiEditLine />,
+  edit: <RiPencilLine />,
 };

@@ -9,7 +9,7 @@ export const Modal = styled.div(({ theme }) => {
   return css`
     width: 100%;
     height: 100%;
-    max-height: ${theme.size(250)};
+    max-height: ${theme.size(300)};
     max-width: ${theme.size(250)};
     margin: 0 auto;
     padding: ${theme.size(4)};
@@ -26,6 +26,7 @@ export const ModalBg = styled.div(() => {
     position: fixed;
     top: 0;
     left: 0;
+    z-index: 3;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -37,8 +38,9 @@ export const ModalBg = styled.div(() => {
   `;
 });
 
-export const Title = styled.div(({ theme }) => {
+export const Title = styled.h3(({ theme }) => {
   return css`
-    font-size: ${theme.fontSize.h2};
+    font-size: ${theme.fontSize.h3};
+    font-weight: bold;
   `;
 });

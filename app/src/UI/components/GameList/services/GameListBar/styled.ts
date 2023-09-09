@@ -32,7 +32,7 @@ export const Cover = styled.div<{ img: string }>(({ theme, img }) => {
     background-image: url(${img});
     background-repeat: no-repeat;
     background-size: 100% 100%;
-    transition: 0.3s;
+    transition: 0.1s;
     font-size: ${theme.size(20)};
     ${img && 'color: transparent;'}
   `;
@@ -89,7 +89,7 @@ export const CoverListItem = styled.div<{ focus: number; img: string }>(({ theme
     background-repeat: no-repeat;
     background-size: 100% 100%;
     font-size: ${theme.size(10)};
-    transition: 0.2s;
+    transition: 0.3s;
     ${img && 'color: transparent;'}
 
     :nth-child(-n + ${focus + 1}) {

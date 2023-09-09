@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
-import ColorPicker from 'src/UI/base/ColorPicker';
 import PageContainer from 'src/UI/base/PageContainer';
-import Panel from 'src/UI/base/Panel';
+import ThemeSettingsForm from 'src/UI/forms/Theme';
 import useGamepad from 'src/hooks/useGamepad';
 import useGlobalContext from 'src/hooks/useGlobalContext';
 
@@ -18,13 +17,7 @@ const ThemePage = () => {
 
   return (
     <PageContainer>
-      <Panel active={isActive(0)} title="Background Color" value={global.gradientBg}>
-        <ColorPicker
-          active={isActive(0)}
-          value={global.gradientBg}
-          onChange={bg => setGlobal({ ...global, gradientBg: bg })}
-        />
-      </Panel>
+      <ThemeSettingsForm />
     </PageContainer>
   );
 };

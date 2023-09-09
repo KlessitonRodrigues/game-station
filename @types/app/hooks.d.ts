@@ -1,14 +1,24 @@
 declare namespace App {
   namespace Hooks {
-    type PathState = {
-      path: string[];
-    };
+    type PathState =
+      | 'games/list/bar'
+      | 'games/list/grid'
+      | 'games/add'
+      | 'apps'
+      | 'apps'
+      | 'music'
+      | 'midia'
+      | 'web'
+      | 'theme'
+      | 'controls'
+      | 'settings';
 
     type PathContext = [PathState, React.Dispatch<React.SetStateAction<PathState>>];
 
     // useGlobalContext
     type GlobalState = {
       gradientBg: Utils.GradientBgOptions;
+      imgBg: string;
     };
 
     type GlobalContext = [GlobalState, React.Dispatch<React.SetStateAction<GlobalState>>];

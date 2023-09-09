@@ -1,6 +1,6 @@
 declare namespace App {
   namespace Utils {
-    type GamePageScreens = 'list' | 'grid' | 'add';
+    type GamePageScreens = 'list' | 'grid';
     type GradientBgOptions =
       | 'indigo'
       | 'blue'

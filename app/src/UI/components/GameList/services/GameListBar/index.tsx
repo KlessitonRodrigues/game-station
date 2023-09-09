@@ -1,7 +1,7 @@
 import { useEffect, useMemo } from 'react';
-import DynamicBg from 'src/UI/base/DynamicBg';
 import { dbClient } from 'src/config/db';
 import useGamepad from 'src/hooks/useGamepad';
+import useGlobalContext from 'src/hooks/useGlobalContext';
 import useUIState from 'src/hooks/useUIState';
 import { nodeJS } from 'src/utils/electron/nodeJS';
 
@@ -18,10 +18,11 @@ import {
 } from './styled';
 
 export const GameListBar = () => {
+  const [global, setGlobal] = useGlobalContext();
   const onPressed = useGamepad();
   const { focus, setUI } = useUIState();
   const games = useMemo(() => dbClient.games.read(), []);
-  const currentGame = games[focus];
+  const currentGame = useMemo(() => games[focus], [focus]);
 
   useEffect(() => {
     onPressed('ArrowLeft', () => setUI('focus', focus - 1));
@@ -30,6 +31,10 @@ export const GameListBar = () => {
       nodeJS.exec(`cd ${currentGame.gamePath} && ./${currentGame.gameFile}`);
     });
   }, [onPressed]);
+
+  useEffect(() => {
+    setGlobal({ ...global, imgBg: currentGame.background });
+  }, [currentGame.background]);
 
   return (
     <>
@@ -51,7 +56,6 @@ export const GameListBar = () => {
           </Column>
         </Games>
       </Container>
-      <DynamicBg img={currentGame?.background} zIndex={-1} />
     </>
   );
 };

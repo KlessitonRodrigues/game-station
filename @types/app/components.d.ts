@@ -82,6 +82,7 @@ declare namespace App {
     type DynamicBg = {
       img?: string;
       gradient?: string;
+      blur?: boolean;
       zIndex?: number;
     };
 
