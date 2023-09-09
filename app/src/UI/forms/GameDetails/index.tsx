@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import GamepadButtons from 'src/UI/base/GamepadButtons';
 import { InputModal } from 'src/UI/base/InputModal';
 import Panel from 'src/UI/base/Panel';
 import { PanelTitle, Panels } from 'src/UI/base/Styles/Panel';
@@ -8,7 +9,7 @@ import useUIState from 'src/hooks/useUIState';
 
 import { initialState } from './services/handleForm';
 
-const AddGameForm = () => {
+const GameDetailsForm = () => {
   const onPressed = useGamepad();
   const { active, focus, setUI } = useUIState();
   const [form, setForm] = useState(initialState);
@@ -68,8 +69,14 @@ const AddGameForm = () => {
           onChange={gameFile => setForm({ ...form, gameFile })}
         />
       </Panel>
+      <GamepadButtons
+        buttons={[
+          { type: 'rounded', content: 'A', label: 'Edit' },
+          { type: 'rounded', content: 'X', label: 'Save' },
+        ]}
+      />
     </Panels>
   );
 };
 
-export default AddGameForm;
+export default GameDetailsForm;

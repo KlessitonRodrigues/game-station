@@ -113,5 +113,17 @@ declare namespace App {
       value: string;
       onChange: (value: string) => void;
     };
+
+    type RoundedIcon = {
+      content: string;
+    };
+
+    type GamepadButtons = {
+      buttons: {
+        type: 'rounded';
+        content: string;
+        label: string;
+      }[];
+    };
   }
 }

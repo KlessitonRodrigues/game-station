@@ -1,4 +1,5 @@
 import { useEffect, useMemo } from 'react';
+import GamepadButtons from 'src/UI/base/GamepadButtons';
 import { dbClient } from 'src/config/db';
 import useGamepad from 'src/hooks/useGamepad';
 import useGlobalContext from 'src/hooks/useGlobalContext';
@@ -37,25 +38,30 @@ export const GameListBar = () => {
   }, [currentGame.background]);
 
   return (
-    <>
-      <Container>
-        <Games>
-          <Cover img={currentGame?.cover}>{currentGame?.name}</Cover>
-          <Column>
-            <Description>
-              <GameTitle>{currentGame?.name}</GameTitle>
-              <GameInfo>{currentGame?.publisher}</GameInfo>
-            </Description>
-            <CoverList>
-              {games.map(game => (
-                <CoverListItem key={game.name} img={game.cover} focus={focus}>
-                  {game.name}
-                </CoverListItem>
-              ))}
-            </CoverList>
-          </Column>
-        </Games>
-      </Container>
-    </>
+    <Container>
+      <Games>
+        <Cover img={currentGame?.cover}>{currentGame?.name}</Cover>
+        <Column>
+          <Description>
+            <GameTitle>{currentGame?.name}</GameTitle>
+            <GameInfo>{currentGame?.publisher}</GameInfo>
+          </Description>
+          <CoverList>
+            {games.map(game => (
+              <CoverListItem key={game.name} img={game.cover} focus={focus}>
+                {game.name}
+              </CoverListItem>
+            ))}
+          </CoverList>
+        </Column>
+      </Games>
+      <GamepadButtons
+        buttons={[
+          { type: 'rounded', content: 'A', label: 'Details' },
+          { type: 'rounded', content: 'Y', label: 'Add Game' },
+          { type: 'rounded', content: 'V', label: 'Grid View' },
+        ]}
+      />
+    </Container>
   );
 };

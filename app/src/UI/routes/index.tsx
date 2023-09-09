@@ -1,4 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
+import DynamicBg from 'src/UI/base/DynamicBg';
 import useGlobalContext from 'src/hooks/useGlobalContext';
 import usePath from 'src/hooks/usePath';
 import GlobalCSS from 'src/styles/globalCSS';
@@ -6,12 +7,11 @@ import { defaultTheme } from 'src/styles/theme';
 import { bgGradientList } from 'src/utils/constants/gradient';
 import { ThemeProvider } from 'styled-components';
 
-import DynamicBg from '../base/DynamicBg';
 import TabHeader from '../components/TabHeader';
-import ControlsPage from '../pages/ControlsPage';
-import GamesPage from '../pages/GamesPage';
-import SettingsPage from '../pages/SettingsPage';
-import ThemePage from '../pages/ThemePage';
+import ControlsPage from '../pages/Controls';
+import GamesPage from '../pages/Games';
+import SettingsPage from '../pages/Settings';
+import ThemePage from '../pages/Theme';
 
 const Router = () => {
   const [path] = usePath();

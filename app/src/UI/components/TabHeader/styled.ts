@@ -50,6 +50,11 @@ export const TabsItem = styled.label<{ selected?: boolean }>(
     align-items: center;
     color: ${theme.colors.bg1};
     transition: 0.3s ease-out;
+    cursor: pointer;
+
+    :hover {
+      color: ${theme.colors.text2};
+    }
 
     ${selected &&
     css`

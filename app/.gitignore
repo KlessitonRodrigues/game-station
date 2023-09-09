@@ -2,6 +2,7 @@
 node_modules/
 dist/
 out/
+__trash/
 
 # Files
 *.log

@@ -12,7 +12,7 @@ const TabHeader = () => {
   const [active, setActive] = useState(0);
 
   useEffect(() => {
-    onPressed('ButtonLeft', () => active > 0 && setActive(active - 1));
+    onPressed('ButtonLeft', () => setActive(active - 1));
     onPressed('ButtonRight', () => active < tabRoutes.length - 1 && setActive(active + 1));
   }, [onPressed]);
 
@@ -29,7 +29,7 @@ const TabHeader = () => {
 
       <MiddleTabs>
         {tabRoutes.map((tab, i) => (
-          <TabsItem selected={active === i}>
+          <TabsItem selected={active === i} onClick={() => setActive(i)}>
             <Icons type={tab.name as App.Props.Icons['type']} size={13} />
             <TabsItemLabel>{tab.name}</TabsItemLabel>
           </TabsItem>
