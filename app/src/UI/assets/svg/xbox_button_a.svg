@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+  <g id="Page-1">
+    <g id="Button-circle-delete" transform="translate(1.000000, 1.000000)">
+      <circle id="Oval" fill="none" cx="31" cy="31" r="27.841" style="stroke: rgb(255, 255, 255); stroke-width: 2.21829px;" transform="matrix(0.910153, 0, 0, 0.89304, 3.448403, 3.713665)"/>
+      <text style="fill: rgb(255, 255, 255); font-family: FreeSans; font-size: 32.4528px; white-space: pre;" transform="matrix(1.478571, 0, 0, 1.232558, -10.114382, -9.312138)" x="18.037" y="44.403">A</text>
+    </g>
+  </g>
+</svg>

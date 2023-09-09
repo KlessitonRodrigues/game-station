@@ -10,15 +10,12 @@ const buttonLoop = (gamepadIndex: number, onPress: App.Gamepad.OnButtomPressed) 
     else lastUpdate.time = timestamp;
 
     axes.forEach((axis, i) => {
-      console.log('Gamepad axis', i);
-
       if (!(axis === 1 || axis === -1)) return false;
       const axisId = `axis${i}${axis > 0 ? 'Pos' : 'Neg'}`;
       if (xboxButtonsId[axisId]) pressedButtons.push(xboxButtonsId[axisId]);
     });
 
     buttons.forEach((Button, i) => {
-      console.log('Gamepad btn', i);
       if (Button.value === 0) return false;
       const buttonId = `button${i}`;
       if (xboxButtonsId[buttonId]) pressedButtons.push(xboxButtonsId[buttonId]);

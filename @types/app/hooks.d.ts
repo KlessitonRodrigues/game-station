@@ -1,14 +1,24 @@
 declare namespace App {
   namespace Hooks {
-    type PathState = {
-      path: string[];
-    };
+    type PathState =
+      | 'games/list/bar'
+      | 'games/list/grid'
+      | 'games/add'
+      | 'apps'
+      | 'apps'
+      | 'music'
+      | 'midia'
+      | 'web'
+      | 'theme'
+      | 'controls'
+      | 'settings';
 
     type PathContext = [PathState, React.Dispatch<React.SetStateAction<PathState>>];
 
     // useGlobalContext
     type GlobalState = {
       gradientBg: Utils.GradientBgOptions;
+      imgBg: string;
     };
 
     type GlobalContext = [GlobalState, React.Dispatch<React.SetStateAction<GlobalState>>];
@@ -38,9 +48,14 @@ declare namespace App {
     type LangContext = [LangState, React.Dispatch<React.SetStateAction<LangState>>];
 
     // useGamepadContext
-    type GamepadContext = [
-      App.Gamepad.Buttons[],
-      React.Dispatch<React.SetStateAction<App.Gamepad.Buttons[]>>
-    ];
+    type GamepadContext = Gamepad.OnPressed;
+
+    // useUIState
+    type UseUIState = {
+      active: boolean;
+      focus: number;
+      option: number;
+      setUI: (key: 'active' | 'focus' | 'option', value: boolean | number) => void;
+    };
   }
 }

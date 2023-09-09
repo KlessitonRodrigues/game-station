@@ -1,4 +1,4 @@
-export const testingGames: Models.GameInfo[] = [
+export const testingGames: AppDB.Models.GameInfo[] = [
   {
     name: 'Forza Horizon 4',
     publisher: 'Playground Games',
@@ -54,7 +54,7 @@ export const testingGames: Models.GameInfo[] = [
   },
 ];
 
-export const settingsData: Models.SettingsInfo = {
+export const settingsData: AppDB.Models.SettingsInfo = {
   bgOption: 'red',
   fullscreen: false,
 };

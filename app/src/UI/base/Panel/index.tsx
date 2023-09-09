@@ -1,3 +1,4 @@
+import Icons from '../Icons';
 import { Container, Content, Header, Title, Value } from './styled';
 
 const Panel = (props: App.Props.Panel) => {
@@ -8,6 +9,7 @@ const Panel = (props: App.Props.Panel) => {
       <Header>
         <Title>{title}</Title>
         <Value>{value?.substring(0, 60)}</Value>
+        <Icons type="edit" size={6} />
       </Header>
       <Content>{children}</Content>
     </Container>

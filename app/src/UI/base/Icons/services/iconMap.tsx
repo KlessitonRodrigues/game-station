@@ -13,6 +13,7 @@ import {
   RiMusic2Fill,
   RiNewspaperFill,
   RiPaintBrushFill,
+  RiPencilLine,
   RiSearchLine,
   RiSettings4Fill,
   RiUsbFill,
@@ -39,4 +40,5 @@ export const iconMap: Record<App.Props.Icons['type'], React.ReactElement> = {
   'arrow-right': <RiArrowRightSLine />,
   usb: <RiUsbFill />,
   controls: <IoGameControllerSharp />,
+  edit: <RiPencilLine />,
 };

@@ -18,9 +18,6 @@ export const Container = styled.div<{ active?: boolean }>(({ theme, active }) =>
       ${Content} {
         max-height: ${theme.size(120)};
       }
-      ${Value} {
-        opacity: 0;
-      }
     `}
   `;
 });
@@ -35,7 +32,7 @@ export const Header = styled.div(({ theme }) => {
 
 export const Title = styled.div(({ theme }) => {
   return css`
-    font-size: ${theme.fontSize.label};
+    font-size: ${theme.fontSize.h4};
     font-weight: bold;
   `;
 });
@@ -43,6 +40,7 @@ export const Title = styled.div(({ theme }) => {
 export const Value = styled.div(() => {
   return css`
     transition: 0.3s;
+    width: 100%;
   `;
 });
 

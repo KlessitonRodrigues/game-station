@@ -1,9 +1,9 @@
-export const GamesAPI = (config: LocalDB.Config): LocalDB.GameAPI => {
-  const read: LocalDB.GameAPI['read'] = () => {
+export const GamesAPI = (config: AppDB.API.Config): AppDB.API.GameAPI => {
+  const read: AppDB.API.GameAPI['read'] = () => {
     return config.readDB().games || [];
   };
 
-  const create: LocalDB.GameAPI['create'] = args => {
+  const create: AppDB.API.GameAPI['create'] = args => {
     const { gameInfo } = args;
     const db = config.readDB();
     if (!gameInfo?.name) throw new Error(`InvalidGameInfoArgument`);
@@ -12,7 +12,7 @@ export const GamesAPI = (config: LocalDB.Config): LocalDB.GameAPI => {
     return config.saveDB(db);
   };
 
-  const update: LocalDB.GameAPI['update'] = args => {
+  const update: AppDB.API.GameAPI['update'] = args => {
     const { gameInfo } = args;
     if (!gameInfo?.name) throw new Error('InvalidGameInfoArgument');
     const db = config.readDB();
@@ -23,7 +23,7 @@ export const GamesAPI = (config: LocalDB.Config): LocalDB.GameAPI => {
     return config.saveDB(db);
   };
 
-  const remove: LocalDB.GameAPI['remove'] = args => {
+  const remove: AppDB.API.GameAPI['remove'] = args => {
     const { name } = args;
     const db = config.readDB();
     if (!name) throw new Error('InvalidNameProperty');
