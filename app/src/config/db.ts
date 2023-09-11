@@ -1,7 +1,7 @@
 // @ts-ignore
 import localDB from 'app-db';
 
-const dbName = 'console_ui_db';
+const dbName = 'games_db';
 
 export const dbClient: AppDB.API.Methods = localDB({
   readDB: (): AppDB.API.Data => {

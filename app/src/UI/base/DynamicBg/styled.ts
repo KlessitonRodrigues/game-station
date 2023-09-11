@@ -19,7 +19,7 @@ export const Container = styled.div<App.Props.DynamicBg>(({ gradient, img, zInde
     css`
       background-image: url(${img});
       background-size: cover;
-      filter: brightness(0.4);
+      filter: brightness(0.45);
     `}
   `;
 });
@@ -28,7 +28,7 @@ export const Effects = styled.div<App.Props.DynamicBg>(({ blur }) => {
   return css`
     width: 100%;
     height: 100%;
-    transition: backdrop-filter 0.1s;
-    ${blur && 'backdrop-filter: blur(60px);'}
+    transition: backdrop-filter 0.1s ease-out;
+    ${blur && 'backdrop-filter: blur(40px);'}
   `;
 });

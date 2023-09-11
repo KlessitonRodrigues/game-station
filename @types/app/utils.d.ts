@@ -1,6 +1,7 @@
 declare namespace App {
   namespace Utils {
     type GamePageScreens = 'list' | 'grid';
+
     type GradientBgOptions =
       | 'indigo'
       | 'blue'
@@ -14,5 +15,10 @@ declare namespace App {
       | 'greenAndPink'
       | 'blueAndBrown'
       | 'purpleAndGreen';
+
+    type ImageCache = {
+      url: string;
+      data: string;
+    };
   }
 }
