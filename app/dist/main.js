@@ -252,7 +252,7 @@
     display: flex;
     align-items: flex-end;
     overflow: hidden;
-  `)),Re=()=>{const{focus:e,setUI:t}=ee(),[i,r]=b(),[o,a]=(0,h.useState)([]);return(0,h.useEffect)((()=>{var e;(e=f.games.read(),pe(void 0,void 0,void 0,(function*(){for(const t of e)t.background=yield ve(t.background),t.cover=yield ve(t.cover);return e}))).then(a)}),[]),(0,h.useEffect)((()=>{var t;const n=null===(t=o[e])||void 0===t?void 0:t.background;r(Object.assign(Object.assign({},i),{imgBg:n}))}),[e,o]),(0,n.jsx)(Me,{children:(0,n.jsx)(Le,{gameList:o,gameIndex:e,onChangeGame:e=>e<o.length&&t("focus",e),onStartGame:()=>{}})})},We=s.ZP.div((({theme:e})=>s.iv`
+  `)),Re=()=>{const{focus:e,setUI:t}=ee(),[i,r]=b(),[o,a]=(0,h.useState)([]);return(0,h.useEffect)((()=>{var e;(e=f.games.read(),pe(void 0,void 0,void 0,(function*(){for(const t of e)try{t.background=yield ve(t.background),t.cover=yield ve(t.cover)}catch(e){console.error(e);continue}return e}))).then(a)}),[]),(0,h.useEffect)((()=>{var t;const n=null===(t=o[e])||void 0===t?void 0:t.background;r(Object.assign(Object.assign({},i),{imgBg:n}))}),[e,o]),(0,n.jsx)(Me,{children:(0,n.jsx)(Le,{gameList:o,gameIndex:e,onChangeGame:e=>e<o.length&&t("focus",e),onStartGame:()=>{}})})},We=s.ZP.div((({theme:e})=>s.iv`
     display: flex;
     flex-wrap: wrap;
     gap: ${e.size(2)};
