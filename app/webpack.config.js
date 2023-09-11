@@ -45,6 +45,7 @@ const config = {
   optimization: {
     splitChunks: {
       chunks: 'all',
+      name: 'libs',
     },
   },
   resolve: {

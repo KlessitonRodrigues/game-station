@@ -125,5 +125,11 @@ declare namespace App {
         label: string;
       }[];
     };
+    type GameListBar = {
+      gameList: AppDB.Models.GameInfo[];
+      gameIndex: number;
+      onChangeGame: (gameIndex: number) => any;
+      onStartGame: (gameIndex: number) => any;
+    };
   }
 }

@@ -82,7 +82,7 @@ export const CoverListItem = styled.div<{ focus: number; img: string }>(({ theme
     max-width: ${theme.size(50)};
     margin-right: ${theme.size(4)};
     background-color: transparent;
-    border-radius: ${theme.radius.medium};
+    border-radius: ${theme.radius.small};
     box-shadow: ${theme.shadow.high};
     border: 2px solid ${theme.colors.bg1};
     background-image: url(${img});

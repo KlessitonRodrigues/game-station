@@ -73,6 +73,7 @@ const GameDetailsForm = () => {
         buttons={[
           { type: 'rounded', content: 'A', label: 'Edit' },
           { type: 'rounded', content: 'X', label: 'Save' },
+          { type: 'rounded', content: 'Y', label: 'Game List' },
         ]}
       />
     </Panels>
