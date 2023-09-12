@@ -1,8 +1,9 @@
+import { fetchHeaders } from '../constants/fetchHeaders';
 import { ImageCompress } from './imageCompress';
 
 export const fetchImageData = (url: string) => {
   return new Promise<string>((resolve, reject) => {
-    fetch(url)
+    fetch(url, fetchHeaders)
       .then(async res => {
         const img = await res.blob();
         const compressedImg = await ImageCompress(img);
