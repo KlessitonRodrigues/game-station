@@ -15,8 +15,13 @@ const fadeIn = keyframes`
    to {opacity: 1}
 `;
 
+const spinning = keyframes`
+   to {transform: rotateZ(360deg);}
+`;
+
 export const Keyframes = {
   slideUp,
   slideUpLarge,
   fadeIn,
+  spinning,
 };

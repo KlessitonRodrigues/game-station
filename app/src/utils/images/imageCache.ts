@@ -35,7 +35,6 @@ export const getGamesImageCache = async (games: AppDB.Models.GameInfo[]) => {
       game.background = await imageCache(game.background);
       game.cover = await imageCache(game.cover);
     } catch (err) {
-      console.error(err);
       continue;
     }
   }

@@ -9,6 +9,10 @@ import {
   RiFolderFill,
   RiGameFill,
   RiImage2Fill,
+  RiLoader2Line,
+  RiLoader3Line,
+  RiLoader4Line,
+  RiLoader5Line,
   RiMovieFill,
   RiMusic2Fill,
   RiNewspaperFill,
@@ -41,4 +45,5 @@ export const iconMap: Record<App.Props.Icons['type'], React.ReactElement> = {
   usb: <RiUsbFill />,
   controls: <IoGameControllerSharp />,
   edit: <RiPencilLine />,
+  spinner: <RiLoader5Line />,
 };

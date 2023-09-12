@@ -65,7 +65,8 @@ declare namespace App {
         | 'image'
         | 'usb'
         | 'controls'
-        | 'edit';
+        | 'edit'
+        | 'spinner';
       style?: React.CSSProperties;
     };
 

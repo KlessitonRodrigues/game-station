@@ -55,7 +55,8 @@ declare namespace App {
       active: boolean;
       focus: number;
       option: number;
-      setUI: (key: 'active' | 'focus' | 'option', value: boolean | number) => void;
+      loading: boolean;
+      setUI: (key: 'active' | 'focus' | 'option' | 'loading', value: boolean | number) => void;
     };
   }
 }
