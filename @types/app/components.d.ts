@@ -121,7 +121,7 @@ declare namespace App {
 
     type GamepadButtons = {
       buttons: {
-        type: 'rounded';
+        type?: 'rounded';
         content: string;
         label: string;
       }[];

@@ -25,7 +25,7 @@ const buttonLoop = (gamepadIndex: number, onPress: App.Gamepad.OnButtomPressed) 
       lastUpdate.buttons = pressedButtons;
       onPress && onPress(pressedButtons);
     }
-  }, 20); // 50 FPS
+  }, 33); // 30 FPS
 };
 
 const buttonLoopInterval: NodeJS.Timer[] = [];

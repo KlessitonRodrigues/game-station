@@ -14,6 +14,7 @@ export const Container = styled.div(() => {
     align-items: center;
     justify-content: center;
     background-color: #000b;
+    backdrop-filter: blur(10px);
   `;
 });
 

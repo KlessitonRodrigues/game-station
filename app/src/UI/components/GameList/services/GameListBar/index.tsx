@@ -47,9 +47,9 @@ export const GameListBar = (props: App.Props.GameList) => {
       </Games>
       <GamepadButtons
         buttons={[
-          { type: 'rounded', content: 'A', label: 'Details' },
-          { type: 'rounded', content: 'Y', label: 'Add Game' },
-          { type: 'rounded', content: 'V', label: 'Grid View' },
+          { content: 'A', label: 'Details' },
+          { content: 'Y', label: 'Add Game' },
+          { content: 'V', label: 'Grid View' },
         ]}
       />
     </Container>
