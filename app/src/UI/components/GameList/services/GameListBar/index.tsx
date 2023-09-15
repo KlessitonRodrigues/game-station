@@ -14,8 +14,9 @@ import {
   Games,
 } from './styled';
 
-export const GameListBar = (props: App.Props.GameListBar) => {
+export const GameListBar = (props: App.Props.GameList) => {
   const { gameList, gameIndex, onChangeGame, onStartGame } = props;
+
   const onPressed = useGamepad();
   const game = useMemo(() => gameList[gameIndex], [gameIndex, gameList]);
 

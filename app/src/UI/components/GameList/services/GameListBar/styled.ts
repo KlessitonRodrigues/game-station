@@ -1,3 +1,4 @@
+import { Keyframes } from 'src/UI/base/Styles/Animations';
 import styled, { css } from 'styled-components';
 
 export const Container = styled.div(() => {
@@ -6,6 +7,7 @@ export const Container = styled.div(() => {
     height: 100%;
     display: flex;
     align-items: flex-end;
+    animation: ${Keyframes.slideUp} 0.2s ease-out;
   `;
 });
 
@@ -89,7 +91,7 @@ export const CoverListItem = styled.div<{ focus: number; img: string }>(({ theme
     background-repeat: no-repeat;
     background-size: 100% 100%;
     font-size: ${theme.size(10)};
-    transition: 0.3s;
+    transition: 0.2s;
     ${img && 'color: transparent;'}
 
     :nth-child(-n + ${focus + 1}) {

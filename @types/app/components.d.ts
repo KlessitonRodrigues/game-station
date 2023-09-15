@@ -126,7 +126,7 @@ declare namespace App {
         label: string;
       }[];
     };
-    type GameListBar = {
+    type GameList = {
       gameList: AppDB.Models.GameInfo[];
       gameIndex: number;
       onChangeGame: (gameIndex: number) => any;

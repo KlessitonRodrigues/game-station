@@ -21,7 +21,7 @@ const buttonLoop = (gamepadIndex: number, onPress: App.Gamepad.OnButtomPressed) 
       if (xboxButtonsId[buttonId]) pressedButtons.push(xboxButtonsId[buttonId]);
     });
 
-    if (pressedButtons.length === 1) {
+    if (pressedButtons.length) {
       lastUpdate.buttons = pressedButtons;
       onPress && onPress(pressedButtons);
     }
