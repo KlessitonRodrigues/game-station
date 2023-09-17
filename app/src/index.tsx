@@ -1,8 +1,8 @@
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import Router from 'src/UI/routes';
-import { GamepadProvider } from 'src/hooks/useGamepad';
 import { GlobalProvider } from 'src/hooks/useGlobalContext';
+import { StyleSheetManager } from 'styled-components';
 
 import { PathProvider } from './hooks/usePath';
 
@@ -10,11 +10,11 @@ const App = () => {
   return (
     <GlobalProvider>
       <PathProvider>
-        <BrowserRouter>
-          <GamepadProvider>
+        <StyleSheetManager>
+          <BrowserRouter>
             <Router />
-          </GamepadProvider>
-        </BrowserRouter>
+          </BrowserRouter>
+        </StyleSheetManager>
       </PathProvider>
     </GlobalProvider>
   );

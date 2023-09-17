@@ -7,7 +7,6 @@ export const Container = styled.div(() => {
     height: 100%;
     display: flex;
     align-items: flex-end;
-    animation: ${Keyframes.slideUp} 0.2s ease-out;
   `;
 });
 
@@ -18,6 +17,7 @@ export const Games = styled.div(({ theme }) => {
     gap: ${theme.size(8)};
     height: ${theme.size(120)};
     margin-bottom: ${theme.size(20)};
+    animation: ${Keyframes.slideUpLarge} 0.2s ease-out;
   `;
 });
 

@@ -1,6 +1,7 @@
-import { useEffect, useMemo } from 'react';
+import { useEffect } from 'react';
 import GamepadButtons from 'src/UI/base/GamepadButtons';
 import useGamepad from 'src/hooks/useGamepad';
+import { UIButtons } from 'src/utils/constants/UIButtons';
 
 import { Container, Grid, GridItem } from './styled';
 
@@ -9,8 +10,9 @@ export const GameListGrid = (props: App.Props.GameList) => {
   const onPressed = useGamepad();
 
   useEffect(() => {
-    onPressed('ArrowLeft', () => onChangeGame(gameIndex - 1));
-    onPressed('ArrowRight', () => onChangeGame(gameIndex + 1));
+    const pos = (gameIndex + 1) % 4;
+    onPressed('ArrowLeft', () => pos !== 1 && onChangeGame(gameIndex - 1));
+    onPressed('ArrowRight', () => pos !== 0 && onChangeGame(gameIndex + 1));
     onPressed('ArrowDown', () => onChangeGame(gameIndex + 4));
     onPressed('ArrowUp', () => onChangeGame(gameIndex - 4));
     // onPressed('ButtonStart', () => onStartGame(gameIndex));
@@ -20,16 +22,10 @@ export const GameListGrid = (props: App.Props.GameList) => {
     <Container>
       <Grid>
         {gameList.map(game => (
-          <GridItem key={game.name} img={game.cover} focus={gameIndex} />
+          <GridItem key={game.name} imgSrc={game.cover} focus={gameIndex} />
         ))}
       </Grid>
-      <GamepadButtons
-        buttons={[
-          { content: 'A', label: 'Details' },
-          { content: 'Y', label: 'Add Game' },
-          { content: 'X', label: 'List View' },
-        ]}
-      />
+      <GamepadButtons buttons={UIButtons.GameListGrid} />
     </Container>
   );
 };

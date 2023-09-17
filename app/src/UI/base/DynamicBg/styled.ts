@@ -1,8 +1,8 @@
 import styled, { css } from 'styled-components';
 
-export const Container = styled.div<App.Props.DynamicBg>(({ gradient, img, zIndex }) => {
+export const Container = styled.div<App.Props.DynamicBg>(({ gradient, img, layer }) => {
   return css`
-    z-index: ${zIndex || -1};
+    z-index: ${layer || -1};
     position: fixed;
     top: 0;
     left: 0;
@@ -24,11 +24,11 @@ export const Container = styled.div<App.Props.DynamicBg>(({ gradient, img, zInde
   `;
 });
 
-export const Effects = styled.div<App.Props.DynamicBg>(({ blur }) => {
+export const Effects = styled.div<App.Props.DynamicBg>(({ blurBg }) => {
   return css`
     width: 100%;
     height: 100%;
     transition: backdrop-filter 0.1s ease-out;
-    ${blur && 'backdrop-filter: blur(40px);'}
+    ${blurBg && 'backdrop-filter: blur(40px);'}
   `;
 });

@@ -1,6 +1,7 @@
 import { useEffect, useMemo } from 'react';
 import GamepadButtons from 'src/UI/base/GamepadButtons';
 import useGamepad from 'src/hooks/useGamepad';
+import { UIButtons } from 'src/utils/constants/UIButtons';
 
 import {
   Column,
@@ -45,13 +46,7 @@ export const GameListBar = (props: App.Props.GameList) => {
           </CoverList>
         </Column>
       </Games>
-      <GamepadButtons
-        buttons={[
-          { content: 'A', label: 'Details' },
-          { content: 'Y', label: 'Add Game' },
-          { content: 'V', label: 'Grid View' },
-        ]}
-      />
+      <GamepadButtons buttons={UIButtons.GameListBar} />
     </Container>
   );
 };

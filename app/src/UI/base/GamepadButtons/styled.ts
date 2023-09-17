@@ -1,7 +1,5 @@
 import styled, { css } from 'styled-components';
 
-import { Keyframes } from '../Styles/Animations';
-
 export const Container = styled.div(({ theme }) => {
   return css`
     position: fixed;
@@ -10,7 +8,6 @@ export const Container = styled.div(({ theme }) => {
     display: flex;
     gap: ${theme.size(4)};
     height: ${theme.size(8)};
-    animation: ${Keyframes.slideUp} 0.3s ease-out;
     translate: -50%;
   `;
 });
