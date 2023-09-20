@@ -10,7 +10,7 @@ const App = () => {
   return (
     <GlobalProvider>
       <PathProvider>
-        <StyleSheetManager>
+        <StyleSheetManager enableVendorPrefixes>
           <BrowserRouter>
             <Router />
           </BrowserRouter>

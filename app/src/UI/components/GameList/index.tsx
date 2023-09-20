@@ -15,7 +15,7 @@ const GameList = () => {
   const { focus, loading, setUI } = useUIState();
   const [global, setGlobal] = useGlobalContext();
   const [gameList, setGameList] = useState<AppDB.Models.GameInfo[]>([]);
-  const [mode, setMode] = useState<App.Utils.GameListMode>('grid');
+  const [mode, setMode] = useState<App.Utils.GameListMode>('list');
   const onPressed = useGamepad();
 
   useEffect(() => {

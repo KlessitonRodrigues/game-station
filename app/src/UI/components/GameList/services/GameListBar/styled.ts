@@ -21,24 +21,23 @@ export const Games = styled.div(({ theme }) => {
   `;
 });
 
-export const Cover = styled.div<{ img: string }>(({ theme, img }) => {
-  return css`
-    height: 100%;
-    width: ${theme.size(90)};
-    min-width: ${theme.size(90)};
-    max-width: ${theme.size(90)};
-    background-color: transparent;
-    border-radius: ${theme.radius.large};
-    box-shadow: ${theme.shadow.high};
-    border: 2px solid ${theme.colors.bg1};
-    background-image: url(${img});
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-    transition: 0.1s;
-    font-size: ${theme.size(20)};
-    ${img && 'color: transparent;'}
-  `;
-});
+export const CoverImg = styled.img(
+  props =>
+    css`
+      height: 100%;
+      width: ${props.theme.size(90)};
+      min-width: ${props.theme.size(90)};
+      max-width: ${props.theme.size(90)};
+      background-color: transparent;
+      border-radius: ${props.theme.radius.large};
+      box-shadow: ${props.theme.shadow.high};
+      border: 2px solid ${props.theme.colors.bg1};
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+      transition: 0.1s;
+      font-size: ${props.theme.size(20)};
+    `
+);
 
 export const Column = styled.div(() => {
   return css`
@@ -77,7 +76,7 @@ export const CoverList = styled.div(() => {
   `;
 });
 
-export const CoverListItem = styled.div<{ focus: number; img: string }>(({ theme, focus, img }) => {
+export const CoverListImg = styled.img<{ focus: number }>(({ theme, focus }) => {
   return css`
     height: 100%;
     width: ${theme.size(50)};
@@ -87,14 +86,12 @@ export const CoverListItem = styled.div<{ focus: number; img: string }>(({ theme
     border-radius: ${theme.radius.small};
     box-shadow: ${theme.shadow.high};
     border: 2px solid ${theme.colors.bg1};
-    background-image: url(${img});
     background-repeat: no-repeat;
     background-size: 100% 100%;
     font-size: ${theme.size(10)};
     transition: 0.2s;
-    ${img && 'color: transparent;'}
 
-    :nth-child(-n + ${focus + 1}) {
+    &.cove-item:nth-child(-n + ${focus + 1}) {
       width: 0;
       margin: 0;
       border: none;
