@@ -6,6 +6,7 @@ import { PanelTitle, Panels } from 'src/UI/base/Styles/Panel';
 import { dbClient } from 'src/config/db';
 import useGamepad from 'src/hooks/useGamepad';
 import useUIState from 'src/hooks/useUIState';
+import { UIButtons } from 'src/utils/constants/UIButtons';
 
 import { initialState } from './services/handleForm';
 
@@ -69,13 +70,7 @@ const GameDetailsForm = () => {
           onChange={gameFile => setForm({ ...form, gameFile })}
         />
       </Panel>
-      <GamepadButtons
-        buttons={[
-          { type: 'rounded', content: 'A', label: 'Edit' },
-          { type: 'rounded', content: 'X', label: 'Save' },
-          { type: 'rounded', content: 'Y', label: 'Game List' },
-        ]}
-      />
+      <GamepadButtons buttons={UIButtons.GameDetailsForm} />
     </Panels>
   );
 };

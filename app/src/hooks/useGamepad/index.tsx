@@ -14,10 +14,7 @@ const globalContext = createContext<App.Hooks.GamepadContext>(() => {});
 export const GamepadProvider = (props: PropsWithChildren) => {
   const [pressed, setPressed] = useState<string[]>([]);
 
-  const onPressed: App.Gamepad.OnPressed = (button, cb) => {
-    if (pressed.length === 1 && pressed.includes(button)) cb && cb();
-  };
-
+  const onPressed: App.Gamepad.OnPressed = (button, cb) => pressed.includes(button) && cb && cb();
   const onPressedHook = useCallback(onPressed, [pressed]);
 
   useEffect(() => {

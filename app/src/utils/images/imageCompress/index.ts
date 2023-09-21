@@ -6,7 +6,7 @@ export const ImageCompress = (bin: Blob) => {
   return new Promise<Blob>((resolve, reject) => {
     new ImageCompressor({
       file: bin,
-      quality: 0.1,
+      quality: 0.2,
       mimeType: 'image/jpeg',
       width: 1920,
       height: 1080,

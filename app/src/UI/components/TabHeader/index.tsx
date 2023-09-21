@@ -30,7 +30,7 @@ const TabHeader = () => {
 
       <MiddleTabs>
         {tabRoutes.map((tab, i) => (
-          <TabsItem selected={option === i} onClick={() => setUI('option', i)}>
+          <TabsItem key={tab.name} selected={option === i} onClick={() => setUI('option', i)}>
             <Icons type={tab.name as App.Props.Icons['type']} size={13} />
             <TabsItemLabel>{tab.name}</TabsItemLabel>
           </TabsItem>

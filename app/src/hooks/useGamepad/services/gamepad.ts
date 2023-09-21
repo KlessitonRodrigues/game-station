@@ -21,11 +21,11 @@ const buttonLoop = (gamepadIndex: number, onPress: App.Gamepad.OnButtomPressed) 
       if (xboxButtonsId[buttonId]) pressedButtons.push(xboxButtonsId[buttonId]);
     });
 
-    if (lastUpdate.buttons.toString() !== pressedButtons.toString()) {
+    if (pressedButtons.length === 1) {
       lastUpdate.buttons = pressedButtons;
       onPress && onPress(pressedButtons);
     }
-  }, 33.33); // 30 FPS
+  }, 33); // 30 FPS
 };
 
 const buttonLoopInterval: NodeJS.Timer[] = [];

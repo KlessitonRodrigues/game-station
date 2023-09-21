@@ -29,7 +29,7 @@ declare namespace App {
 
     type GamepadMap = Record<string, Buttons>;
 
-    type OnButtomPressed = (buttons: Buttons[]) => void;
+    type OnButtomPressed = (button: Buttons[]) => void;
 
     type ButtonMap = Partial<Record<Buttons, () => void>>;
 

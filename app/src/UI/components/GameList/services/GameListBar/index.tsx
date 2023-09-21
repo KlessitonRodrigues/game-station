@@ -1,21 +1,23 @@
 import { useEffect, useMemo } from 'react';
 import GamepadButtons from 'src/UI/base/GamepadButtons';
 import useGamepad from 'src/hooks/useGamepad';
+import { UIButtons } from 'src/utils/constants/UIButtons';
 
 import {
   Column,
   Container,
-  Cover,
+  CoverImg,
   CoverList,
-  CoverListItem,
+  CoverListImg,
   Description,
   GameInfo,
   GameTitle,
   Games,
 } from './styled';
 
-export const GameListBar = (props: App.Props.GameListBar) => {
+export const GameListBar = (props: App.Props.GameListPosition) => {
   const { gameList, gameIndex, onChangeGame, onStartGame } = props;
+
   const onPressed = useGamepad();
   const game = useMemo(() => gameList[gameIndex], [gameIndex, gameList]);
 
@@ -26,31 +28,27 @@ export const GameListBar = (props: App.Props.GameListBar) => {
     // nodeJS.exec(`cd ${game.gamePath} && ./${game.gameFile}`);
   }, [onPressed]);
 
+  const CoverListItems = useMemo(
+    () =>
+      gameList.map(game => (
+        <CoverListImg className="cove-item" key={game.name} focus={gameIndex} src={game.cover} />
+      )),
+    [gameList.length, gameIndex]
+  );
+
   return (
     <Container>
       <Games>
-        <Cover img={game?.cover}>{game?.name}</Cover>
+        <CoverImg src={game?.cover} />
         <Column>
           <Description>
             <GameTitle>{game?.name}</GameTitle>
             <GameInfo>{game?.publisher}</GameInfo>
           </Description>
-          <CoverList>
-            {gameList.map(game => (
-              <CoverListItem key={game.name} img={game.cover} focus={gameIndex}>
-                {game.name}
-              </CoverListItem>
-            ))}
-          </CoverList>
+          <CoverList>{CoverListItems}</CoverList>
         </Column>
       </Games>
-      <GamepadButtons
-        buttons={[
-          { type: 'rounded', content: 'A', label: 'Details' },
-          { type: 'rounded', content: 'Y', label: 'Add Game' },
-          { type: 'rounded', content: 'V', label: 'Grid View' },
-        ]}
-      />
+      <GamepadButtons buttons={UIButtons.GameListBar} />
     </Container>
   );
 };

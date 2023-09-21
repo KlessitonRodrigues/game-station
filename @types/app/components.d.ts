@@ -65,7 +65,8 @@ declare namespace App {
         | 'image'
         | 'usb'
         | 'controls'
-        | 'edit';
+        | 'edit'
+        | 'spinner';
       style?: React.CSSProperties;
     };
 
@@ -82,8 +83,8 @@ declare namespace App {
     type DynamicBg = {
       img?: string;
       gradient?: string;
-      blur?: boolean;
-      zIndex?: number;
+      blurBg?: boolean;
+      layer?: number;
     };
 
     type BrowseImages = {
@@ -120,12 +121,17 @@ declare namespace App {
 
     type GamepadButtons = {
       buttons: {
-        type: 'rounded';
+        type?: 'rounded';
         content: string;
         label: string;
       }[];
     };
-    type GameListBar = {
+
+    type GameList = {
+      mode: 'list' | 'grid';
+    };
+
+    type GameListPosition = {
       gameList: AppDB.Models.GameInfo[];
       gameIndex: number;
       onChangeGame: (gameIndex: number) => any;

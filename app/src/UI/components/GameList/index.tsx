@@ -1,20 +1,27 @@
 import { useEffect, useState } from 'react';
+import If from 'src/UI/base/If';
+import Loading from 'src/UI/base/Loading';
 import { dbClient } from 'src/config/db';
 import useGlobalContext from 'src/hooks/useGlobalContext';
 import useUIState from 'src/hooks/useUIState';
 import { getGamesImageCache } from 'src/utils/images/imageCache';
 
 import { GameListBar } from './services/GameListBar';
+import { GameListGrid } from './services/GameListGrid';
 import { Container } from './styled';
 
-const GameList = () => {
-  const { focus, setUI } = useUIState();
+const GameList = (props: App.Props.GameList) => {
+  const { mode } = props;
+  const { focus, loading, setUI } = useUIState();
   const [global, setGlobal] = useGlobalContext();
   const [gameList, setGameList] = useState<AppDB.Models.GameInfo[]>([]);
 
   useEffect(() => {
     const games = dbClient.games.read();
-    getGamesImageCache(games).then(setGameList);
+    setUI('loading', true);
+    getGamesImageCache(games)
+      .then(setGameList)
+      .finally(() => setUI('loading', false));
   }, []);
 
   useEffect(() => {
@@ -24,12 +31,23 @@ const GameList = () => {
 
   return (
     <Container>
-      <GameListBar
-        gameList={gameList}
-        gameIndex={focus}
-        onChangeGame={index => index < gameList.length && setUI('focus', index)}
-        onStartGame={() => {}}
-      />
+      <If check={mode === 'list'}>
+        <GameListBar
+          gameList={gameList}
+          gameIndex={focus}
+          onChangeGame={index => index < gameList.length && setUI('focus', index)}
+          onStartGame={() => {}}
+        />
+      </If>
+      <If check={mode === 'grid'}>
+        <GameListGrid
+          gameList={gameList}
+          gameIndex={focus}
+          onChangeGame={index => index < gameList.length && setUI('focus', index)}
+          onStartGame={() => {}}
+        />
+      </If>
+      {loading && <Loading />}
     </Container>
   );
 };

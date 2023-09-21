@@ -44,29 +44,29 @@ export const TabsItemLabel = styled.span(
 );
 
 export const TabsItem = styled.label<{ selected?: boolean }>(
-  ({ theme, selected }) => css`
+  props => css`
     display: flex;
     position: relative;
     align-items: center;
-    color: ${theme.colors.bg1};
+    color: ${props.theme.colors.bg1};
     transition: 0.3s ease-out;
     cursor: pointer;
 
     :hover {
-      color: ${theme.colors.text2};
+      color: ${props.theme.colors.text2};
     }
 
-    ${selected &&
+    ${props.selected &&
     css`
-      color: ${theme.colors.text1};
-      margin-left: ${theme.size(15)};
-      margin-right: ${theme.size(15)};
+      color: ${props.theme.colors.text1};
+      margin-left: ${props.theme.size(15)};
+      margin-right: ${props.theme.size(15)};
     `}
 
     ${TabsItemLabel} {
       width: 0;
-      ${!selected && `opacity: 0;`}
-      ${selected && `width: ${theme.size(25)};`}
+      ${!props.selected && `opacity: 0;`}
+      ${props.selected && `width: ${props.theme.size(25)};`}
     }
   `
 );
