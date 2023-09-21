@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import If from 'src/UI/base/If';
 import Loading from 'src/UI/base/Loading';
 import { dbClient } from 'src/config/db';
-import useGamepad from 'src/hooks/useGamepad';
 import useGlobalContext from 'src/hooks/useGlobalContext';
 import useUIState from 'src/hooks/useUIState';
 import { getGamesImageCache } from 'src/utils/images/imageCache';
@@ -11,16 +10,11 @@ import { GameListBar } from './services/GameListBar';
 import { GameListGrid } from './services/GameListGrid';
 import { Container } from './styled';
 
-const GameList = () => {
+const GameList = (props: App.Props.GameList) => {
+  const { mode } = props;
   const { focus, loading, setUI } = useUIState();
   const [global, setGlobal] = useGlobalContext();
   const [gameList, setGameList] = useState<AppDB.Models.GameInfo[]>([]);
-  const [mode, setMode] = useState<App.Utils.GameListMode>('list');
-  const onPressed = useGamepad();
-
-  useEffect(() => {
-    onPressed('ButtonX', () => setMode(mode === 'list' ? 'grid' : 'list'));
-  }, [onPressed]);
 
   useEffect(() => {
     const games = dbClient.games.read();

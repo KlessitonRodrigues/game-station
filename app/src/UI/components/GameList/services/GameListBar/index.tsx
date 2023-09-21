@@ -15,7 +15,7 @@ import {
   Games,
 } from './styled';
 
-export const GameListBar = (props: App.Props.GameList) => {
+export const GameListBar = (props: App.Props.GameListPosition) => {
   const { gameList, gameIndex, onChangeGame, onStartGame } = props;
 
   const onPressed = useGamepad();
@@ -28,6 +28,14 @@ export const GameListBar = (props: App.Props.GameList) => {
     // nodeJS.exec(`cd ${game.gamePath} && ./${game.gameFile}`);
   }, [onPressed]);
 
+  const CoverListItems = useMemo(
+    () =>
+      gameList.map(game => (
+        <CoverListImg className="cove-item" key={game.name} focus={gameIndex} src={game.cover} />
+      )),
+    [gameList.length, gameIndex]
+  );
+
   return (
     <Container>
       <Games>
@@ -37,16 +45,7 @@ export const GameListBar = (props: App.Props.GameList) => {
             <GameTitle>{game?.name}</GameTitle>
             <GameInfo>{game?.publisher}</GameInfo>
           </Description>
-          <CoverList>
-            {gameList.map(game => (
-              <CoverListImg
-                className="cove-item"
-                key={game.name}
-                focus={gameIndex}
-                src={game.cover}
-              />
-            ))}
-          </CoverList>
+          <CoverList>{CoverListItems}</CoverList>
         </Column>
       </Games>
       <GamepadButtons buttons={UIButtons.GameListBar} />

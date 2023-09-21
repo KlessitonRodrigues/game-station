@@ -126,7 +126,12 @@ declare namespace App {
         label: string;
       }[];
     };
+
     type GameList = {
+      mode: 'list' | 'grid';
+    };
+
+    type GameListPosition = {
       gameList: AppDB.Models.GameInfo[];
       gameIndex: number;
       onChangeGame: (gameIndex: number) => any;

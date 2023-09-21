@@ -56,7 +56,8 @@ export default createGlobalStyle(
       outline: none;
     }
     div::-webkit-scrollbar {
-      width: ${theme.size(2)};
+      width: 0;
+      height: 0;
     }
     div::-webkit-scrollbar-track {
       background: #0000;

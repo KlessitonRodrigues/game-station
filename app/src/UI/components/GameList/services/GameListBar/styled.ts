@@ -24,6 +24,7 @@ export const Games = styled.div(({ theme }) => {
 export const CoverImg = styled.img(
   props =>
     css`
+      display: block;
       height: 100%;
       width: ${props.theme.size(90)};
       min-width: ${props.theme.size(90)};
@@ -31,11 +32,6 @@ export const CoverImg = styled.img(
       background-color: transparent;
       border-radius: ${props.theme.radius.large};
       box-shadow: ${props.theme.shadow.high};
-      border: 2px solid ${props.theme.colors.bg1};
-      background-repeat: no-repeat;
-      background-size: 100% 100%;
-      transition: 0.1s;
-      font-size: ${props.theme.size(20)};
     `
 );
 
@@ -76,27 +72,29 @@ export const CoverList = styled.div(() => {
   `;
 });
 
-export const CoverListImg = styled.img<{ focus: number }>(({ theme, focus }) => {
-  return css`
-    height: 100%;
-    width: ${theme.size(50)};
-    max-width: ${theme.size(50)};
-    margin-right: ${theme.size(4)};
-    background-color: transparent;
-    border-radius: ${theme.radius.small};
-    box-shadow: ${theme.shadow.high};
-    border: 2px solid ${theme.colors.bg1};
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-    font-size: ${theme.size(10)};
-    transition: 0.2s;
+export const CoverListImg = styled.img<{ focus: number }>(
+  props =>
+    css`
+      display: block;
+      height: 100%;
+      width: ${props.theme.size(50)};
+      min-width: ${props.theme.size(50)};
+      max-width: ${props.theme.size(50)};
+      margin-right: ${props.theme.size(4)};
+      background-color: transparent;
+      border-radius: ${props.theme.radius.small};
+      box-shadow: ${props.theme.shadow.high};
+      font-size: ${props.theme.size(10)};
+      transition: 0.3s;
+      filter: brightness(0.8);
 
-    &.cove-item:nth-child(-n + ${focus + 1}) {
-      width: 0;
-      margin: 0;
-      border: none;
-      opacity: 0;
-      overflow: hidden;
-    }
-  `;
-});
+      &.cove-item:nth-child(-n + ${props.focus + 1}) {
+        width: 0;
+        min-width: 0;
+        margin: 0;
+        border: none;
+        opacity: 0;
+        overflow: hidden;
+      }
+    `
+);

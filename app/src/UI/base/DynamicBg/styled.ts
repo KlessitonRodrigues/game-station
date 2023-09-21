@@ -9,7 +9,7 @@ export const Container = styled.div<{ gradient: string }>(
       left: 0;
       width: 100%;
       height: 100%;
-      background-color: transparent;
+      background-color: #000;
       background-image: ${props.gradient};
       background-size: 400% 400%;
       background-position: 50% 50%;
@@ -18,12 +18,13 @@ export const Container = styled.div<{ gradient: string }>(
     `
 );
 
-export const BgImage = styled.img(
+export const BgImage = styled.img<{ blur: boolean }>(
   props =>
     css`
       width: 100%;
       height: 100%;
+      object-fit: cover;
       background-size: cover;
-      filter: brightness(0.5);
+      filter: brightness(0.4) blur(${props.blur ? '40px' : '0'});
     `
 );
