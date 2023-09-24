@@ -1,11 +1,11 @@
 export const UIButtons = {
   GameListBar: [
-    { content: 'A', label: 'Details' },
+    { content: 'A', label: 'Start' },
     { content: 'X', label: 'Grid View' },
     { content: 'Y', label: 'Add Game' },
   ],
   GameListGrid: [
-    { content: 'A', label: 'Details' },
+    { content: 'A', label: 'Start' },
     { content: 'X', label: 'List View' },
     { content: 'Y', label: 'Add Game' },
   ],

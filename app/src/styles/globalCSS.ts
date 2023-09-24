@@ -7,6 +7,7 @@ export default createGlobalStyle(
       padding: 0;
       outline: 0;
       box-sizing: border-box;
+      user-select: none;
     }
     html {
       font-size: 16px;

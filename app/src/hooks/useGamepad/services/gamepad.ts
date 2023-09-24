@@ -21,9 +21,9 @@ const buttonLoop = (gamepadIndex: number, onPress: App.Gamepad.OnButtomPressed) 
       if (xboxButtonsId[buttonId]) pressedButtons.push(xboxButtonsId[buttonId]);
     });
 
-    if (pressedButtons.length === 1) {
+    if (pressedButtons.toString() !== lastUpdate.buttons.toString()) {
       lastUpdate.buttons = pressedButtons;
-      onPress && onPress(pressedButtons);
+      if (pressedButtons.length) onPress && onPress(pressedButtons);
     }
   }, 33); // 30 FPS
 };

@@ -1,12 +1,13 @@
 import styled, { css } from 'styled-components';
 
 export const Container = styled.div(
-  ({ theme }) => css`
+  props => css`
     width: 100%;
-    max-width: ${theme.size(500)};
+    max-width: ${props.theme.size(500)};
     height: 100%;
     margin: 0 auto;
     overflow: hidden;
+    margin-bottom: ${props.theme.size(20)};
   `
 );
 

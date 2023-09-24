@@ -12,7 +12,7 @@ import { Container } from './styled';
 
 const GameList = (props: App.Props.GameList) => {
   const { mode } = props;
-  const { focus, loading, setUI } = useUIState();
+  const { focus, active, loading, setUI } = useUIState();
   const [global, setGlobal] = useGlobalContext();
   const [gameList, setGameList] = useState<AppDB.Models.GameInfo[]>([]);
 
@@ -33,17 +33,21 @@ const GameList = (props: App.Props.GameList) => {
     <Container>
       <If check={mode === 'list'}>
         <GameListBar
+          active={active}
           gameList={gameList}
           gameIndex={focus}
           onChangeGame={index => index < gameList.length && setUI('focus', index)}
+          onActiveGame={() => setUI('active', !active)}
           onStartGame={() => {}}
         />
       </If>
       <If check={mode === 'grid'}>
         <GameListGrid
+          active={active}
           gameList={gameList}
           gameIndex={focus}
           onChangeGame={index => index < gameList.length && setUI('focus', index)}
+          onActiveGame={() => setUI('active', !active)}
           onStartGame={() => {}}
         />
       </If>

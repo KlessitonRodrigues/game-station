@@ -14,9 +14,8 @@ export const Games = styled.div(({ theme }) => {
   return css`
     width: 100%;
     display: flex;
-    gap: ${theme.size(8)};
+    gap: ${theme.size(2)};
     height: ${theme.size(120)};
-    margin-bottom: ${theme.size(20)};
     animation: ${Keyframes.slideUpLarge} 0.2s ease-out;
   `;
 });
@@ -26,12 +25,13 @@ export const CoverImg = styled.img(
     css`
       display: block;
       height: 100%;
+      margin: 0 10px;
       width: ${props.theme.size(90)};
       min-width: ${props.theme.size(90)};
       max-width: ${props.theme.size(90)};
-      background-color: transparent;
       border-radius: ${props.theme.radius.large};
       box-shadow: ${props.theme.shadow.high};
+      border: 3px solid ${props.theme.colors.bg1};
     `
 );
 
@@ -76,17 +76,18 @@ export const CoverListImg = styled.img<{ focus: number }>(
   props =>
     css`
       display: block;
-      height: 100%;
+      height: ${props.theme.size(60)};
       width: ${props.theme.size(50)};
       min-width: ${props.theme.size(50)};
       max-width: ${props.theme.size(50)};
       margin-right: ${props.theme.size(4)};
       background-color: transparent;
-      border-radius: ${props.theme.radius.small};
+      border-radius: ${props.theme.radius.medium};
       box-shadow: ${props.theme.shadow.high};
       font-size: ${props.theme.size(10)};
+      border: 3px solid ${props.theme.colors.bg2};
       transition: 0.3s;
-      filter: brightness(0.8);
+      filter: brightness(0.9);
 
       &.cove-item:nth-child(-n + ${props.focus + 1}) {
         width: 0;

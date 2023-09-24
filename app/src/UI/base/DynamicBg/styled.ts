@@ -25,6 +25,6 @@ export const BgImage = styled.img<{ blur: boolean }>(
       height: 100%;
       object-fit: cover;
       background-size: cover;
-      filter: brightness(0.4) blur(${props.blur ? '40px' : '0'});
+      filter: brightness(0.4) blur(${props.blur ? '30px' : '0'});
     `
 );
