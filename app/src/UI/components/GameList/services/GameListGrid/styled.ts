@@ -1,3 +1,4 @@
+import { Keyframes } from 'src/UI/base/Styles/Animations';
 import styled, { css } from 'styled-components';
 
 export const Container = styled.div(
