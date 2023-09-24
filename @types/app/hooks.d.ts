@@ -1,5 +1,6 @@
 declare namespace App {
   namespace Hooks {
+    // usePath
     type PathState =
       | 'games/list/bar'
       | 'games/list/grid'

@@ -131,10 +131,12 @@ declare namespace App {
       mode: 'list' | 'grid';
     };
 
-    type GameListPosition = {
+    type GameListView = {
+      active: boolean;
       gameList: AppDB.Models.GameInfo[];
       gameIndex: number;
       onChangeGame: (gameIndex: number) => any;
+      onActiveGame: (gameIndex: number) => any;
       onStartGame: (gameIndex: number) => any;
     };
   }

@@ -32,6 +32,7 @@ declare namespace App {
         small: string;
         medium: string;
         large: string;
+        veryLarge: string;
         full: string;
       };
       fontSize: {
