@@ -1,29 +1,31 @@
 import styled, { css } from 'styled-components';
 
-export const Container = styled.div(({ theme }) => {
-  return css`
-    position: fixed;
-    bottom: ${theme.size(6)};
-    left: 50%;
-    display: flex;
-    gap: ${theme.size(4)};
-    height: ${theme.size(8)};
-    translate: -50%;
-  `;
-});
+export const Container = styled.div(
+  props =>
+    css`
+      position: fixed;
+      bottom: ${props.theme.size(6)};
+      left: 50%;
+      display: flex;
+      gap: ${props.theme.size(4)};
+      translate: -50%;
+    `
+);
 
-export const Button = styled.div(({ theme }) => {
-  return css`
-    display: flex;
-    align-items: center;
-    gap: ${theme.size(1)};
-  `;
-});
+export const Button = styled.div(
+  props =>
+    css`
+      display: flex;
+      align-items: center;
+      gap: ${props.theme.size(1)};
+    `
+);
 
-export const ButtonLabel = styled.div(({ theme }) => {
-  return css`
-    font-size: ${theme.fontSize.label};
-    padding-bottom: ${theme.size(0.75)};
-    color: ${theme.colors.text3};
-  `;
-});
+export const ButtonLabel = styled.div(
+  props =>
+    css`
+      font-size: ${props.theme.fontSize.label};
+      padding-bottom: ${props.theme.size(0.75)};
+      color: ${props.theme.colors.text3};
+    `
+);

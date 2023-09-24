@@ -48,7 +48,7 @@ const GameDetailsForm = () => {
           title="Game Cover"
           type="img"
           active={focus === 2 && active}
-          value={form.name + ' cover'}
+          value={form.name + ' box art'}
           onChange={cover => setForm({ ...form, cover })}
         />
       </Panel>

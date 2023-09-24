@@ -47,6 +47,7 @@ export const defaultTheme: App.Styled.Theme = {
     small: '0.3rem',
     medium: '0.4rem',
     large: '0.5rem',
+    veryLarge: '0.8rem',
     full: '50%',
   },
   devices: {
