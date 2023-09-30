@@ -1,6 +1,7 @@
 import { useEffect, useMemo } from 'react';
 import GamepadButtons from 'src/UI/base/GamepadButtons';
 import Icons from 'src/UI/base/Icons';
+import If from 'src/UI/base/If';
 import useGamepad from 'src/hooks/useGamepad';
 import { UIButtons } from 'src/utils/constants/UIButtons';
 
@@ -18,45 +19,41 @@ import {
 
 const renderGridItems = (props: App.Props.GameListView) => {
   const { active, gameList, gameIndex, onChangeGame, onActiveGame } = props;
+
   return gameList.map((game, i) => (
     <GridItem
-      active={active}
-      ref={ref => ref && gameIndex === i && ref.scrollIntoView()}
       key={game.name}
       focus={gameIndex === i}
-      onClick={() => {
-        if (i === gameIndex) onActiveGame(i);
-        else onChangeGame(i);
-      }}
+      onClick={() => (i === gameIndex ? onActiveGame(i) : onChangeGame(i))}
+      ref={ref => ref && gameIndex === i && ref.scrollIntoView({ block: 'center' })}
     >
       <GridItemImg src={game.cover} />
-      <Description>
-        <Content>
-          <Title>{game.name}</Title>
-          <Label>{game.publisher}</Label>
-        </Content>
-        <StartButton>
-          <Icons type="games" />
-          Start
-        </StartButton>
-      </Description>
+      <If check={active && gameIndex === i}>
+        <Description>
+          <Content>
+            <Title>{game.name}</Title>
+            <Label>{game.publisher}</Label>
+          </Content>
+          <StartButton>Start</StartButton>
+        </Description>
+      </If>
     </GridItem>
   ));
 };
 
 export const GameListGrid = (props: App.Props.GameListView) => {
-  const { active, gameList, gameIndex, onChangeGame, onActiveGame, onStartGame } = props;
-  const onPressed = useGamepad();
+  const { active, gameList, gameIndex, onChangeGame, onActiveGame } = props;
+  const onPress = useGamepad();
 
   useEffect(() => {
     const pos = (gameIndex + 1) % 4;
-    onPressed('ArrowLeft', () => pos !== 1 && onChangeGame(gameIndex - 1));
-    onPressed('ArrowRight', () => pos !== 0 && onChangeGame(gameIndex + 1));
-    onPressed('ArrowUp', () => onChangeGame(gameIndex - 4));
-    onPressed('ArrowDown', () => onChangeGame(gameIndex + 4));
-    onPressed('ButtonA', () => onActiveGame(gameIndex));
-    // onPressed('ButtonStart', () => onStartGame(gameIndex));
-  }, [onPressed]);
+    onPress('ArrowLeft', () => pos !== 1 && onChangeGame(gameIndex - 1));
+    onPress('ArrowRight', () => pos !== 0 && onChangeGame(gameIndex + 1));
+    onPress('ArrowUp', () => onChangeGame(gameIndex - 4));
+    onPress('ArrowDown', () => onChangeGame(gameIndex + 4));
+    onPress('ButtonA', () => onActiveGame(gameIndex));
+    // onPress('ButtonStart', () => onStartGame(gameIndex));
+  }, [onPress]);
 
   const GridItems = useMemo(() => renderGridItems(props), [active, gameIndex, gameList]);
 

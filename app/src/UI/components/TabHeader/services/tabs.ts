@@ -4,7 +4,5 @@ export const tabRoutes = [
   { name: 'music', route: 'music' },
   { name: 'midia', route: 'midia' },
   { name: 'web', route: 'web' },
-  { name: 'theme', route: 'theme' },
-  { name: 'controls', route: 'controls' },
   { name: 'settings', route: 'settings' },
 ];

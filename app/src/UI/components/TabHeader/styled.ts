@@ -48,17 +48,16 @@ export const TabsItem = styled.label<{ selected?: boolean }>(
     display: flex;
     position: relative;
     align-items: center;
-    color: ${props.theme.colors.bg1};
+    color: ${props.theme.colors.text3};
     transition: 0.3s ease-out;
     cursor: pointer;
 
     :hover {
-      color: ${props.theme.colors.text2};
+      color: ${props.theme.colors.text1};
     }
 
     ${props.selected &&
     css`
-      color: ${props.theme.colors.text1};
       margin-left: ${props.theme.size(15)};
       margin-right: ${props.theme.size(15)};
     `}

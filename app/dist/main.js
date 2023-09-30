@@ -1,461 +1,962 @@
-(()=>{var e,t,i,n={803:(e,t,i)=>{"use strict";var n=i(893),r=i(745),o=i(655),a=i(250);const s=e=>e.check?e.true||e.children:e.false;var c=i(86);const l=c.ZP.div((e=>c.iv`
-      z-index: -1;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: #000;
-      background-image: ${e.gradient};
-      background-size: 400% 400%;
-      background-position: 50% 50%;
-      background-repeat: no-repeat;
-      background-attachment: fixed;
-    `)),d=c.ZP.img((e=>c.iv`
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      background-size: cover;
-      filter: brightness(0.4) blur(${e.blur?"30px":"0"});
-    `)),h=e=>{const{img:t,gradient:i,blurBg:r}=e;return(0,n.jsx)(l,Object.assign({gradient:t?"":i},{children:(0,n.jsx)(s,Object.assign({check:!!t},{children:(0,n.jsx)(d,{src:t,blur:r})}))}))};var u=i(294);const g={axis0Pos:"LeftStickRight",axis0Neg:"LeftStickLeft",axis1Pos:"LeftStickDown",axis1Neg:"LeftStickUp",axis2Pos:"RightStickRight",axis2Neg:"RightStickLeft",axis3Pos:"RightStickDown",axis3Neg:"RightStickUp",button0:"ButtonA",button1:"ButtonB",button2:"ButtonX",button3:"ButtonY",button4:"ButtonLeft",button5:"ButtonRight",button6:"TriggerLeft",button7:"TriggerRight",button8:"ButtonSelect",button9:"ButtonStart",button10:"LeftStick",button11:"RightStick",button12:"ArrowUp",button13:"ArrowDown",button14:"ArrowLeft",button15:"ArrowRight",button16:"ButtonHome"},m=[],f=e=>{console.log("Disconnected",e.gamepad.id),m.forEach((e=>clearInterval(e)))},p=(0,u.createContext)((()=>{})),x=e=>{const[t,i]=(0,u.useState)([]),r=(0,u.useCallback)(((e,i)=>t.includes(e)&&i&&i()),[t]);return(0,u.useEffect)((()=>{window.addEventListener("gamepadconnected",(e=>((e,t)=>{console.log("Connected",e.gamepad.id),m.push(((e,t)=>{const i={time:0,buttons:[""]};return setInterval((()=>{const{timestamp:n,axes:r,buttons:o}=navigator.getGamepads()[e],a=[];if(n===i.time)return i.time=n;i.time=n,r.forEach(((e,t)=>{if(1!==e&&-1!==e)return!1;const i=`axis${t}${e>0?"Pos":"Neg"}`;g[i]&&a.push(g[i])})),o.forEach(((e,t)=>{if(0===e.value)return!1;const i=`button${t}`;g[i]&&a.push(g[i])})),a.toString()!==i.buttons.toString()&&(i.buttons=a,a.length&&t&&t(a))}),33)})(e.gamepad.index,t))})(e,i))),window.addEventListener("gamepaddisconnected",f)}),[]),(0,n.jsx)(p.Provider,Object.assign({value:r},{children:e.children}))},v=()=>(0,u.useContext)(p);var b=i(640);const j="games_db",w=i.n(b)()({readDB:()=>JSON.parse(window.localStorage.getItem(j)||"{}"),saveDB:e=>(e.updatedAt=(new Date).toISOString(),window.localStorage.setItem(j,JSON.stringify(e)),e)});var y;w.data.testData();const $={gradientBg:null===(y=w.settings.read())||void 0===y?void 0:y.bgOption,imgBg:""},z=(0,u.createContext)([$,()=>{}]),P=e=>(0,n.jsx)(z.Provider,Object.assign({value:(0,u.useState)($)},{children:e.children})),O=()=>(0,u.useContext)(z),S="games/list/bar",k=(0,u.createContext)([S,()=>{}]),A=e=>(0,n.jsx)(k.Provider,Object.assign({value:(0,u.useState)(S)},{children:e.children})),Z=()=>(0,u.useContext)(k),C=(0,c.vJ)((({theme:e})=>c.iv`
-    * {
-      margin: 0;
-      padding: 0;
-      outline: 0;
-      box-sizing: border-box;
-      user-select: none;
-    }
-    html {
-      font-size: 16px;
-    }
-    body {
-      font-size: ${e.fontSize.body};
-      height: 100vh;
-      width: 100vw;
-      max-height: 100vh;
-      max-width: 100vw;
-      overflow: hidden;
-    }
-    html,
-    body {
-      font-family: Roboto, sans-serif;
-      background-color: transparent;
-      color: ${e.colors.text3};
-    }
-    h1 {
-      font-size: ${e.fontSize.h1};
-    }
-    h2 {
-      font-size: ${e.fontSize.h2};
-    }
-    h3 {
-      font-size: ${e.fontSize.h3};
-    }
-    h4 {
-      font-size: ${e.fontSize.h4};
-    }
-    h5 {
-      font-size: ${e.fontSize.h5};
-    }
-    h6 {
-      font-size: ${e.fontSize.h6};
-    }
-    ul {
-      list-style: none;
-    }
-    a {
-      text-decoration: none;
-    }
-    button {
-      cursor: pointer;
-      background-color: transparent;
-      border: none;
-      outline: none;
-    }
-    div::-webkit-scrollbar {
-      width: 0;
-      height: 0;
-    }
-    div::-webkit-scrollbar-track {
-      background: #0000;
-    }
-    div::-webkit-scrollbar-thumb {
-      background: ${e.colors.gray};
-      border-radius: 2px;
-    }
-    div::-webkit-scrollbar-thumb:hover {
-      background: ${e.colors.main};
-    }
-    #root {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-    }
-  `)),B="#880e4f",L="#c51162",U="#8e24aa",D="#aa00ff",I="#6200ea",E="#0091ea",G="#00b8d4",M="#7cb342",R="#64dd17",F="#e0e0e0",W="#bdbdbd",T="#9e9e9e",_="#757575",H="#616161",N="#424242",X="#141414",Y={size:e=>.2*e+"rem",colors:{main:"#039be5",mainBg:"#0C66E4",bg1:F+"55",bg2:F+"33",bg3:F+"22",bg4:F+"11",text1:"#fafafa",text2:"#eeeeee",text3:F,text4:W,gray:W,yellow:"#B38600",red:"#AE2A19",blue:"#388BFF",green:M,white:F,black:X},fontSize:{body:"1rem",small:"0.95rem",verySmall:"0.8rem",label:"0.9rem",h1:"1.6rem",h2:"1.4rem",h3:"1.2rem",h4:"1.1rem",h5:"1.075rem",h6:"1.05rem"},shadow:{low:"1px 1px 2px 0 #0004",medium:"1px 1px 2px 0 #0009",high:"1px 2px 2px 0 #0007",mediumGray:"1px 1px 4px 1px #777a",lowRight:"3px 0 4px 0px #0002",mediumLeft:"-4px 0 4px 0px #0006"},radius:{verySmall:"0.2rem",small:"0.3rem",medium:"0.4rem",large:"0.5rem",veryLarge:"0.8rem",full:"50%"},devices:{mobileS:"(max-width: 320px)",mobileM:"(max-width: 425px)",mobileL:"(max-width: 480px)",tablet:"(max-width: 768px)",laptopS:"(max-width: 900px)",laptopM:"(max-width: 1024px)",laptopL:"(max-width: 1280px)",desktopS:"(max-width: 1440px)",desktopM:"(max-width: 1980px)",desktopL:"(max-width: 2560px)"}},q=(Object.assign(Object.assign({},Y),{colors:Object.assign(Object.assign({},Y.colors),{bg1:X,bg2:N+"44",bg3:H+"44",bg4:_+"44",text1:F,text2:W,text3:T,text4:H,gray:_,white:F})}),{indigo:`linear-gradient(150deg, #2962ff, ${X} 80%)`,blue:`linear-gradient(150deg, ${E}, ${X} 80%)`,green:`linear-gradient(150deg, ${R}, ${X} 80%)`,deepPurple:`linear-gradient(150deg, ${I}, ${X} 80%)`,purple:`linear-gradient(150deg, ${D}, ${X} 80%)`,pink:`linear-gradient(150deg, ${L}, ${X} 80%)`,red:`linear-gradient(150deg, #d32f2f, ${X} 80%)`,blueAndPurple:`linear-gradient(150deg, ${G}, ${U} 70%)`,blueAndPink:`linear-gradient(150deg, ${G}, ${L} 80%)`,greenAndPink:`linear-gradient(150deg, ${R}, ${B} 80%)`,blueAndBrown:`linear-gradient(150deg, ${E}, #5d4037 75%)`,purpleAndGreen:`linear-gradient(150deg, ${I}, ${M} 80%)`});var J=i(155),V=i(352);const K={games:(0,n.jsx)(V.gdw,{}),apps:(0,n.jsx)(V.v$D,{}),music:(0,n.jsx)(V.JUP,{}),midia:(0,n.jsx)(V.SD9,{}),web:(0,n.jsx)(V.lct,{}),news:(0,n.jsx)(V.lBz,{}),theme:(0,n.jsx)(V.zCJ,{}),settings:(0,n.jsx)(V.NY,{}),user:(0,n.jsx)(V.sFD,{}),battery:(0,n.jsx)(V.e8c,{}),gamepad:(0,n.jsx)(J.uWr,{}),search:(0,n.jsx)(V.Qcu,{}),folder:(0,n.jsx)(V.G2V,{}),file:(0,n.jsx)(V.UfY,{}),image:(0,n.jsx)(V.RXd,{}),"arrow-left":(0,n.jsx)(V.jW7,{}),"arrow-right":(0,n.jsx)(V.jfD,{}),usb:(0,n.jsx)(V.rAw,{}),controls:(0,n.jsx)(J.uWr,{}),edit:(0,n.jsx)(V.ISo,{}),spinner:(0,n.jsx)(V.H4p,{})},Q=c.ZP.span((e=>c.iv`
-      display: inline-flex;
-      font-size: ${e.theme.size(e.size||8)};
-    `)),ee=e=>{const{type:t,size:i,style:r}=e;return(0,n.jsx)(Q,Object.assign({size:i,style:r},{children:K[t]}))},te=()=>{const[e,t]=(0,u.useState)(!1),[i,n]=(0,u.useState)(0),[r,o]=(0,u.useState)(0),[a,s]=(0,u.useState)(!1),c=(0,u.useCallback)(((i,r)=>{"active"===i&&"boolean"==typeof r&&t(r),"focus"===i&&"number"==typeof r&&!e&&r>=0&&n(r),"option"===i&&"number"==typeof r&&r>=0&&o(r),"loading"===i&&"boolean"==typeof r&&s(r)}),[e,i,r,a]);return{focus:i,active:e,option:r,loading:a,setUI:c}},ie=[{name:"games",route:"games/list/bar"},{name:"apps",route:"apps"},{name:"music",route:"music"},{name:"midia",route:"midia"},{name:"web",route:"web"},{name:"theme",route:"theme"},{name:"controls",route:"controls"},{name:"settings",route:"settings"}],ne=c.ZP.div((({theme:e})=>c.iv`
-    width: 100%;
-    max-width: ${e.size(500)};
-    display: flex;
-    align-items: center;
-    padding: ${e.size(4)};
-    margin: ${e.size(2)} auto;
-  `)),re=c.ZP.div((()=>c.iv`
-    display: flex;
-    align-items: center;
-  `)),oe=c.ZP.div((({theme:e})=>c.iv`
-    display: flex;
-    align-items: center;
-    gap: ${e.size(4)};
-  `)),ae=c.ZP.div((()=>c.iv`
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  `)),se=c.ZP.span((({theme:e})=>c.iv`
-    padding: 0 ${e.size(2)};
-    font-size: ${e.fontSize.h1};
-    text-transform: capitalize;
-  `)),ce=c.ZP.label((e=>c.iv`
-    display: flex;
-    position: relative;
-    align-items: center;
-    color: ${e.theme.colors.bg1};
-    transition: 0.3s ease-out;
-    cursor: pointer;
+/*
+ * ATTENTION: The "eval" devtool has been used (maybe by default in mode: "development").
+ * This devtool is neither made for production nor for readable output files.
+ * It uses "eval()" calls to create a separate source file in the browser devtools.
+ * If you are trying to read the output file, select a different devtool (https://webpack.js.org/configuration/devtool/)
+ * or disable the default devtool with "devtool: false".
+ * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
+ */
+/******/ (() => { // webpackBootstrap
+/******/ 	var __webpack_modules__ = ({
 
-    :hover {
-      color: ${e.theme.colors.text2};
-    }
+/***/ "./src/UI/base/DynamicBg/index.tsx":
+/*!*****************************************!*\
+  !*** ./src/UI/base/DynamicBg/index.tsx ***!
+  \*****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-    ${e.selected&&c.iv`
-      color: ${e.theme.colors.text1};
-      margin-left: ${e.theme.size(15)};
-      margin-right: ${e.theme.size(15)};
-    `}
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ \"./node_modules/react/jsx-runtime.js\");\n/* harmony import */ var _If__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../If */ \"./src/UI/base/If/index.ts\");\n/* harmony import */ var _styled__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./styled */ \"./src/UI/base/DynamicBg/styled.ts\");\n\n\n\nconst DynamicBg = (props) => {\n    const { img, gradient, blurBg } = props;\n    return ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_styled__WEBPACK_IMPORTED_MODULE_2__.Container, Object.assign({ gradient: img ? '' : gradient }, { children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_If__WEBPACK_IMPORTED_MODULE_1__[\"default\"], Object.assign({ check: !!img }, { children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_styled__WEBPACK_IMPORTED_MODULE_2__.BgImage, { src: img, blur: blurBg }) })) })));\n};\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (DynamicBg);\n\n\n//# sourceURL=webpack://app-desktop/./src/UI/base/DynamicBg/index.tsx?");
 
-    ${se} {
-      width: 0;
-      ${!e.selected&&"opacity: 0;"}
-      ${e.selected&&`width: ${e.theme.size(25)};`}
-    }
-  `)),le=()=>{const e=v(),[t,i]=Z(),{option:r,setUI:o}=te();return(0,u.useEffect)((()=>{e("ButtonLeft",(()=>o("option",r-1))),e("ButtonRight",(()=>r<ie.length-1&&o("option",r+1)))}),[e]),(0,u.useEffect)((()=>{const e=ie[r].route;i(e)}),[r]),(0,n.jsxs)(ne,{children:[(0,n.jsx)(re,{children:(0,n.jsx)(ee,{type:"user",size:7})}),(0,n.jsx)(ae,{children:ie.map(((e,t)=>(0,n.jsxs)(ce,Object.assign({selected:r===t,onClick:()=>o("option",t)},{children:[(0,n.jsx)(ee,{type:e.name,size:13}),(0,n.jsx)(se,{children:e.name})]}),e.name)))}),(0,n.jsx)(oe,{children:(0,n.jsx)(ee,{type:"gamepad",size:7})})]})},de=c.ZP.div((e=>c.iv`
-    width: 100%;
-    max-width: ${e.theme.size(500)};
-    height: 100%;
-    margin: 0 auto;
-    overflow: hidden;
-    margin-bottom: ${e.theme.size(20)};
-  `)),he=c.ZP.div((({theme:e})=>c.iv`
-    width: 100%;
-    height: 100%;
-    padding: ${e.size(4)};
-  `)),ue=e=>(0,n.jsx)(de,{children:(0,n.jsx)(he,{children:e.children})}),ge=()=>(0,n.jsx)(ue,{}),me=(c.F4`
-    from {transform: translateY(6rem); opacity: 0} 
-    to {opacity: 1}
-`,c.F4`
-    from {transform: translateY(18rem); opacity: 0} 
-    to {opacity: 1}
-`),fe=(c.F4`
-   from {opacity: 0}
-   to {opacity: 1}
-`,c.F4`
-   to {transform: rotateZ(360deg);}
-`),pe=me,xe=fe,ve=c.ZP.div((()=>c.iv`
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: #000b;
-    backdrop-filter: blur(10px);
-  `)),be=c.ZP.div((({theme:e})=>c.iv`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: ${e.size(8)};
-    animation: ${xe} 1s infinite linear;
-  `)),je=c.ZP.p((({theme:e})=>c.iv`
-    font-size: ${e.fontSize.label};
-    margin-bottom: ${e.size(2)};
-    animation: ${pe} 0.5s ease-out;
-  `)),we=c.ZP.p((({theme:e})=>c.iv`
-    color: ${e.colors.text4};
-    font-size: ${e.fontSize.verySmall};
-    animation: ${pe} 0.5s ease-out;
-  `)),ye=()=>(0,n.jsxs)(ve,{children:[(0,n.jsx)(be,{children:(0,n.jsx)(ee,{type:"spinner",size:12})}),(0,n.jsx)(je,{children:"Optimizing Images"}),(0,n.jsx)(we,{children:"Will happening once only"})]}),$e={method:"GET",mode:"cors",headers:{}};var ze=i(160),Pe=i.n(ze),Oe=function(e,t,i,n){return new(i||(i=Promise))((function(r,o){function a(e){try{c(n.next(e))}catch(e){o(e)}}function s(e){try{c(n.throw(e))}catch(e){o(e)}}function c(e){var t;e.done?r(e.value):(t=e.value,t instanceof i?t:new i((function(e){e(t)}))).then(a,s)}c((n=n.apply(e,t||[])).next())}))};const Se=e=>new Promise(((t,i)=>{fetch(e,$e).then((e=>Oe(void 0,void 0,void 0,(function*(){const t=yield e.blob(),i=yield(n=t,new Promise(((e,t)=>{new(Pe())({file:n,quality:.2,mimeType:"image/jpeg",width:1920,height:1080,convertSize:1/0,loose:!0,redressOrientation:!0,success:t=>{const i=(n.size/1024).toFixed(2),r=(t.size/1024).toFixed(2),o=((n.size-t.size)/n.size*100).toFixed(2)+"%";console.log(`Image compressor: ${i} Kb -> ${r} Kb, ratio: ${o}`),e(t)},error:e=>{console.error(e),t(e)}})})));var n;const r=new FileReader;return r.readAsDataURL(i),yield new Promise((e=>r.onload=()=>e(r.result)))})))).then(t).catch(i)})),ke=e=>Oe(void 0,void 0,void 0,(function*(){const t="image_cache",i=localStorage.getItem(t)||"[]",n=JSON.parse(i),r=n.find((t=>t.url===e));if(r)return r.data;const o=yield Se(e);return n.push({url:e,data:o}),localStorage.setItem(t,JSON.stringify(n)),o})),Ae=e=>{const{content:t}=e;return(0,n.jsx)("div",Object.assign({style:{display:"block",width:"1.8rem"}},{children:(0,n.jsxs)("svg",Object.assign({width:"100%",height:"100%",viewBox:"0 0 64 64",xmlns:"http://www.w3.org/2000/svg"},{children:[(0,n.jsx)("circle",{id:"Oval",fill:"none",cx:"31",cy:"31",r:"27.841",style:{strokeWidth:"4px",stroke:"#999"},transform:"matrix(0.910153, 0, 0, 0.89304, 3.448403, 3.713665)"}),(0,n.jsx)("text",Object.assign({style:{fill:"#DDD",fontFamily:"FreeSans",fontSize:"32.4528px",fontWeight:"bold",whiteSpace:"pre"},transform:"matrix(1.478571, 0, 0, 1.232558, -10.114382, -9.312138",x:"19.5",y:"44"},{children:t}))]}))}))},Ze=c.ZP.div((e=>c.iv`
-      position: fixed;
-      bottom: ${e.theme.size(6)};
-      left: 50%;
-      display: flex;
-      gap: ${e.theme.size(4)};
-      translate: -50%;
-    `)),Ce=c.ZP.div((e=>c.iv`
-      display: flex;
-      align-items: center;
-      gap: ${e.theme.size(1)};
-    `)),Be=c.ZP.div((e=>c.iv`
-      font-size: ${e.theme.fontSize.label};
-      padding-bottom: ${e.theme.size(.75)};
-      color: ${e.theme.colors.text3};
-    `)),Le=e=>{const{buttons:t}=e,i=(0,u.useMemo)((()=>null==t?void 0:t.map((e=>(0,n.jsxs)(Ce,{children:[(0,n.jsx)(Ae,{content:e.content}),(0,n.jsx)(Be,{children:e.label})]},e.label)))),[]);return(0,n.jsx)(Ze,{children:i})},Ue={GameListBar:[{content:"A",label:"Start"},{content:"X",label:"Grid View"},{content:"Y",label:"Add Game"}],GameListGrid:[{content:"A",label:"Start"},{content:"X",label:"List View"},{content:"Y",label:"Add Game"}],GameDetailsForm:[{content:"A",label:"Edit"},{content:"X",label:"Save"},{content:"Y",label:"Game List"}]},De=c.ZP.div((()=>c.iv`
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: flex-end;
-  `)),Ie=c.ZP.div((({theme:e})=>c.iv`
-    width: 100%;
-    display: flex;
-    gap: ${e.size(2)};
-    height: ${e.size(120)};
-    animation: ${pe} 0.2s ease-out;
-  `)),Ee=c.ZP.img((e=>c.iv`
-      display: block;
-      height: 100%;
-      margin: 0 10px;
-      width: ${e.theme.size(90)};
-      min-width: ${e.theme.size(90)};
-      max-width: ${e.theme.size(90)};
-      border-radius: ${e.theme.radius.large};
-      box-shadow: ${e.theme.shadow.high};
-      border: 3px solid ${e.theme.colors.bg1};
-    `)),Ge=c.ZP.div((()=>c.iv`
-    display: flex;
-    flex-direction: column;
-  `)),Me=c.ZP.div((()=>c.iv`
-    width: 100%;
-    height: 100%;
-  `)),Re=c.ZP.div((({theme:e})=>c.iv`
-    color: ${e.colors.text1};
-    font-size: ${e.size(14)};
-  `)),Fe=c.ZP.div((({theme:e})=>c.iv`
-    color: ${e.colors.text3};
-    font-size: ${e.fontSize.h4};
-  `)),We=c.ZP.div((()=>c.iv`
-    width: 100%;
-    height: 100%;
-    display: flex;
-    overflow: hidden;
-  `)),Te=c.ZP.img((e=>c.iv`
-      display: block;
-      height: ${e.theme.size(60)};
-      width: ${e.theme.size(50)};
-      min-width: ${e.theme.size(50)};
-      max-width: ${e.theme.size(50)};
-      margin-right: ${e.theme.size(4)};
-      background-color: transparent;
-      border-radius: ${e.theme.radius.medium};
-      box-shadow: ${e.theme.shadow.high};
-      font-size: ${e.theme.size(10)};
-      border: 3px solid ${e.theme.colors.bg2};
-      transition: 0.3s;
-      filter: brightness(0.9);
+/***/ }),
 
-      &.cove-item:nth-child(-n + ${e.focus+1}) {
-        width: 0;
-        min-width: 0;
-        margin: 0;
-        border: none;
-        opacity: 0;
-        overflow: hidden;
-      }
-    `)),_e=e=>{const{active:t,gameList:i,gameIndex:r,onChangeGame:o,onStartGame:a,onActiveGame:s}=e,c=v(),l=(0,u.useMemo)((()=>i[r]),[r,i]);(0,u.useEffect)((()=>{c("ArrowLeft",(()=>o(r-1))),c("ArrowRight",(()=>o(r+1))),c("ButtonStart",(()=>a(r)))}),[c]);const d=(0,u.useMemo)((()=>i.map((e=>(0,n.jsx)(Te,{className:"cove-item",focus:r,src:e.cover},e.name)))),[i.length,r]);return(0,n.jsxs)(De,{children:[(0,n.jsxs)(Ie,{children:[(0,n.jsx)(Ee,{src:null==l?void 0:l.cover}),(0,n.jsxs)(Ge,{children:[(0,n.jsxs)(Me,{children:[(0,n.jsx)(Re,{children:null==l?void 0:l.name}),(0,n.jsx)(Fe,{children:null==l?void 0:l.publisher})]}),(0,n.jsx)(We,{children:d})]})]}),(0,n.jsx)(Le,{buttons:Ue.GameListBar})]})},He=c.ZP.div((()=>c.iv`
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    `)),Ne=c.ZP.div((e=>c.iv`
-      height: 100%;
-      display: grid;
-      align-content: flex-start;
-      justify-items: center;
-      grid-template-columns: repeat(4, 1fr);
-      grid-gap: ${e.theme.size(6)};
-      scroll-behavior: smooth;
-      overflow-y: auto;
-    `)),Xe=c.ZP.div((e=>c.iv`
-    position: relative;
-    width: ${e.theme.size(80)};
-    height: ${e.theme.size(110)};
-    background-color: transparent;
-    border-radius: ${e.theme.radius.large};
-    font-size: ${e.theme.size(10)};
-    transition: opacity 0.2s;
-    overflow: hidden;
-    border: 2px solid transparent;
-    ${e.focus&&`border: 2px solid ${e.theme.colors.gray};`}
-    ${e.active&&!e.focus&&"opacity: 0.2;"};
-    ${e.active&&e.focus&&"opacity: 1;"};
+/***/ "./src/UI/base/DynamicBg/styled.ts":
+/*!*****************************************!*\
+  !*** ./src/UI/base/DynamicBg/styled.ts ***!
+  \*****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-    ${qe} {
-      ${e.active&&e.focus&&"opacity: 1;"};
-    }
-  `)),Ye=c.ZP.img((()=>c.iv`
-    width: 100%;
-    height: 100%;
-  `)),qe=c.ZP.div((e=>c.iv`
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    opacity: 0;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: #0008;
-    padding: ${e.theme.size(4)};
-    backdrop-filter: blur(15px);
-    transition: opacity 0.3s;
-  `)),Je=c.ZP.div((e=>c.iv`
-    display: flex;
-    flex-direction: column;
-    gap: ${e.theme.size(2)};
-  `)),Ve=c.ZP.h3((e=>c.iv`
-    color: ${e.theme.colors.text1};
-  `)),Ke=c.ZP.p((e=>c.iv`
-    font-size: ${e.theme.fontSize.small};
-    color: ${e.theme.colors.text3};
-  `)),Qe=c.ZP.p((e=>c.iv`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: ${e.theme.size(2)};
-    font-size: ${e.theme.fontSize.h3};
-    width: 100%;
-  `)),et=e=>{const{active:t,gameList:i,gameIndex:r,onChangeGame:o,onActiveGame:a,onStartGame:s}=e,c=v();(0,u.useEffect)((()=>{const e=(r+1)%4;c("ArrowLeft",(()=>1!==e&&o(r-1))),c("ArrowRight",(()=>0!==e&&o(r+1))),c("ArrowUp",(()=>o(r-4))),c("ArrowDown",(()=>o(r+4))),c("ButtonA",(()=>a(r)))}),[c]);const l=(0,u.useMemo)((()=>(e=>{const{active:t,gameList:i,gameIndex:r,onChangeGame:o,onActiveGame:a}=e;return i.map(((e,i)=>(0,n.jsxs)(Xe,Object.assign({active:t,ref:e=>e&&r===i&&e.scrollIntoView(),focus:r===i,onClick:()=>{i===r?a(i):o(i)}},{children:[(0,n.jsx)(Ye,{src:e.cover}),(0,n.jsxs)(qe,{children:[(0,n.jsxs)(Je,{children:[(0,n.jsx)(Ve,{children:e.name}),(0,n.jsx)(Ke,{children:e.publisher})]}),(0,n.jsxs)(Qe,{children:[(0,n.jsx)(ee,{type:"games"}),"Start"]})]})]}),e.name)))})(e)),[t,r,i]);return(0,n.jsxs)(He,{children:[(0,n.jsx)(Ne,{children:l}),(0,n.jsx)(Le,{buttons:Ue.GameListGrid})]})},tt=c.ZP.div((()=>c.iv`
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    overflow: hidden;
-  `)),it=e=>{const{mode:t}=e,{focus:i,active:r,loading:o,setUI:a}=te(),[c,l]=O(),[d,h]=(0,u.useState)([]);return(0,u.useEffect)((()=>{const e=w.games.read();a("loading",!0),(e=>Oe(void 0,void 0,void 0,(function*(){for(const t of e)try{t.background=yield ke(t.background),t.cover=yield ke(t.cover)}catch(e){console.error(e);continue}return e})))(e).then(h).finally((()=>a("loading",!1)))}),[]),(0,u.useEffect)((()=>{var e;const t=null===(e=d[i])||void 0===e?void 0:e.background;l(Object.assign(Object.assign({},c),{imgBg:t}))}),[i,d]),(0,n.jsxs)(tt,{children:[(0,n.jsx)(s,Object.assign({check:"list"===t},{children:(0,n.jsx)(_e,{active:r,gameList:d,gameIndex:i,onChangeGame:e=>e<d.length&&a("focus",e),onActiveGame:()=>a("active",!r),onStartGame:()=>{}})})),(0,n.jsx)(s,Object.assign({check:"grid"===t},{children:(0,n.jsx)(et,{active:r,gameList:d,gameIndex:i,onChangeGame:e=>e<d.length&&a("focus",e),onActiveGame:()=>a("active",!r),onStartGame:()=>{}})})),o&&(0,n.jsx)(ye,{})]})},nt=c.ZP.div((({theme:e})=>c.iv`
-    display: flex;
-    flex-wrap: wrap;
-    gap: ${e.size(2)};
-    width: 100%;
-  `)),rt=c.ZP.div((({theme:e,bg:t,selected:i})=>c.iv`
-    width: ${e.size(16)};
-    height: ${e.size(16)};
-    border-radius: ${e.radius.medium};
-    box-shadow: ${e.shadow.medium};
-    background: ${t};
-    ${i&&` border: 2px solid ${e.colors.white};`}
-  `)),ot=Object.keys(q),at=e=>{const{active:t,value:i,onChange:r}=e,o=v(),{option:a,setUI:s}=te();return(0,u.useEffect)((()=>{t&&(o("ArrowLeft",(()=>s("option",a-1))),o("ArrowRight",(()=>a<11&&s("option",a+1))),o("ButtonA",(()=>r(ot[a]))))}),[o]),(0,n.jsx)(nt,{children:Object.values(q).map(((e,t)=>(0,n.jsx)(rt,{selected:a===t,bg:e},e)))})},st=(()=>{const e=window.require;return window.require=null,{isActive:!!e,resolvePath:t=>{try{return e("path").resolve(t)}catch(e){return console.error(e),""}},fetchHTML:t=>new Promise(((i,n)=>{try{e("http").get(t,(e=>{let t="";e.on("data",(e=>t+=e)),e.on("end",(()=>i(t)))}))}catch(e){n(e)}})),exec:t=>{try{return e("child_process").execSync(t).toString()}catch(e){return console.log(e),""}},listDir:t=>{try{const i=e("fs"),n=e("path");return i.readdirSync(n.resolve(t)).filter((e=>!e.startsWith(".")))}catch(e){return console.error(e),[]}}}})(),ct=c.ZP.div((({theme:e})=>c.iv`
-    width: 100%;
-  `)),lt=c.ZP.div((({theme:e})=>c.iv`
-    padding: ${e.size(1)} 0;
-    font-size: ${e.fontSize.small};
-  `)),dt=c.ZP.div((({theme:e})=>c.iv`
-    width: 100%;
-  `)),ht=c.ZP.div((({theme:e,active:t})=>c.iv`
-    width: 100%;
-    display: flex;
-    align-items: center;
-    padding: ${e.size(.5)} 0;
-    opacity: ${t?1:.6};
-  `)),ut=c.ZP.div((({theme:e})=>c.iv`
-    margin-left: ${e.size(2)};
-  `)),gt=e=>{const{active:t,onChange:i}=e,r=v(),{focus:o,setUI:a}=te(),[s,c]=(0,u.useState)("/"),[l,d]=(0,u.useState)([]);(0,u.useEffect)((()=>{t&&(r("ArrowUp",(()=>a("focus",o-1))),r("ArrowDown",(()=>a("focus",o+1))),r("ArrowRight",(()=>{c(st.resolvePath(s+"/"+l[o])),a("focus",0)})),r("ArrowLeft",(()=>{c(st.resolvePath(s+"/..")),a("focus",0)})),r("ButtonA",(()=>i(s+"/"+l[o]))))}),[r]),(0,u.useEffect)((()=>{const e=st.resolvePath(s),t=st.listDir(e);d(t)}),[s]);const h=(0,u.useMemo)((()=>l.map(((e,t)=>{const{isFile:i,isExe:r}=(e=>({isFile:e.includes("."),isExe:e.includes(".exe")}))(e);return(0,n.jsxs)(ht,Object.assign({active:o===t},{children:[(0,n.jsx)(ee,{type:i?"file":"folder"}),(0,n.jsx)(ut,{children:e})]}),e+t)}))),[l,o]);return(0,n.jsxs)(ct,{children:[(0,n.jsx)(lt,{children:s}),(0,n.jsx)(dt,{children:h})]})};var mt=function(e,t,i,n){return new(i||(i=Promise))((function(r,o){function a(e){try{c(n.next(e))}catch(e){o(e)}}function s(e){try{c(n.throw(e))}catch(e){o(e)}}function c(e){var t;e.done?r(e.value):(t=e.value,t instanceof i?t:new i((function(e){e(t)}))).then(a,s)}c((n=n.apply(e,t||[])).next())}))};const ft=e=>mt(void 0,void 0,void 0,(function*(){const t=e.split(" ").join("+");return(yield st.fetchHTML(`http://www.bing.com/images/search?q=${t}`)).replace(/&quot;/g,'"').match(/"murl":".*?"/gm).join(",").match(/"https:\/\/.*?"/gm).map((e=>e.replace(/\"/g,"")))})),pt=c.ZP.div((({theme:e})=>c.iv`
-    width: ${e.size(200)};
-    max-width: ${e.size(200)};
-    height: ${e.size(100)};
-    max-height: ${e.size(100)};
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-  `)),xt=c.ZP.img((({theme:e})=>c.iv`
-    max-width: 100%;
-    max-height: 100%;
-    border-radius: ${e.radius.large};
-    box-shadow: ${e.shadow.high};
-  `));const vt=e=>{const{active:t,value:i,onChange:r}=e,o=v(),{option:a,setUI:s}=te(),[c,l]=(0,u.useState)(""),[d,h]=(0,u.useState)([]),[g,m]=(0,u.useState)("");return(0,u.useEffect)((()=>{t&&(o("ArrowLeft",(()=>s("option",a-1))),o("ArrowRight",(()=>{a<d.length&&s("option",a+1)})))}),[o]),(0,u.useEffect)((()=>{var e,n,r,o;t&&i.length>=3&&i!==c&&(e=void 0,n=void 0,r=void 0,o=function*(){const e=yield(t=i,mt(void 0,void 0,void 0,(function*(){const e=`${t.toLowerCase()}`;return yield ft(e)})));var t;h(e),l(i)},new(r||(r=Promise))((function(t,i){function a(e){try{c(o.next(e))}catch(e){i(e)}}function s(e){try{c(o.throw(e))}catch(e){i(e)}}function c(e){var i;e.done?t(e.value):(i=e.value,i instanceof r?i:new r((function(e){e(i)}))).then(a,s)}c((o=o.apply(e,n||[])).next())}))).catch(console.error)}),[t,i]),(0,u.useEffect)((()=>{r&&r(d[a]),Se(d[a]).then(m)}),[a,d.length]),(0,n.jsx)(pt,{children:(0,n.jsx)(xt,{src:g})})},bt=c.ZP.input((({theme:e})=>c.iv`
-    width: 100%;
-    padding: ${e.size(2)} ${e.size(1)};
-    border: none;
-    background-color: transparent;
-    color: ${e.colors.text1};
-    font-size: ${e.fontSize.h3};
-    border-bottom: 2px solid ${e.colors.gray};
-    text-transform: capitalize;
-  `)),jt=e=>{const{value:t,onChange:i}=e;return(0,n.jsx)(bt,{autoFocus:!0,value:t,onChange:e=>i(e.target.value)})},wt=c.ZP.div((()=>c.iv``)),yt=c.ZP.div((({theme:e})=>c.iv`
-    width: 100%;
-    height: 100%;
-    max-height: ${e.size(300)};
-    max-width: ${e.size(250)};
-    margin: 0 auto;
-    padding: ${e.size(4)};
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border-radius: ${e.radius.large};
-    animation: ${pe} 0.3s ease-out;
-  `)),$t=c.ZP.div((()=>c.iv`
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 3;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-    backdrop-filter: blur(25px);
-    transition: all 0.1s;
-  `)),zt=c.ZP.h3((({theme:e})=>c.iv`
-    font-size: ${e.fontSize.h3};
-    font-weight: bold;
-  `)),Pt=e=>{const{type:t,active:i,title:r}=e;return(0,n.jsx)(s,Object.assign({check:i},{children:(0,n.jsx)(wt,{children:(0,n.jsx)($t,{children:(0,n.jsxs)(yt,{children:[(0,n.jsx)(zt,{children:r}),(0,n.jsx)(s,{check:"text"===t,true:(0,n.jsx)(jt,Object.assign({},e))}),(0,n.jsx)(s,{check:"img"===t,true:(0,n.jsx)(vt,Object.assign({},e))}),(0,n.jsx)(s,{check:"file"===t,true:(0,n.jsx)(gt,Object.assign({},e))}),(0,n.jsx)(s,{check:"color"===t,true:(0,n.jsx)(at,Object.assign({},e))})]})})})}))},Ot=c.ZP.div((({theme:e,active:t})=>c.iv`
-    width: 75%;
-    margin: 0 auto;
-    padding: ${e.size(4)};
-    margin-bottom: ${e.size(4)};
-    color: ${e.colors.text3};
-    background-color: ${e.colors.bg4};
-    border-radius: ${e.radius.medium};
-    transition: 0.5s;
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"BgImage\": () => (/* binding */ BgImage),\n/* harmony export */   \"Container\": () => (/* binding */ Container)\n/* harmony export */ });\n/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! styled-components */ \"./node_modules/styled-components/dist/styled-components.browser.esm.js\");\n\nconst Container = styled_components__WEBPACK_IMPORTED_MODULE_0__[\"default\"].div(props => styled_components__WEBPACK_IMPORTED_MODULE_0__.css `\n      z-index: -1;\n      position: fixed;\n      top: 0;\n      left: 0;\n      width: 100%;\n      height: 100%;\n      background-color: #000;\n      background-image: ${props.gradient};\n      background-size: 400% 400%;\n      background-position: 50% 50%;\n      background-repeat: no-repeat;\n      background-attachment: fixed;\n    `);\nconst BgImage = styled_components__WEBPACK_IMPORTED_MODULE_0__[\"default\"].img(props => styled_components__WEBPACK_IMPORTED_MODULE_0__.css `\n      width: 100%;\n      height: 100%;\n      object-fit: cover;\n      background-size: cover;\n      filter: brightness(0.5) blur(${props.blur ? '60px' : '0'});\n    `);\n\n\n//# sourceURL=webpack://app-desktop/./src/UI/base/DynamicBg/styled.ts?");
 
-    ${t&&c.iv`
-      background-color: ${e.colors.bg2};
-      color: ${e.colors.text1};
-      ${Zt} {
-        max-height: ${e.size(120)};
-      }
-    `}
-  `)),St=c.ZP.div((({theme:e})=>c.iv`
-    display: flex;
-    align-items: center;
-    gap: ${e.size(4)};
-  `)),kt=c.ZP.div((({theme:e})=>c.iv`
-    font-size: ${e.fontSize.h4};
-    font-weight: bold;
-  `)),At=c.ZP.div((()=>c.iv`
-    transition: 0.3s;
-    width: 100%;
-  `)),Zt=c.ZP.div((()=>c.iv`
-    width: 100%;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.5s;
-  `)),Ct=e=>{const{active:t,title:i,value:r,children:o}=e;return(0,n.jsxs)(Ot,Object.assign({active:t},{children:[(0,n.jsxs)(St,{children:[(0,n.jsx)(kt,{children:i}),(0,n.jsx)(At,{children:null==r?void 0:r.substring(0,60)}),(0,n.jsx)(ee,{type:"edit",size:6})]}),(0,n.jsx)(Zt,{children:o})]}))},Bt=c.ZP.div((()=>c.iv`
-    width: 100%;
-    height: 100%;
-  `)),Lt=c.ZP.h2((({theme:e})=>c.iv`
-    width: fit-content;
-    margin: 0 auto;
-    text-align: center;
-    font-size: ${e.fontSize.h2};
-    padding-bottom: ${e.size(2)};
-    margin-bottom: ${e.size(8)};
-    font-weight: bold;
-    border-bottom: 3px solid ${e.colors.bg1};
-  `)),Ut={name:"",description:"",cover:"",background:"",publisher:"",rate:"80",addedAt:"",year:"2023",hidden:!1,gamePath:"",gameFile:""},Dt=()=>{const e=v(),{active:t,focus:i,setUI:r}=te(),[o,a]=(0,u.useState)(Ut);return(0,u.useEffect)((()=>{e("ArrowUp",(()=>r("focus",i-1))),e("ArrowDown",(()=>r("focus",i+1))),e("ButtonA",(()=>r("active",!t))),e("ButtonX",(()=>w.games.create({gameInfo:o})))}),[e]),(0,n.jsxs)(Bt,{children:[(0,n.jsx)(Lt,{children:"Add New Game"}),(0,n.jsx)(Ct,Object.assign({active:0===i,title:"Title",value:o.name},{children:(0,n.jsx)(Pt,{title:"Game Title",type:"text",active:0===i&&t,value:o.name,onChange:e=>a(Object.assign(Object.assign({},o),{name:e}))})})),(0,n.jsx)(Ct,Object.assign({active:1===i,title:"Publisher",value:o.publisher},{children:(0,n.jsx)(Pt,{title:"Game Publisher",type:"text",active:1===i&&t,value:o.publisher,onChange:e=>a(Object.assign(Object.assign({},o),{publisher:e}))})})),(0,n.jsx)(Ct,Object.assign({active:2===i,title:"Cover",value:o.cover},{children:(0,n.jsx)(Pt,{title:"Game Cover",type:"img",active:2===i&&t,value:o.name+" box art",onChange:e=>a(Object.assign(Object.assign({},o),{cover:e}))})})),(0,n.jsx)(Ct,Object.assign({active:3===i,title:"Background",value:o.background},{children:(0,n.jsx)(Pt,{title:"Game Background",type:"img",active:3===i&&t,value:o.name+" background",onChange:e=>a(Object.assign(Object.assign({},o),{background:e}))})})),(0,n.jsx)(Ct,Object.assign({active:4===i,title:"Location",value:o.gamePath+o.gameFile},{children:(0,n.jsx)(Pt,{title:"Game Path",type:"file",active:4===i&&t,value:o.gamePath,onChange:e=>a(Object.assign(Object.assign({},o),{gameFile:e}))})})),(0,n.jsx)(Le,{buttons:Ue.GameDetailsForm})]})},It=()=>{const[e,t]=Z(),i=v();return(0,u.useEffect)((()=>{i("ButtonY",(()=>{t("games/add"===e?"games/list/bar":"games/add")})),i("ButtonX",(()=>{t("games/list/bar"===e?"games/list/grid":"games/list/bar")}))}),[i]),(0,n.jsxs)(ue,{children:[(0,n.jsx)(s,{check:"games/list/bar"===e,true:(0,n.jsx)(it,{mode:"list"})}),(0,n.jsx)(s,{check:"games/list/grid"===e,true:(0,n.jsx)(it,{mode:"grid"})}),(0,n.jsx)(s,{check:"games/add"===e,true:(0,n.jsx)(Dt,{})})]})},Et=()=>{const e=v(),[t,i]=(0,u.useState)(0);return(0,u.useEffect)((()=>{e("ArrowUp",(()=>t>0&&i(t-1))),e("ArrowDown",(()=>t<1&&i(t+1)))}),[e]),(0,n.jsx)(ue,{children:(0,n.jsx)(Ct,Object.assign({active:0===t,title:"Start up time",value:""},{children:(0,n.jsx)("div",{children:"Settings"})}))})},Gt=()=>{const e=v(),{active:t,focus:i,setUI:r}=te(),[o,a]=(0,u.useState)({});return(0,u.useEffect)((()=>{e("ArrowUp",(()=>r("focus",i-1))),e("ArrowDown",(()=>r("focus",i+1))),e("ButtonA",(()=>r("active",!t))),e("ButtonX",(()=>{}))}),[e]),(0,n.jsxs)(Bt,{children:[(0,n.jsx)(Lt,{children:"Theme Settings"}),(0,n.jsx)(Ct,Object.assign({active:0===i,title:"Title",value:""},{children:(0,n.jsx)(Pt,{title:"Game Title",type:"color",active:0===i&&t,value:"",onChange:e=>a(Object.assign(Object.assign({},o),{name:e}))})}))]})},Mt=()=>(0,n.jsx)(ue,{children:(0,n.jsx)(Gt,{})}),Rt=()=>{const[e]=Z(),[t]=O();return(0,n.jsxs)(c.f6,Object.assign({theme:Y},{children:[(0,n.jsx)(C,{}),(0,n.jsxs)(x,{children:[(0,n.jsx)(le,{}),(0,n.jsxs)(a.Z5,Object.assign({location:{pathname:"/"+e,hash:"",search:""}},{children:[(0,n.jsx)(a.AW,{path:"games/list/bar",element:(0,n.jsx)(It,{})}),(0,n.jsx)(a.AW,{path:"games/list/grid",element:(0,n.jsx)(It,{})}),(0,n.jsx)(a.AW,{path:"games/add",element:(0,n.jsx)(It,{})}),(0,n.jsx)(a.AW,{path:"apps",element:(0,n.jsx)(It,{})}),(0,n.jsx)(a.AW,{path:"music",element:(0,n.jsx)(It,{})}),(0,n.jsx)(a.AW,{path:"midia",element:(0,n.jsx)(It,{})}),(0,n.jsx)(a.AW,{path:"web",element:(0,n.jsx)(It,{})}),(0,n.jsx)(a.AW,{path:"theme",element:(0,n.jsx)(Mt,{})}),(0,n.jsx)(a.AW,{path:"controls",element:(0,n.jsx)(ge,{})}),(0,n.jsx)(a.AW,{path:"settings",element:(0,n.jsx)(Et,{})})]}))]}),(0,n.jsx)(h,{gradient:q[t.gradientBg],img:t.imgBg,layer:-2,blurBg:!e.includes("games/list/bar")})]}))};(0,r.s)(document.getElementById("root")).render((0,n.jsx)((()=>(0,n.jsx)(P,{children:(0,n.jsx)(A,{children:(0,n.jsx)(c.LC,Object.assign({enableVendorPrefixes:!0},{children:(0,n.jsx)(o.VK,{children:(0,n.jsx)(Rt,{})})}))})})),{}))},160:e=>{window,e.exports=function(e){var t={};function i(n){if(t[n])return t[n].exports;var r=t[n]={i:n,l:!1,exports:{}};return e[n].call(r.exports,r,r.exports,i),r.l=!0,r.exports}return i.m=e,i.c=t,i.d=function(e,t,n){i.o(e,t)||Object.defineProperty(e,t,{enumerable:!0,get:n})},i.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},i.t=function(e,t){if(1&t&&(e=i(e)),8&t)return e;if(4&t&&"object"==typeof e&&e&&e.__esModule)return e;var n=Object.create(null);if(i.r(n),Object.defineProperty(n,"default",{enumerable:!0,value:e}),2&t&&"string"!=typeof e)for(var r in e)i.d(n,r,function(t){return e[t]}.bind(null,r));return n},i.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return i.d(t,"a",t),t},i.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},i.p="",i(i.s=0)}([function(e,t,i){"use strict";i.r(t);var n=window,r=/^image\//,o=/\.\w+$/,a={},s={file:null,quality:.8,convertSize:2048e3,loose:!0,redressOrientation:!0},c=function(e){return"function"==typeof e},l=function(e){return r.test(e)};function d(e){e=Object.assign({},s,e),this.options=e,this.file=e.file,this.image=null,this.ParsedOrientationInfo=null,this.init()}var h=d.prototype;for(var u in t.default=d,h.init=function(){var e=this,t=this.file,i=this.options;t&&l(t.type)?(l(i.mimeType)||(i.mimeType=t.type),a.file2Image(t,(function(n){c(e.beforeCompress)&&(e.image=n,t.width=n.naturalWidth,t.height=n.naturalHeight,e.beforeCompress(t)),"image/jpeg"===t.type&&i.redressOrientation?e.getParsedOrientationInfo((function(t){e.parsedOrientationInfo=t,e.rendCanvas()})):(e.parsedOrientationInfo={rotate:0,scaleX:1,scaleY:1},e.rendCanvas())}),e.error)):e.error("请上传图片文件!")},h.rendCanvas=function(){var e=this,t=this.options,i=this.image,n=this.getExpectedEdge(),r=n.dWidth,o=n.dHeight,s=n.width,c=n.height,l=a.image2Canvas(i,r,o,e.beforeDraw.bind(e),e.afterDraw.bind(e),s,c);a.canvas2Blob(l,(function(t){t&&(t.width=l.width,t.height=l.height),e.success(t)}),t.quality,t.mimeType)},h.beforeCompress=function(){c(this.options.beforeCompress)&&this.options.beforeCompress(this.file)},h.getExpectedEdge=function(){var e,t=this.image,i=this.parsedOrientationInfo.rotate,n=this.options,r=t.naturalWidth,o=t.naturalHeight,a=Math.abs(i)%180==90;a&&(e=o,o=r,r=e);var s=r/o,c=Math.max(n.maxWidth,0)||1/0,l=Math.max(n.maxHeight,0)||1/0,d=Math.max(n.minWidth,0)||0,h=Math.max(n.minHeight,0)||0,u=Math.max(n.width,0)||r,g=Math.max(n.height,0)||o;c<1/0&&l<1/0?l*s>c?l=c/s:c=l*s:c<1/0?l=c/s:l<1/0&&(c=l*s),d>0&&h>0?h*s>d?h=d/s:d=h*s:d>0?h=d/s:h>0&&(d=h*s),g*s>u?g=u/s:u=g*s;var m=u=Math.floor(Math.min(Math.max(u,d),c)),f=g=Math.floor(Math.min(Math.max(g,h),l));return a&&(e=f,f=m,m=e),{dWidth:m,dHeight:f,width:u,height:g}},h.getParsedOrientationInfo=function(e){var t=this;this.getOrientation((function(i){c(e)&&e(t.parseOrientation(i))}))},h.getOrientation=function(e){var t=this;a.file2ArrayBuffer(this.file,(function(i){c(e)&&e(t.resetAndGetOrientation(i))}))},h.resetAndGetOrientation=function(e){var t,i=new DataView(e);try{var n,r,o,s;if(255===i.getUint8(0)&&216===i.getUint8(1))for(var c=i.byteLength,l=2;l+1<c;){if(255===i.getUint8(l)&&225===i.getUint8(l+1)){r=l;break}l+=1}if(r){var d=r+4,h=r+10;if("Exif"===a.getStringFromCharCode(i,d,4)){var u=i.getUint16(h);if(((n=18761===u)||19789===u)&&42===i.getUint16(h+2,n)){var g=i.getUint32(h+4,n);g>=8&&(o=h+g)}}}if(o)for(c=i.getUint16(o,n),s=0;s<c;s+=1)if(l=o+12*s+2,274===i.getUint16(l,n)){l+=8,t=i.getUint16(l,n),i.setUint16(l,1,n);break}}catch(e){console.error(e),t=1}return t},h.parseOrientation=function(e){var t=0,i=1,n=1;switch(e){case 2:i=-1;break;case 3:t=-180;break;case 4:n=-1;break;case 5:t=90,n=-1;break;case 6:t=90;break;case 7:t=90,i=-1;break;case 8:t=-90}return{rotate:t,scaleX:i,scaleY:n}},h.beforeDraw=function(e,t){var i=this.parsedOrientationInfo,n=i.rotate,r=i.scaleX,o=i.scaleY,a=this.file,s=this.options,l="transparent",d=t.width,h=t.height;switch(a.size>s.convertSize&&"image/png"===s.mimeType&&(l="#fff",s.mimeType="image/jpeg"),e.fillStyle=l,e.fillRect(0,0,d,h),c(s.beforeDraw)&&s.beforeDraw.call(this,e,t),e.save(),n){case 90:e.translate(d,0);break;case-90:e.translate(0,h);break;case-180:e.translate(d,h)}e.rotate(n*Math.PI/180),e.scale(r,o)},h.afterDraw=function(e,t){var i=this.options;c(i.afterDraw)&&i.afterDraw.call(this,e,t)},h.error=function(e){var t=this.options;if(!c(t.error))throw new Error(e);t.error.call(this,e)},h.success=function(e){var t,i,n=this.options,r=this.file,a=this.image,s=this.getExpectedEdge(),d=a.naturalHeight,h=a.naturalWidth;if(e&&e.size)if(!n.loose&&e.size>r.size&&!(s.width>h||s.height>d))console.warn("当前设置的是非宽松模式，压缩结果大于源图片，输出源图片"),e=r;else{var u=new Date;e.lastModified=u.getTime(),e.lastModifiedDate=u,e.name=r.name,e.name&&e.type!==r.type&&(e.name=e.name.replace(o,(t=e.type,"jpeg"===(i=l(t)?t.substr(6):"")&&(i="jpg"),"."+i)))}else console.warn("图片压缩出了点意外，输出源图片"),e=r;c(n.success)&&n.success.call(this,e)},a.file2DataUrl=function(e,t,i){var n=new FileReader;n.onload=function(){t(n.result)},n.onerror=function(){c(i)&&i("读取文件失败！")},n.readAsDataURL(e)},a.file2ArrayBuffer=function(e,t,i){var n=new FileReader;n.onload=function(e){t(e.target.result)},n.onerror=function(){c(i)&&i("读取文件失败！")},n.readAsArrayBuffer(e)},a.getStringFromCharCode=function(e,t,i){var n,r="";for(i+=t,n=t;n<i;n+=1)r+=String.fromCharCode(e.getUint8(n));return r},a.file2Image=function(e,t,i){var r=new Image,o=n.URL||n.webkitURL;if(n.navigator&&/(?:iPad|iPhone|iPod).*?AppleWebKit/i.test(n.navigator.userAgent)&&(r.crossOrigin="anonymous"),r.alt=e.name,r.onerror=function(){c(i)&&i("图片加载错误！")},o){var a=o.createObjectURL(e);r.onload=function(){t(r),o.revokeObjectURL(a)},r.src=a}else this.file2DataUrl(e,(function(e){r.onload=function(){t(r)},r.src=e}),i)},a.url2Image=function(e,t,i){var n=new Image;n.src=e,n.onload=function(){t(n)},n.onerror=function(){c(i)&&i("图片加载错误！")}},a.image2Canvas=function(e,t,i,n,r,o,a){var s=document.createElement("canvas"),l=s.getContext("2d");return s.width=o||e.naturalWidth,s.height=a||e.naturalHeight,c(n)&&n(l,s),l.save(),l.drawImage(e,0,0,t,i),l.restore(),c(r)&&r(l,s),s},a.canvas2DataUrl=function(e,t,i){return e.toDataURL(i||"image/jpeg",t)},a.dataUrl2Image=function(e,t,i){var n=new Image;n.onload=function(){t(n)},n.error=function(){c(i)&&i("图片加载错误！")},n.src=e},a.dataUrl2Blob=function(e,t){for(var i=e.split(",")[1],n=e.match(/^data:(.*?)(;base64)?,/)[1],r=atob(i),o=i.length,a=new Uint8Array(o),s=0;s<o;s++)a[s]=r.charCodeAt(s);return new Blob([a],{type:t||n})},a.blob2DataUrl=function(e,t,i){this.file2DataUrl(e,t,i)},a.blob2Image=function(e,t,i){this.file2Image(e,t,i)},a.canvas2Blob=function(e,t,i,n){var r=this;HTMLCanvasElement.prototype.toBlob||Object.defineProperty(HTMLCanvasElement.prototype,"toBlob",{value:function(e,t,i){var n=this.toDataURL(t,i);e(r.dataUrl2Blob(n))}}),e.toBlob((function(e){t(e)}),n||"image/jpeg",i||.8)},a.upload=function(e,t,i){var n=new XMLHttpRequest,r=new FormData;r.append("file",t),n.onreadystatechange=function(){if(4!==n.readyState||200!==n.status)throw new Error(n);i&&i(n.responseText)},n.open("POST",e,!0),n.send(r)},a)a.hasOwnProperty(u)&&(d[u]=a[u])}]).default}},r={};function o(e){var t=r[e];if(void 0!==t)return t.exports;var i=r[e]={exports:{}};return n[e](i,i.exports,o),i.exports}o.m=n,e=[],o.O=(t,i,n,r)=>{if(!i){var a=1/0;for(d=0;d<e.length;d++){for(var[i,n,r]=e[d],s=!0,c=0;c<i.length;c++)(!1&r||a>=r)&&Object.keys(o.O).every((e=>o.O[e](i[c])))?i.splice(c--,1):(s=!1,r<a&&(a=r));if(s){e.splice(d--,1);var l=n();void 0!==l&&(t=l)}}return t}r=r||0;for(var d=e.length;d>0&&e[d-1][2]>r;d--)e[d]=e[d-1];e[d]=[i,n,r]},o.n=e=>{var t=e&&e.__esModule?()=>e.default:()=>e;return o.d(t,{a:t}),t},i=Object.getPrototypeOf?e=>Object.getPrototypeOf(e):e=>e.__proto__,o.t=function(e,n){if(1&n&&(e=this(e)),8&n)return e;if("object"==typeof e&&e){if(4&n&&e.__esModule)return e;if(16&n&&"function"==typeof e.then)return e}var r=Object.create(null);o.r(r);var a={};t=t||[null,i({}),i([]),i(i)];for(var s=2&n&&e;"object"==typeof s&&!~t.indexOf(s);s=i(s))Object.getOwnPropertyNames(s).forEach((t=>a[t]=()=>e[t]));return a.default=()=>e,o.d(r,a),r},o.d=(e,t)=>{for(var i in t)o.o(t,i)&&!o.o(e,i)&&Object.defineProperty(e,i,{enumerable:!0,get:t[i]})},o.o=(e,t)=>Object.prototype.hasOwnProperty.call(e,t),o.r=e=>{"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},(()=>{var e={179:0};o.O.j=t=>0===e[t];var t=(t,i)=>{var n,r,[a,s,c]=i,l=0;if(a.some((t=>0!==e[t]))){for(n in s)o.o(s,n)&&(o.m[n]=s[n]);if(c)var d=c(o)}for(t&&t(i);l<a.length;l++)r=a[l],o.o(e,r)&&e[r]&&e[r][0](),e[r]=0;return o.O(d)},i=self.webpackChunkapp_desktop=self.webpackChunkapp_desktop||[];i.forEach(t.bind(null,0)),i.push=t.bind(null,i.push.bind(i))})(),o.nc=void 0;var a=o.O(void 0,[977],(()=>o(803)));a=o.O(a)})();
+/***/ }),
+
+/***/ "./src/UI/base/GamepadButtons/index.tsx":
+/*!**********************************************!*\
+  !*** ./src/UI/base/GamepadButtons/index.tsx ***!
+  \**********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ \"./node_modules/react/jsx-runtime.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _services_Icons__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./services/Icons */ \"./src/UI/base/GamepadButtons/services/Icons.tsx\");\n/* harmony import */ var _styled__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./styled */ \"./src/UI/base/GamepadButtons/styled.ts\");\n\n\n\n\nconst GamepadButtons = (props) => {\n    const { buttons } = props;\n    const MappedButtons = (0,react__WEBPACK_IMPORTED_MODULE_1__.useMemo)(() => {\n        return buttons === null || buttons === void 0 ? void 0 : buttons.map(btn => ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_styled__WEBPACK_IMPORTED_MODULE_3__.Button, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_services_Icons__WEBPACK_IMPORTED_MODULE_2__.RoundedIcon, { content: btn.content }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_styled__WEBPACK_IMPORTED_MODULE_3__.ButtonLabel, { children: btn.label })] }, btn.label)));\n    }, []);\n    return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_styled__WEBPACK_IMPORTED_MODULE_3__.Container, { children: MappedButtons });\n};\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (GamepadButtons);\n\n\n//# sourceURL=webpack://app-desktop/./src/UI/base/GamepadButtons/index.tsx?");
+
+/***/ }),
+
+/***/ "./src/UI/base/GamepadButtons/services/Icons.tsx":
+/*!*******************************************************!*\
+  !*** ./src/UI/base/GamepadButtons/services/Icons.tsx ***!
+  \*******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"RoundedIcon\": () => (/* binding */ RoundedIcon)\n/* harmony export */ });\n/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ \"./node_modules/react/jsx-runtime.js\");\n\nconst RoundedIcon = (props) => {\n    const { content } = props;\n    return ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(\"div\", Object.assign({ style: { display: 'block', width: '1.8rem' } }, { children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(\"svg\", Object.assign({ width: \"100%\", height: \"100%\", viewBox: \"0 0 64 64\", xmlns: \"http://www.w3.org/2000/svg\" }, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(\"circle\", { id: \"Oval\", fill: \"none\", cx: \"31\", cy: \"31\", r: \"27.841\", style: { strokeWidth: '4px', stroke: '#999' }, transform: \"matrix(0.910153, 0, 0, 0.89304, 3.448403, 3.713665)\" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(\"text\", Object.assign({ style: {\n                        fill: '#DDD',\n                        fontFamily: 'FreeSans',\n                        fontSize: '32.4528px',\n                        fontWeight: 'bold',\n                        whiteSpace: 'pre',\n                    }, transform: \"matrix(1.478571, 0, 0, 1.232558, -10.114382, -9.312138\", x: \"19.5\", y: \"44\" }, { children: content }))] })) })));\n};\n\n\n//# sourceURL=webpack://app-desktop/./src/UI/base/GamepadButtons/services/Icons.tsx?");
+
+/***/ }),
+
+/***/ "./src/UI/base/GamepadButtons/styled.ts":
+/*!**********************************************!*\
+  !*** ./src/UI/base/GamepadButtons/styled.ts ***!
+  \**********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"Button\": () => (/* binding */ Button),\n/* harmony export */   \"ButtonLabel\": () => (/* binding */ ButtonLabel),\n/* harmony export */   \"Container\": () => (/* binding */ Container)\n/* harmony export */ });\n/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! styled-components */ \"./node_modules/styled-components/dist/styled-components.browser.esm.js\");\n\nconst Container = styled_components__WEBPACK_IMPORTED_MODULE_0__[\"default\"].div(props => styled_components__WEBPACK_IMPORTED_MODULE_0__.css `\n      position: fixed;\n      bottom: ${props.theme.size(6)};\n      left: 50%;\n      display: flex;\n      gap: ${props.theme.size(4)};\n      translate: -50%;\n    `);\nconst Button = styled_components__WEBPACK_IMPORTED_MODULE_0__[\"default\"].div(props => styled_components__WEBPACK_IMPORTED_MODULE_0__.css `\n      display: flex;\n      align-items: center;\n      gap: ${props.theme.size(1)};\n    `);\nconst ButtonLabel = styled_components__WEBPACK_IMPORTED_MODULE_0__[\"default\"].div(props => styled_components__WEBPACK_IMPORTED_MODULE_0__.css `\n      font-size: ${props.theme.fontSize.label};\n      padding-bottom: ${props.theme.size(0.75)};\n      color: ${props.theme.colors.text3};\n    `);\n\n\n//# sourceURL=webpack://app-desktop/./src/UI/base/GamepadButtons/styled.ts?");
+
+/***/ }),
+
+/***/ "./src/UI/base/Icons/index.tsx":
+/*!*************************************!*\
+  !*** ./src/UI/base/Icons/index.tsx ***!
+  \*************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ \"./node_modules/react/jsx-runtime.js\");\n/* harmony import */ var _services_iconMap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./services/iconMap */ \"./src/UI/base/Icons/services/iconMap.tsx\");\n/* harmony import */ var _styled__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./styled */ \"./src/UI/base/Icons/styled.ts\");\n\n\n\nconst Icons = (props) => {\n    const { type, size, style } = props;\n    return ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_styled__WEBPACK_IMPORTED_MODULE_2__.Container, Object.assign({ size: size, style: style }, { children: _services_iconMap__WEBPACK_IMPORTED_MODULE_1__.iconMap[type] })));\n};\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Icons);\n\n\n//# sourceURL=webpack://app-desktop/./src/UI/base/Icons/index.tsx?");
+
+/***/ }),
+
+/***/ "./src/UI/base/Icons/services/iconMap.tsx":
+/*!************************************************!*\
+  !*** ./src/UI/base/Icons/services/iconMap.tsx ***!
+  \************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"iconMap\": () => (/* binding */ iconMap)\n/* harmony export */ });\n/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ \"./node_modules/react/jsx-runtime.js\");\n/* harmony import */ var react_icons_io5__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-icons/io5 */ \"./node_modules/react-icons/io5/index.esm.js\");\n/* harmony import */ var react_icons_ri__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-icons/ri */ \"./node_modules/react-icons/ri/index.esm.js\");\n\n\n\nconst iconMap = {\n    games: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_icons_io5__WEBPACK_IMPORTED_MODULE_1__.IoGameControllerSharp, {}),\n    apps: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_icons_ri__WEBPACK_IMPORTED_MODULE_2__.RiApps2Fill, {}),\n    music: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_icons_ri__WEBPACK_IMPORTED_MODULE_2__.RiMusic2Fill, {}),\n    midia: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_icons_ri__WEBPACK_IMPORTED_MODULE_2__.RiMovieFill, {}),\n    web: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_icons_ri__WEBPACK_IMPORTED_MODULE_2__.RiEarthFill, {}),\n    news: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_icons_ri__WEBPACK_IMPORTED_MODULE_2__.RiNewspaperFill, {}),\n    theme: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_icons_ri__WEBPACK_IMPORTED_MODULE_2__.RiPaintBrushFill, {}),\n    settings: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_icons_ri__WEBPACK_IMPORTED_MODULE_2__.RiSettings4Fill, {}),\n    user: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_icons_ri__WEBPACK_IMPORTED_MODULE_2__.RiUser2Fill, {}),\n    battery: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_icons_ri__WEBPACK_IMPORTED_MODULE_2__.RiBatteryFill, {}),\n    gamepad: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_icons_io5__WEBPACK_IMPORTED_MODULE_1__.IoGameControllerSharp, {}),\n    search: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_icons_ri__WEBPACK_IMPORTED_MODULE_2__.RiSearchLine, {}),\n    folder: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_icons_ri__WEBPACK_IMPORTED_MODULE_2__.RiFolderFill, {}),\n    file: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_icons_ri__WEBPACK_IMPORTED_MODULE_2__.RiFile2Line, {}),\n    image: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_icons_ri__WEBPACK_IMPORTED_MODULE_2__.RiImage2Fill, {}),\n    usb: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_icons_ri__WEBPACK_IMPORTED_MODULE_2__.RiUsbFill, {}),\n    controls: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_icons_ri__WEBPACK_IMPORTED_MODULE_2__.RiRemoteControlFill, {}),\n    edit: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_icons_ri__WEBPACK_IMPORTED_MODULE_2__.RiPencilLine, {}),\n    spinner: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_icons_ri__WEBPACK_IMPORTED_MODULE_2__.RiLoader5Line, {}),\n    'arrow-left': (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_icons_ri__WEBPACK_IMPORTED_MODULE_2__.RiArrowLeftSLine, {}),\n    'arrow-right': (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_icons_ri__WEBPACK_IMPORTED_MODULE_2__.RiArrowRightSLine, {}),\n};\n\n\n//# sourceURL=webpack://app-desktop/./src/UI/base/Icons/services/iconMap.tsx?");
+
+/***/ }),
+
+/***/ "./src/UI/base/Icons/styled.ts":
+/*!*************************************!*\
+  !*** ./src/UI/base/Icons/styled.ts ***!
+  \*************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"Container\": () => (/* binding */ Container)\n/* harmony export */ });\n/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! styled-components */ \"./node_modules/styled-components/dist/styled-components.browser.esm.js\");\n\nconst Container = styled_components__WEBPACK_IMPORTED_MODULE_0__[\"default\"].span(props => styled_components__WEBPACK_IMPORTED_MODULE_0__.css `\n      display: inline-flex;\n      font-size: ${props.theme.size(props.size || 8)};\n    `);\n\n\n//# sourceURL=webpack://app-desktop/./src/UI/base/Icons/styled.ts?");
+
+/***/ }),
+
+/***/ "./src/UI/base/If/index.ts":
+/*!*********************************!*\
+  !*** ./src/UI/base/If/index.ts ***!
+  \*********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nconst If = (props) => (props.check ? props.true || props.children : props.false);\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (If);\n\n\n//# sourceURL=webpack://app-desktop/./src/UI/base/If/index.ts?");
+
+/***/ }),
+
+/***/ "./src/UI/base/InputModal/index.tsx":
+/*!******************************************!*\
+  !*** ./src/UI/base/InputModal/index.tsx ***!
+  \******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"InputModal\": () => (/* binding */ InputModal)\n/* harmony export */ });\n/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ \"./node_modules/react/jsx-runtime.js\");\n/* harmony import */ var src_UI_base_If__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! src/UI/base/If */ \"./src/UI/base/If/index.ts\");\n/* harmony import */ var _services_ColorInput__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./services/ColorInput */ \"./src/UI/base/InputModal/services/ColorInput/index.tsx\");\n/* harmony import */ var _services_FileInput__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./services/FileInput */ \"./src/UI/base/InputModal/services/FileInput/index.tsx\");\n/* harmony import */ var _services_ImageInput__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./services/ImageInput */ \"./src/UI/base/InputModal/services/ImageInput/index.tsx\");\n/* harmony import */ var _services_TextInput__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./services/TextInput */ \"./src/UI/base/InputModal/services/TextInput/index.tsx\");\n/* harmony import */ var _styled__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./styled */ \"./src/UI/base/InputModal/styled.ts\");\n\n\n\n\n\n\n\nconst InputModal = (props) => {\n    const { type } = props;\n    return ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_styled__WEBPACK_IMPORTED_MODULE_6__.Container, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(src_UI_base_If__WEBPACK_IMPORTED_MODULE_1__[\"default\"], { check: type === 'text', true: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_services_TextInput__WEBPACK_IMPORTED_MODULE_5__.TextInputModal, Object.assign({}, props)) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(src_UI_base_If__WEBPACK_IMPORTED_MODULE_1__[\"default\"], { check: type === 'img', true: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_services_ImageInput__WEBPACK_IMPORTED_MODULE_4__.ImageInputModal, Object.assign({}, props)) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(src_UI_base_If__WEBPACK_IMPORTED_MODULE_1__[\"default\"], { check: type === 'file', true: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_services_FileInput__WEBPACK_IMPORTED_MODULE_3__.FileInputModal, Object.assign({}, props)) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(src_UI_base_If__WEBPACK_IMPORTED_MODULE_1__[\"default\"], { check: type === 'color', true: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_services_ColorInput__WEBPACK_IMPORTED_MODULE_2__.ColorInputModal, Object.assign({}, props)) })] }));\n};\n\n\n//# sourceURL=webpack://app-desktop/./src/UI/base/InputModal/index.tsx?");
+
+/***/ }),
+
+/***/ "./src/UI/base/InputModal/services/ColorInput/index.tsx":
+/*!**************************************************************!*\
+  !*** ./src/UI/base/InputModal/services/ColorInput/index.tsx ***!
+  \**************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"ColorInputModal\": () => (/* binding */ ColorInputModal)\n/* harmony export */ });\n/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ \"./node_modules/react/jsx-runtime.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var src_hooks_useGamepad__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/hooks/useGamepad */ \"./src/hooks/useGamepad/index.tsx\");\n/* harmony import */ var src_hooks_useUIState__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/hooks/useUIState */ \"./src/hooks/useUIState/index.tsx\");\n/* harmony import */ var src_utils_constants_gradient__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/utils/constants/gradient */ \"./src/utils/constants/gradient.ts\");\n/* harmony import */ var _styled__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./styled */ \"./src/UI/base/InputModal/services/ColorInput/styled.ts\");\n\n\n\n\n\n\nconst colors = Object.keys(src_utils_constants_gradient__WEBPACK_IMPORTED_MODULE_4__.bgGradientList);\nconst ColorInputModal = (props) => {\n    const { active, value, onChange } = props;\n    const onPressed = (0,src_hooks_useGamepad__WEBPACK_IMPORTED_MODULE_2__[\"default\"])();\n    const { option, setUI } = (0,src_hooks_useUIState__WEBPACK_IMPORTED_MODULE_3__[\"default\"])();\n    (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(() => {\n        if (active) {\n            onPressed('ArrowLeft', () => setUI('option', option - 1));\n            onPressed('ArrowRight', () => option < 11 && setUI('option', option + 1));\n            onPressed('ButtonA', () => onChange(colors[option]));\n        }\n    }, [onPressed]);\n    return ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_styled__WEBPACK_IMPORTED_MODULE_5__.Container, { children: Object.values(src_utils_constants_gradient__WEBPACK_IMPORTED_MODULE_4__.bgGradientList).map((color, i) => {\n            return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_styled__WEBPACK_IMPORTED_MODULE_5__.ColorItem, { selected: option === i, bg: color }, color);\n        }) }));\n};\n\n\n//# sourceURL=webpack://app-desktop/./src/UI/base/InputModal/services/ColorInput/index.tsx?");
+
+/***/ }),
+
+/***/ "./src/UI/base/InputModal/services/ColorInput/styled.ts":
+/*!**************************************************************!*\
+  !*** ./src/UI/base/InputModal/services/ColorInput/styled.ts ***!
+  \**************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"ColorItem\": () => (/* binding */ ColorItem),\n/* harmony export */   \"Container\": () => (/* binding */ Container)\n/* harmony export */ });\n/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! styled-components */ \"./node_modules/styled-components/dist/styled-components.browser.esm.js\");\n\nconst Container = styled_components__WEBPACK_IMPORTED_MODULE_0__[\"default\"].div(({ theme }) => {\n    return styled_components__WEBPACK_IMPORTED_MODULE_0__.css `\n    display: flex;\n    flex-wrap: wrap;\n    gap: ${theme.size(2)};\n    width: 100%;\n  `;\n});\nconst ColorItem = styled_components__WEBPACK_IMPORTED_MODULE_0__[\"default\"].div(({ theme, bg, selected }) => styled_components__WEBPACK_IMPORTED_MODULE_0__.css `\n    width: ${theme.size(16)};\n    height: ${theme.size(16)};\n    border-radius: ${theme.radius.medium};\n    box-shadow: ${theme.shadow.medium};\n    background: ${bg};\n    ${selected && ` border: 2px solid ${theme.colors.white};`}\n  `);\n\n\n//# sourceURL=webpack://app-desktop/./src/UI/base/InputModal/services/ColorInput/styled.ts?");
+
+/***/ }),
+
+/***/ "./src/UI/base/InputModal/services/FileInput/index.tsx":
+/*!*************************************************************!*\
+  !*** ./src/UI/base/InputModal/services/FileInput/index.tsx ***!
+  \*************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"FileInputModal\": () => (/* binding */ FileInputModal)\n/* harmony export */ });\n/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ \"./node_modules/react/jsx-runtime.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var src_UI_base_Icons__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/UI/base/Icons */ \"./src/UI/base/Icons/index.tsx\");\n/* harmony import */ var src_hooks_useGamepad__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/hooks/useGamepad */ \"./src/hooks/useGamepad/index.tsx\");\n/* harmony import */ var src_hooks_useUIState__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/hooks/useUIState */ \"./src/hooks/useUIState/index.tsx\");\n/* harmony import */ var src_utils_electron_nodeJS__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/utils/electron/nodeJS */ \"./src/utils/electron/nodeJS.ts\");\n/* harmony import */ var _services_fileName__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./services/fileName */ \"./src/UI/base/InputModal/services/FileInput/services/fileName.ts\");\n/* harmony import */ var _styled__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./styled */ \"./src/UI/base/InputModal/services/FileInput/styled.ts\");\n\n\n\n\n\n\n\n\nconst FileInputModal = (props) => {\n    const { active, onChange } = props;\n    const onPressed = (0,src_hooks_useGamepad__WEBPACK_IMPORTED_MODULE_3__[\"default\"])();\n    const { focus, setUI } = (0,src_hooks_useUIState__WEBPACK_IMPORTED_MODULE_4__[\"default\"])();\n    const [path, setPath] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)('/');\n    const [dirsNames, setDirNames] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]);\n    (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(() => {\n        if (active) {\n            onPressed('ArrowUp', () => setUI('focus', focus - 1));\n            onPressed('ArrowDown', () => setUI('focus', focus + 1));\n            onPressed('ArrowRight', () => {\n                setPath(src_utils_electron_nodeJS__WEBPACK_IMPORTED_MODULE_5__.nodeJS.resolvePath(path + '/' + dirsNames[focus]));\n                setUI('focus', 0);\n            });\n            onPressed('ArrowLeft', () => {\n                setPath(src_utils_electron_nodeJS__WEBPACK_IMPORTED_MODULE_5__.nodeJS.resolvePath(path + '/..'));\n                setUI('focus', 0);\n            });\n            onPressed('ButtonA', () => onChange(path + '/' + dirsNames[focus]));\n        }\n    }, [onPressed]);\n    (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(() => {\n        const dirPath = src_utils_electron_nodeJS__WEBPACK_IMPORTED_MODULE_5__.nodeJS.resolvePath(path);\n        const dirSubPaths = src_utils_electron_nodeJS__WEBPACK_IMPORTED_MODULE_5__.nodeJS.listDir(dirPath);\n        setDirNames(dirSubPaths);\n    }, [path]);\n    const dirList = (0,react__WEBPACK_IMPORTED_MODULE_1__.useMemo)(() => {\n        return dirsNames.map((name, i) => {\n            const { isFile, isExe } = (0,_services_fileName__WEBPACK_IMPORTED_MODULE_6__.checkFileName)(name);\n            return ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_styled__WEBPACK_IMPORTED_MODULE_7__.Dir, Object.assign({ active: focus === i }, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(src_UI_base_Icons__WEBPACK_IMPORTED_MODULE_2__[\"default\"], { type: isFile ? 'file' : 'folder' }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_styled__WEBPACK_IMPORTED_MODULE_7__.DirName, { children: name })] }), name + i));\n        });\n    }, [dirsNames, focus]);\n    return ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_styled__WEBPACK_IMPORTED_MODULE_7__.Container, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_styled__WEBPACK_IMPORTED_MODULE_7__.Path, { children: path }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_styled__WEBPACK_IMPORTED_MODULE_7__.Directories, { children: dirList })] }));\n};\n\n\n//# sourceURL=webpack://app-desktop/./src/UI/base/InputModal/services/FileInput/index.tsx?");
+
+/***/ }),
+
+/***/ "./src/UI/base/InputModal/services/FileInput/services/fileName.ts":
+/*!************************************************************************!*\
+  !*** ./src/UI/base/InputModal/services/FileInput/services/fileName.ts ***!
+  \************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"checkFileName\": () => (/* binding */ checkFileName)\n/* harmony export */ });\nconst checkFileName = (name) => ({\n    isFile: name.includes('.'),\n    isExe: name.includes('.exe'),\n});\n\n\n//# sourceURL=webpack://app-desktop/./src/UI/base/InputModal/services/FileInput/services/fileName.ts?");
+
+/***/ }),
+
+/***/ "./src/UI/base/InputModal/services/FileInput/styled.ts":
+/*!*************************************************************!*\
+  !*** ./src/UI/base/InputModal/services/FileInput/styled.ts ***!
+  \*************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"Container\": () => (/* binding */ Container),\n/* harmony export */   \"Dir\": () => (/* binding */ Dir),\n/* harmony export */   \"DirName\": () => (/* binding */ DirName),\n/* harmony export */   \"Directories\": () => (/* binding */ Directories),\n/* harmony export */   \"Path\": () => (/* binding */ Path)\n/* harmony export */ });\n/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! styled-components */ \"./node_modules/styled-components/dist/styled-components.browser.esm.js\");\n\nconst Container = styled_components__WEBPACK_IMPORTED_MODULE_0__[\"default\"].div(({ theme }) => {\n    return styled_components__WEBPACK_IMPORTED_MODULE_0__.css `\n    width: 100%;\n  `;\n});\nconst Path = styled_components__WEBPACK_IMPORTED_MODULE_0__[\"default\"].div(({ theme }) => {\n    return styled_components__WEBPACK_IMPORTED_MODULE_0__.css `\n    padding: ${theme.size(1)} 0;\n    font-size: ${theme.fontSize.small};\n  `;\n});\nconst Directories = styled_components__WEBPACK_IMPORTED_MODULE_0__[\"default\"].div(({ theme }) => {\n    return styled_components__WEBPACK_IMPORTED_MODULE_0__.css `\n    width: 100%;\n  `;\n});\nconst Dir = styled_components__WEBPACK_IMPORTED_MODULE_0__[\"default\"].div(({ theme, active }) => {\n    return styled_components__WEBPACK_IMPORTED_MODULE_0__.css `\n    width: 100%;\n    display: flex;\n    align-items: center;\n    padding: ${theme.size(0.5)} 0;\n    opacity: ${active ? 1 : 0.6};\n  `;\n});\nconst DirName = styled_components__WEBPACK_IMPORTED_MODULE_0__[\"default\"].div(({ theme }) => {\n    return styled_components__WEBPACK_IMPORTED_MODULE_0__.css `\n    margin-left: ${theme.size(2)};\n  `;\n});\n\n\n//# sourceURL=webpack://app-desktop/./src/UI/base/InputModal/services/FileInput/styled.ts?");
+
+/***/ }),
+
+/***/ "./src/UI/base/InputModal/services/ImageInput/index.tsx":
+/*!**************************************************************!*\
+  !*** ./src/UI/base/InputModal/services/ImageInput/index.tsx ***!
+  \**************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"ImageInputModal\": () => (/* binding */ ImageInputModal)\n/* harmony export */ });\n/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ \"./node_modules/react/jsx-runtime.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var src_hooks_useGamepad__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/hooks/useGamepad */ \"./src/hooks/useGamepad/index.tsx\");\n/* harmony import */ var src_hooks_useUIState__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/hooks/useUIState */ \"./src/hooks/useUIState/index.tsx\");\n/* harmony import */ var src_utils_images_imageCache__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/utils/images/imageCache */ \"./src/utils/images/imageCache.ts\");\n/* harmony import */ var _services_fetchImages__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./services/fetchImages */ \"./src/UI/base/InputModal/services/ImageInput/services/fetchImages.ts\");\n/* harmony import */ var _styled__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./styled */ \"./src/UI/base/InputModal/services/ImageInput/styled.ts\");\nvar __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {\n    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }\n    return new (P || (P = Promise))(function (resolve, reject) {\n        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }\n        function rejected(value) { try { step(generator[\"throw\"](value)); } catch (e) { reject(e); } }\n        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }\n        step((generator = generator.apply(thisArg, _arguments || [])).next());\n    });\n};\n\n\n\n\n\n\n\nconst ImageInputModal = (props) => {\n    const { active, value, onChange } = props;\n    const onPressed = (0,src_hooks_useGamepad__WEBPACK_IMPORTED_MODULE_2__[\"default\"])();\n    const { option, setUI } = (0,src_hooks_useUIState__WEBPACK_IMPORTED_MODULE_3__[\"default\"])();\n    const [lastQuery, setLastQuery] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)('');\n    const [urls, setUrls] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]);\n    const [url, setUrl] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)('');\n    (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(() => {\n        if (active) {\n            onPressed('ArrowLeft', () => setUI('option', option - 1));\n            onPressed('ArrowRight', () => {\n                option < urls.length && setUI('option', option + 1);\n            });\n        }\n    }, [onPressed]);\n    (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(() => {\n        const fetchUrls = () => __awaiter(void 0, void 0, void 0, function* () {\n            const imgUrls = yield (0,_services_fetchImages__WEBPACK_IMPORTED_MODULE_5__.fetchImages)(value);\n            setUrls(imgUrls);\n            setLastQuery(value);\n        });\n        if (active && value.length >= 3 && value !== lastQuery) {\n            fetchUrls().catch(console.error);\n        }\n    }, [active, value]);\n    (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(() => {\n        onChange && onChange(urls[option]);\n        (0,src_utils_images_imageCache__WEBPACK_IMPORTED_MODULE_4__.fetchImageData)(urls[option]).then(setUrl);\n    }, [option, urls.length]);\n    return ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_styled__WEBPACK_IMPORTED_MODULE_6__.ImageBox, { children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_styled__WEBPACK_IMPORTED_MODULE_6__.Image, { src: url }) }));\n};\n\n\n//# sourceURL=webpack://app-desktop/./src/UI/base/InputModal/services/ImageInput/index.tsx?");
+
+/***/ }),
+
+/***/ "./src/UI/base/InputModal/services/ImageInput/services/fetchImages.ts":
+/*!****************************************************************************!*\
+  !*** ./src/UI/base/InputModal/services/ImageInput/services/fetchImages.ts ***!
+  \****************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"fetchImages\": () => (/* binding */ fetchImages)\n/* harmony export */ });\n/* harmony import */ var src_utils_electron_nodeJS__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! src/utils/electron/nodeJS */ \"./src/utils/electron/nodeJS.ts\");\nvar __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {\n    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }\n    return new (P || (P = Promise))(function (resolve, reject) {\n        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }\n        function rejected(value) { try { step(generator[\"throw\"](value)); } catch (e) { reject(e); } }\n        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }\n        step((generator = generator.apply(thisArg, _arguments || [])).next());\n    });\n};\n\nconst fetchImages = (search) => __awaiter(void 0, void 0, void 0, function* () {\n    const searchQuery = `${search.toLowerCase()}`;\n    return yield fetchUrls(searchQuery);\n});\nconst fetchUrls = (search) => __awaiter(void 0, void 0, void 0, function* () {\n    const query = search.split(' ').join('+');\n    const page = yield src_utils_electron_nodeJS__WEBPACK_IMPORTED_MODULE_0__.nodeJS.fetchHTML(`http://www.bing.com/images/search?q=${query}`);\n    const imgData = page.replace(/&quot;/g, '\"').match(/\"murl\":\".*?\"/gm);\n    const imgSource = imgData.join(',').match(/\"https:\\/\\/.*?\"/gm);\n    const imgUrl = imgSource.map(url => url.replace(/\\\"/g, ''));\n    return imgUrl;\n});\n\n\n//# sourceURL=webpack://app-desktop/./src/UI/base/InputModal/services/ImageInput/services/fetchImages.ts?");
+
+/***/ }),
+
+/***/ "./src/UI/base/InputModal/services/ImageInput/styled.ts":
+/*!**************************************************************!*\
+  !*** ./src/UI/base/InputModal/services/ImageInput/styled.ts ***!
+  \**************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"Image\": () => (/* binding */ Image),\n/* harmony export */   \"ImageBox\": () => (/* binding */ ImageBox)\n/* harmony export */ });\n/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! styled-components */ \"./node_modules/styled-components/dist/styled-components.browser.esm.js\");\n\nconst ImageBox = styled_components__WEBPACK_IMPORTED_MODULE_0__[\"default\"].div(({ theme }) => styled_components__WEBPACK_IMPORTED_MODULE_0__.css `\n    width: ${theme.size(200)};\n    max-width: ${theme.size(200)};\n    height: ${theme.size(100)};\n    max-height: ${theme.size(100)};\n    overflow: hidden;\n    display: flex;\n    justify-content: center;\n  `);\nconst Image = styled_components__WEBPACK_IMPORTED_MODULE_0__[\"default\"].img(({ theme }) => styled_components__WEBPACK_IMPORTED_MODULE_0__.css `\n    max-width: 100%;\n    max-height: 100%;\n    border-radius: ${theme.radius.large};\n    box-shadow: ${theme.shadow.high};\n  `);\n\n\n//# sourceURL=webpack://app-desktop/./src/UI/base/InputModal/services/ImageInput/styled.ts?");
+
+/***/ }),
+
+/***/ "./src/UI/base/InputModal/services/TextInput/index.tsx":
+/*!*************************************************************!*\
+  !*** ./src/UI/base/InputModal/services/TextInput/index.tsx ***!
+  \*************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"TextInputModal\": () => (/* binding */ TextInputModal)\n/* harmony export */ });\n/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ \"./node_modules/react/jsx-runtime.js\");\n/* harmony import */ var src_UI_base_If__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! src/UI/base/If */ \"./src/UI/base/If/index.ts\");\n/* harmony import */ var src_UI_base_Keyboard__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/UI/base/Keyboard */ \"./src/UI/base/Keyboard/index.tsx\");\n/* harmony import */ var src_UI_base_Styles_Inputs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/UI/base/Styles/Inputs */ \"./src/UI/base/Styles/Inputs.ts\");\n\n\n\n\nconst TextInputModal = (props) => {\n    const { active, value, onChange } = props;\n    return ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(src_UI_base_Styles_Inputs__WEBPACK_IMPORTED_MODULE_3__.InputField, { autoFocus: true, value: value, onChange: ev => onChange(ev.target.value) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(src_UI_base_If__WEBPACK_IMPORTED_MODULE_1__[\"default\"], Object.assign({ check: active }, { children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(src_UI_base_Keyboard__WEBPACK_IMPORTED_MODULE_2__[\"default\"], { onKeyPress: key => onChange(value + key) }) }))] }));\n};\n\n\n//# sourceURL=webpack://app-desktop/./src/UI/base/InputModal/services/TextInput/index.tsx?");
+
+/***/ }),
+
+/***/ "./src/UI/base/InputModal/styled.ts":
+/*!******************************************!*\
+  !*** ./src/UI/base/InputModal/styled.ts ***!
+  \******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"Container\": () => (/* binding */ Container)\n/* harmony export */ });\n/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! styled-components */ \"./node_modules/styled-components/dist/styled-components.browser.esm.js\");\n\nconst Container = styled_components__WEBPACK_IMPORTED_MODULE_0__[\"default\"].div(() => {\n    return styled_components__WEBPACK_IMPORTED_MODULE_0__.css ``;\n});\n\n\n//# sourceURL=webpack://app-desktop/./src/UI/base/InputModal/styled.ts?");
+
+/***/ }),
+
+/***/ "./src/UI/base/Keyboard/index.tsx":
+/*!****************************************!*\
+  !*** ./src/UI/base/Keyboard/index.tsx ***!
+  \****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ \"./node_modules/react/jsx-runtime.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var src_hooks_useGamepad__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/hooks/useGamepad */ \"./src/hooks/useGamepad/index.tsx\");\n/* harmony import */ var src_hooks_useUIState__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/hooks/useUIState */ \"./src/hooks/useUIState/index.tsx\");\n/* harmony import */ var _services_SVGMap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./services/SVGMap */ \"./src/UI/base/Keyboard/services/SVGMap/index.tsx\");\n/* harmony import */ var _services_keyMap__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./services/keyMap */ \"./src/UI/base/Keyboard/services/keyMap.ts\");\n/* harmony import */ var _styled__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./styled */ \"./src/UI/base/Keyboard/styled.ts\");\n\n\n\n\n\n\n\nconst Keyboard = (props) => {\n    const { onKeyPress } = props;\n    const onPress = (0,src_hooks_useGamepad__WEBPACK_IMPORTED_MODULE_2__[\"default\"])();\n    const { focus, option, setUI } = (0,src_hooks_useUIState__WEBPACK_IMPORTED_MODULE_3__[\"default\"])();\n    const keyId = (0,react__WEBPACK_IMPORTED_MODULE_1__.useMemo)(() => (0,_services_keyMap__WEBPACK_IMPORTED_MODULE_5__.getKeyId)(option, focus), [option, focus]);\n    (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(() => {\n        onPress('ArrowUp', () => setUI('focus', focus - 1));\n        onPress('ArrowDown', () => setUI('focus', focus + 1));\n        onPress('ArrowLeft', () => setUI('option', option - 1));\n        onPress('ArrowRight', () => setUI('option', option + 1));\n        onPress('ButtonB', () => onKeyPress && onKeyPress(keyId));\n    }, [onPress]);\n    (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(() => {\n        const getEl = (query) => document.querySelector(query);\n        const keyPath = getEl(`#keyboard-svg .key-${keyId} path`);\n        if (keyPath)\n            keyPath.style.fill = '#fff7';\n        return () => {\n            if (keyPath)\n                keyPath.style.fill = 'transparent';\n        };\n    }, [option, focus]);\n    return ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_styled__WEBPACK_IMPORTED_MODULE_6__.Container, { children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_services_SVGMap__WEBPACK_IMPORTED_MODULE_4__.KeyboardSVG, {}) }));\n};\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Keyboard);\n\n\n//# sourceURL=webpack://app-desktop/./src/UI/base/Keyboard/index.tsx?");
+
+/***/ }),
+
+/***/ "./src/UI/base/Keyboard/services/SVGMap/index.tsx":
+/*!********************************************************!*\
+  !*** ./src/UI/base/Keyboard/services/SVGMap/index.tsx ***!
+  \********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"KeyboardSVG\": () => (/* binding */ KeyboardSVG)\n/* harmony export */ });\n/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ \"./node_modules/react/jsx-runtime.js\");\n\nconst KeyboardSVG = () => {\n    const bordercolor = '#999';\n    const color = '#fff';\n    return ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(\"svg\", Object.assign({ id: \"keyboard-svg\", xmlns: \"http://www.w3.org/2000/svg\", width: \"100%\", height: \"100%\", x: \"0\", y: \"0\", version: \"1.1\", viewBox: \"0 0 646 266\" }, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(\"path\", { fill: \"none\", stroke: bordercolor, strokeWidth: \"2\", d: \"M549.776 10.265c23.412-.001 46.285-.019 69.158.008 8.147.01 10.876 2.988 10.912 11.79.03 7.36.042 14.72-.002 22.08-.053 8.415-2.885 11.567-10.555 11.581-23.07.04-46.14.045-69.211-.005-7.138-.015-10.15-3.171-10.227-10.605-.08-7.99-.067-15.982-.003-23.972.057-7.381 2.356-9.977 9.928-10.877zM564.485 94.538c0-7.936-.08-15.295.024-22.652.107-7.613 3.04-10.94 9.839-10.98a3814.14 3814.14 0 0146.009.002c6.507.039 9.311 2.993 9.416 9.871.131 8.617.138 17.24-.008 25.857-.11 6.543-2.948 9.63-9.018 9.675-15.529.116-31.061.114-46.59.005-6.639-.047-9.044-3.018-9.672-11.778zM614.541 212.454c2.895.004 5.234-.138 7.551.041 4.774.367 7.562 3.245 7.654 8.426.169 9.453.167 18.914.006 28.368-.094 5.499-3.015 8.553-8.085 8.601-12.418.116-24.839.127-37.257-.004-5.279-.056-8.157-3.29-8.233-9.076-.118-9.035-.116-18.073-.002-27.108.077-6.094 2.974-9.157 8.693-9.218 9.701-.103 19.404-.029 29.673-.03zM35.875 257.947c-6.096-.659-8.749-4.112-8.751-10.097-.002-8.411-.082-16.823.026-25.232.086-6.742 3.114-10.048 9.336-10.104 11.649-.105 23.3-.106 34.949 0 6.183.056 9.231 3.404 9.316 10.135.107 8.409.113 16.822-.002 25.231-.091 6.675-3.176 9.99-9.406 10.046-11.649.103-23.3.029-35.468.021z\", opacity: \"1\" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(\"g\", Object.assign({ className: \"key-item key-esc\" }, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(\"path\", { fill: \"none\", stroke: bordercolor, strokeWidth: \"2\", d: \"M53.86 55.863c-6.008-.001-11.453.088-16.894-.025-6.571-.136-9.725-3.478-9.787-10.368-.075-8.42-.101-16.844.011-25.263.084-6.282 3.242-9.699 9.049-9.786 7.969-.12 15.942-.118 23.911.001 5.377.08 8.787 3.501 8.933 9.336.22 8.836.203 17.687.009 26.524-.129 5.903-3.37 9.194-8.837 9.552-1.937.126-3.887.026-6.395.029z\", opacity: \"1\" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(\"text\", Object.assign({ style: { whiteSpace: 'pre' }, x: \"36.024\", y: \"39.041\", fill: color, fontFamily: \"Inter\", fontSize: \"14\", fontWeight: \"500\" }, { children: \"Esc\" }))] })), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(\"g\", Object.assign({ className: \"key-item key-1\" }, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(\"path\", { fill: \"none\", stroke: bordercolor, strokeWidth: \"2\", d: \"M73.825 46.405c-.005-8.752-.044-16.936.006-25.12.046-7.529 2.98-10.815 9.766-10.88 7.557-.072 15.114-.079 22.671.003 6.08.067 9.372 3.423 9.5 9.971.163 8.39.139 16.788.01 25.179-.103 6.656-3.241 10.136-9.31 10.263-7.748.161-15.502.147-23.251.002-5.286-.099-8.865-2.659-9.392-9.418z\", opacity: \"1\" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(\"text\", Object.assign({ style: { whiteSpace: 'pre' }, x: \"89.129\", y: \"41.432\", fill: color, fontFamily: \"Inter\", fontSize: \"23\", fontWeight: \"500\" }, { children: \"1\" }))] })), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(\"g\", Object.assign({ className: \"key-item key-q\" }, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(\"path\", { fill: \"none\", stroke: bordercolor, strokeWidth: \"2\", d: \"M97.162 96.934c-.004-8.752-.043-16.936.007-25.119.045-7.53 2.979-10.815 9.766-10.881a1112.43 1112.43 0 0122.67.004c6.08.066 9.373 3.423 9.501 9.97.163 8.39.139 16.788.009 25.179-.102 6.656-3.24 10.136-9.31 10.263-7.747.162-15.502.147-23.25.002-5.286-.099-8.865-2.659-9.393-9.418z\", opacity: \"1\" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(\"text\", Object.assign({ style: { whiteSpace: 'pre' }, fill: color, fontFamily: \"Inter\", fontSize: \"23\", fontWeight: \"500\", transform: \"translate(2.547 8.395)\" }, { children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(\"tspan\", Object.assign({ x: \"106.769\", y: \"82.527\" }, { children: \"Q\" })) }))] })), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(\"g\", Object.assign({ className: \"key-item key-6\" }, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(\"path\", { fill: \"none\", stroke: bordercolor, strokeWidth: \"2\", d: \"M307.704 47.433c-.023-9.369-.094-18.184-.006-26.998.067-6.607 3.215-10.025 9.303-10.104a943.832 943.832 0 0123.255-.003c5.77.066 9.2 3.389 9.346 9.487a565.67 565.67 0 01.002 26.44c-.133 5.862-3.389 9.324-8.843 9.464-7.941.203-15.891.129-23.835.03-4.792-.06-8.102-2.439-9.222-8.316z\", opacity: \"1\" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(\"text\", Object.assign({ style: { whiteSpace: 'pre' }, x: \"320.994\", y: \"41.432\", fill: color, fontFamily: \"Inter\", fontSize: \"23\", fontWeight: \"500\" }, { children: \"6\" }))] })), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(\"g\", Object.assign({ className: \"key-item key-4\" }, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(\"path\", { fill: \"none\", stroke: bordercolor, strokeWidth: \"2\", d: \"M255.789 28.171c0 6.088.078 11.563-.021 17.035-.128 7.078-3.19 10.512-9.63 10.624a638.68 638.68 0 01-22.744-.002c-6.421-.116-9.528-3.616-9.582-10.583-.062-8.21-.079-16.421.006-24.631.07-6.694 3.163-10.109 9.264-10.2 7.191-.107 14.385-.041 21.578-.023 8.321.021 11.067 3.022 11.127 12.113.012 1.684.002 3.368.002 5.667z\", opacity: \"1\" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(\"text\", Object.assign({ style: { whiteSpace: 'pre' }, x: \"226.673\", y: \"41.432\", fill: color, fontFamily: \"Inter\", fontSize: \"23\", fontWeight: \"500\" }, { children: \"4\" }))] })), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(\"g\", Object.assign({ className: \"key-item key-2\" }, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(\"path\", { fill: \"none\", stroke: bordercolor, strokeWidth: \"2\", d: \"M122.358 52.346c-.844-2.352-1.768-4.309-1.806-6.287-.164-8.604-.152-17.215-.044-25.821.078-6.267 3.232-9.724 8.981-9.815a796.38 796.38 0 0123.845-.005c5.656.079 8.959 3.547 9.086 9.781a640.58 640.58 0 01.002 25.822c-.124 6.221-3.359 9.665-9.15 9.794-7.752.174-15.52.293-23.257-.098-2.481-.126-4.888-1.942-7.657-3.371z\", opacity: \"1\" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(\"text\", Object.assign({ style: { whiteSpace: 'pre' }, x: \"134.429\", y: \"41.432\", fill: color, fontFamily: \"Inter\", fontSize: \"23\", fontWeight: \"500\" }, { children: \"2\" }))] })), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(\"g\", Object.assign({ className: \"key-item key-3\" }, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(\"path\", { fill: \"none\", stroke: bordercolor, strokeWidth: \"2\", d: \"M167.888 50.627c-.404-10.935-.768-21.412-.629-31.88.063-4.751 3.026-8.015 7.362-8.203 8.903-.385 17.837-.366 26.743-.033 5.092.191 7.548 4.13 7.688 9.286.24 8.81.208 17.636.02 26.448-.126 5.896-3.342 9.41-8.765 9.552-8.137.212-16.307.44-24.41-.165-2.672-.199-6.628-1.32-8.009-5.005z\", opacity: \"1\" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(\"text\", Object.assign({ style: { whiteSpace: 'pre' }, x: \"181.234\", y: \"41.432\", fill: color, fontFamily: \"Inter\", fontSize: \"23\", fontWeight: \"500\" }, { children: \"3\" }))] })), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(\"g\", Object.assign({ className: \"key-item key-5\" }, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(\"path\", { fill: \"none\", stroke: bordercolor, strokeWidth: \"2\", d: \"M266.201 10.754c9.383-.236 18.297-.394 27.21-.328 5.377.04 8.818 3.46 8.964 9.249.227 9.019.267 18.058-.019 27.074-.178 5.634-3.403 8.904-8.616 9.044-8.136.218-16.284.221-24.42.005-5.666-.151-8.772-3.83-8.841-10.04-.088-7.976.172-15.961-.094-23.927-.165-4.958 1.306-8.565 5.816-11.077z\", opacity: \"1\" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(\"text\", Object.assign({ style: { whiteSpace: 'pre' }, x: \"273.981\", y: \"41.432\", fill: color, fontFamily: \"Inter\", fontSize: \"23\", fontWeight: \"500\" }, { children: \"5\" }))] })), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(\"g\", Object.assign({ className: \"key-item key-7\" }, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(\"path\", { fill: \"none\", stroke: bordercolor, strokeWidth: \"2\", d: \"M362.592 55.853c-6.526-.992-9.073-4.756-8.874-11.33.241-7.966-.007-15.948.078-23.922.071-6.67 3.161-10.103 9.228-10.185a802.456 802.456 0 0123.835.009c5.335.086 8.699 3.531 8.841 9.387.214 8.808.204 17.631.007 26.439-.137 6.115-3.482 9.461-9.346 9.573-7.749.147-15.502.036-23.769.029z\", opacity: \"1\" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(\"text\", Object.assign({ style: { whiteSpace: 'pre' }, x: \"368.602\", y: \"41.432\", fill: color, fontFamily: \"Inter\", fontSize: \"23\", fontWeight: \"500\" }, { children: \"7\" }))] })), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(\"g\", Object.assign({ className: \"key-item key-8\" }, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(\"path\", { fill: \"none\", stroke: bordercolor, strokeWidth: \"2\", d: \"M431.574 10.388c7.876.334 10.758 3.351 10.834 11.043.079 7.971.105 15.946-.01 23.916-.102 6.988-3.239 10.38-9.7 10.485-7.554.123-15.112.133-22.665-.003-6.405-.116-9.528-3.609-9.583-10.524a1414.36 1414.36 0 01.003-24.546c.066-6.999 3.14-10.282 9.661-10.353 6.973-.077 13.948-.018 21.46-.018z\", opacity: \"1\" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(\"text\", Object.assign({ style: { whiteSpace: 'pre' }, x: \"414.259\", y: \"41.432\", fill: color, fontFamily: \"Inter\", fontSize: \"23\", fontWeight: \"500\" }, { children: \"8\" }))] })), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(\"g\", Object.assign({ className: \"key-item key-w\" }, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(\"text\", Object.assign({ y: \"91.629\", x: \"153.248\", style: { whiteSpace: 'pre' }, fill: color, fontFamily: \"Inter\", fontSize: \"23\", fontWeight: \"500\" }, { children: \"W\" })), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(\"path\", { d: \"M 143.816 73.843 C 143.92 63.585 146.349 60.937 155.168 60.92 C 162.141 60.906 169.115 60.864 176.089 60.934 C 182.227 60.996 185.62 64.288 185.757 70.714 C 185.94 79.31 185.928 87.918 185.761 96.515 C 185.64 102.741 182.417 106.214 176.654 106.342 C 168.715 106.519 160.767 106.531 152.829 106.336 C 147.109 106.195 143.926 102.585 143.842 96.459 C 143.741 89.119 143.817 81.775 143.816 73.843 Z\", fill: \"none\", stroke: bordercolor, strokeWidth: \"2\", opacity: \"1\" })] })), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(\"g\", Object.assign({ className: \"key-item key-9\" }, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(\"path\", { d: \"M 447.092 30.631 C 447.092 10.387 447.092 10.387 465.195 10.387 C 470.055 10.387 474.915 10.313 479.773 10.409 C 485.513 10.521 488.894 13.877 489.028 20.052 C 489.219 28.888 489.249 37.739 489.009 46.572 C 488.854 52.235 485.731 55.613 480.503 55.78 C 472.346 56.04 464.174 56.008 456.015 55.8 C 450.314 55.655 447.221 51.992 447.112 45.777 C 447.026 40.937 447.093 36.094 447.092 30.631 Z\", fill: \"none\", stroke: bordercolor, strokeWidth: \"2\", opacity: \"1\" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(\"text\", Object.assign({ y: \"41.432\", x: \"460.856\", style: { whiteSpace: 'pre' }, fill: color, fontFamily: \"Inter\", fontSize: \"23\", fontWeight: \"500\" }, { children: \"9\" }))] })), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(\"g\", Object.assign({ className: \"key-item key-0\" }, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(\"path\", { fill: \"none\", stroke: bordercolor, strokeWidth: \"2\", d: \"M509.048 55.863c-2.701-.006-4.868.23-6.972-.067-5.014-.709-8.284-3.478-8.309-9.41-.036-8.843-.11-17.687.026-26.527.09-5.85 3.343-9.337 8.777-9.43 8.163-.14 16.33-.085 24.495-.018 5.473.045 8.35 3.621 8.566 9.069.359 9.036.272 18.107.036 27.152-.15 5.76-3.56 9.027-9.145 9.19-5.634.166-11.275.04-17.474.041z\", opacity: \"1\" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(\"text\", Object.assign({ style: { whiteSpace: 'pre' }, x: \"507.609\", y: \"41.432\", fill: color, fontFamily: \"Inter\", fontSize: \"23\", fontWeight: \"500\" }, { children: \"0\" }))] })), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(\"g\", Object.assign({ className: \"key-item key-enter\" }, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(\"path\", { fill: \"none\", stroke: bordercolor, strokeWidth: \"2\", d: \"M590.168 111.534c10.301 0 20.02-.068 29.737.024 6.881.066 9.828 3.329 9.903 10.876.079 7.998.095 15.998-.006 23.995-.09 7.153-3.081 10.525-9.62 10.544-27.017.078-54.033.079-81.049-.001-6.545-.019-9.506-3.38-9.597-10.56-.099-7.787-.062-15.576-.014-23.364.051-8.368 2.856-11.476 10.5-11.499 16.521-.049 33.041-.015 50.146-.015z\", opacity: \"1\" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(\"text\", Object.assign({ style: { whiteSpace: 'pre' }, x: \"564.474\", y: \"139.078\", fill: color, fontFamily: \"Inter\", fontSize: \"14\", fontWeight: \"500\" }, { children: \"Enter\" }))] })), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(\"g\", Object.assign({ className: \"key-item key-shift-r\" }, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(\"path\", { fill: \"none\", stroke: bordercolor, strokeWidth: \"2\", d: \"M516.024 162.065c34.491-.001 68.455-.01 102.419.005 8.75.003 11.355 2.871 11.38 12.437.019 7.356.061 14.713-.013 22.068-.078 7.556-3.008 10.92-9.834 10.932-34.74.061-69.481.066-104.221-.006-6.509-.014-9.463-3.404-9.549-10.587-.096-7.985-.082-15.974-.005-23.96.069-7.313 2.308-9.855 9.823-10.889z\", opacity: \"1\" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(\"text\", Object.assign({ style: { whiteSpace: 'pre' }, x: \"552.346\", y: \"189.517\", fill: color, fontFamily: \"Inter\", fontSize: \"14\", fontWeight: \"500\" }, { children: \"Shift\" }))] })), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(\"g\", Object.assign({ className: \"key-item key-shift-l\" }, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(\"path\", { fill: \"none\", stroke: bordercolor, strokeWidth: \"2\", d: \"M27.168 185.964c.001-5.251-.071-9.879.02-14.502.122-6.213 2.882-9.434 8.492-9.449 27.764-.076 55.528-.076 83.293 0 5.591.015 8.418 3.259 8.485 9.457.096 8.829.1 17.662-.001 26.492-.074 6.405-2.987 9.455-9.08 9.466-27.376.049-54.752.052-82.128-.001-6.3-.013-8.984-3.119-9.072-10.115-.045-3.574-.008-7.149-.009-11.348z\", opacity: \"1\" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(\"text\", Object.assign({ style: { whiteSpace: 'pre' }, x: \"60.433\", y: \"189.517\", fill: color, fontFamily: \"Inter\", fontSize: \"14\", fontWeight: \"500\" }, { children: \"Shift\" }))] })), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(\"g\", Object.assign({ className: \"key-item key-capslk\" }, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(\"path\", { fill: \"none\", stroke: bordercolor, strokeWidth: \"2\", d: \"M33.884 111.597c20.503-.105 40.506-.17 60.508-.126 6.628.015 9.655 3.26 9.738 10.324.096 8.2.103 16.405-.002 24.605-.091 7.154-3.094 10.468-9.622 10.493-19.226.074-38.452.074-57.678 0-6.58-.025-9.56-3.31-9.638-10.433-.088-7.991.115-15.987-.07-23.974-.121-5.26 1.593-8.958 6.764-10.889z\", opacity: \"1\" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(\"text\", Object.assign({ style: { whiteSpace: 'pre' }, x: \"41.626\", y: \"139.622\", fill: color, fontFamily: \"Inter\", fontSize: \"14\", fontWeight: \"500\" }, { children: \"CapsLk\" }))] })), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(\"g\", Object.assign({ className: \"key-item key-space\" }, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(\"path\", { fill: \"none\", stroke: bordercolor, strokeWidth: \"2\", d: \"M133.937 212.506c120.591 0 240.319-.001 360.042.002 14.764.001 18.433 2.665 18.449 13.35.008 6.313.01 12.625 0 18.937-.02 10.352-3.818 13.178-17.817 13.18-50.32.01-100.638.004-150.957.004-80.106 0-160.21.003-240.316-.003-14.176-.001-17.988-2.773-18.011-13.037-.015-6.943-.058-13.887.013-20.83.083-8.256 4.463-11.52 15.629-11.588 10.699-.065 21.4-.014 32.968-.015z\", opacity: \"1\" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(\"text\", Object.assign({ style: { whiteSpace: 'pre' }, x: \"288.244\", y: \"241.428\", fill: color, fontFamily: \"Inter\", fontSize: \"14\", fontWeight: \"500\" }, { children: \"Space\" }))] })), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(\"g\", Object.assign({ className: \"key-item key-tab\" }, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(\"path\", { fill: \"none\", stroke: bordercolor, strokeWidth: \"2\", d: \"M43.568 106.393c-2.898-.004-5.231.085-7.555-.028-5.547-.269-8.694-3.472-8.802-9.409a761.508 761.508 0 01-.005-26.482c.101-6.008 3.184-9.456 8.683-9.503a2968.38 2968.38 0 0147.746-.005c5.53.043 8.686 3.449 8.795 9.39.162 8.825.16 17.658.003 26.482-.111 6.211-3.313 9.472-9.284 9.52-13.003.104-26.008.034-39.581.035z\", opacity: \"1\" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(\"text\", Object.assign({ style: { whiteSpace: 'pre' }, x: \"47.476\", y: \"89.113\", fill: color, fontFamily: \"Inter\", fontSize: \"14\", fontWeight: \"500\" }, { children: \"Tab\" }))] })), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(\"g\", Object.assign({ className: \"key-item key-e\" }, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(\"text\", Object.assign({ style: { whiteSpace: 'pre' }, x: \"204.524\", y: \"91.851\", fill: color, fontFamily: \"Inter\", fontSize: \"23\", fontWeight: \"500\" }, { children: \"E\" })), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(\"path\", { fill: \"none\", stroke: bordercolor, strokeWidth: \"2\", d: \"M200.261 60.918c7.893-.001 15.256-.06 22.618.019 6.09.065 9.416 3.41 9.543 9.922.167 8.599.176 17.207-.008 25.805-.132 6.164-3.419 9.564-9.241 9.685-7.748.161-15.502.154-23.249.005-6.136-.118-9.354-3.603-9.425-10.055-.092-8.391-.087-16.786-.002-25.178.068-6.656 2.657-9.419 9.764-10.203z\", opacity: \"1\" })] })), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(\"g\", Object.assign({ className: \"key-item key-r\" }, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(\"text\", Object.assign({ style: { whiteSpace: 'pre' }, x: \"250.921\", y: \"92.065\", fill: color, fontFamily: \"Inter\", fontSize: \"23\", fontWeight: \"500\" }, { children: \"R\" })), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(\"path\", { fill: \"none\", stroke: bordercolor, strokeWidth: \"2\", d: \"M242.165 62.085c10.392-.7 20.208-.606 30.56.031 2.269.139 5.799 4.708 6.093 7.859.834 8.936.456 18.028.239 27.049-.14 5.8-3.479 9.189-8.985 9.315-7.945.181-15.9.192-23.844-.001-5.958-.144-9.023-3.802-9.077-10.434-.066-8.187-.331-16.398.15-24.552.176-2.989 1.677-8.282 4.864-9.267z\", opacity: \"1\" })] })), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(\"g\", Object.assign({ className: \"key-item key-t\" }, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(\"text\", Object.assign({ style: { whiteSpace: 'pre' }, x: \"297.635\", y: \"92.065\", fill: color, fontFamily: \"Inter\", fontSize: \"23\", fontWeight: \"500\" }, { children: \"T\" })), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(\"path\", { fill: \"none\", stroke: bordercolor, strokeWidth: \"2\", d: \"M283.793 86.15c.002-5.675-.103-10.73.034-15.778.159-5.843 3.357-9.322 8.797-9.414 8.162-.139 16.328-.085 24.491-.017 5.474.045 8.343 3.628 8.558 9.074.357 9.035.285 18.105.03 27.148-.159 5.66-3.326 8.996-8.555 9.152-8.158.242-16.33.229-24.489.012-5.683-.152-8.72-3.833-8.852-10.082-.067-3.156-.013-6.315-.014-10.095z\", opacity: \"1\" })] })), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(\"g\", Object.assign({ className: \"key-item key-y\" }, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(\"text\", Object.assign({ style: { whiteSpace: 'pre' }, x: \"343.848\", y: \"92.065\", fill: color, fontFamily: \"Inter\", fontSize: \"23\", fontWeight: \"500\" }, { children: \"Y\" })), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(\"path\", { fill: \"none\", stroke: bordercolor, strokeWidth: \"2\", d: \"M371.529 66.274c.419 10.939.942 21.403.715 31.848-.108 4.957-3.476 8.047-8.127 8.18-8.523.245-17.073.402-25.58-.074-5.001-.28-8.102-3.628-8.086-9.532.022-8.607-.074-17.215.029-25.821.08-6.56 3.254-9.863 9.464-9.936 7.559-.088 15.155-.474 22.663.202 3.004.27 6.394.457 8.922 5.133z\", opacity: \"1\" })] })), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(\"g\", Object.assign({ className: \"key-item key-u\" }, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(\"text\", Object.assign({ style: { whiteSpace: 'pre' }, x: \"390.087\", y: \"92.065\", fill: color, fontFamily: \"Inter\", fontSize: \"23\", fontWeight: \"500\" }, { children: \"U\" })), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(\"path\", { fill: \"none\", stroke: bordercolor, strokeWidth: \"2\", d: \"M392.408 106.393c-2.701-.007-4.868.23-6.972-.068-5.014-.708-8.284-3.477-8.309-9.41-.037-8.842-.11-17.687.026-26.527.09-5.85 3.342-9.336 8.777-9.429 8.163-.141 16.33-.086 24.495-.019 5.473.045 8.35 3.621 8.566 9.069.359 9.037.272 18.107.036 27.153-.15 5.759-3.56 9.026-9.145 9.19-5.634.165-11.275.039-17.474.041z\", opacity: \"1\" })] })), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(\"g\", Object.assign({ className: \"key-item key-i\" }, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(\"text\", Object.assign({ style: { whiteSpace: 'pre' }, x: \"441.286\", y: \"92.065\", fill: color, fontFamily: \"Inter\", fontSize: \"23\", fontWeight: \"500\" }, { children: \"I\" })), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(\"path\", { fill: \"none\", stroke: bordercolor, strokeWidth: \"2\", d: \"M436.802 60.917c6.948 0 13.341-.079 19.731.026 5.678.092 9.04 3.506 9.176 9.67.188 8.595.167 17.2.011 25.796-.114 6.28-3.282 9.792-9.012 9.929-7.937.19-15.883.19-23.82.002-5.966-.142-9.036-3.787-9.1-10.395-.069-7.131-.019-14.263-.017-21.394.004-11.417 2.007-13.605 13.031-13.634z\", opacity: \"1\" })] })), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(\"g\", Object.assign({ className: \"key-item key-o\" }, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(\"text\", Object.assign({ style: { whiteSpace: 'pre' }, x: \"482.332\", y: \"92.065\", fill: color, fontFamily: \"Inter\", fontSize: \"23\", fontWeight: \"500\" }, { children: \"O\" })), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(\"path\", { fill: \"none\", stroke: bordercolor, strokeWidth: \"2\", d: \"M512.423 92.235c-.051 11.657-2.388 14.15-12.723 14.157-6.392.004-12.785.071-19.176-.02-6.897-.099-10.023-3.405-10.078-10.628-.063-8.181-.077-16.363.005-24.542.07-6.935 3.189-10.204 9.738-10.268 7.36-.071 14.721-.056 22.081-.005 7.068.048 10.058 3.343 10.139 11.203.067 6.502.014 13.005.014 20.103z\", opacity: \"1\" })] })), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(\"g\", Object.assign({ className: \"key-item key-p\" }, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(\"text\", Object.assign({ style: { whiteSpace: 'pre' }, x: \"531.579\", y: \"92.065\", fill: color, fontFamily: \"Inter\", fontSize: \"23\", fontWeight: \"500\" }, { children: \"P\" })), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(\"path\", { fill: \"none\", stroke: bordercolor, strokeWidth: \"2\", d: \"M558.875 68.284c.146 9.556.272 18.581.174 27.604-.075 6.986-3.238 10.37-9.712 10.474-7.557.121-15.119.134-22.675-.005-6.39-.117-9.503-3.626-9.556-10.559-.064-8.185-.076-16.372.004-24.557.068-6.966 3.167-10.241 9.71-10.306 7.365-.074 14.736.181 22.093-.087 4.964-.181 8.155 1.94 9.962 7.436z\", opacity: \"1\" })] })), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(\"g\", Object.assign({ className: \"key-item key-l\" }, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(\"path\", { fill: \"none\", stroke: bordercolor, strokeWidth: \"2\", d: \"M482.845 151.686c-.403-10.935-.768-21.412-.629-31.88.063-4.751 3.026-8.015 7.362-8.203 8.903-.386 17.837-.367 26.743-.033 5.089.192 7.549 4.129 7.689 9.286.239 8.809.208 17.635.02 26.447-.126 5.895-3.344 9.411-8.766 9.553-8.136.212-16.306.44-24.409-.165-2.672-.199-7.257-2.379-8.01-5.005z\", opacity: \"1\" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(\"text\", Object.assign({ style: { whiteSpace: 'pre' }, x: \"497.685\", y: \"140.922\", fill: color, fontFamily: \"Inter\", fontSize: \"23\", fontWeight: \"500\" }, { children: \"L\" }))] })), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(\"g\", Object.assign({ className: \"key-item key-k\" }, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(\"path\", { fill: \"none\", stroke: bordercolor, strokeWidth: \"2\", d: \"M435.436 137.923c.002-6.095-.106-11.572.036-17.04.151-5.837 3.363-9.305 8.812-9.396 8.162-.137 16.328-.091 24.491-.015 5.471.051 8.33 3.644 8.542 9.092.352 9.036.288 18.105.027 27.148-.163 5.659-3.344 8.982-8.573 9.134-8.158.237-16.33.229-24.488.009-5.688-.154-8.698-3.828-8.835-10.101-.06-2.735-.012-5.473-.012-8.831z\", opacity: \"1\" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(\"text\", Object.assign({ style: { whiteSpace: 'pre' }, x: \"449.222\", y: \"140.922\", fill: color, fontFamily: \"Inter\", fontSize: \"23\", fontWeight: \"500\" }, { children: \"K\" }))] })), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(\"g\", Object.assign({ className: \"key-item key-j\" }, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(\"path\", { fill: \"none\", stroke: bordercolor, strokeWidth: \"2\", d: \"M424.07 111.571c5.06 2.044 6.805 5.808 6.729 10.983-.115 7.764.028 15.532-.047 23.298-.073 7.499-3.084 10.934-9.788 11.04-7.557.12-15.119.14-22.676-.007-6.363-.124-9.444-3.654-9.496-10.624-.06-7.976-.055-15.953-.003-23.928.051-7.759 2.995-10.847 10.363-10.875 8.14-.032 16.281.024 24.918.113z\", opacity: \"1\" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(\"text\", Object.assign({ style: { whiteSpace: 'pre' }, x: \"402.977\", y: \"140.922\", fill: color, fontFamily: \"Inter\", fontSize: \"23\", fontWeight: \"500\" }, { children: \"J\" }))] })), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(\"g\", Object.assign({ className: \"key-item key-h\" }, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(\"path\", { fill: \"none\", stroke: bordercolor, strokeWidth: \"2\", d: \"M376.399 111.478c5.706 1.32 7.708 5.168 7.709 10.61.001 8.185.101 16.372-.032 24.555-.108 6.64-3.26 10.114-9.338 10.238a566.93 566.93 0 01-23.255-.001c-6.104-.125-9.276-3.641-9.343-10.147-.086-8.394-.091-16.79.002-25.184.073-6.594 3.227-10.004 9.329-10.077 8.139-.096 16.28-.019 24.928.006z\", opacity: \"1\" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(\"text\", Object.assign({ style: { whiteSpace: 'pre' }, x: \"354.377\", y: \"140.922\", fill: color, fontFamily: \"Inter\", fontSize: \"23\", fontWeight: \"500\" }, { children: \"H\" }))] })), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(\"g\", Object.assign({ className: \"key-item key-f\" }, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(\"text\", Object.assign({ style: { whiteSpace: 'pre' }, x: \"263.203\", y: \"140.922\", fill: color, fontFamily: \"Inter\", fontSize: \"23\", fontWeight: \"500\" }, { children: \"F\" })), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(\"path\", { fill: \"none\", stroke: bordercolor, strokeWidth: \"2\", d: \"M248.916 149.665c-.083-9.569-.152-18.594-.099-27.618.042-7.11 3.065-10.501 9.458-10.577a929.398 929.398 0 0123.257.003c5.699.074 9.066 3.484 9.203 9.647.192 8.6.169 17.212.013 25.814-.113 6.286-3.28 9.796-9.016 9.933-7.943.19-15.892.079-23.838.036-4.345-.024-7.309-2.327-8.978-7.238z\", opacity: \"1\" })] })), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(\"g\", Object.assign({ className: \"key-item key-g\" }, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(\"path\", { fill: \"none\", stroke: bordercolor, strokeWidth: \"2\", d: \"M331.603 156.359c-9.361.325-18.269.611-27.173.493-5.704-.076-8.878-3.766-8.946-9.919-.095-8.605-.114-17.215.009-25.819.089-6.156 3.339-9.558 9.143-9.638a823.87 823.87 0 0123.842.005c5.346.082 8.757 3.511 8.903 9.323.222 8.811.521 17.676-.186 26.425-.251 3.112-1.145 7.795-5.592 9.13z\", opacity: \"1\" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(\"text\", Object.assign({ style: { whiteSpace: 'pre' }, x: \"307.663\", y: \"140.922\", fill: color, fontFamily: \"Inter\", fontSize: \"23\", fontWeight: \"500\" }, { children: \"G\" }))] })), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(\"g\", Object.assign({ className: \"key-item key-s\" }, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(\"text\", Object.assign({ style: { whiteSpace: 'pre' }, x: \"169.345\", y: \"140.922\", fill: color, fontFamily: \"Inter\", fontSize: \"23\", fontWeight: \"500\" }, { children: \"S\" })), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(\"path\", { fill: \"none\", stroke: bordercolor, strokeWidth: \"2\", d: \"M190.774 111.571c5.064 2.041 6.804 5.81 6.728 10.982-.114 7.764.029 15.533-.046 23.298-.073 7.501-3.082 10.935-9.787 11.041-7.557.12-15.12.139-22.676-.007-6.363-.124-9.445-3.654-9.498-10.624-.059-7.975-.054-15.952-.002-23.928.05-7.759 2.995-10.847 10.363-10.875 8.14-.032 16.281.024 24.918.113z\", opacity: \"1\" })] })), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(\"g\", Object.assign({ className: \"key-item key-d\" }, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(\"path\", { fill: \"none\", stroke: bordercolor, strokeWidth: \"2\", d: \"M243.275 148.784c-.44 5.174-2.899 8.19-7.231 8.19-.109 0-27.048.003-27.319-.095-4.003-1.445-6.064-6.096-6.312-9.1-.739-8.956-.372-18.032-.227-27.058.088-5.506 3.319-9.109 8.333-9.217 8.334-.181 16.713-.552 24.987.228 2.803.264 7.559 3.67 7.639 5.807.443 11.785.767 19.027.13 31.245z\", opacity: \"1\" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(\"text\", Object.assign({ style: { whiteSpace: 'pre' }, x: \"215.324\", y: \"140.922\", fill: color, fontFamily: \"Inter\", fontSize: \"23\", fontWeight: \"500\" }, { children: \"D\" }))] })), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(\"g\", Object.assign({ className: \"key-item key-a\" }, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(\"text\", Object.assign({ style: { whiteSpace: 'pre' }, x: \"121.397\", y: \"140.922\", fill: color, fontFamily: \"Inter\", fontSize: \"23\", fontWeight: \"500\" }, { children: \"A\" })), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(\"path\", { fill: \"none\", stroke: bordercolor, strokeWidth: \"2\", d: \"M108.821 129.211c.003-3.353-.133-6.1.039-8.824.342-5.407 3.133-8.695 8.105-8.853 8.546-.273 17.107-.213 25.657-.027 5.166.113 7.878 3.791 8.077 8.927.351 9.036.264 18.104.043 27.15-.142 5.799-3.507 9.166-9.05 9.287-7.966.174-15.942.196-23.908-.009-5.717-.147-8.841-3.788-8.941-9.984-.092-5.682-.021-11.367-.022-17.667z\", opacity: \"1\" })] })), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(\"g\", Object.assign({ className: \"key-item key-z\" }, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(\"path\", { fill: \"none\", stroke: bordercolor, strokeWidth: \"2\", d: \"M174.144 176.131c-.001 7.311.083 14.025-.025 20.735-.114 7.022-3.209 10.442-9.636 10.553-7.552.129-15.109.129-22.661 0-6.468-.111-9.596-3.546-9.653-10.445-.07-8.389-.098-16.782.012-25.17.082-6.255 3.237-9.687 8.988-9.795 6.777-.128 13.558-.035 20.337-.033 10.367.003 12.587 2.387 12.638 14.155z\", opacity: \"1\" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(\"text\", Object.assign({ style: { whiteSpace: 'pre' }, x: \"145.517\", y: \"192.359\", fill: color, fontFamily: \"Inter\", fontSize: \"23\", fontWeight: \"500\" }, { children: \"Z\" }))] })), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(\"g\", Object.assign({ className: \"key-item key-x\" }, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(\"path\", { fill: \"none\", stroke: bordercolor, strokeWidth: \"2\", d: \"M190.795 207.451c-9.466-.213-11.968-2.9-11.982-12.334-.012-7.762-.083-15.526.026-23.287.088-6.261 3.233-9.727 8.967-9.819 7.941-.127 15.886-.109 23.827-.007 5.431.071 8.931 3.382 9.089 9.108.248 9.013.234 18.045.007 27.06-.146 5.757-3.526 9.088-9.053 9.232-6.777.176-13.56.045-20.881.047z\", opacity: \"1\" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(\"text\", Object.assign({ style: { whiteSpace: 'pre' }, x: \"192.556\", y: \"192.359\", fill: color, fontFamily: \"Inter\", fontSize: \"23\", fontWeight: \"500\" }, { children: \"X\" }))] })), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(\"g\", Object.assign({ className: \"key-item key-c\" }, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(\"path\", { fill: \"none\", stroke: bordercolor, strokeWidth: \"2\", d: \"M267.462 178.537c-.001 6.716.12 12.826-.038 18.926-.163 6.305-3.295 9.802-9.066 9.935-7.967.185-15.944.196-23.91-.006-5.725-.145-8.884-3.779-8.953-9.968-.094-8.42-.09-16.843-.003-25.264.07-6.661 3.191-10.071 9.302-10.159 7.192-.103 14.386-.04 21.579-.021 8.302.022 11.02 3.015 11.088 12.157.009 1.263.001 2.526.001 4.4z\", opacity: \"1\" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(\"text\", Object.assign({ style: { whiteSpace: 'pre' }, x: \"238.755\", y: \"192.359\", fill: color, fontFamily: \"Inter\", fontSize: \"23\", fontWeight: \"500\" }, { children: \"C\" }))] })), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(\"g\", Object.assign({ className: \"key-item key-b\" }, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(\"path\", { fill: \"none\", stroke: bordercolor, strokeWidth: \"2\", d: \"M324.629 206.887c-4.509-2.145-6.013-5.517-5.896-10.274.202-8.181-.016-16.374.079-24.56.077-6.588 3.233-9.976 9.356-10.052a925.03 925.03 0 0123.262 0c5.978.075 9.203 3.543 9.314 10.182a734.47 734.47 0 01-.003 25.19c-.111 6.31-3.252 9.934-8.939 10.008-8.905.117-17.813-.169-27.173-.494z\", opacity: \"1\" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(\"text\", Object.assign({ style: { whiteSpace: 'pre' }, x: \"332.169\", y: \"192.359\", fill: color, fontFamily: \"Inter\", fontSize: \"23\", fontWeight: \"500\" }, { children: \"B\" }))] })), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(\"g\", Object.assign({ className: \"key-item key-n\" }, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(\"path\", { fill: \"none\", stroke: bordercolor, strokeWidth: \"2\", d: \"M384.139 161.975c5.046.001 9.518-.072 13.987.021 5.74.119 9.122 3.469 9.256 9.642.192 8.836.221 17.687-.019 26.52-.154 5.663-3.276 9.042-8.503 9.21-8.157.261-16.329.228-24.489.021-5.701-.146-8.832-3.807-8.9-10.021-.09-8.209-.067-16.419-.01-24.628.053-7.477 3.027-10.654 9.94-10.757 2.72-.041 5.442-.007 8.738-.008z\", opacity: \"1\" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(\"text\", Object.assign({ style: { whiteSpace: 'pre' }, x: \"378.121\", y: \"192.359\", fill: color, fontFamily: \"Inter\", fontSize: \"23\", fontWeight: \"500\" }, { children: \"N\" }))] })), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(\"g\", Object.assign({ className: \"key-item key-m\" }, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(\"path\", { fill: \"none\", stroke: bordercolor, strokeWidth: \"2\", d: \"M454.099 187.199c0 19.985-.249 20.252-18.273 20.252-4.665 0-9.333.091-13.995-.024-6.53-.161-9.647-3.517-9.707-10.455-.07-8.209-.076-16.42.002-24.629.067-7.013 3.149-10.285 9.718-10.349 7.58-.074 15.162-.082 22.742.003 6.087.069 9.285 3.446 9.482 10.057.145 4.837.03 9.683.031 15.145z\", opacity: \"1\" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(\"text\", Object.assign({ style: { whiteSpace: 'pre' }, x: \"423.454\", y: \"192.359\", fill: color, fontFamily: \"Inter\", fontSize: \"23\", fontWeight: \"500\" }, { children: \"M\" }))] })), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(\"g\", Object.assign({ className: \"key-item key-comma\" }, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(\"path\", { fill: \"none\", stroke: bordercolor, strokeWidth: \"2\", d: \"M476.325 207.451c-2.709 0-4.847.027-6.985-.005-7.577-.112-10.535-3.298-10.567-11.448-.031-7.789-.054-15.579.008-23.367.056-7.161 3.047-10.555 9.457-10.632a902.363 902.363 0 0123.326.006c5.689.078 9.014 3.532 9.143 9.764.178 8.626.178 17.264 0 25.89-.129 6.218-3.389 9.565-9.234 9.757-4.855.158-9.718.034-15.148.035z\", opacity: \"1\" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(\"text\", Object.assign({ style: { whiteSpace: 'pre' }, x: \"476.274\", y: \"192.359\", fill: color, fontFamily: \"Inter\", fontSize: \"23\", fontWeight: \"500\" }, { children: \",\" }))] })), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(\"g\", Object.assign({ className: \"key-item key-dot\" }, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(\"path\", { fill: \"none\", stroke: bordercolor, strokeWidth: \"2\", d: \"M570.186 216.695c.521 11.736 1.271 23.052.683 34.286-.127 2.432-4.97 6.364-7.797 6.532-12.2.728-24.459.431-36.694.261-5.433-.075-8.447-3.604-8.54-9.676a868.153 868.153 0 01-.003-25.871c.093-6.392 3.139-9.757 9.004-9.82 11.848-.128 23.703-.261 35.54.137 2.552.086 5.04 2.409 7.807 4.151z\", opacity: \"1\" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(\"text\", Object.assign({ style: { whiteSpace: 'pre' }, x: \"541.467\", y: \"242.903\", fill: color, fontFamily: \"Inter\", fontSize: \"23\", fontWeight: \"500\" }, { children: \".\" }))] })), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(\"g\", Object.assign({ className: \"key-item key-v\" }, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(\"path\", { fill: \"none\", stroke: bordercolor, strokeWidth: \"2\", d: \"M272.128 184.714c.002-4.835-.097-9.048.03-13.254.178-5.853 3.348-9.348 8.774-9.442 8.162-.142 16.327-.08 24.491-.021 5.474.039 8.362 3.603 8.583 9.047.365 9.034.281 18.103.035 27.147-.153 5.662-3.301 9.018-8.529 9.18-8.157.251-16.33.228-24.488.016-5.693-.148-8.758-3.82-8.879-10.051-.078-3.998-.016-7.999-.017-12.622z\", opacity: \"1\" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(\"text\", Object.assign({ style: { whiteSpace: 'pre' }, x: \"285.352\", y: \"192.359\", fill: color, fontFamily: \"Inter\", fontSize: \"23\", fontWeight: \"500\" }, { children: \"V\" }))] }))] })));\n};\n\n\n//# sourceURL=webpack://app-desktop/./src/UI/base/Keyboard/services/SVGMap/index.tsx?");
+
+/***/ }),
+
+/***/ "./src/UI/base/Keyboard/services/keyMap.ts":
+/*!*************************************************!*\
+  !*** ./src/UI/base/Keyboard/services/keyMap.ts ***!
+  \*************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"getKeyId\": () => (/* binding */ getKeyId)\n/* harmony export */ });\nconst getKeyId = (x, y) => {\n    const keyMap = [\n        ['esc', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', ''],\n        ['tab', 'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', ''],\n        ['capslk', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'enter', 'enter'],\n        ['shift-l', 'shift-l', 'z', 'x', 'c', 'v', 'b', 'n', 'm', 'comma', 'shift-r', 'shift-r'],\n        [\n            '',\n            'space',\n            'space',\n            'space',\n            'space',\n            'space',\n            'space',\n            'space',\n            'space',\n            'space',\n            'dot',\n            '',\n        ],\n    ];\n    return keyMap[y || 0][x || 0];\n};\n\n\n//# sourceURL=webpack://app-desktop/./src/UI/base/Keyboard/services/keyMap.ts?");
+
+/***/ }),
+
+/***/ "./src/UI/base/Keyboard/styled.ts":
+/*!****************************************!*\
+  !*** ./src/UI/base/Keyboard/styled.ts ***!
+  \****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"Container\": () => (/* binding */ Container)\n/* harmony export */ });\n/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ \"./node_modules/styled-components/dist/styled-components.browser.esm.js\");\n/* harmony import */ var _Styles_Animations__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Styles/Animations */ \"./src/UI/base/Styles/Animations.ts\");\n\n\nconst Container = styled_components__WEBPACK_IMPORTED_MODULE_1__[\"default\"].div(props => styled_components__WEBPACK_IMPORTED_MODULE_1__.css `\n    position: fixed;\n    bottom: ${props.theme.size(14)};\n    left: 50%;\n    translate: -50%;\n    width: 100%;\n    max-width: ${props.theme.size(260)};\n    animation: ${_Styles_Animations__WEBPACK_IMPORTED_MODULE_0__.Keyframes.slideUp} 0.3s ease-out;\n\n    .key-item {\n      &:hover path {\n        fill: #fff7;\n      }\n      text {\n        // text-transform: lowercase;\n      }\n    }\n  `);\n\n\n//# sourceURL=webpack://app-desktop/./src/UI/base/Keyboard/styled.ts?");
+
+/***/ }),
+
+/***/ "./src/UI/base/Loading/index.tsx":
+/*!***************************************!*\
+  !*** ./src/UI/base/Loading/index.tsx ***!
+  \***************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ \"./node_modules/react/jsx-runtime.js\");\n/* harmony import */ var _Icons__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Icons */ \"./src/UI/base/Icons/index.tsx\");\n/* harmony import */ var _styled__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./styled */ \"./src/UI/base/Loading/styled.ts\");\n\n\n\nconst Loading = () => {\n    return ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_styled__WEBPACK_IMPORTED_MODULE_2__.Container, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_styled__WEBPACK_IMPORTED_MODULE_2__.Spinner, { children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_Icons__WEBPACK_IMPORTED_MODULE_1__[\"default\"], { type: \"spinner\", size: 12 }) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_styled__WEBPACK_IMPORTED_MODULE_2__.Title, { children: \"Optimizing Images\" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_styled__WEBPACK_IMPORTED_MODULE_2__.Description, { children: \"Will happening once only\" })] }));\n};\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Loading);\n\n\n//# sourceURL=webpack://app-desktop/./src/UI/base/Loading/index.tsx?");
+
+/***/ }),
+
+/***/ "./src/UI/base/Loading/styled.ts":
+/*!***************************************!*\
+  !*** ./src/UI/base/Loading/styled.ts ***!
+  \***************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"Container\": () => (/* binding */ Container),\n/* harmony export */   \"Description\": () => (/* binding */ Description),\n/* harmony export */   \"Spinner\": () => (/* binding */ Spinner),\n/* harmony export */   \"Title\": () => (/* binding */ Title)\n/* harmony export */ });\n/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ \"./node_modules/styled-components/dist/styled-components.browser.esm.js\");\n/* harmony import */ var _Styles_Animations__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Styles/Animations */ \"./src/UI/base/Styles/Animations.ts\");\n\n\nconst Container = styled_components__WEBPACK_IMPORTED_MODULE_1__[\"default\"].div(() => {\n    return styled_components__WEBPACK_IMPORTED_MODULE_1__.css `\n    position: fixed;\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 100%;\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    justify-content: center;\n    background-color: #000b;\n    backdrop-filter: blur(10px);\n  `;\n});\nconst Spinner = styled_components__WEBPACK_IMPORTED_MODULE_1__[\"default\"].div(({ theme }) => {\n    return styled_components__WEBPACK_IMPORTED_MODULE_1__.css `\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    margin-bottom: ${theme.size(8)};\n    animation: ${_Styles_Animations__WEBPACK_IMPORTED_MODULE_0__.Keyframes.spinning} 1s infinite linear;\n  `;\n});\nconst Title = styled_components__WEBPACK_IMPORTED_MODULE_1__[\"default\"].p(({ theme }) => {\n    return styled_components__WEBPACK_IMPORTED_MODULE_1__.css `\n    font-size: ${theme.fontSize.label};\n    margin-bottom: ${theme.size(2)};\n    animation: ${_Styles_Animations__WEBPACK_IMPORTED_MODULE_0__.Keyframes.slideUpLarge} 0.5s ease-out;\n  `;\n});\nconst Description = styled_components__WEBPACK_IMPORTED_MODULE_1__[\"default\"].p(({ theme }) => {\n    return styled_components__WEBPACK_IMPORTED_MODULE_1__.css `\n    color: ${theme.colors.text4};\n    font-size: ${theme.fontSize.verySmall};\n    animation: ${_Styles_Animations__WEBPACK_IMPORTED_MODULE_0__.Keyframes.slideUpLarge} 0.5s ease-out;\n  `;\n});\n\n\n//# sourceURL=webpack://app-desktop/./src/UI/base/Loading/styled.ts?");
+
+/***/ }),
+
+/***/ "./src/UI/base/PageContainer/index.tsx":
+/*!*********************************************!*\
+  !*** ./src/UI/base/PageContainer/index.tsx ***!
+  \*********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ \"./node_modules/react/jsx-runtime.js\");\n/* harmony import */ var _styled__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./styled */ \"./src/UI/base/PageContainer/styled.ts\");\n\n\nconst PageContainer = (props) => {\n    return ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_styled__WEBPACK_IMPORTED_MODULE_1__.Container, { children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_styled__WEBPACK_IMPORTED_MODULE_1__.Content, { children: props.children }) }));\n};\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (PageContainer);\n\n\n//# sourceURL=webpack://app-desktop/./src/UI/base/PageContainer/index.tsx?");
+
+/***/ }),
+
+/***/ "./src/UI/base/PageContainer/styled.ts":
+/*!*********************************************!*\
+  !*** ./src/UI/base/PageContainer/styled.ts ***!
+  \*********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"Container\": () => (/* binding */ Container),\n/* harmony export */   \"Content\": () => (/* binding */ Content)\n/* harmony export */ });\n/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! styled-components */ \"./node_modules/styled-components/dist/styled-components.browser.esm.js\");\n\nconst Container = styled_components__WEBPACK_IMPORTED_MODULE_0__[\"default\"].div(props => styled_components__WEBPACK_IMPORTED_MODULE_0__.css `\n    width: 100%;\n    max-width: ${props.theme.size(500)};\n    height: 100%;\n    margin: 0 auto;\n    overflow: hidden;\n    margin-bottom: ${props.theme.size(20)};\n  `);\nconst Content = styled_components__WEBPACK_IMPORTED_MODULE_0__[\"default\"].div(({ theme }) => styled_components__WEBPACK_IMPORTED_MODULE_0__.css `\n    width: 100%;\n    height: 100%;\n    padding: ${theme.size(4)};\n  `);\n\n\n//# sourceURL=webpack://app-desktop/./src/UI/base/PageContainer/styled.ts?");
+
+/***/ }),
+
+/***/ "./src/UI/base/Panel/index.tsx":
+/*!*************************************!*\
+  !*** ./src/UI/base/Panel/index.tsx ***!
+  \*************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ \"./node_modules/react/jsx-runtime.js\");\n/* harmony import */ var _styled__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./styled */ \"./src/UI/base/Panel/styled.ts\");\n\n\nconst Panel = (props) => {\n    const { active, title, value, children } = props;\n    return ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_styled__WEBPACK_IMPORTED_MODULE_1__.Container, Object.assign({ active: active }, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_styled__WEBPACK_IMPORTED_MODULE_1__.Header, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_styled__WEBPACK_IMPORTED_MODULE_1__.Title, { children: title }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_styled__WEBPACK_IMPORTED_MODULE_1__.Value, { children: value === null || value === void 0 ? void 0 : value.substring(0, 60) })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_styled__WEBPACK_IMPORTED_MODULE_1__.Content, { children: children })] })));\n};\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Panel);\n\n\n//# sourceURL=webpack://app-desktop/./src/UI/base/Panel/index.tsx?");
+
+/***/ }),
+
+/***/ "./src/UI/base/Panel/styled.ts":
+/*!*************************************!*\
+  !*** ./src/UI/base/Panel/styled.ts ***!
+  \*************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"Container\": () => (/* binding */ Container),\n/* harmony export */   \"Content\": () => (/* binding */ Content),\n/* harmony export */   \"Header\": () => (/* binding */ Header),\n/* harmony export */   \"Title\": () => (/* binding */ Title),\n/* harmony export */   \"Value\": () => (/* binding */ Value)\n/* harmony export */ });\n/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! styled-components */ \"./node_modules/styled-components/dist/styled-components.browser.esm.js\");\n\nconst Container = styled_components__WEBPACK_IMPORTED_MODULE_0__[\"default\"].div(({ theme, active }) => {\n    return styled_components__WEBPACK_IMPORTED_MODULE_0__.css `\n    width: 75%;\n    margin: 0 auto;\n    padding: ${theme.size(4)};\n    margin-bottom: ${theme.size(4)};\n    color: ${theme.colors.text3};\n    background-color: ${theme.colors.bg4};\n    border-radius: ${theme.radius.medium};\n    transition: 0.5s;\n\n    ${active &&\n        styled_components__WEBPACK_IMPORTED_MODULE_0__.css `\n      background-color: ${theme.colors.bg2};\n      color: ${theme.colors.text1};\n      ${Content} {\n        max-height: ${theme.size(120)};\n      }\n    `}\n  `;\n});\nconst Header = styled_components__WEBPACK_IMPORTED_MODULE_0__[\"default\"].div(({ theme }) => {\n    return styled_components__WEBPACK_IMPORTED_MODULE_0__.css `\n    display: flex;\n    align-items: center;\n    gap: ${theme.size(4)};\n  `;\n});\nconst Title = styled_components__WEBPACK_IMPORTED_MODULE_0__[\"default\"].div(({ theme }) => {\n    return styled_components__WEBPACK_IMPORTED_MODULE_0__.css `\n    font-size: ${theme.fontSize.h4};\n    font-weight: bold;\n  `;\n});\nconst Value = styled_components__WEBPACK_IMPORTED_MODULE_0__[\"default\"].div(() => {\n    return styled_components__WEBPACK_IMPORTED_MODULE_0__.css `\n    transition: 0.3s;\n    width: 100%;\n  `;\n});\nconst Content = styled_components__WEBPACK_IMPORTED_MODULE_0__[\"default\"].div(() => {\n    return styled_components__WEBPACK_IMPORTED_MODULE_0__.css `\n    width: 100%;\n    max-height: 0;\n    overflow: hidden;\n    transition: max-height 0.5s;\n  `;\n});\n\n\n//# sourceURL=webpack://app-desktop/./src/UI/base/Panel/styled.ts?");
+
+/***/ }),
+
+/***/ "./src/UI/base/Styles/Animations.ts":
+/*!******************************************!*\
+  !*** ./src/UI/base/Styles/Animations.ts ***!
+  \******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"Keyframes\": () => (/* binding */ Keyframes)\n/* harmony export */ });\n/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! styled-components */ \"./node_modules/styled-components/dist/styled-components.browser.esm.js\");\n\nconst slideUp = styled_components__WEBPACK_IMPORTED_MODULE_0__.keyframes `\n    from {transform: translateY(6rem); opacity: 0} \n    to {opacity: 1}\n`;\nconst slideUpLarge = styled_components__WEBPACK_IMPORTED_MODULE_0__.keyframes `\n    from {transform: translateY(18rem); opacity: 0} \n    to {opacity: 1}\n`;\nconst fadeIn = styled_components__WEBPACK_IMPORTED_MODULE_0__.keyframes `\n   from {opacity: 0}\n   to {opacity: 1}\n`;\nconst spinning = styled_components__WEBPACK_IMPORTED_MODULE_0__.keyframes `\n   to {transform: rotateZ(360deg);}\n`;\nconst Keyframes = {\n    slideUp,\n    slideUpLarge,\n    fadeIn,\n    spinning,\n};\n\n\n//# sourceURL=webpack://app-desktop/./src/UI/base/Styles/Animations.ts?");
+
+/***/ }),
+
+/***/ "./src/UI/base/Styles/Inputs.ts":
+/*!**************************************!*\
+  !*** ./src/UI/base/Styles/Inputs.ts ***!
+  \**************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"InputField\": () => (/* binding */ InputField)\n/* harmony export */ });\n/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! styled-components */ \"./node_modules/styled-components/dist/styled-components.browser.esm.js\");\n\nconst InputField = styled_components__WEBPACK_IMPORTED_MODULE_0__[\"default\"].input(({ theme }) => {\n    return styled_components__WEBPACK_IMPORTED_MODULE_0__.css `\n    width: 100%;\n    padding: ${theme.size(2)} ${theme.size(1)};\n    border: none;\n    background-color: transparent;\n    color: ${theme.colors.text1};\n    font-size: ${theme.fontSize.h3};\n    border-bottom: 2px solid ${theme.colors.gray};\n    text-transform: capitalize;\n  `;\n});\n\n\n//# sourceURL=webpack://app-desktop/./src/UI/base/Styles/Inputs.ts?");
+
+/***/ }),
+
+/***/ "./src/UI/base/Styles/Panel.ts":
+/*!*************************************!*\
+  !*** ./src/UI/base/Styles/Panel.ts ***!
+  \*************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"PanelTitle\": () => (/* binding */ PanelTitle),\n/* harmony export */   \"Panels\": () => (/* binding */ Panels)\n/* harmony export */ });\n/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! styled-components */ \"./node_modules/styled-components/dist/styled-components.browser.esm.js\");\n\nconst Panels = styled_components__WEBPACK_IMPORTED_MODULE_0__[\"default\"].div(() => styled_components__WEBPACK_IMPORTED_MODULE_0__.css `\n    width: 100%;\n    height: 100%;\n  `);\nconst PanelTitle = styled_components__WEBPACK_IMPORTED_MODULE_0__[\"default\"].h2(({ theme }) => {\n    return styled_components__WEBPACK_IMPORTED_MODULE_0__.css `\n    width: fit-content;\n    margin: 0 auto;\n    text-align: center;\n    font-size: ${theme.fontSize.h2};\n    padding-bottom: ${theme.size(2)};\n    margin-bottom: ${theme.size(8)};\n    font-weight: bold;\n    border-bottom: 3px solid ${theme.colors.bg1};\n  `;\n});\n\n\n//# sourceURL=webpack://app-desktop/./src/UI/base/Styles/Panel.ts?");
+
+/***/ }),
+
+/***/ "./src/UI/components/GameList/index.tsx":
+/*!**********************************************!*\
+  !*** ./src/UI/components/GameList/index.tsx ***!
+  \**********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ \"./node_modules/react/jsx-runtime.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var src_UI_base_If__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/UI/base/If */ \"./src/UI/base/If/index.ts\");\n/* harmony import */ var src_UI_base_Loading__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/UI/base/Loading */ \"./src/UI/base/Loading/index.tsx\");\n/* harmony import */ var src_config_db__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/config/db */ \"./src/config/db.ts\");\n/* harmony import */ var src_hooks_useGlobalContext__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/hooks/useGlobalContext */ \"./src/hooks/useGlobalContext/index.tsx\");\n/* harmony import */ var src_hooks_useUIState__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! src/hooks/useUIState */ \"./src/hooks/useUIState/index.tsx\");\n/* harmony import */ var src_utils_images_imageCache__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! src/utils/images/imageCache */ \"./src/utils/images/imageCache.ts\");\n/* harmony import */ var _services_GameListBar__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./services/GameListBar */ \"./src/UI/components/GameList/services/GameListBar/index.tsx\");\n/* harmony import */ var _services_GameListGrid__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./services/GameListGrid */ \"./src/UI/components/GameList/services/GameListGrid/index.tsx\");\n/* harmony import */ var _styled__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./styled */ \"./src/UI/components/GameList/styled.ts\");\n\n\n\n\n\n\n\n\n\n\n\nconst GameList = (props) => {\n    const { mode } = props;\n    const { focus, active, loading, setUI } = (0,src_hooks_useUIState__WEBPACK_IMPORTED_MODULE_6__[\"default\"])();\n    const [global, setGlobal] = (0,src_hooks_useGlobalContext__WEBPACK_IMPORTED_MODULE_5__[\"default\"])();\n    const [gameList, setGameList] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]);\n    (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(() => {\n        const games = src_config_db__WEBPACK_IMPORTED_MODULE_4__.dbClient.games.read();\n        setUI('loading', true);\n        (0,src_utils_images_imageCache__WEBPACK_IMPORTED_MODULE_7__.getGamesImageCache)(games)\n            .then(setGameList)\n            .finally(() => setUI('loading', false));\n    }, []);\n    (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(() => {\n        var _a;\n        const imgBg = (_a = gameList[focus]) === null || _a === void 0 ? void 0 : _a.background;\n        setGlobal(Object.assign(Object.assign({}, global), { imgBg }));\n    }, [focus, gameList]);\n    return ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_styled__WEBPACK_IMPORTED_MODULE_10__.Container, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(src_UI_base_If__WEBPACK_IMPORTED_MODULE_2__[\"default\"], Object.assign({ check: mode === 'list' }, { children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_services_GameListBar__WEBPACK_IMPORTED_MODULE_8__.GameListBar, { active: active, gameList: gameList, gameIndex: focus, onChangeGame: index => index < gameList.length && setUI('focus', index), onActiveGame: () => setUI('active', !active), onStartGame: () => { } }) })), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(src_UI_base_If__WEBPACK_IMPORTED_MODULE_2__[\"default\"], Object.assign({ check: mode === 'grid' }, { children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_services_GameListGrid__WEBPACK_IMPORTED_MODULE_9__.GameListGrid, { active: active, gameList: gameList, gameIndex: focus, onChangeGame: index => index < gameList.length && setUI('focus', index), onActiveGame: () => setUI('active', !active), onStartGame: () => { } }) })), loading && (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(src_UI_base_Loading__WEBPACK_IMPORTED_MODULE_3__[\"default\"], {})] }));\n};\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (GameList);\n\n\n//# sourceURL=webpack://app-desktop/./src/UI/components/GameList/index.tsx?");
+
+/***/ }),
+
+/***/ "./src/UI/components/GameList/services/GameListBar/index.tsx":
+/*!*******************************************************************!*\
+  !*** ./src/UI/components/GameList/services/GameListBar/index.tsx ***!
+  \*******************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"GameListBar\": () => (/* binding */ GameListBar)\n/* harmony export */ });\n/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ \"./node_modules/react/jsx-runtime.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var src_UI_base_GamepadButtons__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/UI/base/GamepadButtons */ \"./src/UI/base/GamepadButtons/index.tsx\");\n/* harmony import */ var src_hooks_useGamepad__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/hooks/useGamepad */ \"./src/hooks/useGamepad/index.tsx\");\n/* harmony import */ var src_utils_constants_UIButtons__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/utils/constants/UIButtons */ \"./src/utils/constants/UIButtons.ts\");\n/* harmony import */ var _styled__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./styled */ \"./src/UI/components/GameList/services/GameListBar/styled.ts\");\n\n\n\n\n\n\nconst GameListBar = (props) => {\n    const { active, gameList, gameIndex, onChangeGame, onStartGame, onActiveGame } = props;\n    const onPressed = (0,src_hooks_useGamepad__WEBPACK_IMPORTED_MODULE_3__[\"default\"])();\n    const game = (0,react__WEBPACK_IMPORTED_MODULE_1__.useMemo)(() => gameList[gameIndex], [gameIndex, gameList]);\n    (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(() => {\n        onPressed('ArrowLeft', () => onChangeGame(gameIndex - 1));\n        onPressed('ArrowRight', () => onChangeGame(gameIndex + 1));\n        onPressed('ButtonStart', () => onStartGame(gameIndex));\n        // nodeJS.exec(`cd ${game.gamePath} && ./${game.gameFile}`);\n    }, [onPressed]);\n    const CoverListItems = (0,react__WEBPACK_IMPORTED_MODULE_1__.useMemo)(() => gameList.map(game => ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_styled__WEBPACK_IMPORTED_MODULE_5__.CoverListImg, { className: \"cove-item\", focus: gameIndex, src: game.cover }, game.name))), [gameList.length, gameIndex]);\n    return ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_styled__WEBPACK_IMPORTED_MODULE_5__.Container, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_styled__WEBPACK_IMPORTED_MODULE_5__.Games, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_styled__WEBPACK_IMPORTED_MODULE_5__.CoverImg, { src: game === null || game === void 0 ? void 0 : game.cover }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_styled__WEBPACK_IMPORTED_MODULE_5__.Column, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_styled__WEBPACK_IMPORTED_MODULE_5__.Description, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_styled__WEBPACK_IMPORTED_MODULE_5__.GameTitle, { children: game === null || game === void 0 ? void 0 : game.name }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_styled__WEBPACK_IMPORTED_MODULE_5__.GameInfo, { children: game === null || game === void 0 ? void 0 : game.publisher })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_styled__WEBPACK_IMPORTED_MODULE_5__.CoverList, { children: CoverListItems })] })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(src_UI_base_GamepadButtons__WEBPACK_IMPORTED_MODULE_2__[\"default\"], { buttons: src_utils_constants_UIButtons__WEBPACK_IMPORTED_MODULE_4__.UIButtons.GameListBar })] }));\n};\n\n\n//# sourceURL=webpack://app-desktop/./src/UI/components/GameList/services/GameListBar/index.tsx?");
+
+/***/ }),
+
+/***/ "./src/UI/components/GameList/services/GameListBar/styled.ts":
+/*!*******************************************************************!*\
+  !*** ./src/UI/components/GameList/services/GameListBar/styled.ts ***!
+  \*******************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"Column\": () => (/* binding */ Column),\n/* harmony export */   \"Container\": () => (/* binding */ Container),\n/* harmony export */   \"CoverImg\": () => (/* binding */ CoverImg),\n/* harmony export */   \"CoverList\": () => (/* binding */ CoverList),\n/* harmony export */   \"CoverListImg\": () => (/* binding */ CoverListImg),\n/* harmony export */   \"Description\": () => (/* binding */ Description),\n/* harmony export */   \"GameInfo\": () => (/* binding */ GameInfo),\n/* harmony export */   \"GameTitle\": () => (/* binding */ GameTitle),\n/* harmony export */   \"Games\": () => (/* binding */ Games)\n/* harmony export */ });\n/* harmony import */ var src_UI_base_Styles_Animations__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! src/UI/base/Styles/Animations */ \"./src/UI/base/Styles/Animations.ts\");\n/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ \"./node_modules/styled-components/dist/styled-components.browser.esm.js\");\n\n\nconst Container = styled_components__WEBPACK_IMPORTED_MODULE_1__[\"default\"].div(() => {\n    return styled_components__WEBPACK_IMPORTED_MODULE_1__.css `\n    width: 100%;\n    height: 100%;\n    display: flex;\n    align-items: flex-end;\n  `;\n});\nconst Games = styled_components__WEBPACK_IMPORTED_MODULE_1__[\"default\"].div(({ theme }) => {\n    return styled_components__WEBPACK_IMPORTED_MODULE_1__.css `\n    width: 100%;\n    display: flex;\n    gap: ${theme.size(2)};\n    height: ${theme.size(120)};\n    animation: ${src_UI_base_Styles_Animations__WEBPACK_IMPORTED_MODULE_0__.Keyframes.slideUpLarge} 0.2s ease-out;\n  `;\n});\nconst CoverImg = styled_components__WEBPACK_IMPORTED_MODULE_1__[\"default\"].img(props => styled_components__WEBPACK_IMPORTED_MODULE_1__.css `\n      display: block;\n      height: 100%;\n      margin: 0 10px;\n      width: ${props.theme.size(90)};\n      min-width: ${props.theme.size(90)};\n      max-width: ${props.theme.size(90)};\n      border-radius: ${props.theme.radius.large};\n      box-shadow: ${props.theme.shadow.high};\n      border: 2px solid ${props.theme.colors.gray};\n    `);\nconst Column = styled_components__WEBPACK_IMPORTED_MODULE_1__[\"default\"].div(() => {\n    return styled_components__WEBPACK_IMPORTED_MODULE_1__.css `\n    display: flex;\n    flex-direction: column;\n  `;\n});\nconst Description = styled_components__WEBPACK_IMPORTED_MODULE_1__[\"default\"].div(() => {\n    return styled_components__WEBPACK_IMPORTED_MODULE_1__.css `\n    width: 100%;\n    height: 100%;\n  `;\n});\nconst GameTitle = styled_components__WEBPACK_IMPORTED_MODULE_1__[\"default\"].div(({ theme }) => {\n    return styled_components__WEBPACK_IMPORTED_MODULE_1__.css `\n    color: ${theme.colors.text1};\n    font-size: ${theme.size(14)};\n  `;\n});\nconst GameInfo = styled_components__WEBPACK_IMPORTED_MODULE_1__[\"default\"].div(({ theme }) => {\n    return styled_components__WEBPACK_IMPORTED_MODULE_1__.css `\n    color: ${theme.colors.text3};\n    font-size: ${theme.fontSize.h4};\n  `;\n});\nconst CoverList = styled_components__WEBPACK_IMPORTED_MODULE_1__[\"default\"].div(() => {\n    return styled_components__WEBPACK_IMPORTED_MODULE_1__.css `\n    width: 100%;\n    height: 100%;\n    display: flex;\n    overflow: hidden;\n  `;\n});\nconst CoverListImg = styled_components__WEBPACK_IMPORTED_MODULE_1__[\"default\"].img(props => styled_components__WEBPACK_IMPORTED_MODULE_1__.css `\n      display: block;\n      height: ${props.theme.size(60)};\n      width: ${props.theme.size(50)};\n      min-width: ${props.theme.size(50)};\n      max-width: ${props.theme.size(50)};\n      margin-right: ${props.theme.size(4)};\n      background-color: transparent;\n      border-radius: ${props.theme.radius.large};\n      font-size: ${props.theme.size(10)};\n      border: 2px solid ${props.theme.colors.bg1};\n      transition: 0.3s;\n      filter: brightness(0.9);\n\n      &.cove-item:nth-child(-n + ${props.focus + 1}) {\n        width: 0;\n        min-width: 0;\n        margin: 0;\n        border: none;\n        opacity: 0;\n        overflow: hidden;\n      }\n    `);\n\n\n//# sourceURL=webpack://app-desktop/./src/UI/components/GameList/services/GameListBar/styled.ts?");
+
+/***/ }),
+
+/***/ "./src/UI/components/GameList/services/GameListGrid/index.tsx":
+/*!********************************************************************!*\
+  !*** ./src/UI/components/GameList/services/GameListGrid/index.tsx ***!
+  \********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"GameListGrid\": () => (/* binding */ GameListGrid)\n/* harmony export */ });\n/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ \"./node_modules/react/jsx-runtime.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var src_UI_base_GamepadButtons__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/UI/base/GamepadButtons */ \"./src/UI/base/GamepadButtons/index.tsx\");\n/* harmony import */ var src_UI_base_If__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/UI/base/If */ \"./src/UI/base/If/index.ts\");\n/* harmony import */ var src_hooks_useGamepad__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/hooks/useGamepad */ \"./src/hooks/useGamepad/index.tsx\");\n/* harmony import */ var src_utils_constants_UIButtons__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/utils/constants/UIButtons */ \"./src/utils/constants/UIButtons.ts\");\n/* harmony import */ var _styled__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./styled */ \"./src/UI/components/GameList/services/GameListGrid/styled.ts\");\n\n\n\n\n\n\n\nconst renderGridItems = (props) => {\n    const { active, gameList, gameIndex, onChangeGame, onActiveGame } = props;\n    return gameList.map((game, i) => ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_styled__WEBPACK_IMPORTED_MODULE_6__.GridItem, Object.assign({ focus: gameIndex === i, onClick: () => (i === gameIndex ? onActiveGame(i) : onChangeGame(i)), ref: ref => ref && gameIndex === i && ref.scrollIntoView({ block: 'center' }) }, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_styled__WEBPACK_IMPORTED_MODULE_6__.GridItemImg, { src: game.cover }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(src_UI_base_If__WEBPACK_IMPORTED_MODULE_3__[\"default\"], Object.assign({ check: active && gameIndex === i }, { children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_styled__WEBPACK_IMPORTED_MODULE_6__.Description, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_styled__WEBPACK_IMPORTED_MODULE_6__.Content, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_styled__WEBPACK_IMPORTED_MODULE_6__.Title, { children: game.name }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_styled__WEBPACK_IMPORTED_MODULE_6__.Label, { children: game.publisher })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_styled__WEBPACK_IMPORTED_MODULE_6__.StartButton, { children: \"Start\" })] }) }))] }), game.name)));\n};\nconst GameListGrid = (props) => {\n    const { active, gameList, gameIndex, onChangeGame, onActiveGame } = props;\n    const onPress = (0,src_hooks_useGamepad__WEBPACK_IMPORTED_MODULE_4__[\"default\"])();\n    (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(() => {\n        const pos = (gameIndex + 1) % 4;\n        onPress('ArrowLeft', () => pos !== 1 && onChangeGame(gameIndex - 1));\n        onPress('ArrowRight', () => pos !== 0 && onChangeGame(gameIndex + 1));\n        onPress('ArrowUp', () => onChangeGame(gameIndex - 4));\n        onPress('ArrowDown', () => onChangeGame(gameIndex + 4));\n        onPress('ButtonA', () => onActiveGame(gameIndex));\n        // onPress('ButtonStart', () => onStartGame(gameIndex));\n    }, [onPress]);\n    const GridItems = (0,react__WEBPACK_IMPORTED_MODULE_1__.useMemo)(() => renderGridItems(props), [active, gameIndex, gameList]);\n    return ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_styled__WEBPACK_IMPORTED_MODULE_6__.Container, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_styled__WEBPACK_IMPORTED_MODULE_6__.Grid, { children: GridItems }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(src_UI_base_GamepadButtons__WEBPACK_IMPORTED_MODULE_2__[\"default\"], { buttons: src_utils_constants_UIButtons__WEBPACK_IMPORTED_MODULE_5__.UIButtons.GameListGrid })] }));\n};\n\n\n//# sourceURL=webpack://app-desktop/./src/UI/components/GameList/services/GameListGrid/index.tsx?");
+
+/***/ }),
+
+/***/ "./src/UI/components/GameList/services/GameListGrid/styled.ts":
+/*!********************************************************************!*\
+  !*** ./src/UI/components/GameList/services/GameListGrid/styled.ts ***!
+  \********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"Container\": () => (/* binding */ Container),\n/* harmony export */   \"Content\": () => (/* binding */ Content),\n/* harmony export */   \"Description\": () => (/* binding */ Description),\n/* harmony export */   \"Grid\": () => (/* binding */ Grid),\n/* harmony export */   \"GridItem\": () => (/* binding */ GridItem),\n/* harmony export */   \"GridItemImg\": () => (/* binding */ GridItemImg),\n/* harmony export */   \"Label\": () => (/* binding */ Label),\n/* harmony export */   \"StartButton\": () => (/* binding */ StartButton),\n/* harmony export */   \"Title\": () => (/* binding */ Title)\n/* harmony export */ });\n/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! styled-components */ \"./node_modules/styled-components/dist/styled-components.browser.esm.js\");\n\nconst Container = styled_components__WEBPACK_IMPORTED_MODULE_0__[\"default\"].div(() => styled_components__WEBPACK_IMPORTED_MODULE_0__.css `\n      width: 100%;\n      height: 100%;\n      display: flex;\n      align-items: center;\n      justify-content: center;\n    `);\nconst Grid = styled_components__WEBPACK_IMPORTED_MODULE_0__[\"default\"].div(props => styled_components__WEBPACK_IMPORTED_MODULE_0__.css `\n      height: 100%;\n      display: grid;\n      align-content: flex-start;\n      justify-items: center;\n      grid-template-columns: repeat(4, 1fr);\n      grid-gap: ${props.theme.size(6)};\n      scroll-behavior: smooth;\n      overflow-y: auto;\n    `);\nconst GridItem = styled_components__WEBPACK_IMPORTED_MODULE_0__[\"default\"].div(props => styled_components__WEBPACK_IMPORTED_MODULE_0__.css `\n    position: relative;\n    width: ${props.theme.size(90)};\n    height: ${props.theme.size(120)};\n    background-color: transparent;\n    border-radius: ${props.theme.radius.large};\n    font-size: ${props.theme.size(10)};\n    transition: opacity 0.2s;\n    overflow: hidden;\n    border: 2px solid transparent;\n    ${props.focus && `border: 2px solid ${props.theme.colors.gray};`}\n  `);\nconst GridItemImg = styled_components__WEBPACK_IMPORTED_MODULE_0__[\"default\"].img(() => styled_components__WEBPACK_IMPORTED_MODULE_0__.css `\n    width: 100%;\n    height: 100%;\n  `);\nconst Description = styled_components__WEBPACK_IMPORTED_MODULE_0__[\"default\"].div(props => styled_components__WEBPACK_IMPORTED_MODULE_0__.css `\n    display: flex;\n    flex-direction: column;\n    justify-content: space-between;\n    position: absolute;\n    bottom: 0;\n    left: 0;\n    width: 100%;\n    height: 100%;\n    background-color: #000a;\n    padding: ${props.theme.size(4)};\n    transition: 0.3s;\n  `);\nconst Content = styled_components__WEBPACK_IMPORTED_MODULE_0__[\"default\"].div(props => styled_components__WEBPACK_IMPORTED_MODULE_0__.css `\n    display: flex;\n    flex-direction: column;\n    gap: ${props.theme.size(2)};\n  `);\nconst Title = styled_components__WEBPACK_IMPORTED_MODULE_0__[\"default\"].h3(props => styled_components__WEBPACK_IMPORTED_MODULE_0__.css `\n    color: ${props.theme.colors.text1};\n  `);\nconst Label = styled_components__WEBPACK_IMPORTED_MODULE_0__[\"default\"].p(props => styled_components__WEBPACK_IMPORTED_MODULE_0__.css `\n    font-size: ${props.theme.fontSize.small};\n    color: ${props.theme.colors.text3};\n  `);\nconst StartButton = styled_components__WEBPACK_IMPORTED_MODULE_0__[\"default\"].p(props => styled_components__WEBPACK_IMPORTED_MODULE_0__.css `\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    gap: ${props.theme.size(2)};\n    font-size: ${props.theme.fontSize.h3};\n    width: 100%;\n  `);\n\n\n//# sourceURL=webpack://app-desktop/./src/UI/components/GameList/services/GameListGrid/styled.ts?");
+
+/***/ }),
+
+/***/ "./src/UI/components/GameList/styled.ts":
+/*!**********************************************!*\
+  !*** ./src/UI/components/GameList/styled.ts ***!
+  \**********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"Container\": () => (/* binding */ Container)\n/* harmony export */ });\n/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! styled-components */ \"./node_modules/styled-components/dist/styled-components.browser.esm.js\");\n\nconst Container = styled_components__WEBPACK_IMPORTED_MODULE_0__[\"default\"].div(() => {\n    return styled_components__WEBPACK_IMPORTED_MODULE_0__.css `\n    width: 100%;\n    height: 100%;\n    display: flex;\n    flex-direction: column;\n    justify-content: flex-end;\n    overflow: hidden;\n  `;\n});\n\n\n//# sourceURL=webpack://app-desktop/./src/UI/components/GameList/styled.ts?");
+
+/***/ }),
+
+/***/ "./src/UI/components/TabHeader/index.tsx":
+/*!***********************************************!*\
+  !*** ./src/UI/components/TabHeader/index.tsx ***!
+  \***********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ \"./node_modules/react/jsx-runtime.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var src_UI_base_Icons__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/UI/base/Icons */ \"./src/UI/base/Icons/index.tsx\");\n/* harmony import */ var src_hooks_useGamepad__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/hooks/useGamepad */ \"./src/hooks/useGamepad/index.tsx\");\n/* harmony import */ var src_hooks_usePath__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/hooks/usePath */ \"./src/hooks/usePath/index.tsx\");\n/* harmony import */ var src_hooks_useUIState__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/hooks/useUIState */ \"./src/hooks/useUIState/index.tsx\");\n/* harmony import */ var _services_tabs__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./services/tabs */ \"./src/UI/components/TabHeader/services/tabs.ts\");\n/* harmony import */ var _styled__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./styled */ \"./src/UI/components/TabHeader/styled.ts\");\n\n\n\n\n\n\n\n\nconst TabHeader = () => {\n    const onPress = (0,src_hooks_useGamepad__WEBPACK_IMPORTED_MODULE_3__[\"default\"])();\n    const [path, setPath] = (0,src_hooks_usePath__WEBPACK_IMPORTED_MODULE_4__[\"default\"])();\n    const { option, setUI } = (0,src_hooks_useUIState__WEBPACK_IMPORTED_MODULE_5__[\"default\"])();\n    (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(() => {\n        onPress('ButtonLeft', () => setUI('option', option - 1));\n        onPress('ButtonRight', () => option < _services_tabs__WEBPACK_IMPORTED_MODULE_6__.tabRoutes.length - 1 && setUI('option', option + 1));\n    }, [onPress]);\n    (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(() => {\n        const route = _services_tabs__WEBPACK_IMPORTED_MODULE_6__.tabRoutes[option].route;\n        setPath(route);\n    }, [option]);\n    return ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_styled__WEBPACK_IMPORTED_MODULE_7__.Container, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_styled__WEBPACK_IMPORTED_MODULE_7__.LeftIcons, { children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(src_UI_base_Icons__WEBPACK_IMPORTED_MODULE_2__[\"default\"], { type: \"user\", size: 7 }) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_styled__WEBPACK_IMPORTED_MODULE_7__.MiddleTabs, { children: _services_tabs__WEBPACK_IMPORTED_MODULE_6__.tabRoutes.map((tab, i) => ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_styled__WEBPACK_IMPORTED_MODULE_7__.TabsItem, Object.assign({ selected: option === i, onClick: () => setUI('option', i) }, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(src_UI_base_Icons__WEBPACK_IMPORTED_MODULE_2__[\"default\"], { type: tab.name, size: 13 }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_styled__WEBPACK_IMPORTED_MODULE_7__.TabsItemLabel, { children: tab.name })] }), tab.name))) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_styled__WEBPACK_IMPORTED_MODULE_7__.RightIcons, { children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(src_UI_base_Icons__WEBPACK_IMPORTED_MODULE_2__[\"default\"], { type: \"gamepad\", size: 7 }) })] }));\n};\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (TabHeader);\n\n\n//# sourceURL=webpack://app-desktop/./src/UI/components/TabHeader/index.tsx?");
+
+/***/ }),
+
+/***/ "./src/UI/components/TabHeader/services/tabs.ts":
+/*!******************************************************!*\
+  !*** ./src/UI/components/TabHeader/services/tabs.ts ***!
+  \******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"tabRoutes\": () => (/* binding */ tabRoutes)\n/* harmony export */ });\nconst tabRoutes = [\n    { name: 'games', route: 'games/list/bar' },\n    { name: 'apps', route: 'apps' },\n    { name: 'music', route: 'music' },\n    { name: 'midia', route: 'midia' },\n    { name: 'web', route: 'web' },\n    { name: 'settings', route: 'settings' },\n];\n\n\n//# sourceURL=webpack://app-desktop/./src/UI/components/TabHeader/services/tabs.ts?");
+
+/***/ }),
+
+/***/ "./src/UI/components/TabHeader/styled.ts":
+/*!***********************************************!*\
+  !*** ./src/UI/components/TabHeader/styled.ts ***!
+  \***********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"Container\": () => (/* binding */ Container),\n/* harmony export */   \"LeftIcons\": () => (/* binding */ LeftIcons),\n/* harmony export */   \"MiddleTabs\": () => (/* binding */ MiddleTabs),\n/* harmony export */   \"RightIcons\": () => (/* binding */ RightIcons),\n/* harmony export */   \"TabsItem\": () => (/* binding */ TabsItem),\n/* harmony export */   \"TabsItemLabel\": () => (/* binding */ TabsItemLabel)\n/* harmony export */ });\n/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! styled-components */ \"./node_modules/styled-components/dist/styled-components.browser.esm.js\");\n\nconst Container = styled_components__WEBPACK_IMPORTED_MODULE_0__[\"default\"].div(({ theme }) => styled_components__WEBPACK_IMPORTED_MODULE_0__.css `\n    width: 100%;\n    max-width: ${theme.size(500)};\n    display: flex;\n    align-items: center;\n    padding: ${theme.size(4)};\n    margin: ${theme.size(2)} auto;\n  `);\nconst LeftIcons = styled_components__WEBPACK_IMPORTED_MODULE_0__[\"default\"].div(() => styled_components__WEBPACK_IMPORTED_MODULE_0__.css `\n    display: flex;\n    align-items: center;\n  `);\nconst RightIcons = styled_components__WEBPACK_IMPORTED_MODULE_0__[\"default\"].div(({ theme }) => styled_components__WEBPACK_IMPORTED_MODULE_0__.css `\n    display: flex;\n    align-items: center;\n    gap: ${theme.size(4)};\n  `);\nconst MiddleTabs = styled_components__WEBPACK_IMPORTED_MODULE_0__[\"default\"].div(() => styled_components__WEBPACK_IMPORTED_MODULE_0__.css `\n    width: 100%;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n  `);\nconst TabsItemLabel = styled_components__WEBPACK_IMPORTED_MODULE_0__[\"default\"].span(({ theme }) => styled_components__WEBPACK_IMPORTED_MODULE_0__.css `\n    padding: 0 ${theme.size(2)};\n    font-size: ${theme.fontSize.h1};\n    text-transform: capitalize;\n  `);\nconst TabsItem = styled_components__WEBPACK_IMPORTED_MODULE_0__[\"default\"].label(props => styled_components__WEBPACK_IMPORTED_MODULE_0__.css `\n    display: flex;\n    position: relative;\n    align-items: center;\n    color: ${props.theme.colors.text3};\n    transition: 0.3s ease-out;\n    cursor: pointer;\n\n    :hover {\n      color: ${props.theme.colors.text1};\n    }\n\n    ${props.selected &&\n    styled_components__WEBPACK_IMPORTED_MODULE_0__.css `\n      margin-left: ${props.theme.size(15)};\n      margin-right: ${props.theme.size(15)};\n    `}\n\n    ${TabsItemLabel} {\n      width: 0;\n      ${!props.selected && `opacity: 0;`}\n      ${props.selected && `width: ${props.theme.size(25)};`}\n    }\n  `);\n\n\n//# sourceURL=webpack://app-desktop/./src/UI/components/TabHeader/styled.ts?");
+
+/***/ }),
+
+/***/ "./src/UI/forms/GameDetails/index.tsx":
+/*!********************************************!*\
+  !*** ./src/UI/forms/GameDetails/index.tsx ***!
+  \********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ \"./node_modules/react/jsx-runtime.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var src_UI_base_GamepadButtons__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/UI/base/GamepadButtons */ \"./src/UI/base/GamepadButtons/index.tsx\");\n/* harmony import */ var src_UI_base_InputModal__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/UI/base/InputModal */ \"./src/UI/base/InputModal/index.tsx\");\n/* harmony import */ var src_UI_base_Panel__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/UI/base/Panel */ \"./src/UI/base/Panel/index.tsx\");\n/* harmony import */ var src_UI_base_Styles_Panel__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/UI/base/Styles/Panel */ \"./src/UI/base/Styles/Panel.ts\");\n/* harmony import */ var src_config_db__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! src/config/db */ \"./src/config/db.ts\");\n/* harmony import */ var src_hooks_useGamepad__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! src/hooks/useGamepad */ \"./src/hooks/useGamepad/index.tsx\");\n/* harmony import */ var src_hooks_useUIState__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! src/hooks/useUIState */ \"./src/hooks/useUIState/index.tsx\");\n/* harmony import */ var src_utils_constants_UIButtons__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! src/utils/constants/UIButtons */ \"./src/utils/constants/UIButtons.ts\");\n/* harmony import */ var _services_handleForm__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./services/handleForm */ \"./src/UI/forms/GameDetails/services/handleForm.ts\");\n\n\n\n\n\n\n\n\n\n\n\nconst GameDetailsForm = () => {\n    const onPressed = (0,src_hooks_useGamepad__WEBPACK_IMPORTED_MODULE_7__[\"default\"])();\n    const { active, focus, setUI } = (0,src_hooks_useUIState__WEBPACK_IMPORTED_MODULE_8__[\"default\"])();\n    const [form, setForm] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(_services_handleForm__WEBPACK_IMPORTED_MODULE_10__.initialState);\n    (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(() => {\n        onPressed('ArrowUp', () => setUI('focus', focus - 1));\n        onPressed('ArrowDown', () => setUI('focus', focus + 1));\n        onPressed('ButtonA', () => setUI('active', active));\n        onPressed('ButtonX', () => src_config_db__WEBPACK_IMPORTED_MODULE_6__.dbClient.games.create({ gameInfo: form }));\n    }, [onPressed]);\n    return ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(src_UI_base_Styles_Panel__WEBPACK_IMPORTED_MODULE_5__.Panels, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(src_UI_base_Styles_Panel__WEBPACK_IMPORTED_MODULE_5__.PanelTitle, { children: \"Add New Game\" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(src_UI_base_Panel__WEBPACK_IMPORTED_MODULE_4__[\"default\"], Object.assign({ active: focus === 0, title: \"Title\", value: form.name }, { children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(src_UI_base_InputModal__WEBPACK_IMPORTED_MODULE_3__.InputModal, { type: \"text\", active: focus === 0 && active, value: form.name, onChange: name => setForm(Object.assign(Object.assign({}, form), { name })) }) })), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(src_UI_base_Panel__WEBPACK_IMPORTED_MODULE_4__[\"default\"], Object.assign({ active: focus === 1, title: \"Publisher\", value: form.publisher }, { children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(src_UI_base_InputModal__WEBPACK_IMPORTED_MODULE_3__.InputModal, { type: \"text\", active: focus === 1 && active, value: form.publisher, onChange: publisher => setForm(Object.assign(Object.assign({}, form), { publisher })) }) })), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(src_UI_base_Panel__WEBPACK_IMPORTED_MODULE_4__[\"default\"], Object.assign({ active: focus === 2, title: \"Cover\", value: form.cover }, { children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(src_UI_base_InputModal__WEBPACK_IMPORTED_MODULE_3__.InputModal, { type: \"img\", active: focus === 2 && active, value: form.name + ' box art', onChange: cover => setForm(Object.assign(Object.assign({}, form), { cover })) }) })), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(src_UI_base_Panel__WEBPACK_IMPORTED_MODULE_4__[\"default\"], Object.assign({ active: focus === 3, title: \"Background\", value: form.background }, { children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(src_UI_base_InputModal__WEBPACK_IMPORTED_MODULE_3__.InputModal, { type: \"img\", active: focus === 3 && active, value: form.name + ' background', onChange: background => setForm(Object.assign(Object.assign({}, form), { background })) }) })), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(src_UI_base_Panel__WEBPACK_IMPORTED_MODULE_4__[\"default\"], Object.assign({ active: focus === 4, title: \"Location\", value: form.gamePath + form.gameFile }, { children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(src_UI_base_InputModal__WEBPACK_IMPORTED_MODULE_3__.InputModal, { type: \"file\", active: focus === 4 && active, value: form.gamePath, onChange: gameFile => setForm(Object.assign(Object.assign({}, form), { gameFile })) }) })), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(src_UI_base_GamepadButtons__WEBPACK_IMPORTED_MODULE_2__[\"default\"], { buttons: src_utils_constants_UIButtons__WEBPACK_IMPORTED_MODULE_9__.UIButtons.GameDetailsForm })] }));\n};\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (GameDetailsForm);\n\n\n//# sourceURL=webpack://app-desktop/./src/UI/forms/GameDetails/index.tsx?");
+
+/***/ }),
+
+/***/ "./src/UI/forms/GameDetails/services/handleForm.ts":
+/*!*********************************************************!*\
+  !*** ./src/UI/forms/GameDetails/services/handleForm.ts ***!
+  \*********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"initialState\": () => (/* binding */ initialState)\n/* harmony export */ });\nconst initialState = {\n    name: '',\n    description: '',\n    cover: '',\n    background: '',\n    publisher: '',\n    rate: '80',\n    addedAt: '',\n    year: '2023',\n    hidden: false,\n    gamePath: '',\n    gameFile: '',\n};\n\n\n//# sourceURL=webpack://app-desktop/./src/UI/forms/GameDetails/services/handleForm.ts?");
+
+/***/ }),
+
+/***/ "./src/UI/forms/ThemeSettings/index.tsx":
+/*!**********************************************!*\
+  !*** ./src/UI/forms/ThemeSettings/index.tsx ***!
+  \**********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ \"./node_modules/react/jsx-runtime.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var src_UI_base_InputModal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/UI/base/InputModal */ \"./src/UI/base/InputModal/index.tsx\");\n/* harmony import */ var src_UI_base_Panel__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/UI/base/Panel */ \"./src/UI/base/Panel/index.tsx\");\n/* harmony import */ var src_UI_base_Styles_Panel__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/UI/base/Styles/Panel */ \"./src/UI/base/Styles/Panel.ts\");\n/* harmony import */ var src_hooks_useGamepad__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/hooks/useGamepad */ \"./src/hooks/useGamepad/index.tsx\");\n/* harmony import */ var src_hooks_useUIState__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! src/hooks/useUIState */ \"./src/hooks/useUIState/index.tsx\");\n\n\n\n\n\n\n\nconst ThemeSettingsForm = () => {\n    const onPressed = (0,src_hooks_useGamepad__WEBPACK_IMPORTED_MODULE_5__[\"default\"])();\n    const { active, focus, setUI } = (0,src_hooks_useUIState__WEBPACK_IMPORTED_MODULE_6__[\"default\"])();\n    const [form, setForm] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)({});\n    (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(() => {\n        onPressed('ArrowUp', () => setUI('focus', focus - 1));\n        onPressed('ArrowDown', () => setUI('focus', focus + 1));\n        onPressed('ButtonA', () => setUI('active', !active));\n        onPressed('ButtonX', () => { });\n    }, [onPressed]);\n    return ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(src_UI_base_Styles_Panel__WEBPACK_IMPORTED_MODULE_4__.Panels, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(src_UI_base_Styles_Panel__WEBPACK_IMPORTED_MODULE_4__.PanelTitle, { children: \"Theme Settings\" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(src_UI_base_Panel__WEBPACK_IMPORTED_MODULE_3__[\"default\"], Object.assign({ active: focus === 0, title: \"Title\", value: '' }, { children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(src_UI_base_InputModal__WEBPACK_IMPORTED_MODULE_2__.InputModal, { title: \"Game Title\", type: \"color\", active: focus === 0 && active, value: '', onChange: name => setForm(Object.assign(Object.assign({}, form), { name })) }) }))] }));\n};\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ThemeSettingsForm);\n\n\n//# sourceURL=webpack://app-desktop/./src/UI/forms/ThemeSettings/index.tsx?");
+
+/***/ }),
+
+/***/ "./src/UI/pages/Controls/index.tsx":
+/*!*****************************************!*\
+  !*** ./src/UI/pages/Controls/index.tsx ***!
+  \*****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ \"./node_modules/react/jsx-runtime.js\");\n/* harmony import */ var src_UI_base_PageContainer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! src/UI/base/PageContainer */ \"./src/UI/base/PageContainer/index.tsx\");\n\n\nconst ControlsPage = () => {\n    return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(src_UI_base_PageContainer__WEBPACK_IMPORTED_MODULE_1__[\"default\"], {});\n};\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ControlsPage);\n\n\n//# sourceURL=webpack://app-desktop/./src/UI/pages/Controls/index.tsx?");
+
+/***/ }),
+
+/***/ "./src/UI/pages/Games/index.tsx":
+/*!**************************************!*\
+  !*** ./src/UI/pages/Games/index.tsx ***!
+  \**************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ \"./node_modules/react/jsx-runtime.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var src_UI_base_If__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/UI/base/If */ \"./src/UI/base/If/index.ts\");\n/* harmony import */ var src_UI_base_PageContainer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/UI/base/PageContainer */ \"./src/UI/base/PageContainer/index.tsx\");\n/* harmony import */ var src_UI_components_GameList__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/UI/components/GameList */ \"./src/UI/components/GameList/index.tsx\");\n/* harmony import */ var src_UI_forms_GameDetails__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/UI/forms/GameDetails */ \"./src/UI/forms/GameDetails/index.tsx\");\n/* harmony import */ var src_hooks_useGamepad__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! src/hooks/useGamepad */ \"./src/hooks/useGamepad/index.tsx\");\n/* harmony import */ var src_hooks_usePath__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! src/hooks/usePath */ \"./src/hooks/usePath/index.tsx\");\n\n\n\n\n\n\n\n\nconst GamesPage = () => {\n    const [path, setPath] = (0,src_hooks_usePath__WEBPACK_IMPORTED_MODULE_7__[\"default\"])();\n    const onPressed = (0,src_hooks_useGamepad__WEBPACK_IMPORTED_MODULE_6__[\"default\"])();\n    (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(() => {\n        onPressed('ButtonY', () => {\n            path === 'games/add' ? setPath('games/list/bar') : setPath('games/add');\n        });\n        onPressed('ButtonX', () => {\n            path === 'games/list/bar' ? setPath('games/list/grid') : setPath('games/list/bar');\n        });\n    }, [onPressed]);\n    return ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(src_UI_base_PageContainer__WEBPACK_IMPORTED_MODULE_3__[\"default\"], { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(src_UI_base_If__WEBPACK_IMPORTED_MODULE_2__[\"default\"], { check: path === 'games/list/bar', true: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(src_UI_components_GameList__WEBPACK_IMPORTED_MODULE_4__[\"default\"], { mode: \"list\" }) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(src_UI_base_If__WEBPACK_IMPORTED_MODULE_2__[\"default\"], { check: path === 'games/list/grid', true: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(src_UI_components_GameList__WEBPACK_IMPORTED_MODULE_4__[\"default\"], { mode: \"grid\" }) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(src_UI_base_If__WEBPACK_IMPORTED_MODULE_2__[\"default\"], { check: path === 'games/add', true: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(src_UI_forms_GameDetails__WEBPACK_IMPORTED_MODULE_5__[\"default\"], {}) })] }));\n};\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (GamesPage);\n\n\n//# sourceURL=webpack://app-desktop/./src/UI/pages/Games/index.tsx?");
+
+/***/ }),
+
+/***/ "./src/UI/pages/Settings/index.tsx":
+/*!*****************************************!*\
+  !*** ./src/UI/pages/Settings/index.tsx ***!
+  \*****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ \"./node_modules/react/jsx-runtime.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var src_UI_base_PageContainer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/UI/base/PageContainer */ \"./src/UI/base/PageContainer/index.tsx\");\n/* harmony import */ var src_UI_base_Panel__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/UI/base/Panel */ \"./src/UI/base/Panel/index.tsx\");\n/* harmony import */ var src_hooks_useGamepad__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/hooks/useGamepad */ \"./src/hooks/useGamepad/index.tsx\");\n\n\n\n\n\nconst SettingsPage = () => {\n    const onPressed = (0,src_hooks_useGamepad__WEBPACK_IMPORTED_MODULE_4__[\"default\"])();\n    const [active, setActive] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(0);\n    (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(() => {\n        onPressed('ArrowUp', () => active > 0 && setActive(active - 1));\n        onPressed('ArrowDown', () => active < 1 && setActive(active + 1));\n    }, [onPressed]);\n    return ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(src_UI_base_PageContainer__WEBPACK_IMPORTED_MODULE_2__[\"default\"], { children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(src_UI_base_Panel__WEBPACK_IMPORTED_MODULE_3__[\"default\"], Object.assign({ active: active === 0, title: \"Start up time\", value: \"\" }, { children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(\"div\", { children: \"Settings\" }) })) }));\n};\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SettingsPage);\n\n\n//# sourceURL=webpack://app-desktop/./src/UI/pages/Settings/index.tsx?");
+
+/***/ }),
+
+/***/ "./src/UI/pages/Theme/index.tsx":
+/*!**************************************!*\
+  !*** ./src/UI/pages/Theme/index.tsx ***!
+  \**************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ \"./node_modules/react/jsx-runtime.js\");\n/* harmony import */ var src_UI_base_PageContainer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! src/UI/base/PageContainer */ \"./src/UI/base/PageContainer/index.tsx\");\n/* harmony import */ var src_UI_forms_ThemeSettings__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/UI/forms/ThemeSettings */ \"./src/UI/forms/ThemeSettings/index.tsx\");\n\n\n\nconst ThemePage = () => {\n    return ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(src_UI_base_PageContainer__WEBPACK_IMPORTED_MODULE_1__[\"default\"], { children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(src_UI_forms_ThemeSettings__WEBPACK_IMPORTED_MODULE_2__[\"default\"], {}) }));\n};\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ThemePage);\n\n\n//# sourceURL=webpack://app-desktop/./src/UI/pages/Theme/index.tsx?");
+
+/***/ }),
+
+/***/ "./src/UI/routes/index.tsx":
+/*!*********************************!*\
+  !*** ./src/UI/routes/index.tsx ***!
+  \*********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ \"./node_modules/react/jsx-runtime.js\");\n/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! react-router-dom */ \"./node_modules/react-router/dist/index.js\");\n/* harmony import */ var src_UI_base_DynamicBg__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! src/UI/base/DynamicBg */ \"./src/UI/base/DynamicBg/index.tsx\");\n/* harmony import */ var src_hooks_useGamepad__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/hooks/useGamepad */ \"./src/hooks/useGamepad/index.tsx\");\n/* harmony import */ var src_hooks_useGlobalContext__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/hooks/useGlobalContext */ \"./src/hooks/useGlobalContext/index.tsx\");\n/* harmony import */ var src_hooks_usePath__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/hooks/usePath */ \"./src/hooks/usePath/index.tsx\");\n/* harmony import */ var src_styles_globalCSS__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/styles/globalCSS */ \"./src/styles/globalCSS.ts\");\n/* harmony import */ var src_styles_theme__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! src/styles/theme */ \"./src/styles/theme.ts\");\n/* harmony import */ var src_utils_constants_gradient__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! src/utils/constants/gradient */ \"./src/utils/constants/gradient.ts\");\n/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! styled-components */ \"./node_modules/styled-components/dist/styled-components.browser.esm.js\");\n/* harmony import */ var _components_TabHeader__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../components/TabHeader */ \"./src/UI/components/TabHeader/index.tsx\");\n/* harmony import */ var _pages_Controls__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../pages/Controls */ \"./src/UI/pages/Controls/index.tsx\");\n/* harmony import */ var _pages_Games__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../pages/Games */ \"./src/UI/pages/Games/index.tsx\");\n/* harmony import */ var _pages_Settings__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../pages/Settings */ \"./src/UI/pages/Settings/index.tsx\");\n/* harmony import */ var _pages_Theme__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../pages/Theme */ \"./src/UI/pages/Theme/index.tsx\");\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nconst Router = () => {\n    const [path] = (0,src_hooks_usePath__WEBPACK_IMPORTED_MODULE_4__[\"default\"])();\n    const [global] = (0,src_hooks_useGlobalContext__WEBPACK_IMPORTED_MODULE_3__[\"default\"])();\n    return ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(styled_components__WEBPACK_IMPORTED_MODULE_13__.ThemeProvider, Object.assign({ theme: src_styles_theme__WEBPACK_IMPORTED_MODULE_6__.defaultTheme }, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(src_styles_globalCSS__WEBPACK_IMPORTED_MODULE_5__[\"default\"], {}), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(src_hooks_useGamepad__WEBPACK_IMPORTED_MODULE_2__.GamepadProvider, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_TabHeader__WEBPACK_IMPORTED_MODULE_8__[\"default\"], {}), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_14__.Routes, Object.assign({ location: { pathname: '/' + path, hash: '', search: '' } }, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_14__.Route, { path: \"games/list/bar\", element: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_pages_Games__WEBPACK_IMPORTED_MODULE_10__[\"default\"], {}) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_14__.Route, { path: \"games/list/grid\", element: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_pages_Games__WEBPACK_IMPORTED_MODULE_10__[\"default\"], {}) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_14__.Route, { path: \"games/add\", element: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_pages_Games__WEBPACK_IMPORTED_MODULE_10__[\"default\"], {}) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_14__.Route, { path: \"apps\", element: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_pages_Games__WEBPACK_IMPORTED_MODULE_10__[\"default\"], {}) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_14__.Route, { path: \"music\", element: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_pages_Games__WEBPACK_IMPORTED_MODULE_10__[\"default\"], {}) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_14__.Route, { path: \"midia\", element: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_pages_Games__WEBPACK_IMPORTED_MODULE_10__[\"default\"], {}) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_14__.Route, { path: \"web\", element: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_pages_Games__WEBPACK_IMPORTED_MODULE_10__[\"default\"], {}) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_14__.Route, { path: \"theme\", element: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_pages_Theme__WEBPACK_IMPORTED_MODULE_12__[\"default\"], {}) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_14__.Route, { path: \"controls\", element: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_pages_Controls__WEBPACK_IMPORTED_MODULE_9__[\"default\"], {}) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_14__.Route, { path: \"settings\", element: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_pages_Settings__WEBPACK_IMPORTED_MODULE_11__[\"default\"], {}) })] }))] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(src_UI_base_DynamicBg__WEBPACK_IMPORTED_MODULE_1__[\"default\"], { gradient: src_utils_constants_gradient__WEBPACK_IMPORTED_MODULE_7__.bgGradientList[global.gradientBg], img: global.imgBg, layer: -2, blurBg: !path.includes('games/list/bar') })] })));\n};\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Router);\n\n\n//# sourceURL=webpack://app-desktop/./src/UI/routes/index.tsx?");
+
+/***/ }),
+
+/***/ "./src/config/db.ts":
+/*!**************************!*\
+  !*** ./src/config/db.ts ***!
+  \**************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"dbClient\": () => (/* binding */ dbClient)\n/* harmony export */ });\n/* harmony import */ var app_db__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! app-db */ \"./node_modules/app-db/dist/main.js\");\n/* harmony import */ var app_db__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(app_db__WEBPACK_IMPORTED_MODULE_0__);\n// @ts-ignore\n\nconst dbName = 'games_db';\nconst dbClient = app_db__WEBPACK_IMPORTED_MODULE_0___default()({\n    readDB: () => {\n        return JSON.parse(window.localStorage.getItem(dbName) || '{}');\n    },\n    saveDB: (data) => {\n        data.updatedAt = new Date().toISOString();\n        window.localStorage.setItem(dbName, JSON.stringify(data));\n        return data;\n    },\n});\ndbClient.data.testData();\n\n\n//# sourceURL=webpack://app-desktop/./src/config/db.ts?");
+
+/***/ }),
+
+/***/ "./src/hooks/useGamepad/index.tsx":
+/*!****************************************!*\
+  !*** ./src/hooks/useGamepad/index.tsx ***!
+  \****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"GamepadProvider\": () => (/* binding */ GamepadProvider),\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ \"./node_modules/react/jsx-runtime.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _services_gamepad__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./services/gamepad */ \"./src/hooks/useGamepad/services/gamepad.ts\");\n\n\n\nconst globalContext = (0,react__WEBPACK_IMPORTED_MODULE_1__.createContext)(() => { });\nconst GamepadProvider = (props) => {\n    const [pressed, setPressed] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]);\n    const onPress = (button, cb) => pressed.includes(button) && cb && cb();\n    const onPressHook = (0,react__WEBPACK_IMPORTED_MODULE_1__.useCallback)(onPress, [pressed]);\n    (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(() => {\n        window.addEventListener('gamepadconnected', ev => (0,_services_gamepad__WEBPACK_IMPORTED_MODULE_2__.onConnected)(ev, setPressed));\n        window.addEventListener('gamepaddisconnected', _services_gamepad__WEBPACK_IMPORTED_MODULE_2__.onDisconnected);\n    }, []);\n    return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(globalContext.Provider, Object.assign({ value: onPressHook }, { children: props.children }));\n};\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (() => (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(globalContext));\n\n\n//# sourceURL=webpack://app-desktop/./src/hooks/useGamepad/index.tsx?");
+
+/***/ }),
+
+/***/ "./src/hooks/useGamepad/services/gamepad.ts":
+/*!**************************************************!*\
+  !*** ./src/hooks/useGamepad/services/gamepad.ts ***!
+  \**************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"onConnected\": () => (/* binding */ onConnected),\n/* harmony export */   \"onDisconnected\": () => (/* binding */ onDisconnected)\n/* harmony export */ });\n/* harmony import */ var _gamepadButtons__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./gamepadButtons */ \"./src/hooks/useGamepad/services/gamepadButtons.ts\");\n\nconst buttonLoop = (gamepadIndex, onPress) => {\n    const lastUpdate = { time: 0, buttons: [''] };\n    return setInterval(() => {\n        const { timestamp, axes, buttons } = navigator.getGamepads()[gamepadIndex];\n        const pressedButtons = [];\n        if (timestamp === lastUpdate.time)\n            return (lastUpdate.time = timestamp);\n        else\n            lastUpdate.time = timestamp;\n        axes.forEach((axis, i) => {\n            if (!(axis === 1 || axis === -1))\n                return false;\n            const axisId = `axis${i}${axis > 0 ? 'Pos' : 'Neg'}`;\n            if (_gamepadButtons__WEBPACK_IMPORTED_MODULE_0__.xboxButtonsId[axisId])\n                pressedButtons.push(_gamepadButtons__WEBPACK_IMPORTED_MODULE_0__.xboxButtonsId[axisId]);\n        });\n        buttons.forEach((Button, i) => {\n            if (Button.value === 0)\n                return false;\n            const buttonId = `button${i}`;\n            if (_gamepadButtons__WEBPACK_IMPORTED_MODULE_0__.xboxButtonsId[buttonId])\n                pressedButtons.push(_gamepadButtons__WEBPACK_IMPORTED_MODULE_0__.xboxButtonsId[buttonId]);\n        });\n        if (pressedButtons.toString() !== lastUpdate.buttons.toString()) {\n            lastUpdate.buttons = pressedButtons;\n            if (pressedButtons.length)\n                onPress && onPress(pressedButtons);\n        }\n    }, 33); // 30 FPS\n};\nconst buttonLoopInterval = [];\nconst onConnected = (ev, onPress) => {\n    console.log('Connected', ev.gamepad.id);\n    buttonLoopInterval.push(buttonLoop(ev.gamepad.index, onPress));\n};\nconst onDisconnected = (ev) => {\n    console.log('Disconnected', ev.gamepad.id);\n    buttonLoopInterval.forEach(int => clearInterval(int));\n};\n\n\n//# sourceURL=webpack://app-desktop/./src/hooks/useGamepad/services/gamepad.ts?");
+
+/***/ }),
+
+/***/ "./src/hooks/useGamepad/services/gamepadButtons.ts":
+/*!*********************************************************!*\
+  !*** ./src/hooks/useGamepad/services/gamepadButtons.ts ***!
+  \*********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"xboxButtonsId\": () => (/* binding */ xboxButtonsId)\n/* harmony export */ });\nconst xboxButtonsId = {\n    axis0Pos: 'LeftStickRight',\n    axis0Neg: 'LeftStickLeft',\n    axis1Pos: 'LeftStickDown',\n    axis1Neg: 'LeftStickUp',\n    axis2Pos: 'RightStickRight',\n    axis2Neg: 'RightStickLeft',\n    axis3Pos: 'RightStickDown',\n    axis3Neg: 'RightStickUp',\n    button0: 'ButtonA',\n    button1: 'ButtonB',\n    button2: 'ButtonX',\n    button3: 'ButtonY',\n    button4: 'ButtonLeft',\n    button5: 'ButtonRight',\n    button6: 'TriggerLeft',\n    button7: 'TriggerRight',\n    button8: 'ButtonSelect',\n    button9: 'ButtonStart',\n    button10: 'LeftStick',\n    button11: 'RightStick',\n    button12: 'ArrowUp',\n    button13: 'ArrowDown',\n    button14: 'ArrowLeft',\n    button15: 'ArrowRight',\n    button16: 'ButtonHome',\n};\n\n\n//# sourceURL=webpack://app-desktop/./src/hooks/useGamepad/services/gamepadButtons.ts?");
+
+/***/ }),
+
+/***/ "./src/hooks/useGlobalContext/index.tsx":
+/*!**********************************************!*\
+  !*** ./src/hooks/useGlobalContext/index.tsx ***!
+  \**********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"GlobalProvider\": () => (/* binding */ GlobalProvider),\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ \"./node_modules/react/jsx-runtime.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _state__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./state */ \"./src/hooks/useGlobalContext/state.ts\");\n\n\n\nconst globalContext = (0,react__WEBPACK_IMPORTED_MODULE_1__.createContext)([_state__WEBPACK_IMPORTED_MODULE_2__.initialGlobalState, () => { }]);\nconst GlobalProvider = (props) => ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(globalContext.Provider, Object.assign({ value: (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(_state__WEBPACK_IMPORTED_MODULE_2__.initialGlobalState) }, { children: props.children })));\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (() => (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(globalContext));\n\n\n//# sourceURL=webpack://app-desktop/./src/hooks/useGlobalContext/index.tsx?");
+
+/***/ }),
+
+/***/ "./src/hooks/useGlobalContext/state.ts":
+/*!*********************************************!*\
+  !*** ./src/hooks/useGlobalContext/state.ts ***!
+  \*********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"initialGlobalState\": () => (/* binding */ initialGlobalState)\n/* harmony export */ });\n/* harmony import */ var src_config_db__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! src/config/db */ \"./src/config/db.ts\");\nvar _a;\n\nconst initialGlobalState = {\n    gradientBg: (_a = src_config_db__WEBPACK_IMPORTED_MODULE_0__.dbClient.settings.read()) === null || _a === void 0 ? void 0 : _a.bgOption,\n    imgBg: '',\n};\n\n\n//# sourceURL=webpack://app-desktop/./src/hooks/useGlobalContext/state.ts?");
+
+/***/ }),
+
+/***/ "./src/hooks/usePath/index.tsx":
+/*!*************************************!*\
+  !*** ./src/hooks/usePath/index.tsx ***!
+  \*************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"PathProvider\": () => (/* binding */ PathProvider),\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ \"./node_modules/react/jsx-runtime.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);\n\n\nconst initialPath = 'games/list/bar';\nconst pathContext = (0,react__WEBPACK_IMPORTED_MODULE_1__.createContext)([initialPath, () => { }]);\nconst PathProvider = (props) => ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(pathContext.Provider, Object.assign({ value: (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(initialPath) }, { children: props.children })));\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (() => (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(pathContext));\n\n\n//# sourceURL=webpack://app-desktop/./src/hooks/usePath/index.tsx?");
+
+/***/ }),
+
+/***/ "./src/hooks/useUIState/index.tsx":
+/*!****************************************!*\
+  !*** ./src/hooks/useUIState/index.tsx ***!
+  \****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (() => {\n    const [active, setActive] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);\n    const [focus, setFocus] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0);\n    const [option, setOption] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0);\n    const [loading, setLoading] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);\n    const setUI = (key, value) => {\n        if (key === 'active' && typeof value === 'boolean')\n            setActive(value);\n        if (key === 'focus' && typeof value === 'number')\n            !active && value >= 0 && setFocus(value);\n        if (key === 'option' && typeof value === 'number')\n            value >= 0 && setOption(value);\n        if (key === 'loading' && typeof value === 'boolean')\n            setLoading(value);\n    };\n    const setUIHook = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(setUI, [active, focus, option, loading]);\n    return { focus, active, option, loading, setUI: setUIHook };\n});\n\n\n//# sourceURL=webpack://app-desktop/./src/hooks/useUIState/index.tsx?");
+
+/***/ }),
+
+/***/ "./src/index.tsx":
+/*!***********************!*\
+  !*** ./src/index.tsx ***!
+  \***********************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ \"./node_modules/react/jsx-runtime.js\");\n/* harmony import */ var react_dom_client__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom/client */ \"./node_modules/react-dom/client.js\");\n/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-router-dom */ \"./node_modules/react-router-dom/dist/index.js\");\n/* harmony import */ var src_UI_routes__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/UI/routes */ \"./src/UI/routes/index.tsx\");\n/* harmony import */ var src_hooks_useGlobalContext__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/hooks/useGlobalContext */ \"./src/hooks/useGlobalContext/index.tsx\");\n/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! styled-components */ \"./node_modules/styled-components/dist/styled-components.browser.esm.js\");\n/* harmony import */ var _hooks_usePath__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./hooks/usePath */ \"./src/hooks/usePath/index.tsx\");\n\n\n\n\n\n\n\nconst App = () => {\n    return ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(src_hooks_useGlobalContext__WEBPACK_IMPORTED_MODULE_3__.GlobalProvider, { children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_hooks_usePath__WEBPACK_IMPORTED_MODULE_4__.PathProvider, { children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(styled_components__WEBPACK_IMPORTED_MODULE_5__.StyleSheetManager, Object.assign({ enableVendorPrefixes: true }, { children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.BrowserRouter, { children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(src_UI_routes__WEBPACK_IMPORTED_MODULE_2__[\"default\"], {}) }) })) }) }));\n};\nconst root = (0,react_dom_client__WEBPACK_IMPORTED_MODULE_1__.createRoot)(document.getElementById('root'));\nroot.render((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(App, {}));\n\n\n//# sourceURL=webpack://app-desktop/./src/index.tsx?");
+
+/***/ }),
+
+/***/ "./src/styles/globalCSS.ts":
+/*!*********************************!*\
+  !*** ./src/styles/globalCSS.ts ***!
+  \*********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! styled-components */ \"./node_modules/styled-components/dist/styled-components.browser.esm.js\");\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,styled_components__WEBPACK_IMPORTED_MODULE_0__.createGlobalStyle)(({ theme }) => styled_components__WEBPACK_IMPORTED_MODULE_0__.css `\n    * {\n      margin: 0;\n      padding: 0;\n      outline: 0;\n      box-sizing: border-box;\n      user-select: none;\n    }\n    html {\n      font-size: 16px;\n    }\n    body {\n      font-size: ${theme.fontSize.body};\n      height: 100vh;\n      width: 100vw;\n      max-height: 100vh;\n      max-width: 100vw;\n      overflow: hidden;\n    }\n    html,\n    body {\n      font-family: Roboto, sans-serif;\n      background-color: transparent;\n      color: ${theme.colors.text3};\n    }\n    h1 {\n      font-size: ${theme.fontSize.h1};\n    }\n    h2 {\n      font-size: ${theme.fontSize.h2};\n    }\n    h3 {\n      font-size: ${theme.fontSize.h3};\n    }\n    h4 {\n      font-size: ${theme.fontSize.h4};\n    }\n    h5 {\n      font-size: ${theme.fontSize.h5};\n    }\n    h6 {\n      font-size: ${theme.fontSize.h6};\n    }\n    ul {\n      list-style: none;\n    }\n    a {\n      text-decoration: none;\n    }\n    button {\n      cursor: pointer;\n      background-color: transparent;\n      border: none;\n      outline: none;\n    }\n    div::-webkit-scrollbar {\n      width: 0;\n      height: 0;\n    }\n    div::-webkit-scrollbar-track {\n      background: #0000;\n    }\n    div::-webkit-scrollbar-thumb {\n      background: ${theme.colors.gray};\n      border-radius: 2px;\n    }\n    div::-webkit-scrollbar-thumb:hover {\n      background: ${theme.colors.main};\n    }\n    #root {\n      width: 100%;\n      height: 100%;\n      display: flex;\n      flex-direction: column;\n    }\n  `));\n\n\n//# sourceURL=webpack://app-desktop/./src/styles/globalCSS.ts?");
+
+/***/ }),
+
+/***/ "./src/styles/lib/palettes.ts":
+/*!************************************!*\
+  !*** ./src/styles/lib/palettes.ts ***!
+  \************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"atlassianColors\": () => (/* binding */ atlassianColors),\n/* harmony export */   \"materialColors\": () => (/* binding */ materialColors)\n/* harmony export */ });\nconst materialColors = {\n    red: {\n        '50': '#ffebee',\n        '100': '#ffcdd2',\n        '200': '#ef9a9a',\n        '300': '#e57373',\n        '400': '#ef5350',\n        '500': '#f44336',\n        '600': '#e53935',\n        '700': '#d32f2f',\n        '800': '#c62828',\n        '900': '#b71c1c',\n        a100: '#ff8a80',\n        a200: '#ff5252',\n        a400: '#ff1744',\n        a700: '#d50000',\n    },\n    pink: {\n        '50': '#fce4ec',\n        '100': '#f8bbd0',\n        '200': '#f48fb1',\n        '300': '#f06292',\n        '400': '#ec407a',\n        '500': '#e91e63',\n        '600': '#d81b60',\n        '700': '#c2185b',\n        '800': '#ad1457',\n        '900': '#880e4f',\n        a100: '#ff80ab',\n        a200: '#ff4081',\n        a400: '#f50057',\n        a700: '#c51162',\n    },\n    purple: {\n        '50': '#f3e5f5',\n        '100': '#e1bee7',\n        '200': '#ce93d8',\n        '300': '#ba68c8',\n        '400': '#ab47bc',\n        '500': '#9c27b0',\n        '600': '#8e24aa',\n        '700': '#7b1fa2',\n        '800': '#6a1b9a',\n        '900': '#4a148c',\n        a100: '#ea80fc',\n        a200: '#e040fb',\n        a400: '#d500f9',\n        a700: '#aa00ff',\n    },\n    deepPurple: {\n        '50': '#ede7f6',\n        '100': '#d1c4e9',\n        '200': '#b39ddb',\n        '300': '#9575cd',\n        '400': '#7e57c2',\n        '500': '#673ab7',\n        '600': '#5e35b1',\n        '700': '#512da8',\n        '800': '#4527a0',\n        '900': '#311b92',\n        a100: '#b388ff',\n        a200: '#7c4dff',\n        a400: '#651fff',\n        a700: '#6200ea',\n    },\n    indigo: {\n        '50': '#e8eaf6',\n        '100': '#c5cae9',\n        '200': '#9fa8da',\n        '300': '#7986cb',\n        '400': '#5c6bc0',\n        '500': '#3f51b5',\n        '600': '#3949ab',\n        '700': '#303f9f',\n        '800': '#283593',\n        '900': '#1a237e',\n        a100: '#8c9eff',\n        a200: '#536dfe',\n        a400: '#3d5afe',\n        a700: '#304ffe',\n    },\n    blue: {\n        '50': '#e3f2fd',\n        '100': '#bbdefb',\n        '200': '#90caf9',\n        '300': '#64b5f6',\n        '400': '#42a5f5',\n        '500': '#2196f3',\n        '600': '#1e88e5',\n        '700': '#1976d2',\n        '800': '#1565c0',\n        '900': '#0d47a1',\n        a100: '#82b1ff',\n        a200: '#448aff',\n        a400: '#2979ff',\n        a700: '#2962ff',\n    },\n    lightBlue: {\n        '50': '#e1f5fe',\n        '100': '#b3e5fc',\n        '200': '#81d4fa',\n        '300': '#4fc3f7',\n        '400': '#29b6f6',\n        '500': '#03a9f4',\n        '600': '#039be5',\n        '700': '#0288d1',\n        '800': '#0277bd',\n        '900': '#01579b',\n        a100: '#80d8ff',\n        a200: '#40c4ff',\n        a400: '#00b0ff',\n        a700: '#0091ea',\n    },\n    cyan: {\n        '50': '#e0f7fa',\n        '100': '#b2ebf2',\n        '200': '#80deea',\n        '300': '#4dd0e1',\n        '400': '#26c6da',\n        '500': '#00bcd4',\n        '600': '#00acc1',\n        '700': '#0097a7',\n        '800': '#00838f',\n        '900': '#006064',\n        a100: '#84ffff',\n        a200: '#18ffff',\n        a400: '#00e5ff',\n        a700: '#00b8d4',\n    },\n    teal: {\n        '50': '#e0f2f1',\n        '100': '#b2dfdb',\n        '200': '#80cbc4',\n        '300': '#4db6ac',\n        '400': '#26a69a',\n        '500': '#009688',\n        '600': '#00897b',\n        '700': '#00796b',\n        '800': '#00695c',\n        '900': '#004d40',\n        a100: '#a7ffeb',\n        a200: '#64ffda',\n        a400: '#1de9b6',\n        a700: '#00bfa5',\n    },\n    green: {\n        '50': '#e8f5e9',\n        '100': '#c8e6c9',\n        '200': '#a5d6a7',\n        '300': '#81c784',\n        '400': '#66bb6a',\n        '500': '#4caf50',\n        '600': '#43a047',\n        '700': '#388e3c',\n        '800': '#2e7d32',\n        '900': '#1b5e20',\n        a100: '#b9f6ca',\n        a200: '#69f0ae',\n        a400: '#00e676',\n        a700: '#00c853',\n    },\n    lightGreen: {\n        '50': '#f1f8e9',\n        '100': '#dcedc8',\n        '200': '#c5e1a5',\n        '300': '#aed581',\n        '400': '#9ccc65',\n        '500': '#8bc34a',\n        '600': '#7cb342',\n        '700': '#689f38',\n        '800': '#558b2f',\n        '900': '#33691e',\n        a100: '#ccff90',\n        a200: '#b2ff59',\n        a400: '#76ff03',\n        a700: '#64dd17',\n    },\n    lime: {\n        '50': '#f9fbe7',\n        '100': '#f0f4c3',\n        '200': '#e6ee9c',\n        '300': '#dce775',\n        '400': '#d4e157',\n        '500': '#cddc39',\n        '600': '#c0ca33',\n        '700': '#afb42b',\n        '800': '#9e9d24',\n        '900': '#827717',\n        a100: '#f4ff81',\n        a200: '#eeff41',\n        a400: '#c6ff00',\n        a700: '#aeea00',\n    },\n    yellow: {\n        '50': '#fffde7',\n        '100': '#fff9c4',\n        '200': '#fff59d',\n        '300': '#fff176',\n        '400': '#ffee58',\n        '500': '#ffeb3b',\n        '600': '#fdd835',\n        '700': '#fbc02d',\n        '800': '#f9a825',\n        '900': '#f57f17',\n        a100: '#ffff8d',\n        a200: '#ffff00',\n        a400: '#ffea00',\n        a700: '#ffd600',\n    },\n    amber: {\n        '50': '#fff8e1',\n        '100': '#ffecb3',\n        '200': '#ffe082',\n        '300': '#ffd54f',\n        '400': '#ffca28',\n        '500': '#ffc107',\n        '600': '#ffb300',\n        '700': '#ffa000',\n        '800': '#ff8f00',\n        '900': '#ff6f00',\n        a100: '#ffe57f',\n        a200: '#ffd740',\n        a400: '#ffc400',\n        a700: '#ffab00',\n    },\n    orange: {\n        '50': '#fff3e0',\n        '100': '#ffe0b2',\n        '200': '#ffcc80',\n        '300': '#ffb74d',\n        '400': '#ffa726',\n        '500': '#ff9800',\n        '600': '#fb8c00',\n        '700': '#f57c00',\n        '800': '#ef6c00',\n        '900': '#e65100',\n        a100: '#ffd180',\n        a200: '#ffab40',\n        a400: '#ff9100',\n        a700: '#ff6d00',\n    },\n    deepOrange: {\n        '50': '#fbe9e7',\n        '100': '#ffccbc',\n        '200': '#ffab91',\n        '300': '#ff8a65',\n        '400': '#ff7043',\n        '500': '#ff5722',\n        '600': '#f4511e',\n        '700': '#e64a19',\n        '800': '#d84315',\n        '900': '#bf360c',\n        a100: '#ff9e80',\n        a200: '#ff6e40',\n        a400: '#ff3d00',\n        a700: '#dd2c00',\n    },\n    brown: {\n        '50': '#efebe9',\n        '100': '#d7ccc8',\n        '200': '#bcaaa4',\n        '300': '#a1887f',\n        '400': '#8d6e63',\n        '500': '#795548',\n        '600': '#6d4c41',\n        '700': '#5d4037',\n        '800': '#4e342e',\n        '900': '#3e2723',\n    },\n    grey: {\n        '50': '#fafafa',\n        '100': '#f5f5f5',\n        '200': '#eeeeee',\n        '300': '#e0e0e0',\n        '400': '#bdbdbd',\n        '500': '#9e9e9e',\n        '600': '#757575',\n        '700': '#616161',\n        '800': '#424242',\n        '900': '#212121',\n    },\n    blueGrey: {\n        '50': '#eceff1',\n        '100': '#cfd8dc',\n        '200': '#b0bec5',\n        '300': '#90a4ae',\n        '400': '#78909c',\n        '500': '#607d8b',\n        '600': '#546e7a',\n        '700': '#455a64',\n        '800': '#37474f',\n        '900': '#263238',\n    },\n    black: '#141414',\n    white: '#F4F4F4',\n};\nconst atlassianColors = {\n    blue: {\n        100: '#E9F2FF',\n        200: '#CCE0FF',\n        300: '#85B8FF',\n        400: '#579DFF',\n        500: '#388BFF',\n        600: '#1D7AFC',\n        700: '#0C66E4',\n        800: '#0055CC',\n        900: '#09326C',\n        1000: '#082145',\n    },\n    red: {\n        100: '#FFEDEB',\n        200: '#FFD2CC',\n        300: '#FF9C8F',\n        400: '#F87462',\n        500: '#EF5C48',\n        600: '#E34935',\n        700: '#CA3521',\n        800: '#AE2A19',\n        900: '#601E16',\n        1000: '#391813',\n    },\n    yellow: {\n        100: '#FFF7D6',\n        200: '#F8E6A0',\n        300: '#F5CD47',\n        400: '#E2B203',\n        500: '#CF9F02',\n        600: '#B38600',\n        700: '#946F00',\n        800: '#7F5F01',\n        900: '#533F04',\n        1000: '#3D2E00',\n    },\n    green: {\n        100: '#DFFCF0',\n        200: '#BAF3DB',\n        300: '#7EE2B8',\n        400: '#4BCE97',\n        500: '#2ABB7F',\n        600: '#22A06B',\n        700: '#1F845A',\n        800: '#216E4E',\n        900: '#164B35',\n        1000: '#133527',\n    },\n    purple: {\n        100: '#F3F0FF',\n        200: '#DFD8FD',\n        300: '#B8ACF6',\n        400: '#9F8FEF',\n        500: '#8F7EE7',\n        600: '#8270DB',\n        700: '#6E5DC6',\n        800: '#5E4DB2',\n        900: '#352C63',\n        1000: '#231C3F',\n    },\n    teal: {\n        100: '#E3FAFC',\n        200: '#C1F0F5',\n        300: '#8BDBE5',\n        400: '#60C6D2',\n        500: '#37B4C3',\n        600: '#1D9AAA',\n        700: '#1D7F8C',\n        800: '#206B74',\n        900: '#1D474C',\n        1000: '#153337',\n    },\n    orange: {\n        100: '#FFF4E5',\n        200: '#FFE2BD',\n        300: '#FEC57B',\n        400: '#FAA53D',\n        500: '#F18D13',\n        600: '#D97008',\n        700: '#B65C02',\n        800: '#974F0C',\n        900: '#5F3811',\n        1000: '#43290F',\n    },\n    magenta: {\n        100: '#FFECF8',\n        200: '#FDD0EC',\n        300: '#F797D2',\n        400: '#E774BB',\n        500: '#DA62AC',\n        600: '#CD519D',\n        700: '#AE4787',\n        800: '#943D73',\n        900: '#50253F',\n        1000: '#341829',\n    },\n    blueGray: {\n        0: '#FFFFFF',\n        50: '#091E4208',\n        100: '#F7F8F9',\n        200: '#F1F2F4',\n        300: '#DCDFE4',\n        400: '#B3B9C4',\n        500: '#8993A5',\n        600: '#758195',\n        700: '#626F86',\n        800: '#44546F',\n        900: '#2C3E5D',\n        1000: '#172B4D',\n        1100: '#091E42',\n    },\n    gray: {\n        0: '#DEE4EA',\n        50: '#C7D1DB',\n        100: '#B6C2CF',\n        200: '#9FADBC',\n        300: '#8696A7',\n        400: '#738496',\n        500: '#596773',\n        600: '#454F59',\n        700: '#2C333A',\n        800: '#22272B',\n        900: '#1D2125',\n        1000: '#161A1D',\n        1100: '#101214',\n    },\n};\n\n\n//# sourceURL=webpack://app-desktop/./src/styles/lib/palettes.ts?");
+
+/***/ }),
+
+/***/ "./src/styles/lib/screenSizes.ts":
+/*!***************************************!*\
+  !*** ./src/styles/lib/screenSizes.ts ***!
+  \***************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({\n    mobileS: 320,\n    mobileM: 425,\n    mobileL: 480,\n    tablet: 768,\n    laptopS: 900,\n    laptopM: 1024,\n    laptopL: 1280,\n    desktopS: 1440,\n    desktopM: 1980,\n    desktopL: 2560,\n});\n\n\n//# sourceURL=webpack://app-desktop/./src/styles/lib/screenSizes.ts?");
+
+/***/ }),
+
+/***/ "./src/styles/theme.ts":
+/*!*****************************!*\
+  !*** ./src/styles/theme.ts ***!
+  \*****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"defaultTheme\": () => (/* binding */ defaultTheme),\n/* harmony export */   \"defaultThemeDark\": () => (/* binding */ defaultThemeDark)\n/* harmony export */ });\n/* harmony import */ var _lib_palettes__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./lib/palettes */ \"./src/styles/lib/palettes.ts\");\n/* harmony import */ var _lib_screenSizes__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./lib/screenSizes */ \"./src/styles/lib/screenSizes.ts\");\n\n\nconst defaultTheme = {\n    size: (n) => `${n * 0.2}rem`,\n    colors: {\n        main: _lib_palettes__WEBPACK_IMPORTED_MODULE_0__.materialColors.lightBlue[600],\n        mainBg: _lib_palettes__WEBPACK_IMPORTED_MODULE_0__.atlassianColors.blue[700],\n        bg1: _lib_palettes__WEBPACK_IMPORTED_MODULE_0__.materialColors.grey[300] + '55',\n        bg2: _lib_palettes__WEBPACK_IMPORTED_MODULE_0__.materialColors.grey[300] + '33',\n        bg3: _lib_palettes__WEBPACK_IMPORTED_MODULE_0__.materialColors.grey[300] + '22',\n        bg4: _lib_palettes__WEBPACK_IMPORTED_MODULE_0__.materialColors.grey[300] + '11',\n        text1: _lib_palettes__WEBPACK_IMPORTED_MODULE_0__.materialColors.grey[50],\n        text2: _lib_palettes__WEBPACK_IMPORTED_MODULE_0__.materialColors.grey[200],\n        text3: _lib_palettes__WEBPACK_IMPORTED_MODULE_0__.materialColors.grey[300],\n        text4: _lib_palettes__WEBPACK_IMPORTED_MODULE_0__.materialColors.grey[400],\n        gray: _lib_palettes__WEBPACK_IMPORTED_MODULE_0__.materialColors.grey[400],\n        yellow: _lib_palettes__WEBPACK_IMPORTED_MODULE_0__.atlassianColors.yellow[600],\n        red: _lib_palettes__WEBPACK_IMPORTED_MODULE_0__.atlassianColors.red[800],\n        blue: _lib_palettes__WEBPACK_IMPORTED_MODULE_0__.atlassianColors.blue[500],\n        green: _lib_palettes__WEBPACK_IMPORTED_MODULE_0__.materialColors.lightGreen[600],\n        white: _lib_palettes__WEBPACK_IMPORTED_MODULE_0__.materialColors.grey[300],\n        black: _lib_palettes__WEBPACK_IMPORTED_MODULE_0__.materialColors.black,\n    },\n    fontSize: {\n        body: '1rem',\n        small: '0.95rem',\n        verySmall: '0.8rem',\n        label: '0.9rem',\n        h1: '1.6rem',\n        h2: '1.4rem',\n        h3: '1.2rem',\n        h4: '1.1rem',\n        h5: '1.075rem',\n        h6: '1.05rem',\n    },\n    shadow: {\n        low: '1px 1px 2px 0 #0004',\n        medium: '1px 1px 2px 0 #0009',\n        high: '1px 2px 2px 0 #0007',\n        mediumGray: '1px 1px 4px 1px #777a',\n        lowRight: '3px 0 4px 0px #0002',\n        mediumLeft: '-4px 0 4px 0px #0006',\n    },\n    radius: {\n        verySmall: '0.3rem',\n        small: '0.4rem',\n        medium: '0.5rem',\n        large: '0.75rem',\n        veryLarge: '1rem',\n        full: '50%',\n    },\n    devices: {\n        mobileS: `(max-width: ${_lib_screenSizes__WEBPACK_IMPORTED_MODULE_1__[\"default\"].mobileS}px)`,\n        mobileM: `(max-width: ${_lib_screenSizes__WEBPACK_IMPORTED_MODULE_1__[\"default\"].mobileM}px)`,\n        mobileL: `(max-width: ${_lib_screenSizes__WEBPACK_IMPORTED_MODULE_1__[\"default\"].mobileL}px)`,\n        tablet: `(max-width: ${_lib_screenSizes__WEBPACK_IMPORTED_MODULE_1__[\"default\"].tablet}px)`,\n        laptopS: `(max-width: ${_lib_screenSizes__WEBPACK_IMPORTED_MODULE_1__[\"default\"].laptopS}px)`,\n        laptopM: `(max-width: ${_lib_screenSizes__WEBPACK_IMPORTED_MODULE_1__[\"default\"].laptopM}px)`,\n        laptopL: `(max-width: ${_lib_screenSizes__WEBPACK_IMPORTED_MODULE_1__[\"default\"].laptopL}px)`,\n        desktopS: `(max-width: ${_lib_screenSizes__WEBPACK_IMPORTED_MODULE_1__[\"default\"].desktopS}px)`,\n        desktopM: `(max-width: ${_lib_screenSizes__WEBPACK_IMPORTED_MODULE_1__[\"default\"].desktopM}px)`,\n        desktopL: `(max-width: ${_lib_screenSizes__WEBPACK_IMPORTED_MODULE_1__[\"default\"].desktopL}px)`,\n    },\n};\nconst defaultThemeDark = Object.assign(Object.assign({}, defaultTheme), { colors: Object.assign(Object.assign({}, defaultTheme.colors), { bg1: _lib_palettes__WEBPACK_IMPORTED_MODULE_0__.materialColors.black, bg2: _lib_palettes__WEBPACK_IMPORTED_MODULE_0__.materialColors.grey[800] + '44', bg3: _lib_palettes__WEBPACK_IMPORTED_MODULE_0__.materialColors.grey[700] + '44', bg4: _lib_palettes__WEBPACK_IMPORTED_MODULE_0__.materialColors.grey[600] + '44', text1: _lib_palettes__WEBPACK_IMPORTED_MODULE_0__.materialColors.grey[300], text2: _lib_palettes__WEBPACK_IMPORTED_MODULE_0__.materialColors.grey[400], text3: _lib_palettes__WEBPACK_IMPORTED_MODULE_0__.materialColors.grey[500], text4: _lib_palettes__WEBPACK_IMPORTED_MODULE_0__.materialColors.grey[700], gray: _lib_palettes__WEBPACK_IMPORTED_MODULE_0__.materialColors.grey[600], white: _lib_palettes__WEBPACK_IMPORTED_MODULE_0__.materialColors.grey[300] }) });\n\n\n//# sourceURL=webpack://app-desktop/./src/styles/theme.ts?");
+
+/***/ }),
+
+/***/ "./src/utils/constants/UIButtons.ts":
+/*!******************************************!*\
+  !*** ./src/utils/constants/UIButtons.ts ***!
+  \******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"UIButtons\": () => (/* binding */ UIButtons)\n/* harmony export */ });\nconst UIButtons = {\n    GameListBar: [\n        { content: 'A', label: 'Start' },\n        { content: 'X', label: 'Grid View' },\n        { content: 'Y', label: 'Add Game' },\n    ],\n    GameListGrid: [\n        { content: 'A', label: 'Start' },\n        { content: 'X', label: 'List View' },\n        { content: 'Y', label: 'Add Game' },\n    ],\n    GameDetailsForm: [\n        { content: 'A', label: 'Edit' },\n        { content: 'X', label: 'Save' },\n        { content: 'Y', label: 'Game List' },\n    ],\n};\n\n\n//# sourceURL=webpack://app-desktop/./src/utils/constants/UIButtons.ts?");
+
+/***/ }),
+
+/***/ "./src/utils/constants/fetchHeaders.ts":
+/*!*********************************************!*\
+  !*** ./src/utils/constants/fetchHeaders.ts ***!
+  \*********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"fetchHeaders\": () => (/* binding */ fetchHeaders)\n/* harmony export */ });\nconst fetchHeaders = {\n    method: 'GET',\n    mode: 'cors',\n    headers: {\n    // 'Content-Type': 'application/json',\n    // 'X-RapidAPI-Key': 'your-api-key',\n    },\n};\n\n\n//# sourceURL=webpack://app-desktop/./src/utils/constants/fetchHeaders.ts?");
+
+/***/ }),
+
+/***/ "./src/utils/constants/gradient.ts":
+/*!*****************************************!*\
+  !*** ./src/utils/constants/gradient.ts ***!
+  \*****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"bgGradientList\": () => (/* binding */ bgGradientList)\n/* harmony export */ });\n/* harmony import */ var src_styles_lib_palettes__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! src/styles/lib/palettes */ \"./src/styles/lib/palettes.ts\");\n\nconst bgGradientList = {\n    indigo: `linear-gradient(150deg, ${src_styles_lib_palettes__WEBPACK_IMPORTED_MODULE_0__.materialColors.blue.a700}, ${src_styles_lib_palettes__WEBPACK_IMPORTED_MODULE_0__.materialColors.black} 80%)`,\n    blue: `linear-gradient(150deg, ${src_styles_lib_palettes__WEBPACK_IMPORTED_MODULE_0__.materialColors.lightBlue.a700}, ${src_styles_lib_palettes__WEBPACK_IMPORTED_MODULE_0__.materialColors.black} 80%)`,\n    green: `linear-gradient(150deg, ${src_styles_lib_palettes__WEBPACK_IMPORTED_MODULE_0__.materialColors.lightGreen.a700}, ${src_styles_lib_palettes__WEBPACK_IMPORTED_MODULE_0__.materialColors.black} 80%)`,\n    deepPurple: `linear-gradient(150deg, ${src_styles_lib_palettes__WEBPACK_IMPORTED_MODULE_0__.materialColors.deepPurple.a700}, ${src_styles_lib_palettes__WEBPACK_IMPORTED_MODULE_0__.materialColors.black} 80%)`,\n    purple: `linear-gradient(150deg, ${src_styles_lib_palettes__WEBPACK_IMPORTED_MODULE_0__.materialColors.purple.a700}, ${src_styles_lib_palettes__WEBPACK_IMPORTED_MODULE_0__.materialColors.black} 80%)`,\n    pink: `linear-gradient(150deg, ${src_styles_lib_palettes__WEBPACK_IMPORTED_MODULE_0__.materialColors.pink.a700}, ${src_styles_lib_palettes__WEBPACK_IMPORTED_MODULE_0__.materialColors.black} 80%)`,\n    red: `linear-gradient(150deg, ${src_styles_lib_palettes__WEBPACK_IMPORTED_MODULE_0__.materialColors.red[700]}, ${src_styles_lib_palettes__WEBPACK_IMPORTED_MODULE_0__.materialColors.black} 80%)`,\n    blueAndPurple: `linear-gradient(150deg, ${src_styles_lib_palettes__WEBPACK_IMPORTED_MODULE_0__.materialColors.cyan.a700}, ${src_styles_lib_palettes__WEBPACK_IMPORTED_MODULE_0__.materialColors.purple[600]} 70%)`,\n    blueAndPink: `linear-gradient(150deg, ${src_styles_lib_palettes__WEBPACK_IMPORTED_MODULE_0__.materialColors.cyan.a700}, ${src_styles_lib_palettes__WEBPACK_IMPORTED_MODULE_0__.materialColors.pink.a700} 80%)`,\n    greenAndPink: `linear-gradient(150deg, ${src_styles_lib_palettes__WEBPACK_IMPORTED_MODULE_0__.materialColors.lightGreen.a700}, ${src_styles_lib_palettes__WEBPACK_IMPORTED_MODULE_0__.materialColors.pink[900]} 80%)`,\n    blueAndBrown: `linear-gradient(150deg, ${src_styles_lib_palettes__WEBPACK_IMPORTED_MODULE_0__.materialColors.lightBlue.a700}, ${src_styles_lib_palettes__WEBPACK_IMPORTED_MODULE_0__.materialColors.brown[700]} 75%)`,\n    purpleAndGreen: `linear-gradient(150deg, ${src_styles_lib_palettes__WEBPACK_IMPORTED_MODULE_0__.materialColors.deepPurple.a700}, ${src_styles_lib_palettes__WEBPACK_IMPORTED_MODULE_0__.materialColors.lightGreen[600]} 80%)`,\n};\n\n\n//# sourceURL=webpack://app-desktop/./src/utils/constants/gradient.ts?");
+
+/***/ }),
+
+/***/ "./src/utils/electron/nodeJS.ts":
+/*!**************************************!*\
+  !*** ./src/utils/electron/nodeJS.ts ***!
+  \**************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"nodeJS\": () => (/* binding */ nodeJS)\n/* harmony export */ });\nconst NodeJS = () => {\n    const require = window.require;\n    window.require = null; // prevent accessing nodejs from page context\n    return {\n        isActive: !!require,\n        resolvePath: (dirPath) => {\n            try {\n                const Path = require('path');\n                return Path.resolve(dirPath);\n            }\n            catch (e) {\n                console.error(e);\n                return '';\n            }\n        },\n        fetchHTML: (url) => {\n            return new Promise((resolve, reject) => {\n                try {\n                    const Http = require('http');\n                    Http.get(url, (res) => {\n                        let rawHtml = '';\n                        res.on('data', (chunk) => (rawHtml += chunk));\n                        res.on('end', () => resolve(rawHtml));\n                    });\n                }\n                catch (e) {\n                    reject(e);\n                }\n            });\n        },\n        exec: (command) => {\n            try {\n                const Process = require('child_process');\n                return Process.execSync(command).toString();\n            }\n            catch (e) {\n                console.log(e);\n                return '';\n            }\n        },\n        listDir: (dir) => {\n            try {\n                const Fs = require('fs');\n                const Path = require('path');\n                const files = Fs.readdirSync(Path.resolve(dir));\n                return files.filter((file) => {\n                    if (file.startsWith('.'))\n                        return false;\n                    return true;\n                });\n            }\n            catch (e) {\n                console.error(e);\n                return [];\n            }\n        },\n    };\n};\nconst nodeJS = NodeJS();\n\n\n//# sourceURL=webpack://app-desktop/./src/utils/electron/nodeJS.ts?");
+
+/***/ }),
+
+/***/ "./src/utils/images/imageCache.ts":
+/*!****************************************!*\
+  !*** ./src/utils/images/imageCache.ts ***!
+  \****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"fetchImageData\": () => (/* binding */ fetchImageData),\n/* harmony export */   \"getGamesImageCache\": () => (/* binding */ getGamesImageCache),\n/* harmony export */   \"imageCache\": () => (/* binding */ imageCache)\n/* harmony export */ });\n/* harmony import */ var _constants_fetchHeaders__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../constants/fetchHeaders */ \"./src/utils/constants/fetchHeaders.ts\");\n/* harmony import */ var _imageCompress__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./imageCompress */ \"./src/utils/images/imageCompress/index.ts\");\nvar __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {\n    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }\n    return new (P || (P = Promise))(function (resolve, reject) {\n        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }\n        function rejected(value) { try { step(generator[\"throw\"](value)); } catch (e) { reject(e); } }\n        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }\n        step((generator = generator.apply(thisArg, _arguments || [])).next());\n    });\n};\n\n\nconst fetchImageData = (url) => {\n    return new Promise((resolve, reject) => {\n        fetch(url, _constants_fetchHeaders__WEBPACK_IMPORTED_MODULE_0__.fetchHeaders)\n            .then((res) => __awaiter(void 0, void 0, void 0, function* () {\n            const img = yield res.blob();\n            const compressedImg = yield (0,_imageCompress__WEBPACK_IMPORTED_MODULE_1__.ImageCompress)(img);\n            const file = new FileReader();\n            file.readAsDataURL(compressedImg);\n            return yield new Promise(r => (file.onload = () => r(file.result)));\n        }))\n            .then(resolve)\n            .catch(reject);\n    });\n};\nconst imageCache = (url) => __awaiter(void 0, void 0, void 0, function* () {\n    const storeName = 'image_cache';\n    const imgStore = localStorage.getItem(storeName) || '[]';\n    const cachedImages = JSON.parse(imgStore);\n    const img = cachedImages.find(img => img.url === url);\n    if (img)\n        return img.data;\n    const imgData = yield fetchImageData(url);\n    cachedImages.push({ url, data: imgData });\n    localStorage.setItem(storeName, JSON.stringify(cachedImages));\n    return imgData;\n});\nconst getGamesImageCache = (games) => __awaiter(void 0, void 0, void 0, function* () {\n    for (const game of games) {\n        try {\n            game.background = yield imageCache(game.background);\n            game.cover = yield imageCache(game.cover);\n        }\n        catch (err) {\n            console.error(err);\n            continue;\n        }\n    }\n    return games;\n});\n\n\n//# sourceURL=webpack://app-desktop/./src/utils/images/imageCache.ts?");
+
+/***/ }),
+
+/***/ "./src/utils/images/imageCompress/index.ts":
+/*!*************************************************!*\
+  !*** ./src/utils/images/imageCompress/index.ts ***!
+  \*************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"ImageCompress\": () => (/* binding */ ImageCompress)\n/* harmony export */ });\n/* harmony import */ var _services_image_compressor_min_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./services/image-compressor.min.js */ \"./src/utils/images/imageCompress/services/image-compressor.min.js\");\n/* harmony import */ var _services_image_compressor_min_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_services_image_compressor_min_js__WEBPACK_IMPORTED_MODULE_0__);\n\n// https://www.npmjs.com/package/js-image-compressor\nconst ImageCompress = (bin) => {\n    return new Promise((resolve, reject) => {\n        new (_services_image_compressor_min_js__WEBPACK_IMPORTED_MODULE_0___default())({\n            file: bin,\n            quality: 0.2,\n            mimeType: 'image/jpeg',\n            width: 1920,\n            height: 1080,\n            // maxWidth: 1920,\n            // maxHeight: 1080,\n            // minWidth: 500,\n            // minHeight: 500,\n            convertSize: Infinity,\n            loose: true,\n            redressOrientation: true,\n            // beforeCompress: () => {},\n            // beforeDraw: () => {},\n            // afterDraw: () => {},\n            success: (result) => {\n                const binSize = (bin.size / 1024).toFixed(2);\n                const resultSize = (result.size / 1024).toFixed(2);\n                const ratio = (((bin.size - result.size) / bin.size) * 100).toFixed(2) + '%';\n                console.log(`Image compressor: ${binSize} Kb -> ${resultSize} Kb, ratio: ${ratio}`);\n                resolve(result);\n            },\n            error: (msg) => {\n                console.error(msg);\n                reject(msg);\n            },\n        });\n    });\n};\n\n\n//# sourceURL=webpack://app-desktop/./src/utils/images/imageCompress/index.ts?");
+
+/***/ }),
+
+/***/ "./src/utils/images/imageCompress/services/image-compressor.min.js":
+/*!*************************************************************************!*\
+  !*** ./src/utils/images/imageCompress/services/image-compressor.min.js ***!
+  \*************************************************************************/
+/***/ ((module) => {
+
+eval("!function(e,t){ true?module.exports=t():0}(window,(function(){return function(e){var t={};function n(r){if(t[r])return t[r].exports;var a=t[r]={i:r,l:!1,exports:{}};return e[r].call(a.exports,a,a.exports,n),a.l=!0,a.exports}return n.m=e,n.c=t,n.d=function(e,t,r){n.o(e,t)||Object.defineProperty(e,t,{enumerable:!0,get:r})},n.r=function(e){\"undefined\"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:\"Module\"}),Object.defineProperty(e,\"__esModule\",{value:!0})},n.t=function(e,t){if(1&t&&(e=n(e)),8&t)return e;if(4&t&&\"object\"==typeof e&&e&&e.__esModule)return e;var r=Object.create(null);if(n.r(r),Object.defineProperty(r,\"default\",{enumerable:!0,value:e}),2&t&&\"string\"!=typeof e)for(var a in e)n.d(r,a,function(t){return e[t]}.bind(null,a));return r},n.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return n.d(t,\"a\",t),t},n.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},n.p=\"\",n(n.s=0)}([function(e,t,n){\"use strict\";n.r(t);var r=window,a=/^image\\//,i=/\\.\\w+$/,o={},s={file:null,quality:.8,convertSize:2048e3,loose:!0,redressOrientation:!0},f=function(e){return\"function\"==typeof e},c=function(e){return a.test(e)};function l(e){e=Object.assign({},s,e),this.options=e,this.file=e.file,this.image=null,this.ParsedOrientationInfo=null,this.init()}var u=l.prototype;for(var h in t.default=l,u.init=function(){var e=this,t=this.file,n=this.options;t&&c(t.type)?(c(n.mimeType)||(n.mimeType=t.type),o.file2Image(t,(function(r){f(e.beforeCompress)&&(e.image=r,t.width=r.naturalWidth,t.height=r.naturalHeight,e.beforeCompress(t)),\"image/jpeg\"===t.type&&n.redressOrientation?e.getParsedOrientationInfo((function(t){e.parsedOrientationInfo=t,e.rendCanvas()})):(e.parsedOrientationInfo={rotate:0,scaleX:1,scaleY:1},e.rendCanvas())}),e.error)):e.error(\"请上传图片文件!\")},u.rendCanvas=function(){var e=this,t=this.options,n=this.image,r=this.getExpectedEdge(),a=r.dWidth,i=r.dHeight,s=r.width,f=r.height,c=o.image2Canvas(n,a,i,e.beforeDraw.bind(e),e.afterDraw.bind(e),s,f);o.canvas2Blob(c,(function(t){t&&(t.width=c.width,t.height=c.height),e.success(t)}),t.quality,t.mimeType)},u.beforeCompress=function(){f(this.options.beforeCompress)&&this.options.beforeCompress(this.file)},u.getExpectedEdge=function(){var e,t=this.image,n=this.parsedOrientationInfo.rotate,r=this.options,a=t.naturalWidth,i=t.naturalHeight,o=Math.abs(n)%180==90;o&&(e=i,i=a,a=e);var s=a/i,f=Math.max(r.maxWidth,0)||1/0,c=Math.max(r.maxHeight,0)||1/0,l=Math.max(r.minWidth,0)||0,u=Math.max(r.minHeight,0)||0,h=Math.max(r.width,0)||a,d=Math.max(r.height,0)||i;f<1/0&&c<1/0?c*s>f?c=f/s:f=c*s:f<1/0?c=f/s:c<1/0&&(f=c*s),l>0&&u>0?u*s>l?u=l/s:l=u*s:l>0?u=l/s:u>0&&(l=u*s),d*s>h?d=h/s:h=d*s;var g=h=Math.floor(Math.min(Math.max(h,l),f)),p=d=Math.floor(Math.min(Math.max(d,u),c));return o&&(e=p,p=g,g=e),{dWidth:g,dHeight:p,width:h,height:d}},u.getParsedOrientationInfo=function(e){var t=this;this.getOrientation((function(n){f(e)&&e(t.parseOrientation(n))}))},u.getOrientation=function(e){var t=this;o.file2ArrayBuffer(this.file,(function(n){f(e)&&e(t.resetAndGetOrientation(n))}))},u.resetAndGetOrientation=function(e){var t,n=new DataView(e);try{var r,a,i;if(255===n.getUint8(0)&&216===n.getUint8(1))for(var s=n.byteLength,f=2;f+1<s;){if(255===n.getUint8(f)&&225===n.getUint8(f+1)){a=f;break}f+=1}if(a){var c=a+4,l=a+10;if(\"Exif\"===o.getStringFromCharCode(n,c,4)){var u=n.getUint16(l);if(((r=18761===u)||19789===u)&&42===n.getUint16(l+2,r)){var h=n.getUint32(l+4,r);h>=8&&(i=l+h)}}}if(i){var d;s=n.getUint16(i,r);for(d=0;d<s;d+=1)if(f=i+12*d+2,274===n.getUint16(f,r)){f+=8,t=n.getUint16(f,r),n.setUint16(f,1,r);break}}}catch(e){console.error(e),t=1}return t},u.parseOrientation=function(e){var t=0,n=1,r=1;switch(e){case 2:n=-1;break;case 3:t=-180;break;case 4:r=-1;break;case 5:t=90,r=-1;break;case 6:t=90;break;case 7:t=90,n=-1;break;case 8:t=-90}return{rotate:t,scaleX:n,scaleY:r}},u.beforeDraw=function(e,t){var n=this.parsedOrientationInfo,r=n.rotate,a=n.scaleX,i=n.scaleY,o=this.file,s=this.options,c=\"transparent\",l=t.width,u=t.height;switch(o.size>s.convertSize&&\"image/png\"===s.mimeType&&(c=\"#fff\",s.mimeType=\"image/jpeg\"),e.fillStyle=c,e.fillRect(0,0,l,u),f(s.beforeDraw)&&s.beforeDraw.call(this,e,t),e.save(),r){case 90:e.translate(l,0);break;case-90:e.translate(0,u);break;case-180:e.translate(l,u)}e.rotate(r*Math.PI/180),e.scale(a,i)},u.afterDraw=function(e,t){var n=this.options;f(n.afterDraw)&&n.afterDraw.call(this,e,t)},u.error=function(e){var t=this.options;if(!f(t.error))throw new Error(e);t.error.call(this,e)},u.success=function(e){var t,n,r=this.options,a=this.file,o=this.image,s=this.getExpectedEdge(),l=o.naturalHeight,u=o.naturalWidth;if(e&&e.size)if(!r.loose&&e.size>a.size&&!(s.width>u||s.height>l))console.warn(\"当前设置的是非宽松模式，压缩结果大于源图片，输出源图片\"),e=a;else{var h=new Date;e.lastModified=h.getTime(),e.lastModifiedDate=h,e.name=a.name,e.name&&e.type!==a.type&&(e.name=e.name.replace(i,(t=e.type,\"jpeg\"===(n=c(t)?t.substr(6):\"\")&&(n=\"jpg\"),\".\"+n)))}else console.warn(\"图片压缩出了点意外，输出源图片\"),e=a;f(r.success)&&r.success.call(this,e)},o.file2DataUrl=function(e,t,n){var r=new FileReader;r.onload=function(){t(r.result)},r.onerror=function(){f(n)&&n(\"读取文件失败！\")},r.readAsDataURL(e)},o.file2ArrayBuffer=function(e,t,n){var r=new FileReader;r.onload=function(e){t(e.target.result)},r.onerror=function(){f(n)&&n(\"读取文件失败！\")},r.readAsArrayBuffer(e)},o.getStringFromCharCode=function(e,t,n){var r,a=\"\";for(n+=t,r=t;r<n;r+=1)a+=String.fromCharCode(e.getUint8(r));return a},o.file2Image=function(e,t,n){var a=new Image,i=r.URL||r.webkitURL;if(r.navigator&&/(?:iPad|iPhone|iPod).*?AppleWebKit/i.test(r.navigator.userAgent)&&(a.crossOrigin=\"anonymous\"),a.alt=e.name,a.onerror=function(){f(n)&&n(\"图片加载错误！\")},i){var o=i.createObjectURL(e);a.onload=function(){t(a),i.revokeObjectURL(o)},a.src=o}else this.file2DataUrl(e,(function(e){a.onload=function(){t(a)},a.src=e}),n)},o.url2Image=function(e,t,n){var r=new Image;r.src=e,r.onload=function(){t(r)},r.onerror=function(){f(n)&&n(\"图片加载错误！\")}},o.image2Canvas=function(e,t,n,r,a,i,o){var s=document.createElement(\"canvas\"),c=s.getContext(\"2d\");return s.width=i||e.naturalWidth,s.height=o||e.naturalHeight,f(r)&&r(c,s),c.save(),c.drawImage(e,0,0,t,n),c.restore(),f(a)&&a(c,s),s},o.canvas2DataUrl=function(e,t,n){return e.toDataURL(n||\"image/jpeg\",t)},o.dataUrl2Image=function(e,t,n){var r=new Image;r.onload=function(){t(r)},r.error=function(){f(n)&&n(\"图片加载错误！\")},r.src=e},o.dataUrl2Blob=function(e,t){for(var n=e.split(\",\")[1],r=e.match(/^data:(.*?)(;base64)?,/)[1],a=atob(n),i=n.length,o=new Uint8Array(i),s=0;s<i;s++)o[s]=a.charCodeAt(s);return new Blob([o],{type:t||r})},o.blob2DataUrl=function(e,t,n){this.file2DataUrl(e,t,n)},o.blob2Image=function(e,t,n){this.file2Image(e,t,n)},o.canvas2Blob=function(e,t,n,r){var a=this;HTMLCanvasElement.prototype.toBlob||Object.defineProperty(HTMLCanvasElement.prototype,\"toBlob\",{value:function(e,t,n){var r=this.toDataURL(t,n);e(a.dataUrl2Blob(r))}}),e.toBlob((function(e){t(e)}),r||\"image/jpeg\",n||.8)},o.upload=function(e,t,n){var r=new XMLHttpRequest,a=new FormData;a.append(\"file\",t),r.onreadystatechange=function(){if(4!==r.readyState||200!==r.status)throw new Error(r);n&&n(r.responseText)},r.open(\"POST\",e,!0),r.send(a)},o)o.hasOwnProperty(h)&&(l[h]=o[h])}]).default}));\n\n//# sourceURL=webpack://app-desktop/./src/utils/images/imageCompress/services/image-compressor.min.js?");
+
+/***/ })
+
+/******/ 	});
+/************************************************************************/
+/******/ 	// The module cache
+/******/ 	var __webpack_module_cache__ = {};
+/******/ 	
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/ 		// Check if module is in cache
+/******/ 		var cachedModule = __webpack_module_cache__[moduleId];
+/******/ 		if (cachedModule !== undefined) {
+/******/ 			return cachedModule.exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = __webpack_module_cache__[moduleId] = {
+/******/ 			id: moduleId,
+/******/ 			loaded: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/ 	
+/******/ 		// Execute the module function
+/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
+/******/ 	
+/******/ 		// Flag the module as loaded
+/******/ 		module.loaded = true;
+/******/ 	
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/ 	
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = __webpack_modules__;
+/******/ 	
+/************************************************************************/
+/******/ 	/* webpack/runtime/chunk loaded */
+/******/ 	(() => {
+/******/ 		var deferred = [];
+/******/ 		__webpack_require__.O = (result, chunkIds, fn, priority) => {
+/******/ 			if(chunkIds) {
+/******/ 				priority = priority || 0;
+/******/ 				for(var i = deferred.length; i > 0 && deferred[i - 1][2] > priority; i--) deferred[i] = deferred[i - 1];
+/******/ 				deferred[i] = [chunkIds, fn, priority];
+/******/ 				return;
+/******/ 			}
+/******/ 			var notFulfilled = Infinity;
+/******/ 			for (var i = 0; i < deferred.length; i++) {
+/******/ 				var [chunkIds, fn, priority] = deferred[i];
+/******/ 				var fulfilled = true;
+/******/ 				for (var j = 0; j < chunkIds.length; j++) {
+/******/ 					if ((priority & 1 === 0 || notFulfilled >= priority) && Object.keys(__webpack_require__.O).every((key) => (__webpack_require__.O[key](chunkIds[j])))) {
+/******/ 						chunkIds.splice(j--, 1);
+/******/ 					} else {
+/******/ 						fulfilled = false;
+/******/ 						if(priority < notFulfilled) notFulfilled = priority;
+/******/ 					}
+/******/ 				}
+/******/ 				if(fulfilled) {
+/******/ 					deferred.splice(i--, 1)
+/******/ 					var r = fn();
+/******/ 					if (r !== undefined) result = r;
+/******/ 				}
+/******/ 			}
+/******/ 			return result;
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/compat get default export */
+/******/ 	(() => {
+/******/ 		// getDefaultExport function for compatibility with non-harmony modules
+/******/ 		__webpack_require__.n = (module) => {
+/******/ 			var getter = module && module.__esModule ?
+/******/ 				() => (module['default']) :
+/******/ 				() => (module);
+/******/ 			__webpack_require__.d(getter, { a: getter });
+/******/ 			return getter;
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/define property getters */
+/******/ 	(() => {
+/******/ 		// define getter functions for harmony exports
+/******/ 		__webpack_require__.d = (exports, definition) => {
+/******/ 			for(var key in definition) {
+/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 				}
+/******/ 			}
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
+/******/ 	(() => {
+/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/make namespace object */
+/******/ 	(() => {
+/******/ 		// define __esModule on exports
+/******/ 		__webpack_require__.r = (exports) => {
+/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 			}
+/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/node module decorator */
+/******/ 	(() => {
+/******/ 		__webpack_require__.nmd = (module) => {
+/******/ 			module.paths = [];
+/******/ 			if (!module.children) module.children = [];
+/******/ 			return module;
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/jsonp chunk loading */
+/******/ 	(() => {
+/******/ 		// no baseURI
+/******/ 		
+/******/ 		// object to store loaded and loading chunks
+/******/ 		// undefined = chunk not loaded, null = chunk preloaded/prefetched
+/******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
+/******/ 		var installedChunks = {
+/******/ 			"main": 0
+/******/ 		};
+/******/ 		
+/******/ 		// no chunk on demand loading
+/******/ 		
+/******/ 		// no prefetching
+/******/ 		
+/******/ 		// no preloaded
+/******/ 		
+/******/ 		// no HMR
+/******/ 		
+/******/ 		// no HMR manifest
+/******/ 		
+/******/ 		__webpack_require__.O.j = (chunkId) => (installedChunks[chunkId] === 0);
+/******/ 		
+/******/ 		// install a JSONP callback for chunk loading
+/******/ 		var webpackJsonpCallback = (parentChunkLoadingFunction, data) => {
+/******/ 			var [chunkIds, moreModules, runtime] = data;
+/******/ 			// add "moreModules" to the modules object,
+/******/ 			// then flag all "chunkIds" as loaded and fire callback
+/******/ 			var moduleId, chunkId, i = 0;
+/******/ 			if(chunkIds.some((id) => (installedChunks[id] !== 0))) {
+/******/ 				for(moduleId in moreModules) {
+/******/ 					if(__webpack_require__.o(moreModules, moduleId)) {
+/******/ 						__webpack_require__.m[moduleId] = moreModules[moduleId];
+/******/ 					}
+/******/ 				}
+/******/ 				if(runtime) var result = runtime(__webpack_require__);
+/******/ 			}
+/******/ 			if(parentChunkLoadingFunction) parentChunkLoadingFunction(data);
+/******/ 			for(;i < chunkIds.length; i++) {
+/******/ 				chunkId = chunkIds[i];
+/******/ 				if(__webpack_require__.o(installedChunks, chunkId) && installedChunks[chunkId]) {
+/******/ 					installedChunks[chunkId][0]();
+/******/ 				}
+/******/ 				installedChunks[chunkId] = 0;
+/******/ 			}
+/******/ 			return __webpack_require__.O(result);
+/******/ 		}
+/******/ 		
+/******/ 		var chunkLoadingGlobal = self["webpackChunkapp_desktop"] = self["webpackChunkapp_desktop"] || [];
+/******/ 		chunkLoadingGlobal.forEach(webpackJsonpCallback.bind(null, 0));
+/******/ 		chunkLoadingGlobal.push = webpackJsonpCallback.bind(null, chunkLoadingGlobal.push.bind(chunkLoadingGlobal));
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/nonce */
+/******/ 	(() => {
+/******/ 		__webpack_require__.nc = undefined;
+/******/ 	})();
+/******/ 	
+/************************************************************************/
+/******/ 	
+/******/ 	// startup
+/******/ 	// Load entry module and return exports
+/******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["libs"], () => (__webpack_require__("./src/index.tsx")))
+/******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
+/******/ 	
+/******/ })()
+;

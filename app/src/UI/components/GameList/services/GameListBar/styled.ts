@@ -31,7 +31,7 @@ export const CoverImg = styled.img(
       max-width: ${props.theme.size(90)};
       border-radius: ${props.theme.radius.large};
       box-shadow: ${props.theme.shadow.high};
-      border: 3px solid ${props.theme.colors.bg1};
+      border: 2px solid ${props.theme.colors.gray};
     `
 );
 
@@ -82,10 +82,9 @@ export const CoverListImg = styled.img<{ focus: number }>(
       max-width: ${props.theme.size(50)};
       margin-right: ${props.theme.size(4)};
       background-color: transparent;
-      border-radius: ${props.theme.radius.medium};
-      box-shadow: ${props.theme.shadow.high};
+      border-radius: ${props.theme.radius.large};
       font-size: ${props.theme.size(10)};
-      border: 3px solid ${props.theme.colors.bg2};
+      border: 2px solid ${props.theme.colors.bg1};
       transition: 0.3s;
       filter: brightness(0.9);
 

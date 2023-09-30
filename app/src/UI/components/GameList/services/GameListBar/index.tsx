@@ -17,7 +17,6 @@ import {
 
 export const GameListBar = (props: App.Props.GameListView) => {
   const { active, gameList, gameIndex, onChangeGame, onStartGame, onActiveGame } = props;
-
   const onPressed = useGamepad();
   const game = useMemo(() => gameList[gameIndex], [gameIndex, gameList]);
 

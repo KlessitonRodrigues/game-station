@@ -8,14 +8,14 @@ import { tabRoutes } from './services/tabs';
 import { Container, LeftIcons, MiddleTabs, RightIcons, TabsItem, TabsItemLabel } from './styled';
 
 const TabHeader = () => {
-  const onPressed = useGamepad();
+  const onPress = useGamepad();
   const [path, setPath] = usePath();
   const { option, setUI } = useUIState();
 
   useEffect(() => {
-    onPressed('ButtonLeft', () => setUI('option', option - 1));
-    onPressed('ButtonRight', () => option < tabRoutes.length - 1 && setUI('option', option + 1));
-  }, [onPressed]);
+    onPress('ButtonLeft', () => setUI('option', option - 1));
+    onPress('ButtonRight', () => option < tabRoutes.length - 1 && setUI('option', option + 1));
+  }, [onPress]);
 
   useEffect(() => {
     const route = tabRoutes[option].route as App.Hooks.PathState;

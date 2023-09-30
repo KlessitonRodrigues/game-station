@@ -26,11 +26,11 @@ export const Grid = styled.div(
     `
 );
 
-export const GridItem = styled.div<{ focus: boolean; active: boolean }>(
+export const GridItem = styled.div<{ focus: boolean }>(
   props => css`
     position: relative;
-    width: ${props.theme.size(80)};
-    height: ${props.theme.size(110)};
+    width: ${props.theme.size(90)};
+    height: ${props.theme.size(120)};
     background-color: transparent;
     border-radius: ${props.theme.radius.large};
     font-size: ${props.theme.size(10)};
@@ -38,12 +38,6 @@ export const GridItem = styled.div<{ focus: boolean; active: boolean }>(
     overflow: hidden;
     border: 2px solid transparent;
     ${props.focus && `border: 2px solid ${props.theme.colors.gray};`}
-    ${props.active && !props.focus && `opacity: 0.2;`};
-    ${props.active && props.focus && `opacity: 1;`};
-
-    ${Description} {
-      ${props.active && props.focus && `opacity: 1;`};
-    }
   `
 );
 
@@ -59,16 +53,14 @@ export const Description = styled.div(
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    opacity: 0;
     position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: #0008;
+    background-color: #000a;
     padding: ${props.theme.size(4)};
-    backdrop-filter: blur(15px);
-    transition: opacity 0.3s;
+    transition: 0.3s;
   `
 );
 

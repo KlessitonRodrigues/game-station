@@ -18,7 +18,7 @@ const GameDetailsForm = () => {
   useEffect(() => {
     onPressed('ArrowUp', () => setUI('focus', focus - 1));
     onPressed('ArrowDown', () => setUI('focus', focus + 1));
-    onPressed('ButtonA', () => setUI('active', !active));
+    onPressed('ButtonA', () => setUI('active', active));
     onPressed('ButtonX', () => dbClient.games.create({ gameInfo: form }));
   }, [onPressed]);
 
@@ -27,7 +27,6 @@ const GameDetailsForm = () => {
       <PanelTitle>Add New Game</PanelTitle>
       <Panel active={focus === 0} title="Title" value={form.name}>
         <InputModal
-          title="Game Title"
           type="text"
           active={focus === 0 && active}
           value={form.name}
@@ -36,7 +35,6 @@ const GameDetailsForm = () => {
       </Panel>
       <Panel active={focus === 1} title="Publisher" value={form.publisher}>
         <InputModal
-          title="Game Publisher"
           type="text"
           active={focus === 1 && active}
           value={form.publisher}
@@ -45,7 +43,6 @@ const GameDetailsForm = () => {
       </Panel>
       <Panel active={focus === 2} title="Cover" value={form.cover}>
         <InputModal
-          title="Game Cover"
           type="img"
           active={focus === 2 && active}
           value={form.name + ' box art'}
@@ -54,7 +51,6 @@ const GameDetailsForm = () => {
       </Panel>
       <Panel active={focus === 3} title="Background" value={form.background}>
         <InputModal
-          title="Game Background"
           type="img"
           active={focus === 3 && active}
           value={form.name + ' background'}
@@ -63,7 +59,6 @@ const GameDetailsForm = () => {
       </Panel>
       <Panel active={focus === 4} title="Location" value={form.gamePath + form.gameFile}>
         <InputModal
-          title="Game Path"
           type="file"
           active={focus === 4 && active}
           value={form.gamePath}
