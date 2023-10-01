@@ -18,15 +18,15 @@ declare namespace App {
       label?: string;
       iconLeft?: React.ReactElement;
       iconRight?: React.ReactElement;
-      variant?: 'base' | 'outline' | 'solid';
-      color?: 'main' | 'red' | 'blue' | 'green' | 'yellow' | 'transparent';
+      variant?: "base" | "outline" | "solid";
+      color?: "main" | "red" | "blue" | "green" | "yellow" | "transparent";
       onChange?: () => void;
       disabled?: boolean;
     };
 
     type Input = {
       label?: string;
-      type?: 'time' | 'date' | 'textArea';
+      type?: "time" | "date" | "textArea";
       value?: string;
       placeHolder?: string;
       required?: boolean;
@@ -46,27 +46,27 @@ declare namespace App {
       size?: number;
       onPress?: () => void;
       type:
-        | 'games'
-        | 'apps'
-        | 'music'
-        | 'midia'
-        | 'web'
-        | 'news'
-        | 'theme'
-        | 'settings'
-        | 'user'
-        | 'battery'
-        | 'arrow-left'
-        | 'arrow-right'
-        | 'gamepad'
-        | 'search'
-        | 'folder'
-        | 'file'
-        | 'image'
-        | 'usb'
-        | 'controls'
-        | 'edit'
-        | 'spinner';
+        | "games"
+        | "apps"
+        | "music"
+        | "midia"
+        | "web"
+        | "news"
+        | "theme"
+        | "settings"
+        | "user"
+        | "battery"
+        | "arrow-left"
+        | "arrow-right"
+        | "gamepad"
+        | "search"
+        | "folder"
+        | "file"
+        | "image"
+        | "usb"
+        | "controls"
+        | "edit"
+        | "spinner";
       style?: React.CSSProperties;
     };
 
@@ -112,7 +112,7 @@ declare namespace App {
       title: string;
       active: boolean;
       focus: boolean;
-      type: 'text' | 'img' | 'file' | 'color';
+      type: "text" | "img" | "file" | "color";
       value: string;
       onChange: (value: string) => void;
     };
@@ -123,14 +123,14 @@ declare namespace App {
 
     type GamepadButtons = {
       buttons: {
-        type?: 'rounded';
+        type?: "rounded";
         content: string;
         label: string;
       }[];
     };
 
     type GameList = {
-      mode: 'list' | 'grid';
+      mode: "list" | "grid";
     };
 
     type GameListView = {
