@@ -14,7 +14,7 @@ export const TextInputModal = (props: App.Props.InputField) => {
         autoFocus
       />
       <If check={active}>
-        <Keyboard onKeyPress={key => onChange(value + key)} />
+        <Keyboard value={value} onChange={onChange} onEnterPress={() => {}} onEscPress={() => {}} />
       </If>
     </>
   );

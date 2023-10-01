@@ -2,8 +2,10 @@ import styled, { css } from 'styled-components';
 
 import { Keyframes } from '../Styles/Animations';
 
-export const Container = styled.div(() => {
-  return css`
+export const Container = styled.div(() => css``);
+
+export const FullScreen = styled.div(
+  () => css`
     position: fixed;
     top: 0;
     left: 0;
@@ -15,31 +17,31 @@ export const Container = styled.div(() => {
     justify-content: center;
     background-color: #000b;
     backdrop-filter: blur(10px);
-  `;
-});
+  `
+);
 
-export const Spinner = styled.div(({ theme }) => {
-  return css`
+export const Spinner = styled.div(
+  props => css`
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: ${theme.size(8)};
+    margin-bottom: ${props.theme.size(8)};
     animation: ${Keyframes.spinning} 1s infinite linear;
-  `;
-});
+  `
+);
 
-export const Title = styled.p(({ theme }) => {
-  return css`
-    font-size: ${theme.fontSize.label};
-    margin-bottom: ${theme.size(2)};
+export const Title = styled.p(
+  props => css`
+    font-size: ${props.theme.fontSize.label};
+    margin-bottom: ${props.theme.size(2)};
     animation: ${Keyframes.slideUpLarge} 0.5s ease-out;
-  `;
-});
+  `
+);
 
-export const Description = styled.p(({ theme }) => {
-  return css`
-    color: ${theme.colors.text4};
-    font-size: ${theme.fontSize.verySmall};
+export const Description = styled.p(
+  props => css`
+    color: ${props.theme.colors.text4};
+    font-size: ${props.theme.fontSize.verySmall};
     animation: ${Keyframes.slideUpLarge} 0.5s ease-out;
-  `;
-});
+  `
+);

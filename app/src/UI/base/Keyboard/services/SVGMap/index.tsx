@@ -1,5 +1,3 @@
-import { useEffect } from 'react';
-
 export const KeyboardSVG = () => {
   const bordercolor = '#999';
   const color = '#fff';
@@ -15,14 +13,54 @@ export const KeyboardSVG = () => {
       version="1.1"
       viewBox="0 0 646 266"
     >
-      <path
-        fill="none"
-        stroke={bordercolor}
-        strokeWidth="2"
-        d="M549.776 10.265c23.412-.001 46.285-.019 69.158.008 8.147.01 10.876 2.988 10.912 11.79.03 7.36.042 14.72-.002 22.08-.053 8.415-2.885 11.567-10.555 11.581-23.07.04-46.14.045-69.211-.005-7.138-.015-10.15-3.171-10.227-10.605-.08-7.99-.067-15.982-.003-23.972.057-7.381 2.356-9.977 9.928-10.877zM564.485 94.538c0-7.936-.08-15.295.024-22.652.107-7.613 3.04-10.94 9.839-10.98a3814.14 3814.14 0 0146.009.002c6.507.039 9.311 2.993 9.416 9.871.131 8.617.138 17.24-.008 25.857-.11 6.543-2.948 9.63-9.018 9.675-15.529.116-31.061.114-46.59.005-6.639-.047-9.044-3.018-9.672-11.778zM614.541 212.454c2.895.004 5.234-.138 7.551.041 4.774.367 7.562 3.245 7.654 8.426.169 9.453.167 18.914.006 28.368-.094 5.499-3.015 8.553-8.085 8.601-12.418.116-24.839.127-37.257-.004-5.279-.056-8.157-3.29-8.233-9.076-.118-9.035-.116-18.073-.002-27.108.077-6.094 2.974-9.157 8.693-9.218 9.701-.103 19.404-.029 29.673-.03zM35.875 257.947c-6.096-.659-8.749-4.112-8.751-10.097-.002-8.411-.082-16.823.026-25.232.086-6.742 3.114-10.048 9.336-10.104 11.649-.105 23.3-.106 34.949 0 6.183.056 9.231 3.404 9.316 10.135.107 8.409.113 16.822-.002 25.231-.091 6.675-3.176 9.99-9.406 10.046-11.649.103-23.3.029-35.468.021z"
-        opacity="1"
-      />
-      <g className="key-item key-esc">
+      <g className="action-item key-backspace">
+        <path
+          d="M 549.776 10.265 C 573.188 10.264 596.061 10.246 618.934 10.273 C 627.081 10.283 629.81 13.261 629.846 22.063 C 629.876 29.423 629.888 36.783 629.844 44.143 C 629.791 52.558 626.959 55.71 619.289 55.724 C 596.219 55.764 573.149 55.769 550.078 55.719 C 542.94 55.704 539.928 52.548 539.851 45.114 C 539.771 37.124 539.784 29.132 539.848 21.142 C 539.905 13.761 542.204 11.165 549.776 10.265 Z"
+          fill="none"
+          stroke={bordercolor}
+          strokeWidth="2"
+          opacity="1"
+        />
+        <text
+          x="569.458"
+          y="37.07"
+          style={{ whiteSpace: 'pre' }}
+          fill={color}
+          fontFamily="Inter"
+          fontSize="14"
+          fontWeight="500"
+        >
+          Back
+        </text>
+      </g>
+      <g className="action-item">
+        <path
+          d="M 564.485 94.538 C 564.485 86.602 564.405 79.243 564.509 71.886 C 564.616 64.273 567.549 60.946 574.348 60.906 C 589.684 60.815 605.021 60.814 620.357 60.908 C 626.864 60.947 629.668 63.901 629.773 70.779 C 629.904 79.396 629.911 88.019 629.765 96.636 C 629.655 103.179 626.817 106.266 620.747 106.311 C 605.218 106.427 589.686 106.425 574.157 106.316 C 567.518 106.269 565.113 103.298 564.485 94.538 Z"
+          fill="none"
+          stroke={bordercolor}
+          strokeWidth="2"
+          opacity="1"
+        />
+      </g>
+      <g className="action-item">
+        <path
+          d="M 614.541 212.454 C 617.436 212.458 619.775 212.316 622.092 212.495 C 626.866 212.862 629.654 215.74 629.746 220.921 C 629.915 230.374 629.913 239.835 629.752 249.289 C 629.658 254.788 626.737 257.842 621.667 257.89 C 609.249 258.006 596.828 258.017 584.41 257.886 C 579.131 257.83 576.253 254.596 576.177 248.81 C 576.059 239.775 576.061 230.737 576.175 221.702 C 576.252 215.608 579.149 212.545 584.868 212.484 C 594.569 212.381 604.272 212.455 614.541 212.454 Z"
+          fill="none"
+          stroke={bordercolor}
+          strokeWidth="2"
+          opacity="1"
+        />
+      </g>
+      <g className="action-item">
+        <path
+          d="M 35.875 257.947 C 29.779 257.288 27.126 253.835 27.124 247.85 C 27.122 239.439 27.042 231.027 27.15 222.618 C 27.236 215.876 30.264 212.57 36.486 212.514 C 48.135 212.409 59.786 212.408 71.435 212.514 C 77.618 212.57 80.666 215.918 80.751 222.649 C 80.858 231.058 80.864 239.471 80.749 247.88 C 80.658 254.555 77.573 257.87 71.343 257.926 C 59.694 258.029 48.043 257.955 35.875 257.947 Z"
+          fill="none"
+          stroke={bordercolor}
+          strokeWidth="2"
+          opacity="1"
+        />
+      </g>
+      <g className="action-item key-esc">
         <path
           fill="none"
           stroke={bordercolor}
@@ -283,7 +321,7 @@ export const KeyboardSVG = () => {
           0
         </text>
       </g>
-      <g className="key-item key-enter">
+      <g className="action-item key-enter">
         <path
           fill="none"
           stroke={bordercolor}
@@ -303,7 +341,7 @@ export const KeyboardSVG = () => {
           Enter
         </text>
       </g>
-      <g className="key-item key-shift-r">
+      <g className="action-item key-shift-r">
         <path
           fill="none"
           stroke={bordercolor}
@@ -323,7 +361,7 @@ export const KeyboardSVG = () => {
           Shift
         </text>
       </g>
-      <g className="key-item key-shift-l">
+      <g className="action-item key-shift-l">
         <path
           fill="none"
           stroke={bordercolor}
@@ -343,7 +381,7 @@ export const KeyboardSVG = () => {
           Shift
         </text>
       </g>
-      <g className="key-item key-capslk">
+      <g className="action-item key-capslk">
         <path
           fill="none"
           stroke={bordercolor}
@@ -363,7 +401,7 @@ export const KeyboardSVG = () => {
           CapsLk
         </text>
       </g>
-      <g className="key-item key-space">
+      <g className="action-item key-space">
         <path
           fill="none"
           stroke={bordercolor}
@@ -383,7 +421,7 @@ export const KeyboardSVG = () => {
           Space
         </text>
       </g>
-      <g className="key-item key-tab">
+      <g className="action-item key-tab">
         <path
           fill="none"
           stroke={bordercolor}

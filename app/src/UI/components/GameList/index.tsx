@@ -3,25 +3,32 @@ import If from 'src/UI/base/If';
 import Loading from 'src/UI/base/Loading';
 import { dbClient } from 'src/config/db';
 import useGlobalContext from 'src/hooks/useGlobalContext';
+import usePath from 'src/hooks/usePath';
 import useUIState from 'src/hooks/useUIState';
-import { getGamesImageCache } from 'src/utils/images/imageCache';
+import { getCachedCovers } from 'src/utils/images/imageCache';
 
 import { GameListBar } from './services/GameListBar';
 import { GameListGrid } from './services/GameListGrid';
+import { LayoutTypeDialog } from './services/LayoutTypeDialog';
 import { Container } from './styled';
 
 const GameList = (props: App.Props.GameList) => {
   const { mode } = props;
-  const { focus, active, loading, setUI } = useUIState();
+
   const [global, setGlobal] = useGlobalContext();
+  const [path, setPath] = usePath();
+  const { focus, active, loading, setUI } = useUIState();
   const [gameList, setGameList] = useState<AppDB.Models.GameInfo[]>([]);
 
   useEffect(() => {
     const games = dbClient.games.read();
-    setUI('loading', true);
-    getGamesImageCache(games)
-      .then(setGameList)
-      .finally(() => setUI('loading', false));
+    if (global.isBrowser) setGameList(games);
+    else {
+      setUI('loading', true);
+      getCachedCovers(games)
+        .then(setGameList)
+        .finally(() => setUI('loading', false));
+    }
   }, []);
 
   useEffect(() => {
@@ -41,6 +48,7 @@ const GameList = (props: App.Props.GameList) => {
           onStartGame={() => {}}
         />
       </If>
+
       <If check={mode === 'grid'}>
         <GameListGrid
           active={active}
@@ -51,7 +59,17 @@ const GameList = (props: App.Props.GameList) => {
           onStartGame={() => {}}
         />
       </If>
-      {loading && <Loading />}
+
+      <If check={global.isFirstRun}>
+        <LayoutTypeDialog
+          onSelect={type => {
+            setGlobal({ ...global, isFirstRun: false });
+            if (type === 'grid') setPath('games/list/grid');
+          }}
+        />
+      </If>
+
+      <Loading show={loading} type="fullScreen" title="Optimizing Images" />
     </Container>
   );
 };
