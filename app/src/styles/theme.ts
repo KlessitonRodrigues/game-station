@@ -43,11 +43,11 @@ export const defaultTheme: App.Styled.Theme = {
     mediumLeft: '-4px 0 4px 0px #0006',
   },
   radius: {
-    verySmall: '0.2rem',
-    small: '0.3rem',
-    medium: '0.4rem',
-    large: '0.5rem',
-    veryLarge: '0.8rem',
+    verySmall: '0.3rem',
+    small: '0.4rem',
+    medium: '0.5rem',
+    large: '0.75rem',
+    veryLarge: '1rem',
     full: '50%',
   },
   devices: {

@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import GamepadButtons from 'src/UI/base/GamepadButtons';
-import { InputModal } from 'src/UI/base/InputModal';
-import Panel from 'src/UI/base/Panel';
+import InputField from 'src/UI/base/InputField';
 import { PanelTitle, Panels } from 'src/UI/base/Styles/Panel';
 import { dbClient } from 'src/config/db';
 import useGamepad from 'src/hooks/useGamepad';
@@ -18,58 +17,60 @@ const GameDetailsForm = () => {
   useEffect(() => {
     onPressed('ArrowUp', () => setUI('focus', focus - 1));
     onPressed('ArrowDown', () => setUI('focus', focus + 1));
-    onPressed('ButtonA', () => setUI('active', !active));
+    onPressed('ButtonA', () => active || setUI('active', true));
+    onPressed('ButtonB', () => !active || setUI('active', false));
     onPressed('ButtonX', () => dbClient.games.create({ gameInfo: form }));
   }, [onPressed]);
 
   return (
     <Panels>
       <PanelTitle>Add New Game</PanelTitle>
-      <Panel active={focus === 0} title="Title" value={form.name}>
-        <InputModal
-          title="Game Title"
-          type="text"
-          active={focus === 0 && active}
-          value={form.name}
-          onChange={name => setForm({ ...form, name })}
-        />
-      </Panel>
-      <Panel active={focus === 1} title="Publisher" value={form.publisher}>
-        <InputModal
-          title="Game Publisher"
-          type="text"
-          active={focus === 1 && active}
-          value={form.publisher}
-          onChange={publisher => setForm({ ...form, publisher })}
-        />
-      </Panel>
-      <Panel active={focus === 2} title="Cover" value={form.cover}>
-        <InputModal
-          title="Game Cover"
-          type="img"
-          active={focus === 2 && active}
-          value={form.name + ' box art'}
-          onChange={cover => setForm({ ...form, cover })}
-        />
-      </Panel>
-      <Panel active={focus === 3} title="Background" value={form.background}>
-        <InputModal
-          title="Game Background"
-          type="img"
-          active={focus === 3 && active}
-          value={form.name + ' background'}
-          onChange={background => setForm({ ...form, background })}
-        />
-      </Panel>
-      <Panel active={focus === 4} title="Location" value={form.gamePath + form.gameFile}>
-        <InputModal
-          title="Game Path"
-          type="file"
-          active={focus === 4 && active}
-          value={form.gamePath}
-          onChange={gameFile => setForm({ ...form, gameFile })}
-        />
-      </Panel>
+
+      <InputField
+        type="text"
+        title="Title"
+        focus={focus === 0}
+        active={focus === 0 && active}
+        value={form.name}
+        onChange={name => setForm({ ...form, name })}
+      />
+
+      <InputField
+        type="text"
+        title="Publisher"
+        focus={focus === 1}
+        active={focus === 1 && active}
+        value={form.publisher}
+        onChange={publisher => setForm({ ...form, publisher })}
+      />
+
+      <InputField
+        type="img"
+        title="Cover"
+        focus={focus === 2}
+        active={focus === 2 && active}
+        value={form.name + ' box art'}
+        onChange={cover => setForm({ ...form, cover })}
+      />
+
+      <InputField
+        type="img"
+        title="Background"
+        focus={focus === 3}
+        active={focus === 3 && active}
+        value={form.name + ' background'}
+        onChange={background => setForm({ ...form, background })}
+      />
+
+      <InputField
+        type="file"
+        title="Location"
+        focus={focus === 4}
+        active={focus === 4 && active}
+        value={form.gamePath}
+        onChange={gameFile => setForm({ ...form, gameFile })}
+      />
+
       <GamepadButtons buttons={UIButtons.GameDetailsForm} />
     </Panels>
   );

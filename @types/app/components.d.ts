@@ -101,16 +101,18 @@ declare namespace App {
     };
 
     type Panel = {
+      focus: boolean;
       active: boolean;
       title: string;
       value: string;
       children?: React.ReactElement;
     };
 
-    type InputModal = {
-      type: "text" | "img" | "file" | "color";
-      active: boolean;
+    type InputField = {
       title: string;
+      active: boolean;
+      focus: boolean;
+      type: "text" | "img" | "file" | "color";
       value: string;
       onChange: (value: string) => void;
     };
@@ -138,6 +140,10 @@ declare namespace App {
       onChangeGame: (gameIndex: number) => any;
       onActiveGame: (gameIndex: number) => any;
       onStartGame: (gameIndex: number) => any;
+    };
+
+    type Keyboard = {
+      onKeyPress: (key: string) => void;
     };
   }
 }

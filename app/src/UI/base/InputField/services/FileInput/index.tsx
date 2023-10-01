@@ -7,7 +7,7 @@ import { nodeJS } from 'src/utils/electron/nodeJS';
 import { checkFileName } from './services/fileName';
 import { Container, Dir, DirName, Directories, Path } from './styled';
 
-export const FileInputModal = (props: App.Props.InputModal) => {
+export const FileInputModal = (props: App.Props.InputField) => {
   const { active, onChange } = props;
 
   const onPressed = useGamepad();
