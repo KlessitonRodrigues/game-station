@@ -1,4 +1,4 @@
-import { IoGameControllerSharp } from 'react-icons/io5';
+import { IoGameControllerOutline, IoGameControllerSharp } from 'react-icons/io5';
 import {
   RiApps2Fill,
   RiArrowLeftSLine,
@@ -8,7 +8,9 @@ import {
   RiFile2Line,
   RiFolderFill,
   RiImage2Fill,
+  RiKeyboardLine,
   RiLoader5Line,
+  RiMouseLine,
   RiMovieFill,
   RiMusic2Fill,
   RiNewspaperFill,
@@ -32,7 +34,7 @@ export const iconMap: Record<App.Props.Icons['type'], React.ReactElement> = {
   settings: <RiSettings4Fill />,
   user: <RiUser2Fill />,
   battery: <RiBatteryFill />,
-  gamepad: <IoGameControllerSharp />,
+  gamepad: <IoGameControllerOutline />,
   search: <RiSearchLine />,
   folder: <RiFolderFill />,
   file: <RiFile2Line />,
@@ -43,4 +45,6 @@ export const iconMap: Record<App.Props.Icons['type'], React.ReactElement> = {
   spinner: <RiLoader5Line />,
   'arrow-left': <RiArrowLeftSLine />,
   'arrow-right': <RiArrowRightSLine />,
+  keyboard: <RiKeyboardLine />,
+  mouse: <RiMouseLine />,
 };

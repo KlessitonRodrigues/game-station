@@ -1,9 +1,9 @@
 import If from 'src/UI/base/If';
 
-import Panel from '../Panel';
 import { ColorInputModal } from './services/ColorInput';
 import { FileInputModal } from './services/FileInput';
 import { ImageInputModal } from './services/ImageInput';
+import Panel from './services/Panel';
 import { TextInputModal } from './services/TextInput';
 import { Container } from './styled';
 

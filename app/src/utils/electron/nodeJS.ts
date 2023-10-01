@@ -3,7 +3,7 @@ const NodeJS = () => {
   window.require = null; // prevent accessing nodejs from page context
 
   return {
-    isActive: !!require,
+    isNodeAvailable: !!require,
 
     resolvePath: (dirPath: string) => {
       try {

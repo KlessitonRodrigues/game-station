@@ -18,8 +18,10 @@ declare namespace App {
 
     // useGlobalContext
     type GlobalState = {
+      isFirstRun: boolean;
       gradientBg: Utils.GradientBgOptions;
       imgBg: string;
+      isBrowser: boolean;
     };
 
     type GlobalContext = [GlobalState, React.Dispatch<React.SetStateAction<GlobalState>>];

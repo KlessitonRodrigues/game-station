@@ -4,7 +4,7 @@ import { Container } from './styled';
 const Icons = (props: App.Props.Icons) => {
   const { type, size, style } = props;
   return (
-    <Container size={size} style={style}>
+    <Container className="icon" size={size} style={style}>
       {iconMap[type]}
     </Container>
   );

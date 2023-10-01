@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import GamepadButtons from 'src/UI/base/GamepadButtons';
 import InputField from 'src/UI/base/InputField';
-import { PanelTitle, Panels } from 'src/UI/base/Styles/Panel';
+import { Form, FormTitle } from 'src/UI/base/Styles/Form';
 import { dbClient } from 'src/config/db';
 import useGamepad from 'src/hooks/useGamepad';
 import useUIState from 'src/hooks/useUIState';
@@ -23,8 +23,8 @@ const GameDetailsForm = () => {
   }, [onPressed]);
 
   return (
-    <Panels>
-      <PanelTitle>Add New Game</PanelTitle>
+    <Form>
+      <FormTitle>Add New Game</FormTitle>
 
       <InputField
         type="text"
@@ -72,7 +72,7 @@ const GameDetailsForm = () => {
       />
 
       <GamepadButtons buttons={UIButtons.GameDetailsForm} />
-    </Panels>
+    </Form>
   );
 };
 

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import InputField from 'src/UI/base/InputField';
-import { PanelTitle, Panels } from 'src/UI/base/Styles/Panel';
+import { Form, FormTitle } from 'src/UI/base/Styles/Form';
 import useGamepad from 'src/hooks/useGamepad';
 import useUIState from 'src/hooks/useUIState';
 
@@ -17,8 +17,8 @@ const ThemeSettingsForm = () => {
   }, [onPressed]);
 
   return (
-    <Panels>
-      <PanelTitle>Theme Settings</PanelTitle>
+    <Form>
+      <FormTitle>Theme Settings</FormTitle>
       <InputField
         focus={focus === 0}
         title="Title"
@@ -27,7 +27,7 @@ const ThemeSettingsForm = () => {
         value={''}
         onChange={name => setForm({ ...form, name })}
       />
-    </Panels>
+    </Form>
   );
 };
 

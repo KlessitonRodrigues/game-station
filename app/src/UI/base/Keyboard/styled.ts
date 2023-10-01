@@ -2,23 +2,22 @@ import styled, { css } from 'styled-components';
 
 import { Keyframes } from '../Styles/Animations';
 
-export const Container = styled.div(
+export const Container = styled.div<{ shift: boolean }>(
   props => css`
     position: fixed;
-    bottom: ${props.theme.size(14)};
+    bottom: ${props.theme.size(18)};
     left: 50%;
     translate: -50%;
     width: 100%;
     max-width: ${props.theme.size(260)};
     animation: ${Keyframes.slideUp} 0.3s ease-out;
 
-    .key-item {
-      &:hover path {
-        fill: #fff7;
-      }
-      text {
-        // text-transform: lowercase;
-      }
+    .key-item:hover path,
+    .action-item:hover path {
+      fill: #fff7;
+    }
+    .key-item text {
+      ${props.shift && 'text-transform: lowercase;'}
     }
   `
 );
