@@ -1,10 +1,10 @@
 import { Container, Content, Header, Title, Value } from './styled';
 
 const Panel = (props: App.Props.Panel) => {
-  const { active, title, value, children } = props;
+  const { focus, active, title, value, children } = props;
 
   return (
-    <Container active={active}>
+    <Container active={active} focus={focus}>
       <Header>
         <Title>{title}</Title>
         <Value>{value?.substring(0, 60)}</Value>

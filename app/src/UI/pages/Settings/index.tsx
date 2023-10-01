@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import PageContainer from 'src/UI/base/PageContainer';
-import Panel from 'src/UI/base/Panel';
 import useGamepad from 'src/hooks/useGamepad';
 
 const SettingsPage = () => {
@@ -14,9 +13,7 @@ const SettingsPage = () => {
 
   return (
     <PageContainer>
-      <Panel active={active === 0} title="Start up time" value="">
-        <div>Settings</div>
-      </Panel>
+      <div>Settings</div>
     </PageContainer>
   );
 };

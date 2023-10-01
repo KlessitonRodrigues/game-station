@@ -1,8 +1,6 @@
 import { useEffect, useState } from 'react';
-import { InputModal } from 'src/UI/base/InputModal';
-import Panel from 'src/UI/base/Panel';
+import InputField from 'src/UI/base/InputField';
 import { PanelTitle, Panels } from 'src/UI/base/Styles/Panel';
-import { dbClient } from 'src/config/db';
 import useGamepad from 'src/hooks/useGamepad';
 import useUIState from 'src/hooks/useUIState';
 
@@ -21,15 +19,14 @@ const ThemeSettingsForm = () => {
   return (
     <Panels>
       <PanelTitle>Theme Settings</PanelTitle>
-      <Panel active={focus === 0} title="Title" value={''}>
-        <InputModal
-          title="Game Title"
-          type="color"
-          active={focus === 0 && active}
-          value={''}
-          onChange={name => setForm({ ...form, name })}
-        />
-      </Panel>
+      <InputField
+        focus={focus === 0}
+        title="Title"
+        type="color"
+        active={focus === 0 && active}
+        value={''}
+        onChange={name => setForm({ ...form, name })}
+      />
     </Panels>
   );
 };

@@ -7,7 +7,7 @@ import { ColorItem, Container } from './styled';
 
 const colors = Object.keys(bgGradientList) as App.Utils.GradientBgOptions[];
 
-export const ColorInputModal = (props: App.Props.InputModal) => {
+export const ColorInputModal = (props: App.Props.InputField) => {
   const { active, value, onChange } = props;
   const onPressed = useGamepad();
   const { option, setUI } = useUIState();

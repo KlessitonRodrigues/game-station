@@ -6,7 +6,7 @@ import { fetchImageData } from 'src/utils/images/imageCache';
 import { fetchImages } from './services/fetchImages';
 import { Image, ImageBox } from './styled';
 
-export const ImageInputModal = (props: App.Props.InputModal) => {
+export const ImageInputModal = (props: App.Props.InputField) => {
   const { active, value, onChange } = props;
 
   const onPressed = useGamepad();

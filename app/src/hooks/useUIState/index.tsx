@@ -13,7 +13,11 @@ export default (): App.Hooks.UseUIState => {
     if (key === 'loading' && typeof value === 'boolean') setLoading(value);
   };
 
-  const setUIHook = useCallback(setUI, [active, focus, option, loading]);
-
-  return { focus, active, option, loading, setUI: setUIHook };
+  return {
+    focus,
+    active,
+    option,
+    loading,
+    setUI: useCallback(setUI, [active, focus, option, loading]),
+  };
 };

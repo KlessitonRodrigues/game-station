@@ -17,7 +17,11 @@ const Keyboard = (props: App.Props.Keyboard) => {
     onPress('ArrowDown', () => setUI('focus', focus + 1));
     onPress('ArrowLeft', () => setUI('option', option - 1));
     onPress('ArrowRight', () => setUI('option', option + 1));
-    onPress('ButtonB', () => onKeyPress && onKeyPress(keyId));
+    onPress('ButtonA', () => {
+      if (keyId === 'space') return onKeyPress(' ');
+      if (keyId === 'esc') return onKeyPress('');
+      return onKeyPress(keyId);
+    });
   }, [onPress]);
 
   useEffect(() => {
