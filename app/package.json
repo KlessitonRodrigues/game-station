@@ -5,16 +5,15 @@
   "main": "src/electron.js",
   "license": "MIT",
   "scripts": {
-    "build": "webpack --mode=production --node-env=production",
-    "watch": "webpack --watch",
-    "serve": "webpack serve",
-    "start": "yarn electron ./src/electron.js",
-    "format": "prettier -c -w ./src",
-    "link-types": "cd src && ln -s ../../@types",
-    "unlink-types": "rm src/@types",
-    "start-app": "electron-forge start",
-    "make-linux": "yarn unlink-types && electron-forge make -p linux",
-    "make-win": "yarn unlink-types && electron-forge make -p win32"
+    "web-build": "webpack --mode=production --node-env=production",
+    "web-watch": "webpack --watch",
+    "web-serve": "webpack serve",
+    "app-start": "yarn electron ./src/electron.js",
+    "types-link": "cd src && ln -s ../../@types",
+    "types-unlink": "rm src/@types",
+    "make-and-start": "electron-forge package && electron-forge start",
+    "make-linux": "electron-forge make -p linux",
+    "make-win": "electron-forge make -p win32"
   },
   "dependencies": {
     "app-db": "file:../app-db",
@@ -50,10 +49,10 @@
     "forge": {
       "makers": [
         {
-          "name": "@electron-forge/maker-zip"
+          "name": "@electron-forge/maker-deb"
         },
         {
-          "name": "@electron-forge/maker-deb"
+          "name": "@electron-forge/maker-squirrel"
         }
       ]
     }

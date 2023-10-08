@@ -1,7 +1,7 @@
 # Folders
 node_modules/
-app/src/@types
 out/
+dist/
 
 # Files
 *.log
