@@ -10,11 +10,11 @@ export const ModalConainer = styled.div(
       position: fixed;
       top: 0;
       left: 0;
-      background-color: #000a;
+      background-color: #0006;
       display: flex;
       justify-content: center;
       align-items: center;
-      backdrop-filter: blur(5px);
+      backdrop-filter: blur(30px);
     `
 );
 
@@ -28,7 +28,7 @@ export const Modal = styled.div(
     max-width: ${props.theme.size(150)};
     padding: ${props.theme.size(4)};
     border-radius: ${props.theme.radius.medium};
-    background-color: ${props.theme.colors.bg2};
+    background-color: ${props.theme.colors.bg3};
     color: ${props.theme.colors.text2};
     animation: ${Keyframes.slideUp} 0.3s ease-out;
   `

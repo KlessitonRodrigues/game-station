@@ -1,8 +1,9 @@
 # Folders
 node_modules/
+app/src/@types
 out/
-__trash/
 
 # Files
 *.log
 *.env
+

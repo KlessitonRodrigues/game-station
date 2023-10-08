@@ -1,5 +1,6 @@
 const { app, BrowserWindow, globalShortcut } = require('electron');
-require('electron-reload')('./dist');
+const path = require('path');
+// require('electron-reload')('./dist');
 
 app.whenReady().then(() => {
   const win = new BrowserWindow({
@@ -11,9 +12,9 @@ app.whenReady().then(() => {
     },
   });
 
-  win.loadFile('../dist/index.html');
-  win.setFullScreen(true);
-  win.webContents.openDevTools();
+  win.loadFile(path.join(__dirname, '../dist/index.html'));
+  // win.setFullScreen(true);
+  // win.webContents.openDevTools();
 
   const ret = globalShortcut.register('Control+f6', () => {
     console.log('CommandOrControl+f6 is pressed');

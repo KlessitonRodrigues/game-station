@@ -28,14 +28,14 @@ const buttonLoop = (gamepadIndex: number, onPress: App.Gamepad.OnButtomPressed) 
   }, 33); // 30 FPS
 };
 
-const buttonLoopInterval: NodeJS.Timer[] = [];
+const buttonLoopInterval: number[] = [];
 
 export const onConnected = (ev: GamepadEvent, onPress: App.Gamepad.OnButtomPressed) => {
   console.log('Connected', ev.gamepad.id);
-  buttonLoopInterval.push(buttonLoop(ev.gamepad.index, onPress));
+  buttonLoopInterval.push(buttonLoop(ev.gamepad.index, onPress) as unknown as number);
 };
 
 export const onDisconnected = (ev: GamepadEvent) => {
   console.log('Disconnected', ev.gamepad.id);
-  buttonLoopInterval.forEach(int => clearInterval(int));
+  buttonLoopInterval.forEach(int => clearInterval(int as number));
 };

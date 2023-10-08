@@ -40,7 +40,7 @@ const Router = () => {
         gradient={bgGradientList[global.gradientBg]}
         img={global.imgBg}
         layer={-2}
-        blurBg={!path.includes('games/list/bar')}
+        blurBg={!path.includes('games/list')}
       />
     </ThemeProvider>
   );
