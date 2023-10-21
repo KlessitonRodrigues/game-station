@@ -1,29 +1,28 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import If from 'src/UI/base/If';
 import PageContainer from 'src/UI/base/PageContainer';
 import GameList from 'src/UI/components/GameList';
 import GameDetailsForm from 'src/UI/forms/GameDetails';
 import useGamepad from 'src/hooks/useGamepad';
-import usePath from 'src/hooks/usePath';
+import useRoutesContext from 'src/hooks/useRoutesContext';
 
 const GamesPage = () => {
-  const [path, setPath] = usePath();
+  const { path, setPath } = useRoutesContext();
   const onPressed = useGamepad();
+  const [screen, setScreen] = useState<App.Props.GameList['mode']>('list');
 
   useEffect(() => {
     onPressed('ButtonY', () => {
-      path === 'games/add' ? setPath('games/list/bar') : setPath('games/add');
+      if (path === 'games/add') setPath('games/list');
+      else setPath('games/add');
     });
-    onPressed('ButtonX', () => {
-      path === 'games/list/bar' ? setPath('games/list/grid') : setPath('games/list/bar');
-    });
+    onPressed('ButtonX', () => setScreen(screen === 'list' ? 'grid' : 'list'));
   }, [onPressed]);
 
   return (
     <PageContainer>
-      <If check={path === 'games/list/bar'} true={<GameList mode="list" />} />
-      <If check={path === 'games/list/grid'} true={<GameList mode="grid" />} />
-      <If check={path === 'games/add'} true={<GameDetailsForm />} />
+      <If check={path === 'games/list_'} true={<GameList mode={screen} />} />
+      <If check={path === 'games/list'} true={<GameDetailsForm />} />
     </PageContainer>
   );
 };

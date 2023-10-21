@@ -1,26 +1,27 @@
 import { useEffect } from 'react';
 import Icons from 'src/UI/base/Icons';
 import useGamepad from 'src/hooks/useGamepad';
-import usePath from 'src/hooks/usePath';
-import useUIState from 'src/hooks/useUIState';
+import useRoutesContext from 'src/hooks/useRoutesContext';
+import useScreenState from 'src/hooks/useScreenState';
 
 import { tabRoutes } from './services/tabs';
 import { Container, LeftIcons, MiddleTabs, RightIcons, TabsItem, TabsItemLabel } from './styled';
 
 const TabHeader = () => {
   const onPress = useGamepad();
-  const [path, setPath] = usePath();
-  const { option, setUI } = useUIState();
+  const routes = useRoutesContext();
+  const screen = useScreenState();
 
   useEffect(() => {
-    onPress('ButtonLeft', () => setUI('option', option - 1));
-    onPress('ButtonRight', () => option < tabRoutes.length - 1 && setUI('option', option + 1));
+    onPress('ButtonLeft', () => screen.setOption(screen.option - 1));
+    onPress('ButtonRight', () => {
+      screen.option < tabRoutes.length - 1 && screen.setOption(screen.option + 1);
+    });
   }, [onPress]);
 
   useEffect(() => {
-    const route = tabRoutes[option].route as App.Hooks.PathState;
-    setPath(route);
-  }, [option]);
+    routes.setPath(tabRoutes[screen.option].route);
+  }, [screen.option]);
 
   return (
     <Container>
@@ -30,7 +31,11 @@ const TabHeader = () => {
 
       <MiddleTabs>
         {tabRoutes.map((tab, i) => (
-          <TabsItem key={tab.name} selected={option === i} onClick={() => setUI('option', i)}>
+          <TabsItem
+            key={tab.name}
+            selected={screen.option === i}
+            onClick={() => screen.setOption(i)}
+          >
             <Icons type={tab.name as App.Props.Icons['type']} size={13} />
             <TabsItemLabel>{tab.name}</TabsItemLabel>
           </TabsItem>

@@ -1,5 +1,5 @@
 export const tabRoutes = [
-  { name: 'games', route: 'games/list/bar' },
+  { name: 'games', route: 'games/list' },
   { name: 'apps', route: 'apps' },
   { name: 'music', route: 'music' },
   { name: 'midia', route: 'midia' },

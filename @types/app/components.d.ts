@@ -79,13 +79,13 @@ declare namespace App {
     type ColorPicker = {
       active?: boolean;
       value?: string;
-      onChange?: (color: Utils.GradientBgOptions) => void;
+      onChange?: (color: Utils.BgColors) => void;
     };
 
     type DynamicBg = {
       img?: string;
-      gradient?: string;
-      blurBg?: boolean;
+      color?: App.Utils.BgColors;
+      blur?: boolean;
       layer?: number;
     };
 

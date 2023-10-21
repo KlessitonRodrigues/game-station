@@ -1,6 +1,6 @@
 declare namespace App {
   namespace Utils {
-    type GradientBgOptions =
+    type BgColors =
       | 'indigo'
       | 'blue'
       | 'green'
@@ -18,6 +18,8 @@ declare namespace App {
       url: string;
       data: string;
     };
+
+    type GamePageScreens = 'list' | 'grid';
   }
 }
 

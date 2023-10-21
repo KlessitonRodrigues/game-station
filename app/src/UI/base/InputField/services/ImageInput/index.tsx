@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import useGamepad from 'src/hooks/useGamepad';
-import useUIState from 'src/hooks/useUIState';
+import useScreenState from 'src/hooks/useScreenState';
 import { fetchImageData } from 'src/utils/images/imageCache';
 
 import { fetchImages } from './services/fetchImages';
@@ -10,16 +10,16 @@ export const ImageInputModal = (props: App.Props.InputField) => {
   const { active, value, onChange } = props;
 
   const onPressed = useGamepad();
-  const { option, setUI } = useUIState();
+  const { option, setOption } = useScreenState();
   const [lastQuery, setLastQuery] = useState('');
   const [urls, setUrls] = useState<string[]>([]);
   const [url, setUrl] = useState('');
 
   useEffect(() => {
     if (active) {
-      onPressed('ArrowLeft', () => setUI('option', option - 1));
+      onPressed('ArrowLeft', () => setOption(option - 1));
       onPressed('ArrowRight', () => {
-        option < urls.length && setUI('option', option + 1);
+        option < urls.length && setOption(option + 1);
       });
     }
   }, [onPressed]);

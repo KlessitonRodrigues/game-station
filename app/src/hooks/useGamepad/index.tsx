@@ -9,7 +9,7 @@ import {
 
 import { onConnected, onDisconnected } from './services/gamepad';
 
-const globalContext = createContext<App.Hooks.GamepadContext>(() => {});
+const globalContext = createContext<App.Gamepad.OnPressed>(() => {});
 
 export const GamepadProvider = (props: PropsWithChildren) => {
   const [pressed, setPressed] = useState<string[]>([]);

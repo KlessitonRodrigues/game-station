@@ -1,12 +1,16 @@
+import { bgGradientList } from 'src/utils/constants/gradient';
+
 import If from '../If';
 import { BgImage, Container } from './styled';
 
 const DynamicBg = (props: App.Props.DynamicBg) => {
-  const { img, gradient, blurBg } = props;
+  const { img, color, blur } = props;
+  const bgGradient = bgGradientList[color];
+
   return (
-    <Container gradient={img ? '' : gradient}>
+    <Container gradient={img ? '' : bgGradient}>
       <If check={!!img}>
-        <BgImage src={img} blur={blurBg} />
+        <BgImage src={img} blur={blur} />
       </If>
     </Container>
   );
