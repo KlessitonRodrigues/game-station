@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-export const Container = styled.span<App.Styled.Props>(
+export const Container = styled.span<{ size?: number }>(
   props =>
     css`
       display: inline-flex;

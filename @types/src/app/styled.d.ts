@@ -1,11 +1,5 @@
 declare namespace App {
   namespace Styled {
-    type Props = {
-      focus?: number;
-      imgSrc?: string;
-      size?: number;
-    };
-
     type Theme = {
       size: (n: number) => string;
       colors: {

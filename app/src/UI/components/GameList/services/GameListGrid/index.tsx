@@ -25,7 +25,7 @@ export const GameListGrid = (props: App.Props.GameListScreen) => {
   return (
     <Container>
       <Grid>{GridItems}</Grid>
-      <GamepadButtons buttons={UIButtons.GameListGrid} />
+      <GamepadButtons buttons={[]} />
     </Container>
   );
 };

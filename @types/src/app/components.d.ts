@@ -18,15 +18,15 @@ declare namespace App {
       label?: string;
       iconLeft?: React.ReactElement;
       iconRight?: React.ReactElement;
-      variant?: 'base' | 'outline' | 'solid';
-      color?: 'main' | 'red' | 'blue' | 'green' | 'yellow' | 'transparent';
+      variant?: "base" | "outline" | "solid";
+      color?: "main" | "red" | "blue" | "green" | "yellow" | "transparent";
       onChange?: () => void;
       disabled?: boolean;
     };
 
     type Input = {
       label?: string;
-      type?: 'time' | 'date' | 'textArea';
+      type?: "time" | "date" | "textArea";
       value?: string;
       placeHolder?: string;
       required?: boolean;
@@ -46,29 +46,29 @@ declare namespace App {
       size?: number;
       onPress?: () => void;
       type:
-        | 'games'
-        | 'apps'
-        | 'music'
-        | 'midia'
-        | 'web'
-        | 'news'
-        | 'theme'
-        | 'settings'
-        | 'user'
-        | 'battery'
-        | 'arrow-left'
-        | 'arrow-right'
-        | 'gamepad'
-        | 'search'
-        | 'folder'
-        | 'file'
-        | 'image'
-        | 'usb'
-        | 'controls'
-        | 'edit'
-        | 'spinner'
-        | 'keyboard'
-        | 'mouse';
+        | "games"
+        | "apps"
+        | "music"
+        | "midia"
+        | "web"
+        | "news"
+        | "theme"
+        | "settings"
+        | "user"
+        | "battery"
+        | "arrow-left"
+        | "arrow-right"
+        | "gamepad"
+        | "search"
+        | "folder"
+        | "file"
+        | "image"
+        | "usb"
+        | "controls"
+        | "edit"
+        | "spinner"
+        | "keyboard"
+        | "mouse";
       style?: React.CSSProperties;
     };
 
@@ -79,7 +79,7 @@ declare namespace App {
     type ColorPicker = {
       active?: boolean;
       value?: string;
-      onChange?: (color: Utils.BgColors) => void;
+      onChange?: (color: App.Utils.BgColors) => void;
     };
 
     type DynamicBg = {
@@ -114,7 +114,7 @@ declare namespace App {
       title: string;
       active: boolean;
       focus: boolean;
-      type: 'text' | 'img' | 'file' | 'color';
+      type: "text" | "img" | "file" | "color";
       value: string;
       onChange: (value: string) => void;
     };
@@ -132,7 +132,7 @@ declare namespace App {
     };
 
     type GameList = {
-      mode: 'bar' | 'grid';
+      mode: "bar" | "grid";
       index: number;
       list: AppDB.Models.GameInfo[];
       onChangeGame: (gameIndex: number) => any;
@@ -159,13 +159,13 @@ declare namespace App {
 
     type Loading = {
       show: boolean;
-      type: 'fullScreen' | 'icon';
+      type: "fullScreen" | "icon";
       title?: string;
       description?: string;
     };
 
     type LayoutTypeDialog = {
-      onSelect: (type: 'list' | 'grid') => void;
+      onSelect: (type: "list" | "grid") => void;
     };
   }
 }
