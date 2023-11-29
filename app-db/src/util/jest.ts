@@ -7,7 +7,7 @@ export const testEnviroment = () => {
 const TestData = (): AppDB.API.Data => ({
   updatedAt: '',
   games: [],
-  settings: { bgOption: 'red', fullscreen: false },
+  settings: { fullscreen: false },
 });
 
 export const testConfig = (): AppDB.API.Config => {
