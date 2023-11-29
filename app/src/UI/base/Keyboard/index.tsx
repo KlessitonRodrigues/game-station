@@ -10,15 +10,15 @@ const Keyboard = (props: App.Props.Keyboard) => {
   const { value, onChange, onEnterPress, onEscPress } = props;
 
   const onPress = useGamepad();
-  const screen = useScreenState();
+  const { focus, option, setFocus, setOption } = useScreenState();
   const [shift, setShift] = useState(false);
-  const keyId = useMemo(() => getKeyId(screen.option, screen.focus), [screen.option, focus]);
+  const keyId = useMemo(() => getKeyId(option, focus), [option, focus]);
 
   useEffect(() => {
-    onPress('ArrowUp', () => screen.setFocus(screen.focus - 1));
-    onPress('ArrowDown', () => screen.setFocus(screen.focus + 1));
-    onPress('ArrowLeft', () => screen.setOption(screen.option - 1));
-    onPress('ArrowRight', () => screen.setOption(screen.option + 1));
+    onPress('ArrowUp', () => focus && setFocus(focus - 1));
+    onPress('ArrowDown', () => focus < 4 && setFocus(focus + 1));
+    onPress('ArrowLeft', () => option && setOption(option - 1));
+    onPress('ArrowRight', () => option < 11 && setOption(option + 1));
     onPress('ButtonA', () => {
       if (keyId === 'space') return onChange(value + ' ');
       if (keyId === 'tab') return onChange(value + '  ');
@@ -35,11 +35,18 @@ const Keyboard = (props: App.Props.Keyboard) => {
   useEffect(() => {
     const getEl = (query: string) => document.querySelector(query);
     const keyPath = getEl(`#keyboard-svg .key-${keyId} path`) as SVGPathElement;
-    if (keyPath) keyPath.style.fill = '#fff7';
+    if (keyPath) {
+      keyPath.style.fill = '#fff4';
+      keyPath.style.stroke = '#ccc';
+    }
+
     return () => {
-      if (keyPath) keyPath.style.fill = 'transparent';
+      if (keyPath) {
+        keyPath.style.fill = 'transparent';
+        keyPath.style.stroke = '#999';
+      }
     };
-  }, [screen.option, focus]);
+  }, [option, focus]);
 
   return (
     <Container shift={shift}>

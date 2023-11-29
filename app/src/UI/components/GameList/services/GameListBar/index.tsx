@@ -1,7 +1,5 @@
-import { useEffect, useMemo } from 'react';
+import { useMemo } from 'react';
 import GamepadButtons from 'src/UI/base/GamepadButtons';
-import useGamepad from 'src/hooks/useGamepad';
-import { UIButtons } from 'src/utils/constants/UIButtons';
 
 import {
   Column,
@@ -15,25 +13,16 @@ import {
   Games,
 } from './styled';
 
-export const GameListBar = (props: App.Props.GameListView) => {
-  const { gameList, gameIndex, onChangeGame, onStartGame } = props;
-  const onPressed = useGamepad();
-  const game = useMemo(() => gameList[gameIndex], [gameIndex, gameList]);
+const getCoverList = (props: App.Props.GameListScreen) => {
+  const { list, index } = props;
+  return list.map(game => (
+    <CoverListImg className="cove-item" key={game.name} focus={index} src={game.cover} />
+  ));
+};
 
-  useEffect(() => {
-    onPressed('ArrowLeft', () => onChangeGame(gameIndex - 1));
-    onPressed('ArrowRight', () => onChangeGame(gameIndex + 1));
-    onPressed('ButtonStart', () => onStartGame(gameIndex));
-    // nodeJS.exec(`cd ${game.gamePath} && ./${game.gameFile}`);
-  }, [onPressed]);
-
-  const CoverListItems = useMemo(
-    () =>
-      gameList.map(game => (
-        <CoverListImg className="cove-item" key={game.name} focus={gameIndex} src={game.cover} />
-      )),
-    [gameList.length, gameIndex]
-  );
+export const GameListBar = (props: App.Props.GameListScreen) => {
+  const { list, game, index, onChangeGame } = props;
+  const CoverListItems = useMemo(() => getCoverList(props), [list.length, index]);
 
   return (
     <Container>
@@ -47,7 +36,22 @@ export const GameListBar = (props: App.Props.GameListView) => {
           <CoverList>{CoverListItems}</CoverList>
         </Column>
       </Games>
-      <GamepadButtons buttons={UIButtons.GameListBar} />
+      <GamepadButtons
+        buttons={[
+          { label: 'Start', gamepadBtn: 'ButtonA', onPressedFn: () => {} },
+          {
+            label: 'Arrow Left',
+            gamepadBtn: 'ArrowLeft',
+            onPressedFn: () => index && onChangeGame(index - 1),
+          },
+          {
+            label: 'Arrow Right',
+            gamepadBtn: 'ArrowRight',
+            onPressedFn: () => index < list.length - 1 && onChangeGame(index + 1),
+          },
+          { label: 'Add Game', gamepadBtn: 'ButtonA', onPressedFn: () => {} },
+        ]}
+      />
     </Container>
   );
 };

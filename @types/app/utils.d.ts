@@ -1,5 +1,14 @@
 declare namespace App {
   namespace Utils {
+    type Paths =
+      | 'games/list/bar'
+      | 'games/list/grid'
+      | 'games/add'
+      | 'apps/'
+      | 'midia/'
+      | 'web/'
+      | 'settings/';
+
     type BgColors =
       | 'indigo'
       | 'blue'

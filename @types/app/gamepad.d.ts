@@ -34,5 +34,11 @@ declare namespace App {
     type ButtonMap = Partial<Record<Buttons, () => void>>;
 
     type OnPressed = (button: Buttons, cb: () => any) => void;
+
+    type Control = {
+      label: string;
+      gamepadBtn: App.Gamepad.Buttons;
+      onPressedFn: () => void;
+    };
   }
 }

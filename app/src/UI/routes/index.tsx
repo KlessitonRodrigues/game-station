@@ -23,15 +23,14 @@ const Router = () => {
       <GamepadProvider>
         <TabHeader />
         <Routes location={{ pathname: '/' + path, hash: '', search: '' }}>
-          <Route path="games/list" element={<GamesPage />} />
-          <Route path="games/add" element={<GamesPage />} />
-          <Route path="apps" element={<GamesPage />} />
-          <Route path="music" element={<GamesPage />} />
-          <Route path="midia" element={<GamesPage />} />
-          <Route path="web" element={<GamesPage />} />
-          <Route path="theme" element={<ThemePage />} />
-          <Route path="controls" element={<ControlsPage />} />
-          <Route path="settings" element={<SettingsPage />} />
+          <Route path="games/*" element={<GamesPage />} />
+          <Route path="apps/*" element={<GamesPage />} />
+          <Route path="music/*" element={<GamesPage />} />
+          <Route path="midia/*" element={<GamesPage />} />
+          <Route path="web/*" element={<GamesPage />} />
+          <Route path="theme/*" element={<ThemePage />} />
+          <Route path="controls/*" element={<ControlsPage />} />
+          <Route path="settings/*" element={<SettingsPage />} />
         </Routes>
       </GamepadProvider>
       <DynamicBg img={bgImage} color={bgColor} layer={-2} blur={!path.includes('games/list')} />

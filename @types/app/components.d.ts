@@ -125,20 +125,26 @@ declare namespace App {
 
     type GamepadButtons = {
       buttons: {
-        type?: 'rounded';
-        content: string;
         label: string;
+        gamepadBtn: App.Gamepad.Buttons;
+        onPressedFn: () => void;
       }[];
     };
 
     type GameList = {
-      mode: 'list' | 'grid';
+      mode: 'bar' | 'grid';
+      index: number;
+      list: AppDB.Models.GameInfo[];
+      onChangeGame: (gameIndex: number) => any;
+      onActiveGame: (gameIndex: number) => any;
+      onStartGame: (gameIndex: number) => any;
     };
 
-    type GameListView = {
+    type GameListScreen = {
       active: boolean;
-      gameList: AppDB.Models.GameInfo[];
-      gameIndex: number;
+      index: number;
+      list: AppDB.Models.GameInfo[];
+      game: AppDB.Models.GameInfo;
       onChangeGame: (gameIndex: number) => any;
       onActiveGame: (gameIndex: number) => any;
       onStartGame: (gameIndex: number) => any;

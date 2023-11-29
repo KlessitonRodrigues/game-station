@@ -15,8 +15,8 @@ const GameDetailsForm = () => {
   const [form, setForm] = useState(initialState);
 
   useEffect(() => {
-    onPressed('ArrowUp', () => setFocus(focus - 1));
-    onPressed('ArrowDown', () => setFocus(focus + 1));
+    onPressed('ArrowUp', () => !active && setFocus(focus - 1));
+    onPressed('ArrowDown', () => !active && setFocus(focus + 1));
     onPressed('ButtonA', () => active || setActive(true));
     onPressed('ButtonB', () => !active || setActive(false));
     onPressed('ButtonX', () => dbClient.games.create({ gameInfo: form }));
@@ -71,7 +71,7 @@ const GameDetailsForm = () => {
         onChange={gameFile => setForm({ ...form, gameFile })}
       />
 
-      <GamepadButtons buttons={UIButtons.GameDetailsForm} />
+      <GamepadButtons buttons={[]} />
     </Form>
   );
 };

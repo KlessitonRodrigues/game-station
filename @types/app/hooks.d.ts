@@ -3,7 +3,7 @@ declare namespace App {
     type UseRoutesContext = {
       path: string;
       lang: string;
-      setPath: React.Dispatch<string>;
+      setPath: React.Dispatch<App.Utils.Paths>;
       setLang: React.Dispatch<string>;
     };
 
