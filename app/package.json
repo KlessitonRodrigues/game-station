@@ -9,15 +9,12 @@
     "watch": "webpack --watch",
     "serve": "webpack serve",
     "app-start": "yarn electron ./src/electron.js",
-    "link-types": "cd src && ln -s ../../@types",
-    "unlink-types": "rm src/@types",
     "make-and-start": "electron-forge package && electron-forge start",
     "make-linux": "electron-forge make -p linux",
     "make-win": "electron-forge make -p win32"
   },
   "dependencies": {
     "app-db": "file:../app-db",
-    "@types/common": "file:../@types",
     "electron-installer-debian": "^3.2.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
@@ -31,6 +28,7 @@
     "@electron-forge/maker-squirrel": "6.4.2",
     "@electron-forge/maker-zip": "6.4.2",
     "@trivago/prettier-plugin-sort-imports": "4.2.0",
+    "@types/common": "file:../@types",
     "@types/node": "^20.8.3",
     "@types/react": "18.0.12",
     "@types/react-dom": "18.0.5",
