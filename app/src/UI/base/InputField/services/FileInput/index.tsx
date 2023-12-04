@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import Icons from 'src/UI/base/Icons';
 import useGamepad from 'src/hooks/useGamepad';
-import useUIState from 'src/hooks/useUIState';
+import useScreenState from 'src/hooks/useScreenState';
 import { nodeJS } from 'src/utils/electron/nodeJS';
 
 import { checkFileName } from './services/fileName';
@@ -11,21 +11,21 @@ export const FileInputModal = (props: App.Props.InputField) => {
   const { active, onChange } = props;
 
   const onPressed = useGamepad();
-  const { focus, setUI } = useUIState();
+  const { focus, setFocus } = useScreenState();
   const [path, setPath] = useState('/');
   const [dirsNames, setDirNames] = useState<string[]>([]);
 
   useEffect(() => {
     if (active) {
-      onPressed('ArrowUp', () => setUI('focus', focus - 1));
-      onPressed('ArrowDown', () => setUI('focus', focus + 1));
+      onPressed('ArrowUp', () => setFocus(focus - 1));
+      onPressed('ArrowDown', () => setFocus(focus + 1));
       onPressed('ArrowRight', () => {
         setPath(nodeJS.resolvePath(path + '/' + dirsNames[focus]));
-        setUI('focus', 0);
+        setFocus(0);
       });
       onPressed('ArrowLeft', () => {
         setPath(nodeJS.resolvePath(path + '/..'));
-        setUI('focus', 0);
+        setFocus(0);
       });
       onPressed('ButtonA', () => onChange(path + '/' + dirsNames[focus]));
     }

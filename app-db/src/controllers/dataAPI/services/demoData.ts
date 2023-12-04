@@ -55,6 +55,5 @@ export const testingGames: AppDB.Models.GameInfo[] = [
 ];
 
 export const settingsData: AppDB.Models.SettingsInfo = {
-  bgOption: 'red',
   fullscreen: false,
 };

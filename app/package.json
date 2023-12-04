@@ -1,20 +1,22 @@
 {
   "name": "app-desktop",
+  "description": "Console UI experience for desktop",
   "version": "1.0.0",
-  "main": "app.js",
+  "main": "src/electron.js",
   "license": "MIT",
   "scripts": {
     "build": "webpack --mode=production --node-env=production",
     "watch": "webpack --watch",
     "serve": "webpack serve",
-    "start": "yarn electron ./src/electron.js",
+    "app-start": "yarn electron ./src/electron.js",
+    "make-and-start": "electron-forge package && electron-forge start",
     "make-linux": "electron-forge make -p linux",
-    "make-win": "electron-forge make -p win32",
-    "format": "prettier -c -w ./src",
-    "link-types": "cd src && ln -s ../../@types"
+    "make-win": "electron-forge make -p win32"
   },
   "dependencies": {
     "app-db": "file:../app-db",
+    "app-node-layer": "file:../app-node-layer",
+    "electron-installer-debian": "^3.2.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-router-dom": "6.14.1",
@@ -22,7 +24,13 @@
     "stylis": "4.3.0"
   },
   "devDependencies": {
+    "@electron-forge/cli": "6.4.2",
+    "@electron-forge/maker-deb": "6.4.2",
+    "@electron-forge/maker-squirrel": "6.4.2",
+    "@electron-forge/maker-zip": "6.4.2",
     "@trivago/prettier-plugin-sort-imports": "4.2.0",
+    "@types/common": "file:../@types",
+    "@types/node": "^20.8.3",
     "@types/react": "18.0.12",
     "@types/react-dom": "18.0.5",
     "@types/styled-components": "5.1.27",
@@ -37,5 +45,17 @@
     "webpack": "5.73.0",
     "webpack-cli": "5.1.4",
     "webpack-dev-server": "4.9.2"
+  },
+  "config": {
+    "forge": {
+      "makers": [
+        {
+          "name": "@electron-forge/maker-deb"
+        },
+        {
+          "name": "@electron-forge/maker-squirrel"
+        }
+      ]
+    }
   }
 }

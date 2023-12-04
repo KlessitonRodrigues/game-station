@@ -35,8 +35,8 @@ export const GridItem = styled.div<{ focus: boolean }>(
     font-size: ${props.theme.size(10)};
     transition: opacity 0.2s;
     overflow: hidden;
-    border: 2px solid transparent;
-    ${props.focus && `border: 2px solid ${props.theme.colors.gray};`}
+    border: 2px solid ${props.theme.colors.bg2};
+    ${props.focus && `border-color: ${props.theme.colors.gray};`}
   `
 );
 

@@ -1,0 +1,9 @@
+{
+  "name": "@types/common",
+  "version": "1.0.0",
+  "main": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/react": "^18.2.39"
+  }
+}

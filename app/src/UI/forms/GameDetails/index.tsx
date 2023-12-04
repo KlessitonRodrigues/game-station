@@ -4,21 +4,21 @@ import InputField from 'src/UI/base/InputField';
 import { Form, FormTitle } from 'src/UI/base/Styles/Form';
 import { dbClient } from 'src/config/db';
 import useGamepad from 'src/hooks/useGamepad';
-import useUIState from 'src/hooks/useUIState';
+import useScreenState from 'src/hooks/useScreenState';
 import { UIButtons } from 'src/utils/constants/UIButtons';
 
 import { initialState } from './services/handleForm';
 
 const GameDetailsForm = () => {
   const onPressed = useGamepad();
-  const { active, focus, setUI } = useUIState();
+  const { active, focus, setActive, setFocus } = useScreenState();
   const [form, setForm] = useState(initialState);
 
   useEffect(() => {
-    onPressed('ArrowUp', () => setUI('focus', focus - 1));
-    onPressed('ArrowDown', () => setUI('focus', focus + 1));
-    onPressed('ButtonA', () => active || setUI('active', true));
-    onPressed('ButtonB', () => !active || setUI('active', false));
+    onPressed('ArrowUp', () => !active && setFocus(focus - 1));
+    onPressed('ArrowDown', () => !active && setFocus(focus + 1));
+    onPressed('ButtonA', () => active || setActive(true));
+    onPressed('ButtonB', () => !active || setActive(false));
     onPressed('ButtonX', () => dbClient.games.create({ gameInfo: form }));
   }, [onPressed]);
 
@@ -49,7 +49,7 @@ const GameDetailsForm = () => {
         title="Cover"
         focus={focus === 2}
         active={focus === 2 && active}
-        value={form.name + ' box art'}
+        value={form.name + ' cover pc'}
         onChange={cover => setForm({ ...form, cover })}
       />
 
@@ -71,7 +71,7 @@ const GameDetailsForm = () => {
         onChange={gameFile => setForm({ ...form, gameFile })}
       />
 
-      <GamepadButtons buttons={UIButtons.GameDetailsForm} />
+      <GamepadButtons buttons={[]} />
     </Form>
   );
 };

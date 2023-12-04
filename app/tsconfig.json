@@ -4,7 +4,6 @@
     "noImplicitAny": true,
     "module": "ES6",
     "target": "ES6",
-    "allowJs": true,
     "jsx": "react-jsx",
     "moduleResolution": "node",
     "resolveJsonModule": true,
@@ -13,5 +12,6 @@
       "src/*": ["./src/*"]
     }
   },
-  "include": ["src/"]
+  "include": ["src/"],
+  "exclude": ["*.js"]
 }

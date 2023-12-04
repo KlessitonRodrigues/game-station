@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import useGamepad from 'src/hooks/useGamepad';
-import useUIState from 'src/hooks/useUIState';
+import useScreenState from 'src/hooks/useScreenState';
 
 import { KeyboardSVG } from './services/SVGMap';
 import { getKeyId } from './services/keyMap';
@@ -10,15 +10,15 @@ const Keyboard = (props: App.Props.Keyboard) => {
   const { value, onChange, onEnterPress, onEscPress } = props;
 
   const onPress = useGamepad();
-  const { focus, option, setUI } = useUIState();
+  const { focus, option, setFocus, setOption } = useScreenState();
   const [shift, setShift] = useState(false);
   const keyId = useMemo(() => getKeyId(option, focus), [option, focus]);
 
   useEffect(() => {
-    onPress('ArrowUp', () => setUI('focus', focus - 1));
-    onPress('ArrowDown', () => setUI('focus', focus + 1));
-    onPress('ArrowLeft', () => setUI('option', option - 1));
-    onPress('ArrowRight', () => setUI('option', option + 1));
+    onPress('ArrowUp', () => focus && setFocus(focus - 1));
+    onPress('ArrowDown', () => focus < 4 && setFocus(focus + 1));
+    onPress('ArrowLeft', () => option && setOption(option - 1));
+    onPress('ArrowRight', () => option < 11 && setOption(option + 1));
     onPress('ButtonA', () => {
       if (keyId === 'space') return onChange(value + ' ');
       if (keyId === 'tab') return onChange(value + '  ');
@@ -35,9 +35,16 @@ const Keyboard = (props: App.Props.Keyboard) => {
   useEffect(() => {
     const getEl = (query: string) => document.querySelector(query);
     const keyPath = getEl(`#keyboard-svg .key-${keyId} path`) as SVGPathElement;
-    if (keyPath) keyPath.style.fill = '#fff7';
+    if (keyPath) {
+      keyPath.style.fill = '#fff4';
+      keyPath.style.stroke = '#ccc';
+    }
+
     return () => {
-      if (keyPath) keyPath.style.fill = 'transparent';
+      if (keyPath) {
+        keyPath.style.fill = 'transparent';
+        keyPath.style.stroke = '#999';
+      }
     };
   }, [option, focus]);
 

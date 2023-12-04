@@ -9,7 +9,7 @@ export const fetchImageData = (url: string) => {
         const compressedImg = await ImageCompress(img);
         const file = new FileReader();
         file.readAsDataURL(compressedImg);
-        return await new Promise(r => (file.onload = () => r(file.result)));
+        return await new Promise(res => (file.onload = () => res(file.result)));
       })
       .then(resolve)
       .catch(reject);

@@ -13,6 +13,5 @@ export const gameInfoObj = (): AppDB.Models.GameInfo => ({
 });
 
 export const settingsInfoObj = (): AppDB.Models.SettingsInfo => ({
-  bgOption: 'red',
   fullscreen: false,
 });

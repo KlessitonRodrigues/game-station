@@ -1,11 +1,10 @@
 import { Route, Routes } from 'react-router-dom';
 import DynamicBg from 'src/UI/base/DynamicBg';
+import useAppContext from 'src/hooks/useAppContext';
 import { GamepadProvider } from 'src/hooks/useGamepad';
-import useGlobalContext from 'src/hooks/useGlobalContext';
-import usePath from 'src/hooks/usePath';
+import useRoutes from 'src/hooks/useRoutesContext';
 import GlobalCSS from 'src/styles/globalCSS';
 import { defaultTheme } from 'src/styles/theme';
-import { bgGradientList } from 'src/utils/constants/gradient';
 import { ThemeProvider } from 'styled-components';
 
 import TabHeader from '../components/TabHeader';
@@ -15,8 +14,8 @@ import SettingsPage from '../pages/Settings';
 import ThemePage from '../pages/Theme';
 
 const Router = () => {
-  const [path] = usePath();
-  const [global] = useGlobalContext();
+  const { path } = useRoutes();
+  const { bgImage, bgColor } = useAppContext();
 
   return (
     <ThemeProvider theme={defaultTheme}>
@@ -24,24 +23,17 @@ const Router = () => {
       <GamepadProvider>
         <TabHeader />
         <Routes location={{ pathname: '/' + path, hash: '', search: '' }}>
-          <Route path="games/list/bar" element={<GamesPage />} />
-          <Route path="games/list/grid" element={<GamesPage />} />
-          <Route path="games/add" element={<GamesPage />} />
-          <Route path="apps" element={<GamesPage />} />
-          <Route path="music" element={<GamesPage />} />
-          <Route path="midia" element={<GamesPage />} />
-          <Route path="web" element={<GamesPage />} />
-          <Route path="theme" element={<ThemePage />} />
-          <Route path="controls" element={<ControlsPage />} />
-          <Route path="settings" element={<SettingsPage />} />
+          <Route path="games/*" element={<GamesPage />} />
+          <Route path="apps/*" element={<GamesPage />} />
+          <Route path="music/*" element={<GamesPage />} />
+          <Route path="midia/*" element={<GamesPage />} />
+          <Route path="web/*" element={<GamesPage />} />
+          <Route path="theme/*" element={<ThemePage />} />
+          <Route path="controls/*" element={<ControlsPage />} />
+          <Route path="settings/*" element={<SettingsPage />} />
         </Routes>
       </GamepadProvider>
-      <DynamicBg
-        gradient={bgGradientList[global.gradientBg]}
-        img={global.imgBg}
-        layer={-2}
-        blurBg={!path.includes('games/list/bar')}
-      />
+      <DynamicBg img={bgImage} color={bgColor} layer={-2} blur={!path.includes('games/list')} />
     </ThemeProvider>
   );
 };

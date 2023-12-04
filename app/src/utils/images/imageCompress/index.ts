@@ -1,3 +1,4 @@
+// @ts-ignore
 import ImageCompressor from './services/image-compressor.min.js';
 
 // https://www.npmjs.com/package/js-image-compressor
