@@ -8,3 +8,5 @@ import "./src/app/utils";
 
 import "./src/app-db/api";
 import "./src/app-db/models";
+
+import "./src/app-node-layer/methods";
