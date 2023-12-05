@@ -20,30 +20,37 @@ const Keyboard = (props: App.Props.Keyboard) => {
     onPress('ArrowLeft', () => option && setOption(option - 1));
     onPress('ArrowRight', () => option < 11 && setOption(option + 1));
     onPress('ButtonA', () => {
-      if (keyId === 'space') return onChange(value + ' ');
+      if (keyId === 'space') {
+        setShift(false);
+        return onChange(value + ' ');
+      }
       if (keyId === 'tab') return onChange(value + '  ');
       if (keyId === 'enter') return onEnterPress();
       if (keyId === 'esc') return onEscPress();
       if (keyId === 'backspace') return onChange(value.substring(0, value.length - 1));
       if (keyId.includes('shift')) return setShift(!shift);
       if (keyId === 'capslk') return setShift(!shift);
-      if (!shift) return onChange(value + keyId.toUpperCase());
+      if (!shift) {
+        const lastChar = value[value.length - 1]?.trim();
+        if (!lastChar && keyId.match(/\w/).length) setShift(true);
+        return onChange(value + keyId.toUpperCase());
+      }
       return onChange(value + keyId);
     });
   }, [onPress]);
 
   useEffect(() => {
-    const getEl = (query: string) => document.querySelector(query);
-    const keyPath = getEl(`#keyboard-svg .key-${keyId} path`) as SVGPathElement;
+    const getSVG = (query: string) => document.querySelector(query) as SVGPathElement;
+    const keyPath = getSVG(`#keyboard-svg .key-${keyId} path`);
     if (keyPath) {
       keyPath.style.fill = '#fff4';
-      keyPath.style.stroke = '#ccc';
+      keyPath.style.stroke = '#fff';
     }
 
     return () => {
       if (keyPath) {
         keyPath.style.fill = 'transparent';
-        keyPath.style.stroke = '#999';
+        keyPath.style.stroke = '#ccc';
       }
     };
   }, [option, focus]);

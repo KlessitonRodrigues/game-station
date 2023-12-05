@@ -1,26 +1,14 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import GamepadButtons from 'src/UI/base/GamepadButtons';
 import InputField from 'src/UI/base/InputField';
 import { Form, FormTitle } from 'src/UI/base/Styles/Form';
 import { dbClient } from 'src/config/db';
-import useGamepad from 'src/hooks/useGamepad';
 import useScreenState from 'src/hooks/useScreenState';
-import { UIButtons } from 'src/utils/constants/UIButtons';
-
-import { initialState } from './services/handleForm';
+import { gameFormState } from 'src/utils/constants/forms';
 
 const GameDetailsForm = () => {
-  const onPressed = useGamepad();
   const { active, focus, setActive, setFocus } = useScreenState();
-  const [form, setForm] = useState(initialState);
-
-  useEffect(() => {
-    onPressed('ArrowUp', () => !active && setFocus(focus - 1));
-    onPressed('ArrowDown', () => !active && setFocus(focus + 1));
-    onPressed('ButtonA', () => active || setActive(true));
-    onPressed('ButtonB', () => !active || setActive(false));
-    onPressed('ButtonX', () => dbClient.games.create({ gameInfo: form }));
-  }, [onPressed]);
+  const [form, setForm] = useState(gameFormState);
 
   return (
     <Form>
@@ -49,7 +37,7 @@ const GameDetailsForm = () => {
         title="Cover"
         focus={focus === 2}
         active={focus === 2 && active}
-        value={form.name + ' cover pc'}
+        value={form.name + ' pc cover'}
         onChange={cover => setForm({ ...form, cover })}
       />
 
@@ -71,7 +59,37 @@ const GameDetailsForm = () => {
         onChange={gameFile => setForm({ ...form, gameFile })}
       />
 
-      <GamepadButtons buttons={[]} />
+      <GamepadButtons
+        buttons={[
+          {
+            button: 'ArrowUp',
+            onPress: () => focus && !active && setFocus(focus - 1),
+          },
+          {
+            button: 'ArrowDown',
+            onPress: () => focus < 4 && !active && setFocus(focus + 1),
+          },
+          {
+            label: 'Editar',
+            button: 'ButtonA',
+            onPress: () => active || setActive(true),
+          },
+          {
+            label: 'Voltar',
+            button: 'ButtonB',
+            onPress: () => !active || setActive(false),
+          },
+          {
+            label: 'Salvar',
+            button: 'ButtonX',
+            onPress: () => {
+              console.log(form);
+
+              dbClient.games.create({ gameInfo: form });
+            },
+          },
+        ]}
+      />
     </Form>
   );
 };

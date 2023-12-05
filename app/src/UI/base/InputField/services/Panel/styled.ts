@@ -1,32 +1,31 @@
 import styled, { css } from 'styled-components';
 
 export const Container = styled.div<{ active: boolean; focus: boolean }>(
-  props =>
+  ({ theme, active }) =>
     css`
       width: 75%;
       margin: 0 auto;
-      padding: ${props.theme.size(4)};
-      margin-bottom: ${props.theme.size(4)};
-      color: ${props.theme.colors.text3};
-      background-color: ${props.theme.colors.bg4};
-      border-radius: ${props.theme.radius.medium};
+      padding: ${theme.size(4)};
+      margin-bottom: ${theme.size(4)};
+      color: ${theme.colors.text3};
+      background-color: ${theme.colors.bg4};
+      border-radius: ${theme.radius.medium};
       transition: 0.3s;
 
-      ${props.focus &&
+      ${focus &&
       css`
-        background-color: ${props.theme.colors.bg2};
-        color: ${props.theme.colors.text1};
+        color: ${theme.colors.text1};
       `}
 
-      ${props.active &&
+      ${active &&
       css`
-        background-color: ${props.theme.colors.bg2};
-        color: ${props.theme.colors.text1};
+        background-color: ${theme.colors.bg2};
+        color: ${theme.colors.text1};
         ${Value} {
           opacity: 0;
         }
         ${Content} {
-          max-height: ${props.theme.size(120)};
+          max-height: ${theme.size(120)};
         }
       `}
     `

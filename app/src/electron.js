@@ -1,6 +1,6 @@
 const { app, BrowserWindow, globalShortcut } = require('electron');
 const path = require('path');
-// require('electron-reload')('./dist');
+require('electron-reload')('./dist');
 
 app.whenReady().then(() => {
   const win = new BrowserWindow({

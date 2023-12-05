@@ -14,4 +14,4 @@ export const dbClient = localDB({
   },
 });
 
-dbClient.data.testData();
+// dbClient.data.initialData();

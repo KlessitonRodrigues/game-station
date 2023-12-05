@@ -1,4 +1,4 @@
-export const initialState: AppDB.Models.GameInfo = {
+export const gameFormState: AppDB.Models.GameInfo = {
   name: '',
   description: '',
   cover: '',
