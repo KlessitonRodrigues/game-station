@@ -1,26 +1,30 @@
 import styled, { css } from 'styled-components';
 
 export const Container = styled.div<{ active: boolean; focus: boolean }>(
-  ({ theme, active }) =>
+  ({ theme, active, focus }) =>
     css`
-      width: 75%;
       margin: 0 auto;
       padding: ${theme.size(4)};
       margin-bottom: ${theme.size(4)};
+      width: ${theme.size(350)};
       color: ${theme.colors.text3};
-      background-color: ${theme.colors.bg4};
-      border-radius: ${theme.radius.medium};
+      background-color: ${theme.colors.bg3};
+      border-radius: ${theme.radius.large};
       transition: 0.3s;
+      border: 3px solid transparent;
 
       ${focus &&
       css`
         color: ${theme.colors.text1};
+        border-color: ${theme.colors.gray};
       `}
 
       ${active &&
       css`
         background-color: ${theme.colors.bg2};
         color: ${theme.colors.text1};
+        border-color: ${theme.colors.gray};
+
         ${Value} {
           opacity: 0;
         }
@@ -32,18 +36,18 @@ export const Container = styled.div<{ active: boolean; focus: boolean }>(
 );
 
 export const Header = styled.div(
-  props =>
+  ({ theme }) =>
     css`
       display: flex;
       align-items: center;
-      gap: ${props.theme.size(4)};
+      gap: ${theme.size(4)};
     `
 );
 
 export const Title = styled.div(
-  props =>
+  ({ theme }) =>
     css`
-      font-size: ${props.theme.fontSize.h4};
+      font-size: ${theme.fontSize.h4};
       font-weight: bold;
     `
 );

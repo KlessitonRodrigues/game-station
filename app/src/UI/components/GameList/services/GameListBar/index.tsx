@@ -21,7 +21,7 @@ export const GameListBar = (props: App.Props.GameListScreen) => {
     return list.map(({ name, cover }) => (
       <CoverListImg className="cove-item" key={name} focus={index} src={cover} />
     ));
-  }, []);
+  }, [list.length, index]);
 
   return (
     <Container>

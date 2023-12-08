@@ -9,7 +9,7 @@ import { gameFormState } from 'src/utils/constants/forms';
 const GameDetailsForm = () => {
   const { active, focus, setActive, setFocus } = useScreenState();
   const [form, setForm] = useState(gameFormState);
-
+  
   return (
     <Form>
       <FormTitle>Add New Game</FormTitle>

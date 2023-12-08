@@ -2,13 +2,14 @@ import styled, { css } from 'styled-components';
 
 export const ImageBox = styled.div(
   ({ theme }) => css`
-    width: ${theme.size(200)};
-    max-width: ${theme.size(200)};
-    height: ${theme.size(100)};
-    max-height: ${theme.size(100)};
+    width: 100%;
+    padding: ${theme.size(4)};
+    height: ${theme.size(120)};
+    max-height: ${theme.size(120)};
     overflow: hidden;
     display: flex;
     justify-content: center;
+    align-items: center;
   `
 );
 

@@ -37,8 +37,8 @@ declare namespace App {
 
     type Control = {
       label: string;
-      gamepadBtn: App.Gamepad.Buttons;
-      onPressedFn: () => void;
+      button: App.Gamepad.Buttons;
+      onPress: () => void;
     };
   }
 }

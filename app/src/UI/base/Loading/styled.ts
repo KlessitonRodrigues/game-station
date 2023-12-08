@@ -22,6 +22,8 @@ export const FullScreen = styled.div(
 
 export const Spinner = styled.div(
   props => css`
+    width: 100%;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;

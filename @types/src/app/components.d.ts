@@ -125,9 +125,9 @@ declare namespace App {
 
     type GamepadButtons = {
       buttons: {
-        label: string;
-        gamepadBtn: App.Gamepad.Buttons;
-        onPressedFn: () => void;
+        label?: string;
+        button: App.Gamepad.Buttons;
+        onPress: () => void;
       }[];
     };
 

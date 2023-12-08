@@ -16,5 +16,6 @@ export const FormTitle = styled.h2(({ theme }) => {
     padding-bottom: ${theme.size(2)};
     margin-bottom: ${theme.size(8)};
     font-weight: bold;
+    text-transform: uppercase;
   `;
 });

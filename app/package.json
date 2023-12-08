@@ -4,6 +4,10 @@
   "version": "1.0.0",
   "main": "src/electron.js",
   "license": "MIT",
+  "author": {
+    "name": "kless",
+    "email": "klessitom@gmail.com"
+  },
   "scripts": {
     "build": "webpack --mode=production --node-env=production",
     "watch": "webpack --watch",

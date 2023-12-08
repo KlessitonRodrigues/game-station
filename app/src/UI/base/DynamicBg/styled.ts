@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 
 export const Container = styled.div<{ gradient: string }>(
-  props =>
+  ({ gradient }) =>
     css`
       z-index: -1;
       position: fixed;
@@ -10,7 +10,7 @@ export const Container = styled.div<{ gradient: string }>(
       width: 100%;
       height: 100%;
       background-color: #000;
-      background-image: ${props.gradient};
+      background-image: ${gradient};
       background-size: 400% 400%;
       background-position: 50% 50%;
       background-repeat: no-repeat;
@@ -19,12 +19,12 @@ export const Container = styled.div<{ gradient: string }>(
 );
 
 export const BgImage = styled.img<{ blur: boolean }>(
-  props =>
+  ({ blur }) =>
     css`
       width: 100%;
       height: 100%;
       object-fit: cover;
       background-size: cover;
-      filter: brightness(0.5) blur(${props.blur ? '60px' : '0'});
+      filter: brightness(0.45) blur(${blur ? '60px' : '0'});
     `
 );
