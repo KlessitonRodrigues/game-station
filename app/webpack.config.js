@@ -1,5 +1,3 @@
-// Generated using webpack-cli https://github.com/webpack/webpack-cli
-
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
@@ -34,9 +32,19 @@ module.exports = () => {
           exclude: ['/node_modules/'],
         },
         {
-          test: /\.(eot|svg|ttf|woff|woff2|png|jpg|gif)$/i,
-          type: 'asset',
+          test: /\.(png|svg|jpg|jpeg|gif)$/i,
+          type: 'asset/resource',
+          generator: {
+            filename: 'assets/[hash][ext][query]'
+          }
         },
+       {
+         test: /\.(woff|woff2|eot|ttf|otf)$/i,
+         type: 'asset/resource',
+         generator: {
+          filename: 'fonts/[name][ext][query]'
+        }
+       },
       ],
     },
     optimization: {

@@ -8,7 +8,7 @@ export const Container = styled.div<{ active: boolean; focus: boolean }>(
       margin-bottom: ${theme.size(4)};
       width: ${theme.size(350)};
       color: ${theme.colors.text3};
-      background-color: ${theme.colors.bg3};
+      background-color: ${theme.colors.bg4};
       border-radius: ${theme.radius.large};
       transition: 0.3s;
       border: 3px solid transparent;

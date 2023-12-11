@@ -13,5 +13,3 @@ export const dbClient = localDB({
     return data;
   },
 });
-
-// dbClient.data.initialData();
