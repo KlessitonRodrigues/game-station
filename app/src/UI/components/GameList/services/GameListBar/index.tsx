@@ -31,7 +31,7 @@ export const GameListBar = (props: App.Props.GameListScreen) => {
           <Column>
             <Description>
               <GameTitle>{game?.name}</GameTitle>
-              <GameInfo>{game?.publisher}</GameInfo>
+              <GameInfo>{game?.publisher?.toLocaleLowerCase()}</GameInfo>
             </Description>
             <CoverList>{CoverListItems}</CoverList>
           </Column>
@@ -43,7 +43,7 @@ export const GameListBar = (props: App.Props.GameListScreen) => {
           {
             label: 'Start',
             button: 'ButtonA',
-            onPress: () => onStartGame(index),
+            onPress: () => onStartGame(game.path),
           },
           {
             button: 'ArrowRight',

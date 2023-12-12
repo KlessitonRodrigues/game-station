@@ -117,6 +117,7 @@ declare namespace App {
       type: "text" | "img" | "file" | "color";
       value: string;
       onChange: (value: string) => void;
+      onClose: () => void;
     };
 
     type RoundedIcon = {
@@ -137,7 +138,7 @@ declare namespace App {
       list: AppDB.Models.GameInfo[];
       onChangeGame: (gameIndex: number) => any;
       onActiveGame: (gameIndex: number) => any;
-      onStartGame: (gameIndex: number) => any;
+      onStartGame: (path: string) => any;
     };
 
     type GameListScreen = {
@@ -147,7 +148,7 @@ declare namespace App {
       game: AppDB.Models.GameInfo;
       onChangeGame: (gameIndex: number) => any;
       onActiveGame: (gameIndex: number) => any;
-      onStartGame: (gameIndex: number) => any;
+      onStartGame: (path: string) => any;
     };
 
     type Keyboard = {

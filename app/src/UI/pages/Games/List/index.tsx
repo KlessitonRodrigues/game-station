@@ -1,10 +1,7 @@
 import { useEffect, useState } from 'react';
-import If from 'src/UI/base/If';
 import PageContainer from 'src/UI/base/PageContainer';
 import GameList from 'src/UI/components/GameList';
-import GameDetailsForm from 'src/UI/forms/GameDetails';
 import { dbClient } from 'src/config/db';
-import { nodeClient } from 'src/config/node';
 import useAppContext from 'src/hooks/useAppContext';
 import useGamepad from 'src/hooks/useGamepad';
 import useRoutesContext from 'src/hooks/useRoutesContext';
@@ -12,14 +9,13 @@ import useScreenState from 'src/hooks/useScreenState';
 import { nodeJS } from 'src/utils/electron/nodeJS';
 import { getCachedCovers } from 'src/utils/images/imageCache';
 
-const GamesPage = () => {
+const GamesListPage = () => {
   const { path, setPath } = useRoutesContext();
   const { setBgImage } = useAppContext();
   const { focus, setFocus, setLoading } = useScreenState();
-  const onPressed = useGamepad();
   const [gameList, setGameList] = useState<AppDB.Models.GameInfo[]>([]);
-
-  const [, screen, mode] = path.split('/');
+  const onPressed = useGamepad();
+  const [page, screen, mode] = path.split('/');
   const games = dbClient.games.read();
 
   useEffect(() => {
@@ -48,21 +44,16 @@ const GamesPage = () => {
 
   return (
     <PageContainer>
-      <If check={path.includes('games/list')}>
-        <GameList
-          mode={mode === 'bar' ? 'bar' : 'grid'}
-          index={focus}
-          list={gameList}
-          onActiveGame={() => {}}
-          onChangeGame={index => focus < gameList.length && setFocus(index)}
-          onStartGame={path => {
-            nodeClient.cmd.run(path);
-          }}
-        />
-      </If>
-      <If check={path === 'games/add'} true={<GameDetailsForm />} />
+      <GameList
+        mode={mode === 'bar' ? 'bar' : 'grid'}
+        index={focus}
+        list={gameList}
+        onActiveGame={() => {}}
+        onChangeGame={index => focus < gameList.length && setFocus(index)}
+        onStartGame={() => {}}
+      />
     </PageContainer>
   );
 };
 
-export default GamesPage;
+export default GamesListPage;

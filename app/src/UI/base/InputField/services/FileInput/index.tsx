@@ -8,7 +8,7 @@ import { checkFileName } from './services/fileName';
 import { Container, Dir, DirName, Directories, Path } from './styled';
 
 export const FileInputModal = (props: App.Props.InputField) => {
-  const { active, onChange } = props;
+  const { active, onChange, onClose } = props;
 
   const onPressed = useGamepad();
   const { focus, setFocus } = useScreenState();
@@ -27,7 +27,10 @@ export const FileInputModal = (props: App.Props.InputField) => {
         setPath(nodeJS.resolvePath(path + '/..'));
         setFocus(0);
       });
-      onPressed('ButtonA', () => onChange(path + '/' + dirsNames[focus]));
+      onPressed('ButtonA', () => {
+        onChange(path + '/' + dirsNames[focus]);
+        onClose();
+      });
     }
   }, [onPressed]);
 

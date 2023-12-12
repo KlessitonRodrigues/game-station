@@ -55,12 +55,13 @@ export const GameTitle = styled.div(({ theme }) => {
   `;
 });
 
-export const GameInfo = styled.div(({ theme }) => {
-  return css`
+export const GameInfo = styled.div(
+  ({ theme }) => css`
     color: ${theme.colors.text3};
     font-size: ${theme.fontSize.h4};
-  `;
-});
+    text-transform: capitalize;
+  `
+);
 
 export const CoverList = styled.div(() => {
   return css`

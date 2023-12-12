@@ -1,6 +1,9 @@
 const { app, BrowserWindow, globalShortcut } = require('electron');
 const path = require('path');
-require('electron-reload')('./dist');
+
+try {
+  require('electron-reload')('./dist');
+} catch (err) {}
 
 app.whenReady().then(() => {
   const win = new BrowserWindow({
@@ -20,7 +23,5 @@ app.whenReady().then(() => {
     console.log('CommandOrControl+f6 is pressed');
   });
 
-  if (!ret) {
-    console.log('registration failed');
-  }
+  if (!ret) console.log('registration failed');
 });

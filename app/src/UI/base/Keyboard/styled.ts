@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 
 import { Keyframes } from '../Styles/Animations';
 
-export const Container = styled.div<{ shift: boolean }>(
+export const Container = styled.div(
   props => css`
     position: fixed;
     bottom: ${props.theme.size(18)};
@@ -16,9 +16,6 @@ export const Container = styled.div<{ shift: boolean }>(
     .key-item:hover path,
     .action-item:hover path {
       fill: #fff7;
-    }
-    .key-item text {
-      ${props.shift && 'text-transform: lowercase;'}
     }
   `
 );

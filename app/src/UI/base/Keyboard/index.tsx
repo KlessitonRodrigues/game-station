@@ -11,7 +11,6 @@ const Keyboard = (props: App.Props.Keyboard) => {
 
   const onPress = useGamepad();
   const { focus, option, setFocus, setOption } = useScreenState();
-  const [shift, setShift] = useState(false);
   const keyId = useMemo(() => getKeyId(option, focus), [option, focus]);
 
   useEffect(() => {
@@ -20,22 +19,12 @@ const Keyboard = (props: App.Props.Keyboard) => {
     onPress('ArrowLeft', () => option && setOption(option - 1));
     onPress('ArrowRight', () => option < 11 && setOption(option + 1));
     onPress('ButtonA', () => {
-      if (keyId === 'space') {
-        setShift(false);
-        return onChange(value + ' ');
-      }
+      if (keyId === 'space') return onChange(value + ' ');
       if (keyId === 'tab') return onChange(value + '  ');
       if (keyId === 'enter') return onEnterPress();
       if (keyId === 'esc') return onEscPress();
       if (keyId === 'backspace') return onChange(value.substring(0, value.length - 1));
-      if (keyId.includes('shift')) return setShift(!shift);
-      if (keyId === 'capslk') return setShift(!shift);
-      if (!shift) {
-        const lastChar = value[value.length - 1]?.trim();
-        if (!lastChar && keyId.match(/\w/).length) setShift(true);
-        return onChange(value + keyId.toUpperCase());
-      }
-      return onChange(value + keyId);
+      return onChange(value + keyId?.toUpperCase());
     });
   }, [onPress]);
 
@@ -56,7 +45,7 @@ const Keyboard = (props: App.Props.Keyboard) => {
   }, [option, focus]);
 
   return (
-    <Container shift={shift}>
+    <Container>
       <KeyboardSVG />
     </Container>
   );

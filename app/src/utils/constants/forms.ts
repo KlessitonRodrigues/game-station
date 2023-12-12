@@ -5,9 +5,8 @@ export const gameFormState: AppDB.Models.GameInfo = {
   background: '',
   publisher: '',
   rate: '80',
-  addedAt: '',
+  createdAt: '',
   year: '2023',
   hidden: false,
-  gamePath: '',
-  gameFile: '',
+  path: '',
 };

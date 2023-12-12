@@ -9,7 +9,7 @@ import { gameFormState } from 'src/utils/constants/forms';
 const GameDetailsForm = () => {
   const { active, focus, setActive, setFocus } = useScreenState();
   const [form, setForm] = useState(gameFormState);
-  
+
   return (
     <Form>
       <FormTitle>Add New Game</FormTitle>
@@ -21,6 +21,7 @@ const GameDetailsForm = () => {
         active={focus === 0 && active}
         value={form.name}
         onChange={name => setForm({ ...form, name })}
+        onClose={() => setActive(false)}
       />
 
       <InputField
@@ -30,6 +31,7 @@ const GameDetailsForm = () => {
         active={focus === 1 && active}
         value={form.publisher}
         onChange={publisher => setForm({ ...form, publisher })}
+        onClose={() => setActive(false)}
       />
 
       <InputField
@@ -39,6 +41,7 @@ const GameDetailsForm = () => {
         active={focus === 2 && active}
         value={form.name + ' pc cover'}
         onChange={cover => setForm({ ...form, cover })}
+        onClose={() => setActive(false)}
       />
 
       <InputField
@@ -48,6 +51,7 @@ const GameDetailsForm = () => {
         active={focus === 3 && active}
         value={form.name + ' background'}
         onChange={background => setForm({ ...form, background })}
+        onClose={() => setActive(false)}
       />
 
       <InputField
@@ -55,8 +59,9 @@ const GameDetailsForm = () => {
         title="Location"
         focus={focus === 4}
         active={focus === 4 && active}
-        value={form.gamePath}
-        onChange={gameFile => setForm({ ...form, gameFile })}
+        value={form.path}
+        onChange={path => setForm({ ...form, path })}
+        onClose={() => setActive(false)}
       />
 
       <GamepadButtons

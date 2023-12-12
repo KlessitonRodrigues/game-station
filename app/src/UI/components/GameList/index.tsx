@@ -11,7 +11,7 @@ import { LayoutTypeDialog } from './services/LayoutTypeDialog';
 import { Container } from './styled';
 
 const GameList = (props: App.Props.GameList) => {
-  const { mode, index, list, onChangeGame } = props;
+  const { mode, index, list, onChangeGame, onStartGame } = props;
   const { setPath } = useRoutesContext();
   const { firstRun, setFirstRun } = useAppContext();
   const { active, loading, setActive } = useUIState();
@@ -27,7 +27,7 @@ const GameList = (props: App.Props.GameList) => {
           index={index}
           onChangeGame={onChangeGame}
           onActiveGame={() => setActive(!active)}
-          onStartGame={() => {}}
+          onStartGame={onStartGame}
         />
       </If>
 
@@ -39,7 +39,7 @@ const GameList = (props: App.Props.GameList) => {
           index={index}
           onChangeGame={onChangeGame}
           onActiveGame={() => setActive(!active)}
-          onStartGame={() => {}}
+          onStartGame={onStartGame}
         />
       </If>
 
