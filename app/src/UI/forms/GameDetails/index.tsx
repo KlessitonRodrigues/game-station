@@ -87,11 +87,7 @@ const GameDetailsForm = () => {
           {
             label: 'Salvar',
             button: 'ButtonX',
-            onPress: () => {
-              console.log(form);
-
-              dbClient.games.create({ gameInfo: form });
-            },
+            onPress: () => dbClient.games.create({ gameInfo: form }),
           },
         ]}
       />

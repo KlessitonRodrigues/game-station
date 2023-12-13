@@ -1,8 +1,6 @@
 import nodeLayer from 'app-node-layer';
 
 const initClient = () => {
-  console.log(window.require);
-
   const require = window.require;
   // window.require = null; // prevent accessing nodejs from page context
 
