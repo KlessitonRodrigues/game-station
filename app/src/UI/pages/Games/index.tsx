@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import If from 'src/UI/base/If';
 import PageContainer from 'src/UI/base/PageContainer';
 import GameList from 'src/UI/components/GameList';
-import GameDetailsForm from 'src/UI/forms/GameDetails';
+import GameInfoForm from 'src/UI/forms/GameInfo';
 import { dbClient } from 'src/config/db';
 import { nodeClient } from 'src/config/node';
 import useAppContext from 'src/hooks/useAppContext';
@@ -46,21 +46,23 @@ const GamesPage = () => {
     setBgImage(gameList[focus]?.background);
   }, [focus, gameList.length]);
 
+  const game = useMemo(() => gameList[focus], [focus, gameList.length]);
+
   return (
     <PageContainer>
       <If check={path.includes('games/list')}>
         <GameList
-          mode={mode === 'bar' ? 'bar' : 'grid'}
+          mode={mode as 'grid' | 'bar'}
           index={focus}
+          game={game}
           list={gameList}
           onActiveGame={() => {}}
           onChangeGame={index => focus < gameList.length && setFocus(index)}
-          onStartGame={path => {
-            nodeClient.cmd.run(path);
-          }}
+          onStartGame={path => nodeClient.cmd.run(path)}
+          active={false}
         />
       </If>
-      <If check={path === 'games/add'} true={<GameDetailsForm />} />
+      <If check={path === 'games/add'} true={<GameInfoForm />} />
     </PageContainer>
   );
 };

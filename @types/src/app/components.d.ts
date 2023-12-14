@@ -128,14 +128,15 @@ declare namespace App {
       buttons: {
         label?: string;
         button: App.Gamepad.Buttons;
-        onPress: () => void;
       }[];
     };
 
     type GameList = {
       mode: "bar" | "grid";
       index: number;
+      game: AppDB.Models.GameInfo;
       list: AppDB.Models.GameInfo[];
+      active: boolean;
       onChangeGame: (gameIndex: number) => any;
       onActiveGame: (gameIndex: number) => any;
       onStartGame: (path: string) => any;

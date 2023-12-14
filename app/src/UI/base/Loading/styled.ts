@@ -28,7 +28,7 @@ export const Spinner = styled.div(
     align-items: center;
     justify-content: center;
     margin-bottom: ${props.theme.size(8)};
-    animation: ${Keyframes.spinning} 1s infinite linear;
+    animation: ${Keyframes.spinning} 0.8s infinite linear;
   `
 );
 

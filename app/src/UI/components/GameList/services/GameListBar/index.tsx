@@ -1,6 +1,8 @@
-import { useMemo } from 'react';
+import { useEffect, useMemo } from 'react';
 import GamepadButtons from 'src/UI/base/GamepadButtons';
 import If from 'src/UI/base/If';
+import useGamepad from 'src/hooks/useGamepad';
+import { UIButtons } from 'src/utils/constants/UIButtons';
 
 import {
   Column,
@@ -14,14 +16,24 @@ import {
   Games,
 } from './styled';
 
+const renderListItems = (props: App.Props.GameListScreen) => {
+  const { list, index } = props;
+  return list.map(({ name, cover }) => (
+    <CoverListImg className="cove-item" key={name} focus={index} src={cover} />
+  ));
+};
+
 export const GameListBar = (props: App.Props.GameListScreen) => {
   const { list, game, index, onChangeGame, onStartGame } = props;
+  const onPressed = useGamepad();
+  const CoverListItems = useMemo(() => renderListItems(props), [list.length, index]);
 
-  const CoverListItems = useMemo(() => {
-    return list.map(({ name, cover }) => (
-      <CoverListImg className="cove-item" key={name} focus={index} src={cover} />
-    ));
-  }, [list.length, index]);
+  useEffect(() => {
+    onPressed('ButtonA', () => onStartGame(game.path));
+    onPressed('ArrowRight', () => index < list.length - 1 && onChangeGame(index + 1));
+    onPressed('ArrowLeft', () => index && onChangeGame(index - 1));
+    onPressed('ButtonY', () => onStartGame(game.path));
+  }, [onPressed]);
 
   return (
     <Container>
@@ -38,28 +50,7 @@ export const GameListBar = (props: App.Props.GameListScreen) => {
         </Games>
       </If>
 
-      <GamepadButtons
-        buttons={[
-          {
-            label: 'Start',
-            button: 'ButtonA',
-            onPress: () => onStartGame(game.path),
-          },
-          {
-            button: 'ArrowRight',
-            onPress: () => index < list.length - 1 && onChangeGame(index + 1),
-          },
-          {
-            button: 'ArrowLeft',
-            onPress: () => index && onChangeGame(index - 1),
-          },
-          {
-            label: 'Add Game',
-            button: 'ButtonY',
-            onPress: () => {},
-          },
-        ]}
-      />
+      <GamepadButtons buttons={UIButtons.GameListBar} />
     </Container>
   );
 };

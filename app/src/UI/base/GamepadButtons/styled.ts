@@ -27,5 +27,6 @@ export const ButtonLabel = styled.div(
       font-size: ${theme.fontSize.label};
       padding-bottom: ${theme.size(0.75)};
       color: ${theme.colors.text1};
+      font-family: 'Roboto';
     `
 );

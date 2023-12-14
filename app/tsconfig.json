@@ -12,5 +12,5 @@
       "src/*": ["./src/*"]
     }
   },
-  "exclude": ["*.js"]
+  "exclude": ["*.js", "out/*"]
 }

@@ -1,14 +1,25 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import GamepadButtons from 'src/UI/base/GamepadButtons';
 import InputField from 'src/UI/base/InputField';
 import { Form, FormTitle } from 'src/UI/base/Styles/Form';
 import { dbClient } from 'src/config/db';
+import useGamepad from 'src/hooks/useGamepad';
 import useScreenState from 'src/hooks/useScreenState';
+import { UIButtons } from 'src/utils/constants/UIButtons';
 import { gameFormState } from 'src/utils/constants/forms';
 
-const GameDetailsForm = () => {
+const GameInfoForm = () => {
   const { active, focus, setActive, setFocus } = useScreenState();
   const [form, setForm] = useState(gameFormState);
+  const onPressed = useGamepad();
+
+  useEffect(() => {
+    onPressed('ArrowUp', () => focus && !active && setFocus(focus - 1));
+    onPressed('ArrowDown', () => focus < 4 && !active && setFocus(focus + 1));
+    onPressed('ButtonA', () => active || setActive(true));
+    onPressed('ButtonB', () => !active || setActive(false));
+    onPressed('ButtonX', () => dbClient.games.create({ gameInfo: form }));
+  }, [onPressed]);
 
   return (
     <Form>
@@ -64,35 +75,9 @@ const GameDetailsForm = () => {
         onClose={() => setActive(false)}
       />
 
-      <GamepadButtons
-        buttons={[
-          {
-            button: 'ArrowUp',
-            onPress: () => focus && !active && setFocus(focus - 1),
-          },
-          {
-            button: 'ArrowDown',
-            onPress: () => focus < 4 && !active && setFocus(focus + 1),
-          },
-          {
-            label: 'Editar',
-            button: 'ButtonA',
-            onPress: () => active || setActive(true),
-          },
-          {
-            label: 'Voltar',
-            button: 'ButtonB',
-            onPress: () => !active || setActive(false),
-          },
-          {
-            label: 'Salvar',
-            button: 'ButtonX',
-            onPress: () => dbClient.games.create({ gameInfo: form }),
-          },
-        ]}
-      />
+      <GamepadButtons buttons={UIButtons.GameListGrid} />
     </Form>
   );
 };
 
-export default GameDetailsForm;
+export default GameInfoForm;
