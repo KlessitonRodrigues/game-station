@@ -1,21 +1,21 @@
 {
-  "name": "app-desktop",
+  "name": "game-space",
   "description": "Console UI experience for desktop",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "main": "src/electron.js",
   "license": "MIT",
   "author": {
     "name": "kless",
     "email": "klessitom@gmail.com"
   },
+  "homepage": "https://github.com/KlessitonRodrigues/game-station",
+  "repository": "https://github.com/KlessitonRodrigues/game-station",
   "scripts": {
     "build": "webpack --mode=production --node-env=production",
     "watch": "webpack --watch",
     "serve": "webpack serve",
     "app-start": "yarn electron ./src/electron.js",
-    "make-and-start": "electron-forge package && electron-forge start",
-    "make-linux": "electron-forge make -p linux",
-    "make-win": "electron-forge make -p win32"
+    "app-build": "yarn electron-builder -l -w"
   },
   "dependencies": {
     "app-db": "file:../app-db",
@@ -28,9 +28,6 @@
     "stylis": "4.3.0"
   },
   "devDependencies": {
-    "@electron-forge/cli": "6.4.2",
-    "@electron-forge/maker-deb": "6.4.2",
-    "@rabbitholesyndrome/electron-forge-maker-portable": "^0.2.0",
     "@trivago/prettier-plugin-sort-imports": "4.2.0",
     "@types/common": "file:../@types",
     "@types/node": "^20.8.3",
@@ -38,6 +35,7 @@
     "@types/react-dom": "18.0.5",
     "@types/styled-components": "5.1.27",
     "electron": "25.2.0",
+    "electron-builder": "^24.9.1",
     "electron-reload": "2.0.0-alpha.1",
     "html-webpack-plugin": "5.5.0",
     "prettier": "2.7.0",
@@ -49,16 +47,24 @@
     "webpack-cli": "5.1.4",
     "webpack-dev-server": "4.9.2"
   },
-  "config": {
-    "forge": {
-      "makers": [
-        {
-          "name": "@electron-forge/maker-deb"
-        },
-        {
-          "name": "@rabbitholesyndrome/electron-forge-maker-portable"
-        }
+  "build": {
+    "appId": "kless.gamespace",
+    "productName": "MyApp",
+    "directories": {
+      "output": "./out"
+    },
+    "win": {
+      "target": [
+        "portable"
       ]
+    },
+    "linux": {
+      "target": [
+        "deb"
+      ]
+    },
+    "portable": {
+      "artifactName": "game-space.exe"
     }
   }
 }
