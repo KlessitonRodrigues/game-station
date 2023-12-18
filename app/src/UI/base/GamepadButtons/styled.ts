@@ -18,6 +18,7 @@ export const Button = styled.div(
       display: flex;
       align-items: center;
       gap: ${theme.size(1)};
+      cursor: pointer;
     `
 );
 

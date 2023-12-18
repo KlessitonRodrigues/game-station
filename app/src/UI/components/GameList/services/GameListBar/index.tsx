@@ -32,7 +32,6 @@ export const GameListBar = (props: App.Props.GameListScreen) => {
     onPressed('ButtonA', () => onStartGame(game.path));
     onPressed('ArrowRight', () => index < list.length - 1 && onChangeGame(index + 1));
     onPressed('ArrowLeft', () => index && onChangeGame(index - 1));
-    onPressed('ButtonY', () => onStartGame(game.path));
   }, [onPressed]);
 
   return (

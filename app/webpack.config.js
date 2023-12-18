@@ -13,9 +13,9 @@ module.exports = () => {
       globalObject: 'this',
     },
     devServer: {
-      open: true,
-      host: 'localhost',
+      hot: true,
       open: false,
+      host: 'localhost',
     },
     plugins: [
       new HtmlWebpackPlugin({
@@ -35,16 +35,16 @@ module.exports = () => {
           test: /\.(png|svg|jpg|jpeg|gif)$/i,
           type: 'asset/resource',
           generator: {
-            filename: 'assets/[hash][ext][query]'
-          }
+            filename: 'assets/[hash][ext][query]',
+          },
         },
-       {
-         test: /\.(woff|woff2|eot|ttf|otf)$/i,
-         type: 'asset/resource',
-         generator: {
-          filename: 'fonts/[name][ext][query]'
-        }
-       },
+        {
+          test: /\.(woff|woff2|eot|ttf|otf)$/i,
+          type: 'asset/resource',
+          generator: {
+            filename: 'fonts/[name][ext][query]',
+          },
+        },
       ],
     },
     optimization: {
