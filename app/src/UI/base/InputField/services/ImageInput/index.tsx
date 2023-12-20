@@ -10,7 +10,7 @@ import { fetchImages } from './services/fetchImages';
 import { Image, ImageBox } from './styled';
 
 export const ImageInputModal = (props: App.Props.InputField) => {
-  const { active, value, onChange } = props;
+  const { active, sufix, value, onChange, onClose } = props;
 
   const onPressed = useGamepad();
   const { option, setOption, loading, setLoading } = useScreenState();
@@ -23,20 +23,23 @@ export const ImageInputModal = (props: App.Props.InputField) => {
       const isLastOption = option < urls.length;
       onPressed('ArrowLeft', () => option && setOption(option - 1));
       onPressed('ArrowRight', () => isLastOption && setOption(option + 1));
+      onPressed('ButtonA', onClose);
     }
   }, [onPressed]);
 
   useEffect(() => {
-    setLoading(true);
     const fetchUrls = async () => {
+      setLoading(true);
       if (active && value.length >= 3 && value !== lastQuery) {
-        const imgUrls = await fetchImages(value);
+        const imgUrls = await fetchImages(value + sufix);
         setUrls(imgUrls);
         setLastQuery(value);
       }
-      setLoading(false);
     };
-    fetchUrls().catch(console.error);
+
+    fetchUrls()
+      .catch(console.error)
+      .finally(() => setLoading(false));
   }, [active, value]);
 
   useEffect(() => {
@@ -52,9 +55,9 @@ export const ImageInputModal = (props: App.Props.InputField) => {
     <ImageBox>
       <If check={!loading}>
         <>
-          <Icons type="arrow-left" size={14} />
+          <If check={active} true={<Icons type="arrow-left" size={14} />} />
           <Image src={url} />
-          <Icons type="arrow-right" size={14} />
+          <If check={active} true={<Icons type="arrow-right" size={14} />} />
         </>
       </If>
       <Loading type="icon" show={loading} />

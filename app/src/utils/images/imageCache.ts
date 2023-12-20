@@ -1,19 +1,28 @@
+import { nodeClient } from 'src/config/node';
+
 import { fetchHeaders } from '../constants/fetchHeaders';
 import { ImageCompress } from './imageCompress';
 
-export const fetchImageData = (url: string) => {
-  return new Promise<string>((resolve, reject) => {
-    fetch(url, fetchHeaders)
-      .then(async res => {
-        const img = await res.blob();
-        const compressedImg = await ImageCompress(img);
-        const file = new FileReader();
-        file.readAsDataURL(compressedImg);
-        return await new Promise(res => (file.onload = () => res(file.result)));
-      })
-      .then(resolve)
-      .catch(reject);
-  });
+export const fetchImageData = async (url: string) => {
+  try {
+    console.log(await nodeClient.sytem.usage());
+
+    // const nodeRes = await nodeClient.http.page(url);
+
+    const res = await fetch(url, fetchHeaders);
+    const img = await res.blob();
+    if (!img?.size) return '';
+
+    const compressedImg = await ImageCompress(img);
+    const file = new FileReader();
+    file.readAsDataURL(compressedImg);
+    const data = await new Promise(res => (file.onload = () => res(file.result)));
+    if (data) return data as string;
+    return '';
+  } catch (err) {
+    console.error(err);
+    return '';
+  }
 };
 
 export const imageCache = async (url: string) => {

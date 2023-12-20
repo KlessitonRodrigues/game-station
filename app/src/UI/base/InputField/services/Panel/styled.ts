@@ -10,8 +10,7 @@ export const Container = styled.div<{ active: boolean; focus: boolean }>(
       color: ${theme.colors.text3};
       background-color: ${theme.colors.bg4};
       border-radius: ${theme.radius.large};
-      transition: 0.3s;
-      border: 3px solid transparent;
+      border: 2px solid transparent;
 
       ${focus &&
       css`
@@ -52,18 +51,18 @@ export const Title = styled.div(
     `
 );
 
-export const Value = styled.div(() => {
-  return css`
+export const Value = styled.div(
+  () => css`
     transition: 0.3s;
     width: 100%;
-  `;
-});
+  `
+);
 
-export const Content = styled.div(() => {
-  return css`
+export const Content = styled.div<{ open: boolean }>(
+  ({ open }) => css`
     width: 100%;
-    max-height: 0;
     overflow: hidden;
     transition: max-height 0.3s;
-  `;
-});
+    max-height: ${open ? '100%' : 0};
+  `
+);

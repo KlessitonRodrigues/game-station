@@ -8,11 +8,10 @@ import { TextInputModal } from './services/TextInput';
 import { Container } from './styled';
 
 const InputField = (props: App.Props.InputField) => {
-  const { type, value } = props;
-  const panelValue = type === 'img' ? '' : value;
+  const { type } = props;
 
   return (
-    <Panel {...props} value={panelValue}>
+    <Panel {...props}>
       <Container>
         <If check={type === 'text'} true={<TextInputModal {...props} />} />
         <If check={type === 'img'} true={<ImageInputModal {...props} />} />

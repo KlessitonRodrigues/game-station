@@ -4,7 +4,7 @@ export const ImageBox = styled.div(
   ({ theme }) => css`
     width: 100%;
     padding: ${theme.size(4)};
-    height: ${theme.size(120)};
+    height: ${theme.size(100)};
     max-height: ${theme.size(120)};
     overflow: hidden;
     display: flex;

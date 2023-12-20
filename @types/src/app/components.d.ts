@@ -107,6 +107,8 @@ declare namespace App {
       active: boolean;
       title: string;
       value: string;
+      displayValue?: string;
+      keepOpen?: boolean;
       children?: React.ReactElement;
     };
 
@@ -116,6 +118,9 @@ declare namespace App {
       focus: boolean;
       type: "text" | "img" | "file" | "color";
       value: string;
+      displayValue?: string;
+      sufix?: string;
+      keepOpen?: boolean;
       onChange: (value: string) => void;
       onClose: () => void;
     };

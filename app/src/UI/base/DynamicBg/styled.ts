@@ -1,7 +1,8 @@
+import { bgGradientList } from 'src/utils/constants/gradient';
 import styled, { css } from 'styled-components';
 
-export const Container = styled.div<{ gradient: string }>(
-  ({ gradient }) =>
+export const Container = styled.div<{ showBg: boolean }>(
+  ({ showBg }) =>
     css`
       z-index: -1;
       position: fixed;
@@ -10,7 +11,7 @@ export const Container = styled.div<{ gradient: string }>(
       width: 100%;
       height: 100%;
       background-color: #000;
-      background-image: ${gradient};
+      background-image: ${showBg ? bgGradientList.blueAndPink : ''};
       background-size: 400% 400%;
       background-position: 50% 50%;
       background-repeat: no-repeat;

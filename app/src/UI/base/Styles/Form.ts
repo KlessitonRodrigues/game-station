@@ -4,6 +4,8 @@ export const Form = styled.div(
   () => css`
     width: 100%;
     height: 100%;
+    overflow-y: auto;
+    scroll-behavior: smooth;
   `
 );
 

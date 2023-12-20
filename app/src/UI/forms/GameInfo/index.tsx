@@ -48,9 +48,11 @@ const GameInfoForm = () => {
       <InputField
         type="img"
         title="Cover"
+        sufix=" pc cover"
         focus={focus === 2}
         active={focus === 2 && active}
-        value={form.name + ' pc cover'}
+        value={form.name}
+        keepOpen={!!form.cover}
         onChange={cover => setForm({ ...form, cover })}
         onClose={() => setActive(false)}
       />
@@ -58,9 +60,11 @@ const GameInfoForm = () => {
       <InputField
         type="img"
         title="Background"
+        sufix=" background"
         focus={focus === 3}
         active={focus === 3 && active}
-        value={form.name + ' background'}
+        value={form.name}
+        keepOpen={!!form.background}
         onChange={background => setForm({ ...form, background })}
         onClose={() => setActive(false)}
       />
