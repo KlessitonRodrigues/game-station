@@ -1,5 +1,8 @@
-import { useMemo } from 'react';
+import { useEffect, useMemo } from 'react';
 import GamepadButtons from 'src/UI/base/GamepadButtons';
+import If from 'src/UI/base/If';
+import useGamepad from 'src/hooks/useGamepad';
+import { UIButtons } from 'src/utils/constants/UIButtons';
 
 import {
   Column,
@@ -13,45 +16,40 @@ import {
   Games,
 } from './styled';
 
-const getCoverList = (props: App.Props.GameListScreen) => {
+const renderListItems = (props: App.Props.GameListScreen) => {
   const { list, index } = props;
-  return list.map(game => (
-    <CoverListImg className="cove-item" key={game.name} focus={index} src={game.cover} />
+  return list.map(({ name, cover }) => (
+    <CoverListImg className="cove-item" key={name} focus={index} src={cover} />
   ));
 };
 
 export const GameListBar = (props: App.Props.GameListScreen) => {
-  const { list, game, index, onChangeGame } = props;
-  const CoverListItems = useMemo(() => getCoverList(props), [list.length, index]);
+  const { list, game, index, onChangeGame, onStartGame } = props;
+  const onPressed = useGamepad();
+  const CoverListItems = useMemo(() => renderListItems(props), [list.length, index]);
+
+  useEffect(() => {
+    onPressed('ButtonA', () => onStartGame(game.path));
+    onPressed('ArrowRight', () => index < list.length - 1 && onChangeGame(index + 1));
+    onPressed('ArrowLeft', () => index && onChangeGame(index - 1));
+  }, [onPressed]);
 
   return (
     <Container>
-      <Games>
-        <CoverImg src={game?.cover} />
-        <Column>
-          <Description>
-            <GameTitle>{game?.name}</GameTitle>
-            <GameInfo>{game?.publisher}</GameInfo>
-          </Description>
-          <CoverList>{CoverListItems}</CoverList>
-        </Column>
-      </Games>
-      <GamepadButtons
-        buttons={[
-          { label: 'Start', gamepadBtn: 'ButtonA', onPressedFn: () => {} },
-          {
-            label: 'Arrow Left',
-            gamepadBtn: 'ArrowLeft',
-            onPressedFn: () => index && onChangeGame(index - 1),
-          },
-          {
-            label: 'Arrow Right',
-            gamepadBtn: 'ArrowRight',
-            onPressedFn: () => index < list.length - 1 && onChangeGame(index + 1),
-          },
-          { label: 'Add Game', gamepadBtn: 'ButtonA', onPressedFn: () => {} },
-        ]}
-      />
+      <If check={!!list.length}>
+        <Games>
+          <CoverImg src={game?.cover} />
+          <Column>
+            <Description>
+              <GameTitle>{game?.name}</GameTitle>
+              <GameInfo>{game?.publisher?.toLocaleLowerCase()}</GameInfo>
+            </Description>
+            <CoverList>{CoverListItems}</CoverList>
+          </Column>
+        </Games>
+      </If>
+
+      <GamepadButtons buttons={UIButtons.GameListBar} />
     </Container>
   );
 };

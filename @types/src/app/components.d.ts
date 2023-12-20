@@ -107,6 +107,8 @@ declare namespace App {
       active: boolean;
       title: string;
       value: string;
+      displayValue?: string;
+      keepOpen?: boolean;
       children?: React.ReactElement;
     };
 
@@ -116,7 +118,11 @@ declare namespace App {
       focus: boolean;
       type: "text" | "img" | "file" | "color";
       value: string;
+      displayValue?: string;
+      sufix?: string;
+      keepOpen?: boolean;
       onChange: (value: string) => void;
+      onClose: () => void;
     };
 
     type RoundedIcon = {
@@ -125,19 +131,20 @@ declare namespace App {
 
     type GamepadButtons = {
       buttons: {
-        label: string;
-        gamepadBtn: App.Gamepad.Buttons;
-        onPressedFn: () => void;
+        label?: string;
+        button: App.Gamepad.Buttons;
       }[];
     };
 
     type GameList = {
       mode: "bar" | "grid";
       index: number;
+      game: AppDB.Models.GameInfo;
       list: AppDB.Models.GameInfo[];
+      active: boolean;
       onChangeGame: (gameIndex: number) => any;
       onActiveGame: (gameIndex: number) => any;
-      onStartGame: (gameIndex: number) => any;
+      onStartGame: (path: string) => any;
     };
 
     type GameListScreen = {
@@ -147,7 +154,7 @@ declare namespace App {
       game: AppDB.Models.GameInfo;
       onChangeGame: (gameIndex: number) => any;
       onActiveGame: (gameIndex: number) => any;
-      onStartGame: (gameIndex: number) => any;
+      onStartGame: (path: string) => any;
     };
 
     type Keyboard = {

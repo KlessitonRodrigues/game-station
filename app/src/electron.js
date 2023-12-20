@@ -1,6 +1,6 @@
 const { app, BrowserWindow, globalShortcut } = require('electron');
-const path = require('path');
-// require('electron-reload')('./dist');
+const { readFileSync } = require('fs');
+const { join } = require('path');
 
 app.whenReady().then(() => {
   const win = new BrowserWindow({
@@ -12,15 +12,21 @@ app.whenReady().then(() => {
     },
   });
 
-  win.loadFile(path.join(__dirname, '../dist/index.html'));
-  // win.setFullScreen(true);
-  // win.webContents.openDevTools();
+  const appPath = join(__dirname, '../dist/index.html');
+
+  try {
+    readFileSync(appPath);
+    console.log('Loading App from ./dist/');
+    win.loadFile(appPath);
+    win.setFullScreen(true);
+  } catch (error) {
+    console.log('Loading App from localhost:8080');
+    win.loadURL('http://localhost:8080');
+  }
 
   const ret = globalShortcut.register('Control+f6', () => {
     console.log('CommandOrControl+f6 is pressed');
   });
 
-  if (!ret) {
-    console.log('registration failed');
-  }
+  if (!ret) console.log('registration failed');
 });

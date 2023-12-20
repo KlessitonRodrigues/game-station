@@ -1,66 +1,68 @@
 import styled, { css } from 'styled-components';
 
 export const Container = styled.div<{ active: boolean; focus: boolean }>(
-  props =>
+  ({ theme, active, focus }) =>
     css`
-      width: 75%;
       margin: 0 auto;
-      padding: ${props.theme.size(4)};
-      margin-bottom: ${props.theme.size(4)};
-      color: ${props.theme.colors.text3};
-      background-color: ${props.theme.colors.bg4};
-      border-radius: ${props.theme.radius.medium};
-      transition: 0.3s;
+      padding: ${theme.size(4)};
+      margin-bottom: ${theme.size(4)};
+      width: ${theme.size(350)};
+      color: ${theme.colors.text3};
+      background-color: ${theme.colors.bg4};
+      border-radius: ${theme.radius.large};
+      border: 2px solid transparent;
 
-      ${props.focus &&
+      ${focus &&
       css`
-        background-color: ${props.theme.colors.bg2};
-        color: ${props.theme.colors.text1};
+        color: ${theme.colors.text1};
+        border-color: ${theme.colors.gray};
       `}
 
-      ${props.active &&
+      ${active &&
       css`
-        background-color: ${props.theme.colors.bg2};
-        color: ${props.theme.colors.text1};
+        background-color: ${theme.colors.bg2};
+        color: ${theme.colors.text1};
+        border-color: ${theme.colors.gray};
+
         ${Value} {
           opacity: 0;
         }
         ${Content} {
-          max-height: ${props.theme.size(120)};
+          max-height: ${theme.size(120)};
         }
       `}
     `
 );
 
 export const Header = styled.div(
-  props =>
+  ({ theme }) =>
     css`
       display: flex;
       align-items: center;
-      gap: ${props.theme.size(4)};
+      gap: ${theme.size(4)};
     `
 );
 
 export const Title = styled.div(
-  props =>
+  ({ theme }) =>
     css`
-      font-size: ${props.theme.fontSize.h4};
+      font-size: ${theme.fontSize.h4};
       font-weight: bold;
     `
 );
 
-export const Value = styled.div(() => {
-  return css`
+export const Value = styled.div(
+  () => css`
     transition: 0.3s;
     width: 100%;
-  `;
-});
+  `
+);
 
-export const Content = styled.div(() => {
-  return css`
+export const Content = styled.div<{ open: boolean }>(
+  ({ open }) => css`
     width: 100%;
-    max-height: 0;
     overflow: hidden;
     transition: max-height 0.3s;
-  `;
-});
+    max-height: ${open ? '100%' : 0};
+  `
+);

@@ -28,10 +28,7 @@ export const ImageCompress = (bin: Blob) => {
         console.log(`Image compressor: ${binSize} Kb -> ${resultSize} Kb, ratio: ${ratio}`);
         resolve(result);
       },
-      error: (msg: any) => {
-        console.error(msg);
-        reject(msg);
-      },
+      error: reject,
     });
   });
 };

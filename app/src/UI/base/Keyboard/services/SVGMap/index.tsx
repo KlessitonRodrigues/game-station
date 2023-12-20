@@ -1,5 +1,5 @@
 export const KeyboardSVG = () => {
-  const bordercolor = '#999';
+  const bordercolor = '#bbb';
   const color = '#fff';
 
   return (

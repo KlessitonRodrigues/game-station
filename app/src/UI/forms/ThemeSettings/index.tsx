@@ -26,6 +26,7 @@ const ThemeSettingsForm = () => {
         active={focus === 0 && active}
         value={''}
         onChange={name => setForm({ ...form, name })}
+        onClose={() => {}}
       />
     </Form>
   );

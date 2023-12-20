@@ -22,11 +22,13 @@ export const FullScreen = styled.div(
 
 export const Spinner = styled.div(
   props => css`
+    width: 100%;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     margin-bottom: ${props.theme.size(8)};
-    animation: ${Keyframes.spinning} 1s infinite linear;
+    animation: ${Keyframes.spinning} 0.8s infinite linear;
   `
 );
 

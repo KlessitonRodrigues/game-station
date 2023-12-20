@@ -1,9 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import If from 'src/UI/base/If';
 import PageContainer from 'src/UI/base/PageContainer';
 import GameList from 'src/UI/components/GameList';
-import GameDetailsForm from 'src/UI/forms/GameDetails';
+import GameInfoForm from 'src/UI/forms/GameInfo';
 import { dbClient } from 'src/config/db';
+import { nodeClient } from 'src/config/node';
 import useAppContext from 'src/hooks/useAppContext';
 import useGamepad from 'src/hooks/useGamepad';
 import useRoutesContext from 'src/hooks/useRoutesContext';
@@ -15,9 +16,11 @@ const GamesPage = () => {
   const { path, setPath } = useRoutesContext();
   const { setBgImage } = useAppContext();
   const { focus, setFocus, setLoading } = useScreenState();
-  const [gameList, setGameList] = useState<AppDB.Models.GameInfo[]>([]);
   const onPressed = useGamepad();
-  const [page, screen, mode] = path.split('/');
+  const [gameList, setGameList] = useState<AppDB.Models.GameInfo[]>([]);
+
+  const [, screen, mode] = path.split('/');
+  const games = dbClient.games.read();
 
   useEffect(() => {
     onPressed('ButtonY', () => {
@@ -29,7 +32,6 @@ const GamesPage = () => {
   }, [onPressed]);
 
   useEffect(() => {
-    const games = dbClient.games.read();
     if (!nodeJS.isNodeAvailable) setGameList(games);
     else {
       setLoading(true);
@@ -38,25 +40,29 @@ const GamesPage = () => {
         .catch(err => console.error(err))
         .finally(() => setLoading(false));
     }
-  }, []);
+  }, [games.length]);
 
   useEffect(() => {
     setBgImage(gameList[focus]?.background);
-  }, [focus, gameList]);
+  }, [focus, gameList.length]);
+
+  const game = useMemo(() => gameList[focus], [focus, gameList.length]);
 
   return (
     <PageContainer>
       <If check={path.includes('games/list')}>
         <GameList
-          mode={mode === 'bar' ? 'bar' : 'grid'}
+          mode={mode as 'grid' | 'bar'}
           index={focus}
+          game={game}
           list={gameList}
           onActiveGame={() => {}}
           onChangeGame={index => focus < gameList.length && setFocus(index)}
-          onStartGame={() => {}}
+          onStartGame={path => nodeClient.cmd.run(path)}
+          active={false}
         />
       </If>
-      <If check={path === 'games/add'} true={<GameDetailsForm />} />
+      <If check={path === 'games/add'} true={<GameInfoForm />} />
     </PageContainer>
   );
 };

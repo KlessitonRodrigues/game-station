@@ -10,7 +10,7 @@ export const RoundedIcon = (props: App.Props.RoundedIcon) => {
           cx="31"
           cy="31"
           r="27.841"
-          style={{ strokeWidth: '4px', stroke: '#999' }}
+          style={{ strokeWidth: '4px', stroke: '#ddd' }}
           transform="matrix(0.910153, 0, 0, 0.89304, 3.448403, 3.713665)"
         />
         <text
