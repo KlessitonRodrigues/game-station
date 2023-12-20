@@ -2,10 +2,10 @@ import fetchImage from './fetchImage';
 
 describe('When fetching images', () => {
   test('Should fetch image data', async () => {
-    const url = 'http://ssl.gstatic.com/ui/v1/icons/mail/rfr/logo_gmail_lockup_default_1x_r5.png';
+    const url = 'https://ssl.gstatic.com/ui/v1/icons/mail/rfr/logo_gmail_lockup_default_1x_r5.png';
     const res = await fetchImage(require)(url);
-    expect(res.byteLength).toBeTruthy();
-  });
+    expect(res.size).toBeTruthy();
+  }, 10000);
 
   test('Should show error message for invalid url', async () => {
     try {

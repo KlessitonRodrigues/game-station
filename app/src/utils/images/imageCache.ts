@@ -1,18 +1,11 @@
 import { nodeClient } from 'src/config/node';
 
-import { fetchHeaders } from '../constants/fetchHeaders';
 import { ImageCompress } from './imageCompress';
 
 export const fetchImageData = async (url: string) => {
   try {
-    console.log(await nodeClient.sytem.usage());
-
-    // const nodeRes = await nodeClient.http.page(url);
-
-    const res = await fetch(url, fetchHeaders);
-    const img = await res.blob();
-    if (!img?.size) return '';
-
+    const img = await nodeClient.http.image(url);
+    if (!img.size) return '';
     const compressedImg = await ImageCompress(img);
     const file = new FileReader();
     file.readAsDataURL(compressedImg);

@@ -22,7 +22,6 @@ app.whenReady().then(() => {
   } catch (error) {
     console.log('Loading App from localhost:8080');
     win.loadURL('http://localhost:8080');
-    win.webContents.openDevTools();
   }
 
   const ret = globalShortcut.register('Control+f6', () => {
