@@ -1,0 +1,44 @@
+name: NodeJS with Webpack
+
+on:
+  push:
+    branches: [ "fix/ui-issues-on-home-page" ]
+  pull_request:
+    branches: [ "fix/ui-issues-on-home-page" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [18.x, 20.x, 22.x]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Cache node modules
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build with Webpack
+        run: npx webpack
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: webpack-build
+          path: dist/
