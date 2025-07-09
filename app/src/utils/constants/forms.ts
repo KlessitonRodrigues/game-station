@@ -1,13 +1,12 @@
-export const initialState: AppDB.Models.GameInfo = {
+export const gameFormState: AppDB.Models.GameInfo = {
   name: '',
   description: '',
   cover: '',
   background: '',
   publisher: '',
   rate: '80',
-  addedAt: '',
+  createdAt: '',
   year: '2023',
   hidden: false,
-  gamePath: '',
-  gameFile: '',
+  path: '',
 };

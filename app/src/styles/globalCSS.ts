@@ -1,5 +1,7 @@
 import { createGlobalStyle, css } from 'styled-components';
 
+import '../UI/assets/fonts/RobotoRegular.ttf';
+
 export default createGlobalStyle(
   ({ theme }) => css`
     * {

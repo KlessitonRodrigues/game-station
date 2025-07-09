@@ -11,7 +11,6 @@ export const TextInputModal = (props: App.Props.InputField) => {
         ref={el => (active ? el?.focus() : el?.blur())}
         value={value}
         onChange={ev => onChange(ev.target.value)}
-        autoFocus
       />
       <If check={active}>
         <Keyboard value={value} onChange={onChange} onEnterPress={() => {}} onEscPress={() => {}} />

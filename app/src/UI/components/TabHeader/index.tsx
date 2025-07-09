@@ -15,10 +15,9 @@ const TabHeader = () => {
   const { option, setOption } = screen;
 
   useEffect(() => {
-    if (option && option < tabRoutes.length - 1) {
-      onPress('ButtonLeft', () => setOption(option - 1));
-      onPress('ButtonRight', () => setOption(option + 1));
-    }
+    const tabs = tabRoutes.length;
+    onPress('ButtonLeft', () => option && setOption(option - 1));
+    onPress('ButtonRight', () => option < tabs - 1 && setOption(option + 1));
   }, [onPress]);
 
   useEffect(() => {
