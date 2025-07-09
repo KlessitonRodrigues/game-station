@@ -1,5 +1,5 @@
 // @ts-ignore
-import localDB from 'app-db';
+import localDB from '../../../app-db/src/index';
 
 const dbName = 'games_db';
 

@@ -14,9 +14,6 @@ const GamesPage = () => {
     onPressed('ButtonY', () => {
       path === 'games/add' ? setPath('games/list/bar') : setPath('games/add');
     });
-    onPressed('ButtonX', () => {
-      path === 'games/list/bar' ? setPath('games/list/grid') : setPath('games/list/bar');
-    });
   }, [onPressed]);
 
   return (

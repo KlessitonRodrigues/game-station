@@ -22,13 +22,11 @@ const GameList = (props: App.Props.GameList) => {
 
   useEffect(() => {
     const games = dbClient.games.read();
-    if (global.isBrowser) setGameList(games);
-    else {
-      setUI('loading', true);
-      getCachedCovers(games)
-        .then(setGameList)
-        .finally(() => setUI('loading', false));
-    }
+    setGameList(games);
+    setUI('loading', true);
+    getCachedCovers(games)
+      .then(setGameList)
+      .finally(() => setUI('loading', false));
   }, []);
 
   useEffect(() => {
@@ -57,15 +55,6 @@ const GameList = (props: App.Props.GameList) => {
           onChangeGame={index => index < gameList.length && setUI('focus', index)}
           onActiveGame={() => setUI('active', !active)}
           onStartGame={() => {}}
-        />
-      </If>
-
-      <If check={global.isFirstRun}>
-        <LayoutTypeDialog
-          onSelect={type => {
-            setGlobal({ ...global, isFirstRun: false });
-            if (type === 'grid') setPath('games/list/grid');
-          }}
         />
       </If>
 
