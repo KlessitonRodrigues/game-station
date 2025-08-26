@@ -1,31 +1,33 @@
 import styled, { css } from 'styled-components';
 
 export const Container = styled.div(
-  props =>
+  ({ theme }) =>
     css`
       position: fixed;
-      bottom: ${props.theme.size(6)};
+      bottom: ${theme.size(6)};
       left: 50%;
       display: flex;
-      gap: ${props.theme.size(4)};
+      gap: ${theme.size(4)};
       translate: -50%;
     `
 );
 
 export const Button = styled.div(
-  props =>
+  ({ theme }) =>
     css`
       display: flex;
       align-items: center;
-      gap: ${props.theme.size(1)};
+      gap: ${theme.size(1)};
+      cursor: pointer;
     `
 );
 
 export const ButtonLabel = styled.div(
-  props =>
+  ({ theme }) =>
     css`
-      font-size: ${props.theme.fontSize.label};
-      padding-bottom: ${props.theme.size(0.75)};
-      color: ${props.theme.colors.text3};
+      font-size: ${theme.fontSize.label};
+      padding-bottom: ${theme.size(0.75)};
+      color: ${theme.colors.text1};
+      font-family: 'Roboto';
     `
 );

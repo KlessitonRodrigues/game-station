@@ -15,7 +15,7 @@ import ThemePage from '../pages/Theme';
 
 const Router = () => {
   const { path } = useRoutes();
-  const { bgImage, bgColor } = useAppContext();
+  const { bgImage } = useAppContext();
 
   return (
     <ThemeProvider theme={defaultTheme}>
@@ -33,7 +33,7 @@ const Router = () => {
           <Route path="settings/*" element={<SettingsPage />} />
         </Routes>
       </GamepadProvider>
-      <DynamicBg img={bgImage} color={bgColor} layer={-2} blur={!path.includes('games/list')} />
+      <DynamicBg img={bgImage} layer={-2} blur={!path.includes('games/list')} />
     </ThemeProvider>
   );
 };

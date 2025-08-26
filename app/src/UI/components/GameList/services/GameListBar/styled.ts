@@ -21,16 +21,16 @@ export const Games = styled.div(({ theme }) => {
 });
 
 export const CoverImg = styled.img(
-  props =>
+  ({ theme }) =>
     css`
       display: block;
       height: 100%;
       margin: 0 10px;
-      width: ${props.theme.size(90)};
-      min-width: ${props.theme.size(90)};
-      max-width: ${props.theme.size(90)};
-      border-radius: ${props.theme.radius.large};
-      border: 2px solid ${props.theme.colors.gray};
+      width: ${theme.size(90)};
+      min-width: ${theme.size(90)};
+      max-width: ${theme.size(90)};
+      border-radius: ${theme.radius.large};
+      border: 2px solid ${theme.colors.gray};
     `
 );
 
@@ -55,12 +55,13 @@ export const GameTitle = styled.div(({ theme }) => {
   `;
 });
 
-export const GameInfo = styled.div(({ theme }) => {
-  return css`
+export const GameInfo = styled.div(
+  ({ theme }) => css`
     color: ${theme.colors.text3};
     font-size: ${theme.fontSize.h4};
-  `;
-});
+    text-transform: capitalize;
+  `
+);
 
 export const CoverList = styled.div(() => {
   return css`
@@ -72,22 +73,22 @@ export const CoverList = styled.div(() => {
 });
 
 export const CoverListImg = styled.img<{ focus: number }>(
-  props =>
+  ({ theme, focus }) =>
     css`
       display: block;
-      height: ${props.theme.size(60)};
-      width: ${props.theme.size(50)};
-      min-width: ${props.theme.size(50)};
-      max-width: ${props.theme.size(50)};
-      margin-right: ${props.theme.size(4)};
+      height: ${theme.size(60)};
+      width: ${theme.size(50)};
+      min-width: ${theme.size(50)};
+      max-width: ${theme.size(50)};
+      margin-right: ${theme.size(4)};
       background-color: transparent;
-      border-radius: ${props.theme.radius.medium};
-      font-size: ${props.theme.size(10)};
-      border: 2px solid ${props.theme.colors.bg1};
-      transition: 0.3s;
-      filter: brightness(0.9);
+      border-radius: ${theme.radius.medium};
+      font-size: ${theme.size(10)};
+      border: 2px solid ${theme.colors.bg1};
+      transition: 0.3s ease-out;
+      filter: brightness(0.8);
 
-      &.cove-item:nth-child(-n + ${props.focus + 1}) {
+      &.cove-item:nth-child(-n + ${focus + 1}) {
         width: 0;
         min-width: 0;
         margin: 0;

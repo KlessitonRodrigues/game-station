@@ -5,7 +5,7 @@ const AppContext = createContext<App.Hooks.UseAppContext>(null);
 export const AppProvider = (props: PropsWithChildren) => {
   const [firstRun, setFirstRun] = useState(true);
   const [bgImage, setBgImage] = useState('');
-  const [bgColor, setBgColor] = useState<App.Utils.BgColors>('red');
+  const [bgColor, setBgColor] = useState<App.Utils.BgColors>('blueAndPink');
 
   const context: App.Hooks.UseAppContext = {
     firstRun,

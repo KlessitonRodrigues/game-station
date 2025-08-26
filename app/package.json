@@ -1,33 +1,32 @@
 {
-  "name": "app-desktop",
+  "name": "game-space",
   "description": "Console UI experience for desktop",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "main": "src/electron.js",
   "license": "MIT",
+  "author": {
+    "name": "kless",
+    "email": "klessitom@gmail.com"
+  },
+  "homepage": "https://github.com/KlessitonRodrigues/game-station",
+  "repository": "https://github.com/KlessitonRodrigues/game-station",
   "scripts": {
     "build": "webpack --mode=production --node-env=production",
     "watch": "webpack --watch",
     "serve": "webpack serve",
     "app-start": "yarn electron ./src/electron.js",
-    "make-and-start": "electron-forge package && electron-forge start",
-    "make-linux": "electron-forge make -p linux",
-    "make-win": "electron-forge make -p win32"
+    "app-build": "yarn electron-builder -l -w"
   },
   "dependencies": {
     "app-db": "file:../app-db",
     "app-node-layer": "file:../app-node-layer",
-    "electron-installer-debian": "^3.2.0",
+    "electron-packager": "^17.1.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-router-dom": "6.14.1",
-    "styled-components": "6.0.8",
-    "stylis": "4.3.0"
+    "styled-components": "6.0.8"
   },
   "devDependencies": {
-    "@electron-forge/cli": "6.4.2",
-    "@electron-forge/maker-deb": "6.4.2",
-    "@electron-forge/maker-squirrel": "6.4.2",
-    "@electron-forge/maker-zip": "6.4.2",
     "@trivago/prettier-plugin-sort-imports": "4.2.0",
     "@types/common": "file:../@types",
     "@types/node": "^20.8.3",
@@ -35,27 +34,35 @@
     "@types/react-dom": "18.0.5",
     "@types/styled-components": "5.1.27",
     "electron": "25.2.0",
-    "electron-reload": "2.0.0-alpha.1",
+    "electron-builder": "24.9.1",
     "html-webpack-plugin": "5.5.0",
     "prettier": "2.7.0",
     "react-icons": "4.8.0",
     "ts-loader": "9.3.0",
     "tsconfig-paths-webpack-plugin": "4.0.0",
     "typescript": "5.0.4",
-    "webpack": "5.73.0",
-    "webpack-cli": "5.1.4",
-    "webpack-dev-server": "4.9.2"
+    "webpack": "^5.89.0",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^4.15.1"
   },
-  "config": {
-    "forge": {
-      "makers": [
-        {
-          "name": "@electron-forge/maker-deb"
-        },
-        {
-          "name": "@electron-forge/maker-squirrel"
-        }
+  "build": {
+    "appId": "kless.gamespace",
+    "productName": "MyApp",
+    "directories": {
+      "output": "./out"
+    },
+    "win": {
+      "target": [
+        "portable"
       ]
+    },
+    "linux": {
+      "target": [
+        "deb"
+      ]
+    },
+    "portable": {
+      "artifactName": "game-space.exe"
     }
   }
 }

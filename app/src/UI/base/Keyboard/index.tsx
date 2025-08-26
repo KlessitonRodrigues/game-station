@@ -11,7 +11,6 @@ const Keyboard = (props: App.Props.Keyboard) => {
 
   const onPress = useGamepad();
   const { focus, option, setFocus, setOption } = useScreenState();
-  const [shift, setShift] = useState(false);
   const keyId = useMemo(() => getKeyId(option, focus), [option, focus]);
 
   useEffect(() => {
@@ -25,31 +24,28 @@ const Keyboard = (props: App.Props.Keyboard) => {
       if (keyId === 'enter') return onEnterPress();
       if (keyId === 'esc') return onEscPress();
       if (keyId === 'backspace') return onChange(value.substring(0, value.length - 1));
-      if (keyId.includes('shift')) return setShift(!shift);
-      if (keyId === 'capslk') return setShift(!shift);
-      if (!shift) return onChange(value + keyId.toUpperCase());
-      return onChange(value + keyId);
+      return onChange(value + keyId?.toUpperCase());
     });
   }, [onPress]);
 
   useEffect(() => {
-    const getEl = (query: string) => document.querySelector(query);
-    const keyPath = getEl(`#keyboard-svg .key-${keyId} path`) as SVGPathElement;
+    const getSVG = (query: string) => document.querySelector(query) as SVGPathElement;
+    const keyPath = getSVG(`#keyboard-svg .key-${keyId} path`);
     if (keyPath) {
       keyPath.style.fill = '#fff4';
-      keyPath.style.stroke = '#ccc';
+      keyPath.style.stroke = '#fff';
     }
 
     return () => {
       if (keyPath) {
         keyPath.style.fill = 'transparent';
-        keyPath.style.stroke = '#999';
+        keyPath.style.stroke = '#ccc';
       }
     };
   }, [option, focus]);
 
   return (
-    <Container shift={shift}>
+    <Container>
       <KeyboardSVG />
     </Container>
   );

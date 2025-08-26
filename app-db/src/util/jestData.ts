@@ -5,11 +5,10 @@ export const gameInfoObj = (): AppDB.Models.GameInfo => ({
   background: 'img-url',
   cover: 'img-url',
   description: 'game-description',
-  addedAt: 'added-at-timer',
+  createdAt: 'added-at-timer',
   rate: 'game-rate',
   hidden: false,
-  gameFile: '',
-  gamePath: '',
+  path: '',
 });
 
 export const settingsInfoObj = (): AppDB.Models.SettingsInfo => ({

@@ -1,6 +1,6 @@
 const NodeJS = () => {
   const require = window.require;
-  window.require = null; // prevent accessing nodejs from page context
+  // window.require = null; // prevent accessing nodejs from page context
 
   return {
     isNodeAvailable: !!require,

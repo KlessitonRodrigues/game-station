@@ -11,6 +11,7 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     clean: true,
     libraryTarget: 'umd', // make the bundle export
+    globalObject: 'this',
   },
   module: {
     rules: [{ test: /\.ts$/, loader: 'ts-loader' }],

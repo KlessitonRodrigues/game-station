@@ -4,6 +4,8 @@ export const Form = styled.div(
   () => css`
     width: 100%;
     height: 100%;
+    overflow-y: auto;
+    scroll-behavior: smooth;
   `
 );
 
@@ -16,5 +18,6 @@ export const FormTitle = styled.h2(({ theme }) => {
     padding-bottom: ${theme.size(2)};
     margin-bottom: ${theme.size(8)};
     font-weight: bold;
+    text-transform: uppercase;
   `;
 });

@@ -10,12 +10,11 @@ declare namespace AppDB {
       publisher: string;
       cover: string;
       background: string;
-      addedAt: string;
+      createdAt: string;
       hidden: boolean;
       year: string;
       rate: string;
-      gamePath: string;
-      gameFile: string;
+      path: string;
     };
   }
 }
